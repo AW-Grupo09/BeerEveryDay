@@ -16,7 +16,7 @@
 
 		<div class="container"><!--bloque del contenido central-->
 			<img id="fondoInicio" src="img/BackgroundInicio.JPG" alt="BackgroundInicio" />
-			<p> <a href="registrate.php"> Regístrate </a></p>
+			<a class="button" style="color:#110000; background: #ffffff" href="registrate.php">Shop Now!</a>
 		</div>
 		<?php require('footer.php'); ?>
 
