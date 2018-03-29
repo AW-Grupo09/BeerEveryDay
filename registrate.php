@@ -1,20 +1,5 @@
 <?php 
 	
-	$db_host = 'localhost';
-	$db_user = 'root';
-	$db_password = '';
-	$db_name = 'beereveryday';
-	$table = 'usuarios';
-
-	$mysqli = new mysqli($db_host, $db_user, $db_password, $db_name);
-	if(mysqli_connect_errno()){
-		echo "Error a la conexión a la BD: " . mysqli_connect_error();
-		exit();
-	}
-
-	$registro = new Registro();
-	$registro->obtenerDatos();
-
 ?>
 
 
@@ -39,6 +24,10 @@
 				<div class="form">
 	      			<form class="form-style" action="registro.php" method="post">
 	          			<ul>
+	          			<li>
+	          				<label>Username</label>
+	          				<input type="text" name="id" required/>
+	          			</li>
 			            <li>
 			              <label>Nombre</label>
 			              <input type="text" name="nombre" required autofocus/>
@@ -49,11 +38,11 @@
 			            </li>
 			            <li>
 			              <label>Fecha de nacimiento</label>
-			              <input type="date" name="date_control" placeholder="aaaa/mm/dd" required/>
+			              <input type="date" name="fechaNac" placeholder="aaaa/mm/dd" required/>
 			            </li>
 			            <li>
 			              <label>Ciudad</label>
-			              <input type="text" name="ciudad" value="" required/>
+			              <input type="text" name="ciudad" value=""/>
 	            		</li>
 			            <li>
 			              <label>Mail</label>
@@ -73,8 +62,15 @@
 			            </li>
 			            <li>
 			      			<label class="foto_per_label">Foto de perfil</label>
-			              <input class="foto_per" type="file" name="archivo" />
+			              <input class="foto_per" type="file" name="avatar" />
 			            
+			            </li>
+			            <li>
+			            	<label>¿Qué rol desea adoptar? </label> <br>
+			            	<form>
+			            		<input type="radio" name="rol" value="registrado" checked> Registrado <br>
+			            		<input type="radio" name="rol" value="vendedor"> Vendedor <br>			            		
+			            	</form>
 			            </li>
 			            <li>
 			              <button class="submit" type="submit">Registrarte</button>
@@ -91,11 +87,9 @@
 
 	          			</ul>
 	    			</form>
-		
-		
 			
 		</div>
-		
+	
 
 		<?php require('footer.php'); ?>
 

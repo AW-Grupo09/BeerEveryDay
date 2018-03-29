@@ -15,6 +15,7 @@
 
 		<div class="container">
 			<!-- Aqui poneis lo que querais añadir de vuestra vista-->
+			<p> <a href="registrate.php"> Regístrate </a></p>
 		</div>
 		
 
