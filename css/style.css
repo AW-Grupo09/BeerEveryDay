@@ -1,0 +1,12 @@
+#fondoInicio{
+	/*La imagen esta centrada horizontalmente y verticalmente siempre*/
+	background-position: center center;
+	/*La imagen no se repite*/
+	background-repeat:  no-repeat;
+	/*Redimension en distitos dispoditivos*/
+	background-attachment: fixed;
+	/*La imagen se reescala cuando se cambia  el ancho de ventana*/
+	background-size: cover;
+	/*Color de fondo*/
+	background-color:#464646;
+}
