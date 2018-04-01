@@ -8,10 +8,16 @@ include("logica/DAOUsuario.php");
  * */
 $dao = new DAOUsuario();
 /**
- * Traer todos lo registros de la tabla Usuario.
+ * Traer todos lo registros de la tabla TUsuario. Por ejemplo vamsos a extrear el primer TUsuaroio
+ * que será datos[0]. Al amacenar un TUsuario, podremos usar las funciones get de TUsuario para extraer
+ * los campos de nombre ,apellido, id , etc...
  * */
+
 $datos = $dao->selectUsuarios();
+
 echo "los datos son "."<br>";
-print_r($datos);
+foreach ($datos as $i => $value){
+	echo $datos[$i]->getIdUsuario()." ". $datos[$i]->getNombre()." ". $datos[$i]->getApellido()." <br>";
+}
 
 ?>

@@ -27,7 +27,7 @@ class DAOUsuario implements IUsuario{
 			$usuario->setAvatar($dataTable[$clave]["avatar"]);
 			$usuario->setPassword($dataTable[$clave]["password"]);
 
-			array_push($usuarios, $usuario);
+			array_push($usuarios, $usuario); /*Funcion que insetar un elemento en un array. Inserta un usuario en un Array de usuarios*/
 		}
 		return $usuarios;
 	}
