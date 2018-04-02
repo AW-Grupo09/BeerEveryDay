@@ -22,7 +22,7 @@
 			<h1> ¡Bienvenido, cervecero! </h1>
 			<h2> Estás a punto de unirte a BeerEveryday... </h2>
 				<div class="form">
-	      			<form class="form-style" action="registro.php" method="post">
+	      			<form class="form-style" action="logica/ProcesoRegistro.php" method="post">
 	          			<ul>
 	          			<li>
 	          				<label>Username</label>

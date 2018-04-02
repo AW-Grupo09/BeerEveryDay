@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Portada</title>
+	<title>login</title>
 	<?php session_start(); ?>
 </head>
 
@@ -14,7 +14,27 @@
 
 
 		<div class="container">
-			<!-- Aqui poneis lo que querais añadir de vuestra vista-->
+			<?php 
+			if($_SESSION["user"] == NULL){
+				?>
+				<form action="logica/ProcesarLogin.php" method="POST">
+						<fieldset>
+						<legend>Usuario y contraseña</legend>
+						<p><label>Name:</label> <input type="text" name="username"></p>
+						<p><label>Password:</label> <input type="password" name="password"><br></p>
+						<button type="submit">Entrar</button>
+						</fieldset>
+				</form>
+				<?php 
+				if($_SESSION["LogginFailed"])
+					echo "<p>Contraseña o usuario incorrectos<p>";
+			}
+			else{
+				?>
+				<script type="text/javascript"> window.location.replace("index.php");</script>
+				<?php
+			}
+			?>
 		</div>
 		
 
