@@ -2,42 +2,41 @@
 /**
  * Business Oject
  * */
-include("logica/UsuarioDAO.php");
+include("logica/DAOUsuario.php");
 /**
  * Se crea la instancia del Objeto.
  * */
-$dao = new UsuarioDAO();
+$dao = new DAOUsuario();
 /**
- * Traer todos lo registros de la tabla Usuario.
+ * Traer todos lo registros de la tabla TUsuario. Por ejemplo vamsos a extrear el primer TUsuaroio
+ * que será datos[0]. Al amacenar un TUsuario, podremos usar las funciones get de TUsuario para extraer
+ * los campos de nombre ,apellido, id , etc...
  * */
-$dao->selectUsuarios();
-/**
- * Crear un Objeto de tipo Usuario.
- * */
-$usuario = new Usuario();
-$usuario->setIdusuario(1);
-$usuario->setNombre("Daniel");
-$usuario->setApellidoPaterno("Brena");
-$usuario->setApellidoMaterno("Aquino");
-$usuario->setNacionalidad("Mexicana");
-$usuario->setSexo("Hombre");
-$usuario->setCorreo("daniel_brena@outlook.com");
-$usuario->setClave("daniel12345");
-/**
- * Inserta usuario en la Base de Datos.
- * */
+
+/*$datos = $dao->selectUsuarios();
+
+echo "los datos son "."<br>";
+foreach ($datos as $i => $value){
+	echo $datos[$i]->getIdUsuario()." ". $datos[$i]->getNombre()." ". $datos[$i]->getApellido()." <br>";
+}
+
+$datos2 = $dao->selectUsuariosById('jeyS');
+echo "los datos son "."<br>";
+echo $datos2->getIdUsuario()."<br>";
+echo $datos2->getNombre()." " .$datos2->getApellido()."<br>";*/
+
+$usuario = new TUsuario();
+$usuario->setIdUsuario("dars");
+$usuario->setNombre("dario");
+$usuario->setApellido("gallegos");
+$usuario->setCuidad("Madrid");
+$usuario->setPassword("ff");
+$usuario->setEmail("dariogal@ucm.es");
+$usuario->setFechaNac(1996-10-30);
+$usuario->setTarjeta("111111");
+$usuario->setAvatar("ff");
+$usuario->setRol("registrado");
+echo " Antes de la consulta <br>";
 echo $dao->insertUsuario($usuario);
-/**
- * Actualiza el usuario en la Base de Datos.
- * */
-echo $dao->updateUsuario($usuario);
-/**
- * Buscar un usuario dentro de la Base de Datos.
- * con el correo y la clave.
- * */
-$dao->searchUsuario("daniel_brena@outlook.com","827ccb0eea8a706c4c34a16891f84e7b");
-/**
- * Elimina el usuario por medio del id.
- * */
-echo $dao->deleteUsuario(1);
+
 ?>
