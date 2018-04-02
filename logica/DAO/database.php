@@ -38,7 +38,8 @@
 		* @return $tabla_datos variable con los registros de la base de datos.
 		**/
 		public function ejecutarConsulta($sql = ""){
-			
+			echo $sql;
+
 			if($sql != ""){
 				$values= array();/*Podemos enciar parametros a la sencia execute a  través de un array, en este caso va vacio por lo que no lleva paremtros.*/
 				$consulta = $this->conexion->prepare($sql); /*prepare , prepara la consulta sql para ser ejecutada*/
@@ -63,10 +64,11 @@
 		* @param $values array bindValues de PDO para la consulta sql.
 		* @return $numero_tablas_afectadas número de tablas afectadas.
 		**/
-		public function ejecutarActualizacion($sql=""){
-			
+		public function ejecutarActualizacion($sql="",$values=array()){
+			echo $sql;
+			print_r($values);
+
 			if($sql != ""){
-				$values=array();
 				$consulta = $this->conexion->prepare($sql);
 				$consulta->execute($values);
 				$numero_tablas_afectadas = $consulta->rowCount();
