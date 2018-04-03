@@ -26,7 +26,7 @@
 						</fieldset>
 				</form>
 				<?php 
-				if($_SESSION["LogginFailed"])
+				if($_SESSION["LoginFailed"])
 					echo "<p>Contraseña o usuario incorrectos<p>";
 			}
 			else{

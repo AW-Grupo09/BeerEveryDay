@@ -15,9 +15,10 @@
 
 		if(usuario::checkpass($id, $_POST["password"], $mysqli)){
 
-			$_SESSiON["user"] = new TUsuario($id, $mysqli);
+
 			$success = true;
-			echo $_SESSION["user"]->getNombre();
+			$_SESSION["user"]  = $id;
+			
 
 		}
 
@@ -25,7 +26,7 @@
 
 	$_SESSION["LoginFailed"] = !$success;
 	$_SESSION["logged"] =  $success;
-/*
+
 	if(!$success)
 		header('Location: ../login.php');
 	else

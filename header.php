@@ -9,8 +9,9 @@ if(!isset($_SESSION["LogginFailed"]))
 if(!isset($_SESSION["logged"]))
 	$_SESSION["logged"] = false;
 
+
 if($_SESSION["logged"])
-	echo $_SESSION["user"]->getNombre();
+	echo $_SESSION["user"];
 else
 	echo "Not logged";
 ?>
