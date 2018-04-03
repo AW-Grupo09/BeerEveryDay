@@ -1,5 +1,6 @@
 <?php 
-	session_start();
+	include('conexion.php');
+	global $sql;
 ?>
 
 
@@ -25,7 +26,7 @@
 				<section>
 					<form action="catalogo.php" method="post">
 					<?php
-						$sql = '';
+						 $sql= '';
 						echo '<fieldset>';
 						if (isset($_POST['artesana'])){
 							echo '<input type="checkbox" name="artesana" checked>Artesanas<br/>';
@@ -37,6 +38,7 @@
 						}else{
 							echo '<input type="checkbox" name="artesana">Artesanas<br/>'; 
 						}
+
 						if (isset($_POST['nacional'])){
 							echo '<input type="checkbox" name="nacional" checked>Nacionales<br/>';
 							if(strcmp($sql, "") == 0){
@@ -48,11 +50,12 @@
 							echo '<input type="checkbox" name="nacional">Nacionales<br/>'; 
 						}
 
-						$grados = array("" => "", 
+						/*$grados = array("" => "", 
 										"Menor de 5" => " grado <= 5 ", 
 										"Entre 5 y 7" => " grado >= 5 and grado <= 7 ", 
 										"Mayor de 7" => " grado >= 7 ");
 						echo 'Grado Alcohólico: <select name="grado">';
+
 							foreach ($grados as $i => $v) {
 								if($_POST['grado'] == $i){
 									echo '<option value="'.  $i .'" selected="true">' . $i . '</option>';
@@ -64,7 +67,8 @@
 								}else{
 									echo '<option value="'.  $i .'">' . $i . '</option>';
 								}
-							}
+							}*/
+
 						echo '</select>';
 						echo '</fieldset>';
 						//------------------------------------------------------------------------------
@@ -117,14 +121,32 @@
 							}
 						}
 						echo '</fieldset>';
-
-
-						$sql = 'select * from cervezas ' . $sql;
-						echo $sql . '<br/>';
-						
+						$sql =''. $sql;	
 					?>
 					<input type="submit" name="buscar">
 					</form>
+
+
+					<?php
+				
+						if($sql==''){
+							$sql = 'SELECT * FROM cervezas';
+							$mysqli = conexion::getConection();
+							$consulta = mysqli_query($mysqli,$sql);
+							while($fila= mysqli_fetch_assoc($consulta)){
+								echo $fila['nombre'];
+							}
+						}else{
+							$sql = 'select * from cervezas '.$sql;
+							$mysqli = conexion::getConection();
+							$consulta = mysqli_query($mysqli,$sql);
+							while($fila= mysqli_fetch_assoc($consulta)){
+								echo $fila['nombre'];
+							}
+						}
+						$sql='';
+					?>
+
 				</section>
 			</div>
 			<?php require('footer.php'); ?>
