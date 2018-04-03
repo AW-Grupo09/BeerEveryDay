@@ -28,6 +28,7 @@
 				<?php 
 				if($_SESSION["LoginFailed"])
 					echo "<p>Contraseña o usuario incorrectos<p>";
+					$_SESSION["LoginFailed"] = false;
 			}
 			else{
 				?>

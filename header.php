@@ -15,3 +15,11 @@ if($_SESSION["logged"])
 else
 	echo "Not logged";
 ?>
+<div class = "toolbar">
+	<p><a href = 'index.php'> Home </a></p>
+	<p><a href = 'registrate.php'> Register </a></p>
+	<p><a href = 'catalogo.php'> Catalogo </a></p>
+	<p><a href = 'login.php'> Login </a></p>
+	<p><a href = 'perfil.php'> Perfil </a></p>
+	<p><a href = 'logout.php'> Logout </a></p>
+</div>
