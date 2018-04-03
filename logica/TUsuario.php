@@ -1,6 +1,7 @@
 <?php
 	/*Es el tranfserObject de Usuario, sirve para tranportar datos entre las capas*/
 	class TUsuario{
+
 		private $idUsuario;
 		private $nombre;
 		private $apellido;
@@ -11,6 +12,26 @@
 		private $tarjeta;
 		private $avatar;
 		private $password;
+
+		public function __construct($id, $mysqli){
+
+			$query="SELECT * FROM usuarios WHERE id LIKE '$id'";
+			$resultado=$mysqli->query($query) or die ($mysqli->error. " en la línea ".(__LINE__-1));
+			if (mysqli_num_rows($resultado) > 0) {
+			    // output data of each row
+				$fila = $resultado->fetch_assoc();
+				$this->idUsuario = $id;
+				$this->nombre = $fila["nombre"];
+				$this->apellido = $fila["apellidos"];
+				$this->cuidad = $fila["ciudad"];
+				$this->email = $fila["email"];
+				$this->fechaNac = $fila["fechaNac"];
+				$this->rol = $fila["rol"];
+				$this->tarjeta = $fila["tarjeta"];
+				$this->avatar = $fila["avatar"];
+				$this->password = $fila["password"];
+			}
+		}
 
 		public function setIdUsuario($idUsuario){
 			$this->idUsuario = $idUsuario;
