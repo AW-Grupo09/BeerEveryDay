@@ -15,7 +15,7 @@
 
 	<div id="contenedor">
 
-		<?php require ('header.php'); ?>
+		<?php require ('comun/header.php'); ?>
 
 
 		<div class="container">
@@ -91,7 +91,7 @@
 		</div>
 	
 
-		<?php require('footer.php'); ?>
+		<?php require('comun/footer.php'); ?>
 
 	</div> <!-- Fin del contenedor -->
 
