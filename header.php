@@ -4,8 +4,8 @@ include('logica/TUsuario.php');
 if(!isset($_SESSION["user"])) {
 	$_SESSION["user"] = NULL;
 }
-if(!isset($_SESSION["LogginFailed"]))
-	$_SESSION["LogginFailed"] = false;
+if(!isset($_SESSION["LoginFailed"]))
+	$_SESSION["LoginFailed"] = false;
 if(!isset($_SESSION["logged"]))
 	$_SESSION["logged"] = false;
 
