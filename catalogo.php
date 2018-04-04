@@ -50,7 +50,7 @@
 							echo '<input type="checkbox" name="nacional">Nacionales<br/>'; 
 						}
 
-						/*$grados = array("" => "", 
+						$grados = array("" => "", 
 										"Menor de 5" => " grado <= 5 ", 
 										"Entre 5 y 7" => " grado >= 5 and grado <= 7 ", 
 										"Mayor de 7" => " grado >= 7 ");
@@ -59,15 +59,17 @@
 							foreach ($grados as $i => $v) {
 								if($_POST['grado'] == $i){
 									echo '<option value="'.  $i .'" selected="true">' . $i . '</option>';
-									if(strcmp($sql, "") == 0){
-										$sql = 'where ' . $v;
-									}else{
-										$sql = $sql . 'and ' . $v;
+									if(strcmp($v, "") != 0){
+										if(strcmp($sql, "") == 0){
+											$sql = 'where ' . $v;
+										}else{
+											$sql = $sql . 'and ' . $v;
+										}
 									}
 								}else{
 									echo '<option value="'.  $i .'">' . $i . '</option>';
 								}
-							}*/
+							}
 
 						echo '</select>';
 						echo '</fieldset>';
