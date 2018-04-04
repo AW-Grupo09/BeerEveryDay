@@ -3,7 +3,6 @@
 	global $sql;
 ?>
 
-
 <!DOCTYPE html>
 <html>
 	<head>
@@ -30,48 +29,48 @@
 						echo '<fieldset>';
 						if (isset($_POST['artesana'])){
 							echo '<input type="checkbox" name="artesana" checked>Artesanas<br/>';
-							if(strcmp($sql, "") == 0){
-								$sql = $sql . 'where artesana = 1 ';
-							}else{
-								$sql = $sql . 'and artesana = 1 ';
-							}
+							$sql = $sql . 'and artesana = 1 ';
 						}else{
 							echo '<input type="checkbox" name="artesana">Artesanas<br/>'; 
 						}
-
 						if (isset($_POST['nacional'])){
 							echo '<input type="checkbox" name="nacional" checked>Nacionales<br/>';
-							if(strcmp($sql, "") == 0){
-								$sql = $sql . 'where pais = "España" ';
-							}else{
-								$sql = $sql . 'and pais = "España" ';
-							}
+							$sql = $sql . 'and pais = "España" ';
 						}else{
 							echo '<input type="checkbox" name="nacional">Nacionales<br/>'; 
 						}
-
 						$grados = array("" => "", 
 										"Menor de 5" => " grado <= 5 ", 
 										"Entre 5 y 7" => " grado >= 5 and grado <= 7 ", 
 										"Mayor de 7" => " grado >= 7 ");
 						echo 'Grado Alcohólico: <select name="grado">';
-
 							foreach ($grados as $i => $v) {
 								if($_POST['grado'] == $i){
 									echo '<option value="'.  $i .'" selected="true">' . $i . '</option>';
 									if(strcmp($v, "") != 0){
-										if(strcmp($sql, "") == 0){
-											$sql = 'where ' . $v;
-										}else{
-											$sql = $sql . 'and ' . $v;
-										}
+										$sql = $sql . 'and ' . $v;
 									}
 								}else{
 									echo '<option value="'.  $i .'">' . $i . '</option>';
 								}
 							}
+						echo '</select><br/>';
 
+						$orden = array("" => "", 
+										"Mas vendidas" => " order by cervezasVendidas desc",
+										"Precio de mayor a menor" => " order by precio desc", 
+										"Precio de menor a mayor" => " order by precio");
+						echo 'Ordernar por: <select name="ordenar">';
+						foreach ($orden as $i => $v) {
+							if($_POST['ordenar'] == $i){
+								echo '<option value="'.  $i .'" selected="true">' . $i . '</option>';
+								$sqlOrden = $v;
+							}else{
+								echo '<option value="'.  $i .'">' . $i . '</option>';
+							}
+						}
 						echo '</select>';
+
 						echo '</fieldset>';
 						//------------------------------------------------------------------------------
 						$colores = array("Rubia", "Negra", "Roja", "Tostada", "Blanca");
@@ -91,11 +90,7 @@
 							}
 						}
 						if(strcmp($sqlColor, "") != 0){
-							if(strcmp($sql, "") == 0){
-								$sql = 'where ' . $sqlColor . ') ';
-							}else{
-								$sql = $sql . 'and ' . $sqlColor . ') ';
-							}
+							$sql = $sql . 'and ' . $sqlColor . ') ';
 						}
 						echo '</fieldset>';
 						//----------------------------------------------------------------------------------
@@ -116,11 +111,7 @@
 							}
 						}
 						if(strcmp($sqlGranos, "") != 0){
-							if(strcmp($sql, "") == 0){
-								$sql = 'where ' . $sqlGranos . ') ';
-							}else{
-								$sql = $sql . 'and ' . $sqlGranos . ') ';
-							}
+							$sql = $sql . 'and ' . $sqlGranos . ') ';
 						}
 						echo '</fieldset>';
 						$sql =''. $sql;	
@@ -131,20 +122,11 @@
 
 					<?php
 				
-						if($sql==''){
-							$sql = 'SELECT * FROM cervezas';
-							$mysqli = conexion::getConection();
-							$consulta = mysqli_query($mysqli,$sql);
-							while($fila= mysqli_fetch_assoc($consulta)){
-								echo $fila['nombre'];
-							}
-						}else{
-							$sql = 'select * from cervezas '.$sql;
-							$mysqli = conexion::getConection();
-							$consulta = mysqli_query($mysqli,$sql);
-							while($fila= mysqli_fetch_assoc($consulta)){
-								echo $fila['nombre'];
-							}
+						$sql = 'select id, nombre, artesana, capacidad, color, fabricante, grado, grano, imagen, pais, precio, tipo, sum(unidades) as cervezasVendidas FROM cervezas, `pedidos-cervezas` where id = idCerveza ' . $sql . ' group by id ' . $sqlOrden;							$mysqli = conexion::getConection();
+						$consulta = mysqli_query($mysqli,$sql);
+						while($fila= mysqli_fetch_assoc($consulta)){
+							echo $fila['nombre'] . ' --- ' . $fila['capacidad'] . ' --- ' . $fila['color'] . ' --- ' . $fila['tipo'] . ' --- ' . $fila['grado'] . ' --- ' . $fila['grano'] . ' --- ' . $fila['pais'] . ' --- ' . $fila['precio'] . '<br/>';
+							echo '<img src="' .  $fila['imagen'] . '" height="200" width="200"><br/>';
 						}
 						$sql='';
 					?>
