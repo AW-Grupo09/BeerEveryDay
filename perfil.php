@@ -1,10 +1,6 @@
 <?php 
+	include('logica/conexion.php');
 	include('logica/usuario.php');
-	session_start(); 
-	if(isset($_SESSION["logged"]))
-		if(!$_SESSION["logged"])
-			header('Location: login.php');
-	
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +10,7 @@
 	<meta charset="utf-8">
 	<?php
 		$mysqli = conexion::getConection();
-		User = new usuario($_SESSION["user"], $mysqli);
+		$User = new usuario($_SESSION["user"], $mysqli);
 	?>
 	<title>Landing</title>
 
@@ -24,22 +20,28 @@
 
 	<div id="contenedor"> <!-- Contenedor-->
 
-		<?php require ('header.php'); ?>
+		<?php require ('comun/header.php'); ?>
 
 		<div class="container"><!--bloque del contenido central-->
 			
-			
+			<?php
+			if(!$_SESSION["logged"])
+				echo '<script type="text/javascript">window.location.replace("login.php");</script>';
+			?>
+
 			<div class = nickname>
-				<p>User: <?php echo $User->getID();?></p>
+				<p>User: <?php echo $User->getIdUsuario();?></p>
 			</div>
 
 			<div class = UserData>
-
+				<p>Nombre: <?php echo $User->getNombre();?></p>
+				<p>Apellidos: <?php echo $User->getCiudad();?></p>
+				<p>Ciudad: <?php echo $User->getFechaNac();?></p>
 			</div>
 
 		</div>
 		
-		<?php require('footer.php'); ?>
+		<?php require('comun/footer.php'); ?>
 
 	</div> <!-- Fin del contenedor -->
 

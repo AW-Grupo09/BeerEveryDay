@@ -81,10 +81,10 @@ class Usuario{
 		return $this->apellido;
 	}
 
-	public function setCuidad($cuidad){
+	public function setCiudad($cuidad){
 		$this->cuidad = $cuidad;
 	}
-	public function getCuidad(){
+	public function getCiudad(){
 		return $this->cuidad;
 	}
 
