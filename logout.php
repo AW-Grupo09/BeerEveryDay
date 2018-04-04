@@ -15,14 +15,14 @@
 
 	<div id="contenedor"> <!-- Contenedor-->
 
-		<?php require ('header.php'); ?>
+		<?php require ('comun/header.php'); ?>
 
 
 		<div class="container"><!--bloque del contenido central-->
 			<h1>¡Hasta pronto!</h1>
 		</div>
 
-		<?php require('footer.php'); ?>
+		<?php require('comun/footer.php'); ?>
 
 	</div> <!-- Fin del contenedor -->
 

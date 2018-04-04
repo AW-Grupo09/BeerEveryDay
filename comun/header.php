@@ -1,5 +1,4 @@
 <?php
-include('logica/TUsuario.php');
 
 if(!isset($_SESSION["user"])) {
 	$_SESSION["user"] = NULL;
@@ -15,6 +14,7 @@ if($_SESSION["logged"])
 else
 	echo "Not logged";
 ?>
+<link rel="icon" href="img/favicon.jpeg" type="image/ico">
 <div nav = "toolbar">
 	<!--<p><a href = 'index.php'> Home </a></p>
 	<p><a href = 'registrate.php'> Register </a></p>

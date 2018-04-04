@@ -1,5 +1,5 @@
 <?php 
-	include('conexion.php');
+	include('logica/conexion.php');
 	global $sql;
 ?>
 
@@ -15,7 +15,7 @@
 
 		<div id="contenedor">
 
-			<?php require ('header.php'); ?>
+			<?php require ('comun/header.php'); ?>
 
 			<div class="container">
 				<header>
@@ -151,7 +151,7 @@
 
 				</section>
 			</div>
-			<?php require('footer.php'); ?>
+			<?php require('comun/footer.php'); ?>
 		</div>
 	</body>
 </html>

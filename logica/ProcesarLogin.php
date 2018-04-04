@@ -1,8 +1,7 @@
 <?php
 
-	include('../conexion.php');
+	include('conexion.php');
 	include('../logica/usuario.php');
-	include('../logica/TUsuario.php');
 
 	$mysqli = conexion::getConection();
 

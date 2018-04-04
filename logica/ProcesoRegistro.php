@@ -1,7 +1,7 @@
 <?php
 
 	include('conexion.php');
-	include('logica/usuario.php');
+	include('usuario.php');
 
 	$mysqli = conexion::getConection();
 
@@ -17,16 +17,14 @@
 	$rol = $_POST['rol'];
 	$avatar = $_POST['avatar'];
 
-	$usuario = new Usuario();
-
-	if($usuario->existeUsuario($id, $mysqli) == NULL){
+	if(Usuario::existeUsuario($id, $mysqli) == NULL){
 	
 		if($_POST['mail'] != $_POST['remail']){
 			$resultadoFormularioRegistro = "Los emails no coinciden..";
 		} else if($_POST['pass'] != $_POST['repass']){
 			$resultadoFormularioRegistro = "ERROR: las contraseñas no coinciden..";
 		} else {
-			$usuario->insertarUsuario($id, $nombre, $apellidos, $email, $password, $fechaNac, $ciudad, $avatar, $rol, $mysqli);
+			Usuario::insertarUsuario($id, $nombre, $apellidos, $email, $password, $fechaNac, $ciudad, $avatar, $rol, $mysqli);
 			$resultadoFormularioRegistro = "REGISTRADO CORRECTAMENTE";
 			//header('Location: index.php');
 		}
