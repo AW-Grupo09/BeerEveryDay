@@ -1,5 +1,5 @@
 <?php
-
+	
 	include('conexion.php');
 	include('usuario.php');
 
@@ -15,18 +15,22 @@
 	$fechaNac = $_POST['fechaNac'];
 	$ciudad = $_POST['ciudad'];
 	$rol = $_POST['rol'];
-	$avatar = $_POST['avatar'];
+	$avatar = $_POST['archivo'];
+
 
 	if(Usuario::existeUsuario($id, $mysqli) == NULL){
 	
-		if($_POST['mail'] != $_POST['remail']){
+		if($email != $remail){
 			$resultadoFormularioRegistro = "Los emails no coinciden..";
-		} else if($_POST['pass'] != $_POST['repass']){
+		} else if($password != $repass){ // en un futuro se puede comprobar la longitud de las contraseñas (mínimo 5 o algo así)
 			$resultadoFormularioRegistro = "ERROR: las contraseñas no coinciden..";
+		}
+		else if(Usuario::esImagen($avatar) == false) {
+			$resultadoFormularioRegistro = "Inserte una imagen válida";
 		} else {
 			Usuario::insertarUsuario($id, $nombre, $apellidos, $email, $password, $fechaNac, $ciudad, $avatar, $rol, $mysqli);
 			$resultadoFormularioRegistro = "REGISTRADO CORRECTAMENTE";
-			//header('Location: index.php');
+			//header('Location: ../index.php');
 		}
 	}
 	else{

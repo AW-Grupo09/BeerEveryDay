@@ -1,8 +1,3 @@
-<?php 
-	
-?>
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,7 +57,7 @@
 			            </li>
 			            <li>
 			      			<label class="foto_per_label">Foto de perfil</label>
-			              <input class="foto_per" type="file" name="avatar" />
+			              <input id="archivo" class="foto_per" name="archivo" type="file"/>
 			            
 			            </li>
 			            <li>
