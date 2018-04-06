@@ -3,7 +3,9 @@
 <head>
 	<meta charset="utf-8">
 	<title>Registro</title>
-	<?php session_start(); ?>
+	<?php 
+		session_start(); 
+	?>
 </head>
 
 <body>
@@ -16,8 +18,10 @@
 		<div class="container">
 			<h1> ¡Bienvenido, cervecero! </h1>
 			<h2> Estás a punto de unirte a BeerEveryday... </h2>
+
+			<?php if(!isset($_SESSION['regFailed'])){?>
 				<div class="form">
-	      			<form class="form-style" action="logica/ProcesoRegistro.php" method="post">
+	      			<form enctype="multipart/form-data" class="form-style" action="logica/ProcesoRegistro.php" method="post">
 	          			<ul>
 	          			<li>
 	          				<label>Username</label>
@@ -57,8 +61,7 @@
 			            </li>
 			            <li>
 			      			<label class="foto_per_label">Foto de perfil</label>
-			              <input id="archivo" class="foto_per" name="archivo" type="file"/>
-			            
+			              	<input id="archivo" class="foto_per" name="archivo" type="file"/>
 			            </li>
 			            <li>
 			            	<label>¿Qué rol desea adoptar? </label> <br>
@@ -84,6 +87,18 @@
 	    			</form>
 			
 		</div>
+
+		<?php }
+		else{
+			if($_SESSION['regFailed']){
+				echo "<p> " . $_SESSION["msg"] . " </p>";
+				echo "<p> <a href='registrate.php'> Inténtalo de nuevo </a> </p>";
+				$_SESSION['regFailed'] = NULL;
+			}
+		}
+
+
+		?>
 	
 
 		<?php require('comun/footer.php'); ?>

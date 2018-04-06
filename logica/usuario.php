@@ -60,7 +60,6 @@ class Usuario{
 
 	}
 
-
 	public static function esImagen($src_file_name) {
 		
 		$supported_image = array(
@@ -76,6 +75,13 @@ class Usuario{
 		} else {
 			return false;
 		}
+	}
+
+	public static function imgValida($avatar, $size){
+		if(($avatar == !NULL) && ($size <= 2000000))
+			return true;
+		else
+			return false;
 	}
 
 	public function setIdUsuario($idUsuario){

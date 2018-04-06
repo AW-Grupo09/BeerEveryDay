@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>login</title>
+	<title> Login </title>
 	<?php session_start(); ?>
 </head>
 

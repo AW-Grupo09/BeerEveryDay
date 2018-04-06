@@ -10,9 +10,9 @@
 	<meta charset="utf-8">
 	<?php
 		$mysqli = conexion::getConection();
-		$User = new usuario($_SESSION["user"], $mysqli);
+		$user = new usuario($_SESSION["user"], $mysqli);
 	?>
-	<title>Landing</title>
+	<title>Perfil</title>
 
 </head>
 
@@ -30,13 +30,18 @@
 			?>
 
 			<div class = nickname>
-				<p>User: <?php echo $User->getIdUsuario();?></p>
+				<p>User: <?php echo $user->getIdUsuario();?></p>
 			</div>
 
-			<div class = UserData>
-				<p>Nombre: <?php echo $User->getNombre();?></p>
-				<p>Apellidos: <?php echo $User->getCiudad();?></p>
-				<p>Ciudad: <?php echo $User->getFechaNac();?></p>
+			<div class = userData>
+				<p>Nombre: <?php echo $user->getNombre();?></p>
+				<p>Apellidos: <?php echo $user->getApellido();?></p>
+				<p>Ciudad: <?php echo $user->getCiudad();?></p>
+				<p>Fecha de nacimiento: <?php echo $user->getFechaNac(); ?> </p>
+			</div>
+
+			<div class = avatar>
+				<?php echo "<img width='50%' height='50%' src='img/users/" . $user->getAvatar() . " ' ;" ?> ;
 			</div>
 
 		</div>
