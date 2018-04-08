@@ -122,7 +122,8 @@
 
 					<?php
 				
-						$sql = 'select id, nombre, artesana, capacidad, color, fabricante, grado, grano, imagen, pais, precio, tipo, sum(unidades) as cervezasVendidas FROM cervezas, `pedidos-cervezas` where id = idCerveza ' . $sql . ' group by id ' . $sqlOrden;							$mysqli = conexion::getConection();
+						$sql = 'select id, nombre, artesana, capacidad, color, fabricante, grado, grano, imagen, pais, precio, tipo, sum(unidades) as cervezasVendidas FROM cervezas, `pedidos-cervezas` where id = idCerveza ' . $sql . ' group by id ' . $sqlOrden;
+						$mysqli = conexion::getConection();
 						$consulta = mysqli_query($mysqli,$sql);
 						while($fila= mysqli_fetch_assoc($consulta)){
 							echo $fila['nombre'] . ' --- ' . $fila['capacidad'] . ' --- ' . $fila['color'] . ' --- ' . $fila['tipo'] . ' --- ' . $fila['grado'] . ' --- ' . $fila['grano'] . ' --- ' . $fila['pais'] . ' --- ' . $fila['precio'] . '<br/>';
