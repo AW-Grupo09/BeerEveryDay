@@ -9,17 +9,18 @@
 
 <body>
 
-	<div id="contenedor"> <!-- Contenedor-->
+	<?php require('comun/header.php'); ?>
 
-		<?php require('comun/header.php'); ?>
+	<div id="contenedor"> <!-- Contenedor-->
 
 		<div class="container"><!--bloque del contenido central-->
 			<img id="fondoInicio" src="img/BackgroundInicio.JPG" alt="BackgroundInicio" />
 			<a class="button" style="color:#110000; background: #ffffff" href="BusinessObject.php">Shop Now!</a>
 		</div>
-		<?php require('comun/footer.php'); ?>
 
 	</div> <!-- Fin del contenedor -->
+
+	<?php require('comun/footer.php'); ?>
 
 </body>
 </html>

@@ -8,13 +8,13 @@
 	<head>
 		<title>Filtro de Búsqueda PHP</title>
 		<meta charset="utf-8">
-		<link href="css/estilos.css" rel="stylesheet">
+		<link href="css/styles.css" rel="stylesheet">
 	</head>
 	<body>
 
-		<div id="contenedor">
+	<?php require ('comun/header.php'); ?>
 
-			<?php require ('comun/header.php'); ?>
+		<div id="contenedor">
 
 			<div class="container">
 				<header>
@@ -133,7 +133,8 @@
 
 				</section>
 			</div>
-			<?php require('comun/footer.php'); ?>
 		</div>
+
+		<?php require('comun/footer.php'); ?>
 	</body>
 </html>

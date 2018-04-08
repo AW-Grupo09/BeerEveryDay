@@ -10,10 +10,9 @@
 
 <body>
 
+	<?php require ('comun/header.php'); ?>
+
 	<div id="contenedor">
-
-		<?php require ('comun/header.php'); ?>
-
 
 		<div class="container">
 			<h1> ¡Bienvenido, cervecero! </h1>
@@ -99,11 +98,10 @@
 
 
 		?>
-	
-
-		<?php require('comun/footer.php'); ?>
 
 	</div> <!-- Fin del contenedor -->
+
+	<?php require('comun/footer.php'); ?>
 
 </body>
 </html>

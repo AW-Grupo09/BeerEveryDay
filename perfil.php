@@ -18,9 +18,9 @@
 
 <body>
 
-	<div id="contenedor"> <!-- Contenedor-->
+	<?php require ('comun/header.php'); ?>
 
-		<?php require ('comun/header.php'); ?>
+	<div id="contenedor"> <!-- Contenedor-->
 
 		<div class="container"><!--bloque del contenido central-->
 			
@@ -45,10 +45,10 @@
 			</div>
 
 		</div>
-		
-		<?php require('comun/footer.php'); ?>
 
 	</div> <!-- Fin del contenedor -->
+
+	<?php require('comun/footer.php'); ?>
 
 </body>
 </html>
