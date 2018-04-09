@@ -29,6 +29,15 @@
 				echo '<script type="text/javascript">window.location.replace("login.php");</script>';
 			?>
 
+			<div class = avatar>
+				<?php 
+					if($user->getAvatar() != NULL)
+						echo "<img width='10%' height='10%' src='img/users/" . $user->getAvatar() . " ' "; 
+					else
+						echo "<img width='10%' height='10%' src='img/users/default.png'"; 
+				?> 
+			</div>
+
 			<div class = nickname>
 				<p>User: <?php echo $user->getIdUsuario();?></p>
 			</div>
@@ -38,10 +47,6 @@
 				<p>Apellidos: <?php echo $user->getApellido();?></p>
 				<p>Ciudad: <?php echo $user->getCiudad();?></p>
 				<p>Fecha de nacimiento: <?php echo $user->getFechaNac(); ?> </p>
-			</div>
-
-			<div class = avatar>
-				<?php echo "<img width='50%' height='50%' src='img/users/" . $user->getAvatar() . " ' ;" ?> ;
 			</div>
 
 		</div>
