@@ -18,8 +18,8 @@ else
 <div nav = "toolbar">
 	<a href = 'index.php'> Home </a>
 	<a href = 'catalogo.php'> Catalogo </a>	
-	<a href = 'perfil.php'> Perfil </a>
 <?php if(isset($_SESSION["user"])&&($_SESSION["user"] == true)){ ?>
+	<a href = 'perfil.php'> Perfil </a>
 	<a href = 'logout.php'> Logout </a>
 <?php } else { ?>
 	<a href = 'login.php'> Login </a>
