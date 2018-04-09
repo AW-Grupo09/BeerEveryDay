@@ -16,7 +16,7 @@
 			<?php 
 			if($_SESSION["user"] == NULL){
 				?>
-				<form action="logica/ProcesarLogin.php" method="POST">
+				<form action="logica/procesarLogin.php" method="POST">
 						<fieldset>
 						<legend>Usuario y contraseña</legend>
 						<p><label>Name:</label> <input type="text" name="username"></p>

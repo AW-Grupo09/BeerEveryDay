@@ -20,7 +20,7 @@
 
 			<?php if(!isset($_SESSION['regFailed'])){?>
 				<div class="form">
-	      			<form enctype="multipart/form-data" class="form-style" action="logica/ProcesoRegistro.php" method="post">
+	      			<form enctype="multipart/form-data" class="form-style" action="logica/procesarRegistro.php" method="post">
 	          			<ul>
 	          			<li>
 	          				<label>Username</label>
