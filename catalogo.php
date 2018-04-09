@@ -19,7 +19,7 @@
 			<div class="container">
 				<header>
 					<div class="alert alert-info">
-					<h2>Filtro de Búsqueda PHP</h2>
+					<h2>Filtro de Búsqueda </h2>
 					</div>
 				</header>
 				<section>

@@ -38,7 +38,7 @@
 		}
 	}
 	else{
-		$resultadoFormularioRegistro = "ERROR: username ya en uso";
+		$resultadoFormularioRegistro = "ERROR: nombre de usuario ya en uso";
 	}
 
 	$_SESSION['regFailed'] = !$success;

@@ -5,5 +5,5 @@
 
 <div id="footer">
 	<p> <a href="contacto.php"> Contacto </a> </p>
-	<p> Copyright © 2018 BeerEveryDay. All rights reserved.</p>
+	<p> Copyright © 2018 BeerEveryDay. Todos los derechos reservados.</p>
 </div>

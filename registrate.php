@@ -23,7 +23,7 @@
 	      			<form enctype="multipart/form-data" class="form-style" action="logica/procesarRegistro.php" method="post">
 	          			<ul>
 	          			<li>
-	          				<label>Username</label>
+	          				<label>Nombre de usuario</label>
 	          				<input type="text" name="id" required/>
 	          			</li>
 			            <li>

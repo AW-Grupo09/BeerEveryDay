@@ -10,21 +10,21 @@ if(!isset($_SESSION["logged"]))
 
 
 if($_SESSION["logged"])
-	echo "Welcome " . $_SESSION["user"];
+	echo "Hola " . $_SESSION["user"];
 else
-	echo "Not logged";
+	echo "No has iniciado sesión";
 ?>
 <link rel="icon" href="img/favicon.jpeg" type="image/ico">
 <div nav = "toolbar">
 	<a href = 'index.php'> Home </a>
-	<a href = 'catalogo.php'> Catalogo </a>	
+	<a href = 'catalogo.php'> Catálogo </a>	
 	
 <?php if(isset($_SESSION["user"])&&($_SESSION["user"] == true)){ ?>
 	<a href = 'perfil.php'> Perfil </a>
-	<a href = 'logout.php'> Logout </a>
+	<a href = 'logout.php'> Salir </a>
 <?php } else { ?>
 	<a href = 'login.php'> Login </a>
-	<a href = 'registrate.php'> Register </a>
+	<a href = 'registrate.php'> Regístrate </a>
 <?php } ?>
 	
 </div>

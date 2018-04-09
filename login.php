@@ -19,8 +19,8 @@
 				<form action="logica/procesarLogin.php" method="POST">
 						<fieldset>
 						<legend>Usuario y contraseña</legend>
-						<p><label>Name:</label> <input type="text" name="username"></p>
-						<p><label>Password:</label> <input type="password" name="password"><br></p>
+						<p><label>Nombre de usuario:</label> <input type="text" name="username"></p>
+						<p><label>Contraseña:</label> <input type="password" name="password"><br></p>
 						<button type="submit">Entrar</button>
 						</fieldset>
 				</form>
