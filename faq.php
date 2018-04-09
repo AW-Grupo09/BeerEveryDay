@@ -71,5 +71,6 @@
 
 
         </div>
+        <?php require('comun/footer.php'); ?>
 	</body>
 </html>
