@@ -13,11 +13,10 @@
 }
 
 #container {
-	margin: 0 auto;
+	min-height: 80%;
 }
 
 #footer {
-	float: down;
 	bottom: 0;
 	text-align: center;
 }

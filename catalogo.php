@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Filtro de Búsqueda PHP</title>
+		<title>Catálogo</title>
 		<meta charset="utf-8">
 		<link href="css/styles.css" rel="stylesheet">
 	</head>
