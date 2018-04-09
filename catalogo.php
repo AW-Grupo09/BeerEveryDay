@@ -4,7 +4,7 @@
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="es">
 	<head>
 		<title>Catálogo</title>
 		<meta charset="utf-8">

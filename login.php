@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
 	<meta charset="utf-8">
 	<title> Login </title>
@@ -31,7 +31,7 @@
 			}
 			else{
 				?>
-				<script type="text/javascript"> window.location.replace("index.php");</script>
+				<script> window.location.replace("index.php");</script>
 				<?php
 			}
 			?>
