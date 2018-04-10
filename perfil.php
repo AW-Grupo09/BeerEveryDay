@@ -1,6 +1,13 @@
+		
 <?php 
 	include('logica/conexion.php');
 	include('logica/usuario.php');
+	if(!isset($_SESSION["logged"]))
+		$_SESSION["logged"] = false;
+	else{
+		if(!$_SESSION["logged"])
+			header('Location: index.php');
+	}
 ?>
 
 <!DOCTYPE html>
@@ -24,10 +31,6 @@
 
 		<div class="container"><!--bloque del contenido central-->
 			
-			<?php
-			if(!$_SESSION["logged"])
-				echo '<script type="text/javascript">window.location.replace("login.php");</script>';
-			?>
 
 			<div class = avatar>
 				<?php 

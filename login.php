@@ -1,4 +1,13 @@
-<?php session_start(); ?>
+<?php
+	session_start();
+	if(!isset($_SESSION["logged"]))
+		$_SESSION["logged"] = false;
+	else{
+		if($_SESSION["logged"])
+			header('Location: index.php');
+	}
+
+ ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -30,8 +39,8 @@
 					$_SESSION["LoginFailed"] = false;
 			}
 			else{
+				//<script> window.location.replace("index.php");</script>
 				?>
-				<script> window.location.replace("index.php");</script>
 				<?php
 			}
 			?>
