@@ -127,7 +127,7 @@
 						$consulta = mysqli_query($mysqli,$sql);
 						while($fila= mysqli_fetch_assoc($consulta)){
 							echo $fila['nombre'] . ' --- ' . $fila['capacidad'] . ' --- ' . $fila['color'] . ' --- ' . $fila['tipo'] . ' --- ' . $fila['grado'] . ' --- ' . $fila['grano'] . ' --- ' . $fila['pais'] . ' --- ' . $fila['precio'] . '<br/>';
-							echo '<img src="' .  $fila['imagen'] . '" height="200" width="200"><br/>';
+							echo '<img src="' .  $fila['imagen'] . '" height="200" width="200" alt = "Imagen de la cerveza">';
 						}
 						$sql='';
 					?>

@@ -32,9 +32,9 @@
 			<div class = avatar>
 				<?php 
 					if($user->getAvatar() != NULL)
-						echo "<img width='10%' height='10%' src='img/users/" . $user->getAvatar() . " ' "; 
+						echo "<img width='10%' height='10%' src='img/users/" . $user->getAvatar() . " ' alt = 'Imagen de perfil'>"; 
 					else
-						echo "<img width='10%' height='10%' src='img/users/default.png'"; 
+						echo "<img width='10%' height='10%' src='img/users/default.png' alt = 'Imagen de perfil'>"; 
 				?> 
 			</div>
 

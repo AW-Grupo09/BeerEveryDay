@@ -18,16 +18,16 @@
 			<fieldset>
 			<legend> Datos personales </legend>
 
-				Nombre:<br> <input type="text" name="nom"><br>
-				Email: <br> <input type="text" name="cont"><br>
-				<br>Motivo de la consulta:<br>
-				<br><input type="radio" name="consulta" value="evaluacion" checked>Evaluación<br>
-				<br><input type="radio" name="consulta" value="sugerencias">Sugerencias<br>
-				<br><input type="radio" name="consulta" value="criticas">Críticas<br>
-				<br><input type="checkbox" name="terminos">Marque esta casilla para verificar que ha leído nuestros términos y condiciones del servicio<br>
+				Nombre: <input type="text" name="nom">
+				Email:  <input type="text" name="cont">
+				Motivo de la consulta:
+				<input type="radio" name="consulta" value="evaluacion" checked>Evaluación
+				<input type="radio" name="consulta" value="sugerencias">Sugerencias
+				<input type="radio" name="consulta" value="criticas">Críticas
+				<input type="checkbox" name="terminos">Marque esta casilla para verificar que ha leído nuestros términos y condiciones del servicio
 
-				<br><textarea name="texto" rows="5" cols="60">Escriba su consulta</textarea><br>
-				<br> <input type="submit" name="enviar"><br>		
+				<textarea name="texto" rows="5" cols="60">Escriba su consulta</textarea>
+				<input type="submit" name="enviar">	
 			
 			</fieldset>		
 			</form>

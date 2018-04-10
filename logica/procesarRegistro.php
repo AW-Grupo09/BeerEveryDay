@@ -24,21 +24,21 @@
 	if(Usuario::existeUsuario($id, $mysqli) == NULL){
 	
 		if($email != $remail){
-			$resultadoFormularioRegistro = "Los emails no coinciden..";
+			$resultadoFormularioRegistro = "<p>Los emails no coinciden..</p>";
 		} else if($password != $repass){ // en un futuro se puede comprobar la longitud de las contraseñas (mínimo 5 o algo así)
-			$resultadoFormularioRegistro = "ERROR: las contraseñas no coinciden..";
+			$resultadoFormularioRegistro = "<p>ERROR: las contraseñas no coinciden..</p>";
 		} else if(Usuario::esImagen($avatar) == false || Usuario::imgValida($avatar, $size) == false) {
-			$resultadoFormularioRegistro = "Inserte una imagen válida";
+			$resultadoFormularioRegistro = "<p>Inserte una imagen válida</p>";
 		} else {
 			Usuario::insertarUsuario($id, $nombre, $apellidos, $email, $password, $fechaNac, $ciudad, $avatar, $rol, $mysqli);
 			move_uploaded_file($_FILES['archivo']['tmp_name'] ,$directorio.$avatar);
 			$success = true;
 			$_SESSION["user"]  = $id;
-			$resultadoFormularioRegistro = "REGISTRADO CORRECTAMENTE";
+			$resultadoFormularioRegistro = "<p>REGISTRADO CORRECTAMENTE</p>";
 		}
 	}
 	else{
-		$resultadoFormularioRegistro = "ERROR: nombre de usuario ya en uso";
+		$resultadoFormularioRegistro = "<p>ERROR: nombre de usuario ya en uso</p>";
 	}
 
 	$_SESSION['regFailed'] = !$success;
