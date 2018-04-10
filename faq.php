@@ -28,12 +28,12 @@
 				
 			<h3>1. ¿Quienes somos?</h3>
 				
-			<p id ="who"> Somos un grupo de 7 estudiantes de la asignatura AW de Ingeniería Informática de la UCM enamorados de la cerveza que intentamos hacer más facil a todos el acceso a grandes marcas artesanales, nacionales e internacionales.
+			<p> Somos un grupo de 7 estudiantes de la asignatura AW de Ingeniería Informática de la UCM enamorados de la cerveza que intentamos hacer más facil a todos el acceso a grandes marcas artesanales, nacionales e internacionales.
 			</p>
 
 			<h3>2. ¿Como me puedo dar de alta?</h3>
 				
-			<p id ="register" > Tan solo has de pinchar en Register y rellenar tus datos personales para que podamos
+			<p> Tan solo has de pinchar en Register y rellenar tus datos personales para que podamos
 			dirigirnos a tí como es debido. 
 			No olvides especificar el rol que deseas adoptar o bien Registrado para realizar tus compras o bien
 			VendedorNo olvides que al hacer clic en "Registrarte", aceptas los
@@ -44,13 +44,13 @@
 			
 			<h3>3. ¿Puedo tener más de una cuenta?</h3>
 				
-			<p id ="num" >Puedes tener más de una cuenta siempre y cuando utilices un correo distinto y distintas credenciales para identificarte sin embargo no es recomendable y aconsejamos una sola cuenta por cada usuario.				
+			<p>Puedes tener más de una cuenta siempre y cuando utilices un correo distinto y distintas credenciales para identificarte sin embargo no es recomendable y aconsejamos una sola cuenta por cada usuario.				
 			</p>
 
 
 			<h3>4. ¿Como uso el filtro del catálogo</h3>
 				
-			<p id ="filter"> Filtra tus cervezas en función de tus gustos: Artesanas, Nacionales o por numero de graduación, puedes marcar tantos checkbox como quieras, además puedes ordenar tus resultados por numero de ventas o por precio.
+			<p> Filtra tus cervezas en función de tus gustos: Artesanas, Nacionales o por numero de graduación, puedes marcar tantos checkbox como quieras, además puedes ordenar tus resultados por numero de ventas o por precio.
 			
 			También puedes elegirlas por su color o por sus ingredientes. Una vez marcadas las opciones deseadas dar a "enviar"
 			y los resultados apareceran a continuación.				
@@ -60,18 +60,18 @@
 
 			<h3>5. ¿Como accedo a mi cuenta tras mi registro?</h3>
 				
-			<p id ="log"> Tan solo has de acudir a perfil o login y pinchar en cualquiera de ambas, allí encontras dos campos uno para introducir tu nombre de usuario y otro para la contraseña que metiste a la hora de hacer el registro.	
+			<p> Tan solo has de acudir a perfil o login y pinchar en cualquiera de ambas, allí encontras dos campos uno para introducir tu nombre de usuario y otro para la contraseña que metiste a la hora de hacer el registro.	
 			</p>
 
 			<h3>6. ¿A que dirección llegan los pedidos de un grupo de consumo?</h3>
 				
-			<p id ="addr"> Tan solo tienes que mirar la dirección que puso el jefe del grupo de consumo en el que realizaste tu pedido y a esa dirección sera enviado tu pedido junto con el resto de cervezas que pidio el grupo.				
+			<p> Tan solo tienes que mirar la dirección que puso el jefe del grupo de consumo en el que realizaste tu pedido y a esa dirección sera enviado tu pedido junto con el resto de cervezas que pidio el grupo.				
 			</p>
 			
 
 			<h3>7. ¿Alguna duda más?</h3>
 				
-			<p id ="info"> No dudes en enviarnos cualquier otro tipo de duda, evaluación, sugerencia o crítica que te surja pinchando en contacto.				
+			<p> No dudes en enviarnos cualquier otro tipo de duda, evaluación, sugerencia o crítica que te surja pinchando en contacto.				
 			</p>
 
 

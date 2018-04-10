@@ -29,16 +29,16 @@
 						 $sql= '';
 						echo '<fieldset>';
 						if (isset($_POST['artesana'])){
-							echo '<input type="checkbox" name="artesana" checked>Artesanas<br/>';
+							echo '<input type="checkbox" name="artesana" checked>Artesanas';
 							$sql = $sql . 'and artesana = 1 ';
 						}else{
-							echo '<input type="checkbox" name="artesana">Artesanas<br/>'; 
+							echo '<input type="checkbox" name="artesana">Artesanas'; 
 						}
 						if (isset($_POST['nacional'])){
-							echo '<input type="checkbox" name="nacional" checked>Nacionales<br/>';
+							echo '<input type="checkbox" name="nacional" checked>Nacionales';
 							$sql = $sql . 'and pais = "España" ';
 						}else{
-							echo '<input type="checkbox" name="nacional">Nacionales<br/>'; 
+							echo '<input type="checkbox" name="nacional">Nacionales'; 
 						}
 						$grados = array("" => "", 
 										"Menor de 5" => " grado <= 5 ", 
@@ -55,7 +55,7 @@
 									echo '<option value="'.  $i .'">' . $i . '</option>';
 								}
 							}
-						echo '</select><br/>';
+						echo '</select>';
 
 						$orden = array("" => "", 
 										"Mas vendidas" => " order by cervezasVendidas desc",
@@ -80,14 +80,14 @@
 						echo '<legend>Color</legend>';
 						foreach ($colores as $i) {
 						    if (isset($_POST[$i])){
-								echo '<input type="checkbox" name="' . $i . '" checked>' . $i . '<br/>';
+								echo '<input type="checkbox" name="' . $i . '" checked>' . $i . '';
 								if(strcmp($sqlColor, "") == 0){
 									$sqlColor = $sqlColor . '(color = "' . $i . '" ';
 								}else{
 									$sqlColor = $sqlColor . 'or color = "' . $i . '" ';
 								}
 							}else{
-								echo '<input type="checkbox" name="' . $i . '">' . $i . '<br/>'; 
+								echo '<input type="checkbox" name="' . $i . '">' . $i . ''; 
 							}
 						}
 						if(strcmp($sqlColor, "") != 0){
@@ -101,14 +101,14 @@
 						echo '<legend>Ingredientes</legend>';
 						foreach ($granos as $i) {
 						    if (isset($_POST[$i])){
-								echo '<input type="checkbox" name="' . $i . '" checked>' . $i . '<br/>';
+								echo '<input type="checkbox" name="' . $i . '" checked>' . $i . '';
 								if(strcmp($sqlGranos, "") == 0){
 									$sqlGranos = $sqlGranos . '(grano = "' . $i . '" ';
 								}else{
 									$sqlGranos = $sqlGranos . 'or grano = "' . $i . '" ';
 								}
 							}else{
-								echo '<input type="checkbox" name="' . $i . '">' . $i . '<br/>'; 
+								echo '<input type="checkbox" name="' . $i . '">' . $i . ''; 
 							}
 						}
 						if(strcmp($sqlGranos, "") != 0){
