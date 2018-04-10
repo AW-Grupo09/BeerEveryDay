@@ -30,34 +30,35 @@
 		</li>
 
 
-		<h3> Información de cada uno de nosotros: </h3>
+		<h2> Información de cada uno de nosotros: </h2>
 
-		<p id="dario">Información de Dario</p>
-		<p> Me gusta leer libros de ficcion, salir a hacer deporte y patinar, el senderismo.Mi libro favorito el 100 años de soledad de Gabriel Garcia Marquez. </p>
+		<h3>Información de Dario</h3>
+		<p id="dario"> Me gusta leer libros de ficcion, salir a hacer deporte y patinar, el senderismo.Mi libro favorito el 100 años de soledad de Gabriel Garcia Marquez. </p>
 		<p> Correo: Dariogal@ucm.es </p>
 
-		<p id="julioC">Información de Julio de la Cruz</p>
-		<p> Me considero amante del buen cine y de la buena música. Me encanta viajar y conocer diversas culturas. </p>
+		<h3>Información de Julio de la Cruz</h3>
+		<p id="julioC">Me considero amante del buen cine y de la buena música. Me encanta viajar y conocer diversas culturas. 
+		</p>
 		<p> Correo: endela01@ucm.es </p>
 
-		<p id="silvia">Información de Silvia</p>
-		<p> Viajar, fotografía, tocar la guitarra y hacer deporte, en especial tenis y windsurf. </p>
+		<h3>Información de Silvia</h3>
+		<p id="silvia">Viajar, fotografía, tocar la guitarra y hacer deporte, en especial tenis y windsurf. </p>
 		<p> Correo: sillendi@ucm.es </p>
 
-		<p id="julioA">Información de Julio Aparicio</p>
-		<p>Estudiante del Grado en Ingeniería Informática en la Universidad Complutense de Madrid. </p>
+		<h3>Información de Julio Aparicio</h3>
+		<p id="julioA">Estudiante del Grado en Ingeniería Informática en la Universidad Complutense de Madrid. </p>
 		<p>Correo: japari02@ucm.es </p>
 
-		<p id="ruben">Información de Rubén</p>
-		<p> Experto en perder el tiempo. </p>
+		<h3>Información de Rubén</h3>
+		<p id="ruben"> Experto en perder el tiempo. </p>
 		<p> Correo: rubenizq@ucm.es </p>
 
-		<p id="luis">Información de Luis</p>
-		<p> Fan incondicional del fútbol, del cine, de la guitarra eléctrica y de la naturaleza. </p>
+		<h3>Información de Luis</h3>
+		<p id="luis"> Fan incondicional del fútbol, del cine, de la guitarra eléctrica y de la naturaleza. </p>
 		<p> Correo: luisgf01@ucm.es </p>
 
-		<p id="gonzalo">Información de Gonzalo</p>
-		<p> Amante de viajar y conocer otras culturas, cinéfilo y apasionado del fútbol. Entusiasta de tomarse unas buenas cañas con amigos. </p>
+		<h3>Información de Gonzalo</h3>
+		<p id="gonzalo"> Amante de viajar y conocer otras culturas, cinéfilo y apasionado del fútbol. Entusiasta de tomarse unas buenas cañas con amigos. </p>
 		<p> Correo: gonzamol@ucm.es </p>
 
 	</div> <!-- Fin del contenedor -->
