@@ -44,7 +44,7 @@
 										"Menor de 5" => " grado <= 5 ", 
 										"Entre 5 y 7" => " grado >= 5 and grado <= 7 ", 
 										"Mayor de 7" => " grado >= 7 ");
-						echo 'Grado Alcohólico: <select name="grado">';
+						echo ' Grado: <select name="grado">';
 							foreach ($grados as $i => $v) {
 								if($_POST['grado'] == $i){
 									echo '<option value="'.  $i .'" selected="true">' . $i . '</option>';
@@ -58,10 +58,10 @@
 						echo '</select>';
 
 						$orden = array("" => "", 
-										"Mas vendidas" => " order by cervezasVendidas desc",
+										/*"Mas vendidas" => " order by cervezasVendidas desc",*/
 										"Precio de mayor a menor" => " order by precio desc", 
 										"Precio de menor a mayor" => " order by precio");
-						echo 'Ordernar por: <select name="ordenar">';
+						echo ' Ordernar por: <select name="ordenar">';
 						foreach ($orden as $i => $v) {
 							if($_POST['ordenar'] == $i){
 								echo '<option value="'.  $i .'" selected="true">' . $i . '</option>';
@@ -91,7 +91,7 @@
 							}
 						}
 						if(strcmp($sqlColor, "") != 0){
-							$sql = $sql . 'and ' . $sqlColor . ') ';
+								$sql = $sql . 'and ' . $sqlColor . ') ';
 						}
 						echo '</fieldset>';
 						//----------------------------------------------------------------------------------
@@ -124,13 +124,14 @@
 				
 						//$sql = 'select id, nombre, artesana, capacidad, color, fabricante, grado, grano, imagen, pais, precio, tipo, sum(unidades) as cervezasVendidas FROM cervezas, `pedidos-cervezas` where id = idCerveza ' . $sql . ' group by id ' . $sqlOrden;
 						$mysqli = conexion::getConection();
-						$idsCervezas = cervezas::getIdsCervezas($sql,$mysqli);
+						$idsCervezas = cervezas::getIdsCervezas($sql,$sqlOrden,$mysqli);
 						foreach ($idsCervezas as $key => $value) {
 							$cerveza = new cervezas($value,$mysqli);
 							echo "<div>";
 							echo "<h1>" . $cerveza->getNombre(). "</h1>";
 							echo "<img alt='Imagen de cerveza' src=". $cerveza->getImagen()." width='200' height='200' />";
 							echo "<p>" . $cerveza->getCapacidad(). " ". $cerveza->getColor()." ". $cerveza->getTipo()." ". $cerveza->getGrado()." ". $cerveza->getGrano()."</p>";
+							echo "<p>" . $cerveza->getPrecio(). "</p>";
 							echo "</div>";
 						}
 						$sql='';

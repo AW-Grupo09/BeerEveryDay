@@ -38,13 +38,14 @@ class cervezas{
 	}
 
 
-	public static function getIdsCervezas($filtros,$mysqli){
-
-		if(empty($filtros))
+	public static function getIdsCervezas($filtros,$orden,$mysqli){
+		
+		if(empty($filtros) && empty($orden))
 			$sql = "SELECT id FROM cervezas";
 		else
-			$sql = "SELECT id FROM cervezas WHERE ".$filtros;
+			$sql = "SELECT id FROM cervezas WHERE id > 0 ".$filtros. ' group by id ' . $orden;
 		
+		echo $sql."</br>";
 		$consulta = $mysqli->query($sql) or die ($mysqli->error. " en la línea ".(__LINE__-1)); 
 
 		$resultado = array();
