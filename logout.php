@@ -1,14 +1,14 @@
+<?php 
+		session_start();
+		session_destroy();
+		session_start();
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
 	<link rel="stylesheet" type="text/css" href="style.css" />
 	<meta charset="utf-8">
 	<title>logout</title>
-	<?php 
-		session_start();
-		session_destroy();
-		session_start();
-	?>
 </head>
 
 <body>
