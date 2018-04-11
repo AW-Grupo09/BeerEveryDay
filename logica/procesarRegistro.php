@@ -14,7 +14,7 @@
 	$repass = $_POST['repass'];
 	$fechaNac = $_POST['fechaNac'];
 	$ciudad = $_POST['ciudad'];
-	$rol = $_POST['rol'];
+	//$rol = $_POST['rol'];
 	$avatar = $_FILES['archivo']['name'];
 	$size = $_FILES['archivo']['size'];
 	$directorio = '../img/users/';
@@ -30,7 +30,7 @@
 		} else if(Usuario::esImagen($avatar) == false || Usuario::imgValida($avatar, $size) == false) {
 			$resultadoFormularioRegistro = "<p>Inserte una imagen válida</p>";
 		} else {
-			Usuario::insertarUsuario($id, $nombre, $apellidos, $email, $password, $fechaNac, $ciudad, $avatar, $rol, $mysqli);
+			Usuario::insertarUsuario($id, $nombre, $apellidos, $email, $password, $fechaNac, $ciudad, $avatar, "user", $mysqli);
 			move_uploaded_file($_FILES['archivo']['tmp_name'] ,$directorio.$avatar);
 			$success = true;
 			$_SESSION["user"]  = $id;

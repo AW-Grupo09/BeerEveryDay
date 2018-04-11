@@ -62,6 +62,7 @@
 			      			<label class="foto_per_label">Foto de perfil</label>
 			              	<input id="archivo" class="foto_per" name="archivo" type="file"/>
 			            </li>
+			         <!--
 			            <li>
 			            	<label>¿Qué rol desea adoptar? </label> <br>
 			            	<form>
@@ -69,6 +70,7 @@
 			            		<input type="radio" name="rol" value="vendedor"> Vendedor <br>			            		
 			            	</form>
 			            </li>
+			        -->
 			            <li>
 			              <button class="submit" type="submit">Registrarte</button>
 			            </li>
