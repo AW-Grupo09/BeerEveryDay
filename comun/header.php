@@ -10,9 +10,9 @@ if(!isset($_SESSION["logged"]))
 
 
 if($_SESSION["logged"])
-	echo "<h1>Hola " . $_SESSION["user"] . "</h1>";
+	echo "<h2>Hola " . $_SESSION["user"] . "</h2>";
 else
-	echo "<h1>No has iniciado sesión</h1>";
+	echo "<h2>No has iniciado sesión</h2>";
 ?>
 <link rel="icon" href="img/favicon.jpeg" type="image/ico">
 <div nav = "toolbar">
