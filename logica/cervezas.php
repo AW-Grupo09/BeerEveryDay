@@ -45,7 +45,6 @@ class cervezas{
 		else
 			$sql = "SELECT id FROM cervezas WHERE id > 0 ".$filtros. ' group by id ' . $orden;
 		
-		echo $sql."</br>";
 		$consulta = $mysqli->query($sql) or die ($mysqli->error. " en la línea ".(__LINE__-1)); 
 
 		$resultado = array();

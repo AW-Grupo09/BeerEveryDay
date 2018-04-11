@@ -1,4 +1,3 @@
-
 <?php 
 	include('logica/conexion.php');
 	include('logica/cervezas.php');
@@ -8,18 +7,20 @@
 <!DOCTYPE html>
 <html lang="es">
 	<head>
-		<title>CatÃ¡logo</title>
+		<title>Catálogo</title>
 		<meta charset="utf-8">
-		<link href="css/estilo.css" rel="stylesheet">
+		<link href="css/styles.css" rel="stylesheet">
 	</head>
 	<body>
 
-		<?php require ('comun/header.php'); ?>
+	<?php require ('comun/header.php'); ?>
+
 		<div id="contenedor">
+
 			<div class="container">
 				<header>
 					<div class="alert alert-info">
-					<h2>Filtro de BÃºsqueda </h2>
+					<h2>Filtro de Búsqueda </h2>
 					</div>
 				</header>
 				<section>
@@ -35,7 +36,7 @@
 						}
 						if (isset($_POST['nacional'])){
 							echo '<input type="checkbox" name="nacional" checked>Nacionales';
-							$sql = $sql . 'and pais = "EspaÃ±a" ';
+							$sql = $sql . 'and pais = "España" ';
 						}else{
 							echo '<input type="checkbox" name="nacional">Nacionales'; 
 						}
@@ -120,6 +121,8 @@
 					</form>
 
 					<?php
+				
+						//$sql = 'select id, nombre, artesana, capacidad, color, fabricante, grado, grano, imagen, pais, precio, tipo, sum(unidades) as cervezasVendidas FROM cervezas, `pedidos-cervezas` where id = idCerveza ' . $sql . ' group by id ' . $sqlOrden;
 						$mysqli = conexion::getConection();
 						$idsCervezas = cervezas::getIdsCervezas($sql,$sqlOrden,$mysqli);
 						foreach ($idsCervezas as $key => $value) {
@@ -133,9 +136,11 @@
 						}
 						$sql='';
 					?>
+
 				</section>
 			</div>
 		</div>
+
 		<?php require('comun/footer.php'); ?>
 	</body>
 </html>
