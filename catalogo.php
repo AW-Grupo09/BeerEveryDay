@@ -127,8 +127,9 @@
 							echo "<div>";
 							echo "<h1>" . $cerveza->getNombre(). "</h1>";
 							echo "<img alt='Imagen de cerveza' src=". $cerveza->getImagen()." width='200' height='200' />";
-							echo "<p>" . $cerveza->getCapacidad(). " ". $cerveza->getColor()." ". $cerveza->getTipo()." ". $cerveza->getGrado()." ". $cerveza->getGrano()."</p>";
-							echo "<p>" . $cerveza->getPrecio(). "</p>";
+							echo "<p>" . $cerveza->getCapacidad(). " ". $cerveza->getColor()." ". $cerveza->getTipo()." ". $cerveza->getGrado()." ". $cerveza->getGrano(). " ".
+								$cerveza->getPais()."</p>";
+							echo "<p>" . $cerveza->getPrecio(). " € ". "</p>";
 							echo "</div>";
 						}
 						$sql='';
