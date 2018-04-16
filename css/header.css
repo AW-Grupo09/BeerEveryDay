@@ -1,0 +1,10 @@
+a:visited {
+	color: blue;
+}
+
+#toolbar {
+	margin: 15px;
+}
+
+#toolbar>items {
+}

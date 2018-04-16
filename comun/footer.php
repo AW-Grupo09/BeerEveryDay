@@ -3,7 +3,7 @@
 	<meta charset="utf-8">
 </head>
 
-<div id="footer">
+<div class="footer">
 	<p> 
 		<a href="contacto.php"> Contacto </a>
 		<a href ='faq.php'>, FAQ </a>
