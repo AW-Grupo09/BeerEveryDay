@@ -12,6 +12,7 @@
 <html lang="es">
 <head>
 	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/login.css" />
 	<title> Login </title>
 </head>
 
@@ -27,12 +28,42 @@
 				?>
 				<form action="logica/procesarLogin.php" method="POST">
 						<fieldset>
-						<legend>Usuario y contraseña</legend>
-						<p><label>Nombre de usuario:</label> <input type="text" name="username"></p>
-						<p><label>Contraseña:</label> <input type="password" name="password"><br></p>
-						<button type="submit">Entrar</button>
-						</fieldset>
+						<legend> Formulario de inicio de sesión: </legend>
+
+						<div class="imgcontainer">
+					   		<img src="img/users/default.png" alt="Avatar" class="avatar">
+					    </div>
+
+						
+						<label for="username"><b>Nombre de usuario: </b></label>
+					    <input type="text" placeholder="Introduzca aquí el nombre de usuario" name="username" required>
+
+
+						<!--<p><label>Contraseña:</label> <input type="password" name="password"><br></p>-->
+						<label for="password"><b>Contraseña: </b></label>
+					    <input type="password" placeholder="Introduzca aquí la contraseña" name="password" required>
+
+
+						<p><button type="submit">Entrar</button></p>
+
+						<!--<label>
+					      <input type="checkbox" checked="checked" name="remember"> Recuérdame
+					    </label>-->
+
+					    <div>
+						    <!--<button type="button" class="cancelbtn">Atrás</button>-->
+						    <input type="button" value="Atrás" class="atrasbtn" onclick = "location='/AW-Grupo09/BeerEveryday/index.php'"/>
+						    
+						    <span class="psw">Has olvidado tu <a href="#">contraseña?</a></span>
+						</div>
+
+					  </div>
+
+					</fieldset>
 				</form>
+
+				
+
 				<?php 
 				if($_SESSION["LoginFailed"])
 					echo "<p>Contraseña o usuario incorrectos<p>";
