@@ -53,7 +53,7 @@
 
 					    <div>
 						    <!--<button type="button" class="cancelbtn">Atrás</button>-->
-						    <input type="button" value="Atrás" class="atrasbtn" onclick = "location='/AW-Grupo09/BeerEveryday/index.php'"/>
+						    <input type="button" value="Atrás" class="atrasbtn" onclick = "location='./index.php'"/>
 						    
 						    <span class="psw">Has olvidado tu <a href="#">contraseña?</a></span>
 						</div>
