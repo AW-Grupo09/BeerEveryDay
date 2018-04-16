@@ -2,16 +2,16 @@
 <html lang="es">
 	<head>
 		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" type="text/css" href="css/common.css">
 		<meta charset="utf-8">
 		<title> Contacto </title>
 	</head>
 	<body>
 
-	<?php require ('comun/header.php'); ?>
-
 	<div id="contenedor">
+		<?php require ('comun/header.php'); ?>
 
-		<div id="main">
+		<div id="container">
 			<h1> Contacto </h1>
 
 			<form action="mailto:beer@everyday.es" method="POST">
@@ -33,9 +33,9 @@
 			</form>
 		</div>
 
-	</div> <!-- Fin del contenedor -->
+		<?php require('comun/footer.php'); ?>
 
-	<?php require('comun/footer.php'); ?>
+	</div> <!-- Fin del contenedor -->
 
 	</body>
 

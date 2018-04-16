@@ -7,6 +7,7 @@
 <html lang="es">
 <head>
 	<link rel="stylesheet" type="text/css" href="style.css" />
+	<link rel="stylesheet" type="text/css" href="css/common.css">
 	<!--<link rel="stylesheet" type="text/css" href="css/logout.css" />-->
 	<meta charset="utf-8">
 	<title>logout</title>
@@ -14,17 +15,19 @@
 
 <body>
 
-	<?php require ('comun/header.php'); ?>
-
 	<div id="contenedor"> <!-- Contenedor-->
+
+		<?php require ('comun/header.php'); ?>
 
 		<div class="container"><!--bloque del contenido central-->
 			<h1>¡Hasta pronto!</h1>
 		</div>
 
+		<?php require ('comun/header.php'); ?>
+
 	</div> <!-- Fin del contenedor -->
 
-	<?php require('comun/footer.php'); ?>
+	<?php require ('comun/header.php'); ?>
 
 </body>
 </html>

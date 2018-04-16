@@ -20,6 +20,11 @@
 }
 
 #toolbar>#titulo {
+	justify-content: center;
+}
+
+#toolbar>#titulo>img {
+	width: 40%;
 }
 
 

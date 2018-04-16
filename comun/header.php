@@ -18,7 +18,7 @@ if(!isset($_SESSION["logged"]))
 			<a href = 'cesta.php'> Cesta </a>
 		</div>
 		<div id="titulo">
-			<h1> BeerEveryDay </h1>
+			<img src="./img/favicon.jpeg">
 		</div>
 		<div id = "login">
 			<?php 
