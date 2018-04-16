@@ -11,11 +11,11 @@
 		<title>Catálogo</title>
 		<meta charset="utf-8">
 		<link href="css/estilo.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/common.css">
 	</head>
 	<body>
-
-		<?php require ('comun/header.php'); ?>
 		<div id="contenedor">
+			<?php require ('comun/header.php'); ?>
 			<div class="container">
 				<header>
 					<div class="alert alert-info">
@@ -135,8 +135,8 @@
 						$sql='';
 					?>
 				</section>
-			</div>
-		</div>
+			</div>		
 		<?php require('comun/footer.php'); ?>
+		</div>
 	</body>
 </html>

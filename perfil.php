@@ -14,6 +14,7 @@
 <html lang="es">
 <head>
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<link rel="stylesheet" type="text/css" href="css/common.css">
 	<meta charset="utf-8">
 	<?php
 		$mysqli = conexion::getConection();
@@ -25,9 +26,9 @@
 
 <body>
 
-	<?php require ('comun/header.php'); ?>
-
 	<div id="contenedor"> <!-- Contenedor-->
+
+		<?php require ('comun/header.php'); ?>
 
 		<div class="container"><!--bloque del contenido central-->
 			
@@ -54,9 +55,9 @@
 
 		</div>
 
-	</div> <!-- Fin del contenedor -->
+		<?php require('comun/footer.php'); ?>
 
-	<?php require('comun/footer.php'); ?>
+	</div> <!-- Fin del contenedor -->	
 
 </body>
 </html>

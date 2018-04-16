@@ -8,15 +8,8 @@ if(!isset($_SESSION["LoginFailed"]))
 if(!isset($_SESSION["logged"]))
 	$_SESSION["logged"] = false;
 
-
-if($_SESSION["logged"])
-	echo "<h2>Hola " . $_SESSION["user"] . "</h2>";
-else
-	echo "<h2>No has iniciado sesión</h2>";
 ?>
 <link rel="icon" href="img/favicon.jpeg" type="image/ico">
-<link rel="stylesheet" type="text/css" href="./css/header.css">
-
 <div class="header">
 	<div id = "toolbar">
 		<div id = "items">
@@ -24,8 +17,17 @@ else
 			<a href = 'catalogo.php'> Catálogo </a>	
 			<a href = 'cesta.php'> Cesta </a>
 		</div>
+		<div id="titulo">
+			<img src="./img/favicon.jpeg">
+		</div>
 		<div id = "login">
-			<?php if(isset($_SESSION["user"])&&($_SESSION["user"] == true)){ ?>
+			<?php 
+			if($_SESSION["logged"])
+				echo "<h3>Hola " . $_SESSION["user"] . "</h3>";
+			else
+				echo "<h3>No has iniciado sesión</h3>";
+
+			if(isset($_SESSION["user"])&&($_SESSION["user"] == true)){ ?>
 				<a href = 'perfil.php'> Perfil </a>
 				<a href = 'logout.php'> Salir </a>
 			<?php } else { ?>

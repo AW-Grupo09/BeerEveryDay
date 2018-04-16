@@ -1,5 +1,38 @@
 #contenedor {
 	display: flex;
 	flex-direction: column;
-	
+}
+
+.header a, .footer a {
+	color: blue;
+	text-decoration: none;	
+}
+
+#toolbar {
+	margin: 15px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#toolbar>#items {
+	justify-content: space-around;
+}
+
+#toolbar>#titulo {
+	justify-content: center;
+}
+
+#toolbar>#titulo>img {
+	width: 40%;
+}
+
+
+#toolbar>#login {
+	justify-content: space-around;
+}
+
+.footer {
+	bottom: 0;
+	text-align: center;
 }

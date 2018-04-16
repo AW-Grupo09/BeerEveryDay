@@ -8,7 +8,6 @@
 	<meta charset="utf-8">
 	<title>BeerEveyday</title>
 </head>
-
 <body>
 
 	<div id="contenedor"> <!-- Contenedor-->
@@ -20,7 +19,6 @@
 			</div>
 
 		<?php require('comun/footer.php'); ?>
-
 
 	</div> <!-- Fin del contenedor -->
 

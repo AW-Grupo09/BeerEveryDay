@@ -14,13 +14,14 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="css/login.css" />
 	<title> Login </title>
+	<link rel="stylesheet" type="text/css" href="css/common.css">
 </head>
 
 <body>
 
-	<?php require ('comun/header.php'); ?>
-
 	<div id="contenedor">
+
+		<?php require ('comun/header.php'); ?>
 
 		<div class="container">
 			<?php 
@@ -77,9 +78,10 @@
 			?>
 		</div>
 
-	</div> <!-- Fin del contenedor -->
 
-	<?php require('comun/footer.php'); ?>
+		<?php require('comun/footer.php'); ?>
+
+	</div> <!-- Fin del contenedor -->
 
 </body>
 </html>

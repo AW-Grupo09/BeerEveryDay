@@ -8,11 +8,13 @@
 		<title>FAQ</title>
 		<meta charset="utf-8">
 		<link href="css/estilos.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/common.css">
 	</head>
 	<body>
-	<?php require ('comun/header.php'); ?>
+	<div id="contenedor">
+		<?php require ('comun/header.php'); ?>
 
-		<div id="main">
+		<div id="container">
 
 			<h2> FAQ - Frequently asked questions </h2>
 
@@ -69,5 +71,6 @@
 
         </div>
         <?php require('comun/footer.php'); ?>
+    </div>
 	</body>
 </html>
