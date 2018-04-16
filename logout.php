@@ -7,6 +7,7 @@
 <html lang="es">
 <head>
 	<link rel="stylesheet" type="text/css" href="style.css" />
+	<!--<link rel="stylesheet" type="text/css" href="css/logout.css" />-->
 	<meta charset="utf-8">
 	<title>logout</title>
 </head>
