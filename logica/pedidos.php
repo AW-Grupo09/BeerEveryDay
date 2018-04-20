@@ -35,14 +35,13 @@ class pedidos{
             $this->grupo = LoadGrupo($idPedido);
 	}
 
-	public static eliminarCesta(){
+	public static eliminarPedido($idPedido){
         //Esto debe realizarse despues de eliminar todos los elementos de la cesta
-		$cesta = loadCesta($_SESSION["user"]);
-		$query = "DELETE FROM  Pedidos WHERE idPedido = '$cesta'";
+		$query = "DELETE FROM  Pedidos WHERE idPedido = '$idPedido'";
 		$correcto = $mysqli->query($query) or die ($mysqli->error . " en la línea " . (__LINE__-1));
 	}
 
-	public static eliminarElementoCesta($cerveza){
+	public static eliminarElementoCesta($cerveza, $idPedido){
 		//Esta funcion se encarga de eliminar un elemento de la cesta
         $query = "DELETE FROM  `pedidos-cervezas` WHERE idcerveza = '" . $cerveza . "'  and idpedido = '" . $idPedido . "'";
         $consulta = $mysqli->query($query) or die ($mysqli->error . " en la línea " . (__LINE__-1));
