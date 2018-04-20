@@ -1,9 +1,9 @@
 
-<?php 
-	include('logica/conexion.php');
-	include('logica/cervezas.php');
-	global $sql;
-?>
+	<?php 
+		include('logica/conexion.php');
+		include('logica/cervezas.php');
+		global $sql;
+	?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -116,7 +116,7 @@
 						echo '</fieldset>';
 						$sql =''. $sql;	
 					?>
-					<input type="submit" name="buscar">
+					<input type="button" name="buscar">
 					</form>
 
 					<?php
@@ -125,7 +125,7 @@
 						foreach ($idsCervezas as $key => $value) {
 							$cerveza = new cervezas($value,$mysqli);
 							echo "<div>";
-							echo "<h1>" . $cerveza->getNombre(). "</h1>";
+							echo "<h1> <a href = mostrarCerveza.php?id=" . $cerveza->getIdCerveza() . ">" . $cerveza->getNombre() . "</a></h1>";
 							echo "<img alt='Imagen de cerveza' src=". $cerveza->getImagen()." width='200' height='200' />";
 							echo "<p>" . $cerveza->getCapacidad(). " ". $cerveza->getColor()." ". $cerveza->getTipo()." ". $cerveza->getGrado()." ". $cerveza->getGrano(). " ".
 								$cerveza->getPais()."</p>";

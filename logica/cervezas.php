@@ -37,7 +37,6 @@ class cervezas{
 		}
 	}
 
-
 	public static function getIdsCervezas($filtros,$orden,$mysqli){
 		
 		if(empty($filtros) && empty($orden))
