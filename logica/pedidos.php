@@ -9,9 +9,9 @@ class pedidos{
 	private $dir;
 	private $tarjeta;
 	private $estado;
-	private $fechapedido
-	private $fechaLimite
-	private $fechaEntrega
+	private $fechapedido;
+	private $fechaLimite;
+	private $fechaEntrega;
 
 	public function __construct($idPedido, $mysqli){
 
@@ -29,25 +29,25 @@ class pedidos{
 			$this->fechaEntrega = $fila["fechaEntrega"];
 		}
 		
-		$this->user = Loaduser($idPedido);
-		$this->cervezas = LoadBeers($idPedido);
+		$this->loadUser($idPedido, $mysqli);
+		$this->loadBeers($idPedido, $mysqli);
         if($this->estado == "grupo")
             $this->grupo = LoadGrupo($idPedido);
 	}
 
-	public static eliminarPedido($idPedido){
-        //Esto debe realizarse despues de eliminar todos los elementos de la cesta
-		$query = "DELETE FROM  Pedidos WHERE idPedido = '$idPedido'";
+	public static function eliminarCesta($cesta, $mysqli){
+        //Elimina cesta
+		$query = "DELETE FROM  Pedidos WHERE idPedido = '$cesta'";
 		$correcto = $mysqli->query($query) or die ($mysqli->error . " en la línea " . (__LINE__-1));
 	}
 
-	public static eliminarElementoCesta($cerveza, $idPedido){
+	public static function eliminarElementoCesta($cerveza, $idPedido, $mysqli){
 		//Esta funcion se encarga de eliminar un elemento de la cesta
         $query = "DELETE FROM  `pedidos-cervezas` WHERE idcerveza = '" . $cerveza . "'  and idpedido = '" . $idPedido . "'";
         $consulta = $mysqli->query($query) or die ($mysqli->error . " en la línea " . (__LINE__-1));
 	}
 
-	public static iniciarCesta($cerveza, $unidades){
+	public static function iniciarCesta($cerveza, $unidades){
         //Obtiene el id mas alto y le suma 1 para un nuevo id
         //Lo busco yo
         /*
@@ -66,36 +66,35 @@ class pedidos{
 
     }
 
-    public static addBeers($cerveza, $unidades, $idpedido){
+    public static function addBeers($cerveza, $unidades, $idpedido){
 
         $sql = "INSERT INTO `pedidos-cervezas`(`idCerveza`, `idPedido`, `unidades`) VALUES (" .  $cerveza . "," . $idpedido . "," .  $unidades . ")";
         $consulta = $mysqli->query($sql) or die ($mysqli->error . " en la línea " . (__LINE__-1));
 
     }
 
-    private loadUser($idPedido){
+    private function loadUser($idPedido, $mysqli){
         //Carga el usuario al que le corresponda el pedido
-        $sql = "SELECT idUsuario FROM usuarios-pedidos WHERE idPedido = $idPedido";
+        $sql = "SELECT idUsuario FROM `usuarios-pedidos` WHERE idPedido = $idPedido";
         $consulta = $mysqli->query($sql) or die ($mysqli->error. " en la línea ".(__LINE__-1));
         $fila = mysqli_fetch_assoc($consulta);
-        $user = $fila["idUsuario"];
-        return $user;
+        $this->user = $fila["idUsuario"];
 	}
 
-	private loadBeers($idPedido){
+	private function loadBeers($idPedido, $mysqli){
 		//Carga las cervezas y las unidades de un pedid
         $sql = "SELECT idcerveza, unidades FROM `pedidos-cervezas` WHERE idpedido = ". $idPedido;
         $consulta = $mysqli->query($sql) or die ($mysqli->error. " en la línea ".(__LINE__-1)); 
 
         $i = 0;
         while($fila= mysqli_fetch_assoc($consulta)){
-            $this->cervezas[$i] = $fila["idCerveza"];
-            $this->unidades[$i] = $fila["unidades"]
+            $this->cervezas[$i] = $fila["idcerveza"];
+            $this->unidades[$i] = $fila["unidades"];
             $i++;
         }   
 	}
 
-	private loadGroup($idPedido){
+	private function loadGroup($idPedido){
 		//Carga el id del grupo al que pertenece el pedido
         $sql = "SELECT idGrupo FROM `grupos-pedidos`";
         $consulta = $mysqli->query($sql) or die ($mysqli->error. " en la línea ".(__LINE__-1));
@@ -103,12 +102,17 @@ class pedidos{
         return $fila["idgrupo"];
 	}
 
-	private loadCesta($user){
+	public function loadCesta($user, $mysqli){
 		//Devuelve el idpedido de la cesta que corresponda al usuario
         $sql = "SELECT pedidos.idpedido FROM pedidos, `usuarios-pedidos` WHERE pedidos.idPedido = `usuarios-pedidos`.`idPedido` and estado = 'cesta' and idusuario = '$user'";
         $consulta = $mysqli->query($sql) or die ($mysqli->error. " en la línea ".(__LINE__-1));
-        $fila = mysqli_fetch_assoc($consulta);
-        return $fila["idpedido"];
+
+        if($consulta->num_rows > 0){
+            $fila = mysqli_fetch_assoc($consulta);
+            return $fila["idpedido"];
+        }else {
+            return null;
+        }
 	}
 
     public function getIdPedido(){
