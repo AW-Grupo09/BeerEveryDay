@@ -15,7 +15,7 @@ if(!isset($_SESSION["logged"]))
 		<div id = "items">
 			<a href = 'index.php'> Home </a>
 			<a href = 'catalogo.php'> Catálogo </a>	
-			<a href = 'cesta.php'> Cesta </a>
+			<a href = 'mostrarCesta.php'> Cesta </a>
 		</div>
 		<div id="titulo">
 			<img src="./img/favicon.jpeg">
