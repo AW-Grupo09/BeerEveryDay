@@ -1,18 +1,36 @@
-#fondoInicio{
-	/*La imagen esta centrada horizontalmente y verticalmente siempre*/
-	background-position: center center;
-	/*La imagen no se repite*/
-	background-repeat:  no-repeat;
-	/*Redimension en distitos dispoditivos*/
-	background-attachment: fixed;
-	/*La imagen se reescala cuando se cambia  el ancho de ventana*/
-	background-size: cover;
-	/*Color de fondo*/
-	background-color:#464646;
+.container{
 	width: 100%;
+	border-style: solid;
+	border-color: #3F51B5;
+	border-width: 4px;
+	margin-top: 15px;
+	display: flex;
+	
 }
 
-#container {
-	min-height: 80%;
+.container>div{
+	color: white;
+	padding: 10px;
+	text-align: center;
+	width: 500px;
+	height: 650px;
+	font-size: 3em;
+	margin-right: 20px;
+	margin-left: 20px;
+	position: relative;
+}
+#cont01{
+	justify-content: center;
+}
+.centrado{
+	position: absolute;
+	top:40%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
+.centrado>a{
+	font-family: Bodoni MT Condensed;
+	font-size: 60px;
+	color: black;
+}
