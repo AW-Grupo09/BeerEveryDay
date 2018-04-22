@@ -1,7 +1,7 @@
 .container{
 	width: 100%;
 	border-style: solid;
-	border-color: #3F51B5;
+	border-color: #fff;
 	border-width: 4px;
 	margin-top: 15px;
 	display: flex;	
@@ -30,9 +30,15 @@
 }
 
 .texto-centrado>a{
-	font-family: Bodoni MT Condensed;
+	font-family: Open Sans;
+	-webkit-text-fill-color:#FDD835;
+  	-webkit-text-stroke-color: #424242;
+  	-webkit-text-stroke-width: 1.25px; 
 	font-size: 60px;
-	color: black;
 	text-decoration:none;
 	font-weight: bold;
+}
+.texto-centrado>a:hover{
+	font-size: 70px;
+	/*text-decoration:underline;*/
 }
