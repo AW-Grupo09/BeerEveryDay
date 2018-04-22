@@ -5,6 +5,7 @@
 <html lang="es">
 <head>
 	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/registrate.css" />
 	<title>Registro</title>
 	<link rel="stylesheet" type="text/css" href="css/common.css">
 </head>
@@ -15,53 +16,55 @@
 		<?php require ('comun/header.php'); ?>
 
 		<div class="container">
-			<h1> ¡Bienvenido, cervecero! </h1>
-			<h2> Estás a punto de unirte a BeerEveryday... </h2>
+			<div class="titulo">
+				<p><h1> ¡Bienvenido, cervecero! </h1></p>
+				<p><h2> Estás a punto de unirte a BeerEveryday... </h2></p>
+		    </div>
 
 			<?php if(!isset($_SESSION['regFailed'])){?>
 				<div class="form">
+
+
+
 	      			<form enctype="multipart/form-data" class="form-style" action="logica/procesarRegistro.php" method="post">
-	          			<ul>
-	          			<li>
-	          				<label>Nombre de usuario</label>
-	          				<input type="text" name="id" required/>
-	          			</li>
-			            <li>
-			              <label>Nombre</label>
+	      				<fieldset>
+						<legend> Formulario de registro: </legend>
+
+						<div class="imgcontainer">
+					   		<img src="img/users/default.png" alt="Avatar" class="avatar">
+					    </div>
+
+	          			
+          				<label>Nombre de usuario: </label>
+          				<input type="text" name="id" required/>
+	          			
+			              <label>Nombre: </label>
 			              <input type="text" name="nombre" required autofocus/>
-			            </li>
-			            <li>
-			              <label>Apellidos</label>
+			            
+			              <label>Apellidos: </label>
 			              <input type="text" name="apellidos" value="" required/>
-			            </li>
-			            <li>
-			              <label>Fecha de nacimiento</label>
+			            
+			              <label>Fecha de nacimiento: </label>
 			              <input type="date" name="fechaNac" placeholder="aaaa/mm/dd" required/>
-			            </li>
-			            <li>
-			              <label>Ciudad</label>
+			           
+			              <label>Ciudad: </label>
 			              <input type="text" name="ciudad" value=""/>
-	            		</li>
-			            <li>
-			              <label>Mail</label>
+	            		
+			              <label>Mail:</label>
 			              <input type="email" name="mail" placeholder="example123@example.com" required/>
-			            </li>
-			             <li>
-			              <label>Repita mail</label>
+			            
+			              <label>Repita mail:</label>
 			              <input type="email" name="remail" placeholder="Ambos mail deben coindicir" required/>
-			            </li>
-			            <li>
-			              <label>Contraseña</label>
+			            
+			              <label>Contraseña: </label>
 			              <input type="password" name="pass" value="" required/>
-			            </li>
-			            <li>
-			              <label>Repita contraseña</label>
+			            
+			              <label>Repita contraseña: </label>
 			              <input type="password" name="repass" placeholder="Ambas contraseñas deben coindicir" value="" required/>
-			            </li>
-			            <li>
-			      			<label class="foto_per_label">Foto de perfil</label>
-			              	<input id="archivo" class="foto_per" name="archivo" type="file"/>
-			            </li>
+			            
+			      			<p><label class="foto_per_label">Foto de perfil: </label></p>
+			              	<p><input id="archivo" class="foto_per" name="archivo" type="file"/></p>
+			            
 			         <!--
 			            <li>
 			            	<label>¿Qué rol desea adoptar? </label> <br>
@@ -71,20 +74,24 @@
 			            	</form>
 			            </li>
 			        -->
-			            <li>
-			              <button class="submit" type="submit">Registrarte</button>
-			            </li>
-			            <li>
-			              <button type="reset">Reestablecer</button>
-			            </li>
-
-			            <li>
+			            
+			              <p><button class="submit" type="submit">Regístrarte</button></p>
+			           
+			            
+			              <p><button type="reset">Reestablecer</button></p>
+			            
+			              
+			            
 			            	<p>Al hacer clic en "Registrarte", aceptas los
 			            	<a href="terminos.php"> términos y condiciones del servicio </a> y confirmas que has leído nuestra
 			            	<a href="politicadeprivacidad.php"> Política de privacidad. </a> </p>
-			            </li>
 
-	          			</ul>
+			            	<div>
+						    <!--<button type="button" class="cancelbtn">Atrás</button>-->
+						    <input type="button" value="Atrás" class="atrasbtn" onclick = "location='./index.php'"/>
+						    
+						 </div>
+			           
 	    			</form>
 			
 		</div>
