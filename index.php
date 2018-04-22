@@ -3,23 +3,31 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<link rel="stylesheet" type="text/css" href="css/estilo.css" />
-	<link rel="stylesheet" type="text/css" href="css/common.css">
+	<link rel="stylesheet" type="text/css" href="css/common.css"/>
+	<link rel="stylesheet" type="text/css" href="css/estilo.css"/>
+
 	<meta charset="utf-8">
 	<title>BeerEveyday</title>
 </head>
 <body>
-
 	<div id="contenedor"> <!-- Contenedor-->
 		<?php require('comun/header.php'); ?>
-
-			<div class="container"><!--bloque del contenido central-->
-				<img id="fondoInicio" src="img/BackgroundInicio.JPG" alt="BackgroundInicio" />
-				<a class="button" style="color:#110000; background: #ffffff" href="catalogo.php">¡Compra ahora!</a>
-			</div>
+		 <div id="cont01" class="container">
+            <div>
+            	<img src="img/cervezalink1.jpg" alt="imagen cerveza"/>
+            	<div class = "centrado"><a href="http://localhost/BeerEveryDay/catalogo.php">Top sold beers</a></div>
+            </div>
+            <div>
+            	<img src="img/cervezalink1.jpg" alt="imagen cerveza" />
+            	<div class = "centrado"><a href="http://localhost/BeerEveryDay/catalogo.php">New arraivals</a></div>
+            </div>
+            <div>
+            	<img src="img/cervezalink1.jpg" alt="imagen cerveza" />
+            	<div class = "centrado"><a href="http://localhost/BeerEveryDay/catalogo.php">groups</a></div>
+            </div>
+        </div>
 
 		<?php require('comun/footer.php'); ?>
-
 	</div> <!-- Fin del contenedor -->
 
 </body>
