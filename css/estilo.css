@@ -4,8 +4,7 @@
 	border-color: #3F51B5;
 	border-width: 4px;
 	margin-top: 15px;
-	display: flex;
-	
+	display: flex;	
 }
 
 .container>div{
@@ -22,15 +21,18 @@
 #cont01{
 	justify-content: center;
 }
-.centrado{
+.texto-centrado{
 	position: absolute;
 	top:40%;
 	left: 50%;
+	width: 100%;
 	transform: translate(-50%, -50%);
 }
 
-.centrado>a{
+.texto-centrado>a{
 	font-family: Bodoni MT Condensed;
 	font-size: 60px;
 	color: black;
+	text-decoration:none;
+	font-weight: bold;
 }
