@@ -47,7 +47,8 @@
 			echo "</div>";
 
 			if($_SESSION["logged"]){
-				$cantidad = array("0" , "1" , "2" , "3");
+				echo '<form  action="logica/procesarCesta.php" method="GET">';
+			/*	$cantidad = array("0" , "1" , "2" , "3");
 						echo ' Cantidad: <select name="cantidad">';
 							foreach ($cantidad as $i => $v) {
 								if($_POST['cantidad'] == $i){
@@ -60,8 +61,11 @@
 								}
 							}
 						echo '</select>';
-			echo '<input type="submit" name="comprar">';
-		}
+			*/	echo '<input name="unidades placeholder="unidades">';
+				//echo '<input type="submit" name="cerveza" value="'. $cerveza->getIdCerveza().'" placeholder="Añadir a la cesta""> ';
+				echo '<button class="submit" type="submit" name="cerveza" value="'. $cerveza->getIdCerveza().'">Añadir a la cesta</button>';
+				echo '</form>';
+			}
 ?>
 		</div>
 

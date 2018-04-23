@@ -47,7 +47,7 @@ class pedidos{
         $consulta = $mysqli->query($query) or die ($mysqli->error . " en la línea " . (__LINE__-1));
 	}
 
-	public static function iniciarCesta($cerveza, $unidades){
+	public static function iniciarCesta($cerveza, $unidades, $mysqli){
         //Obtiene el id mas alto y le suma 1 para un nuevo id
         //Lo busco yo
         /*
@@ -57,7 +57,7 @@ class pedidos{
         $id = $fila["id"];
         $id++;
         */
-        $nuevoID = uniqid()%100000;
+        $nuevoID = uniqid();
         //Se inicializa el pedido
         $sql = "INSERT INTO pedidos(idPedido, estado) VALUES (" . $nuevoID . ",'cesta')";
         $consulta = $mysqli->query($sql) or die ($mysqli->error . " en la línea " . (__LINE__-1));
@@ -104,14 +104,14 @@ class pedidos{
 
 	public function loadCesta($user, $mysqli){
 		//Devuelve el idpedido de la cesta que corresponda al usuario
-        $sql = "SELECT pedidos.idpedido FROM pedidos, `usuarios-pedidos` WHERE pedidos.idPedido = `usuarios-pedidos`.`idPedido` and estado = 'cesta' and idusuario = '$user'";
+        $sql = "SELECT pedidos.idPedido FROM pedidos, `usuarios-pedidos` WHERE pedidos.idPedido = `usuarios-pedidos`.`idPedido` and estado = 'cesta' and idusuario = '$user'";
         $consulta = $mysqli->query($sql) or die ($mysqli->error. " en la línea ".(__LINE__-1));
-
         if($consulta->num_rows > 0){
             $fila = mysqli_fetch_assoc($consulta);
             return $fila["idpedido"];
-        }else {
-            return null;
+        }
+        else {
+            return NULL;
         }
 	}
 

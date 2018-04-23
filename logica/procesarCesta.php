@@ -1,53 +1,72 @@
 <?php 
 
 	include('conexion.php');
-	include('cerveza.php');
-	include('pedido.php');
+	include('cervezas.php');
+	include('pedidos.php');
 
-	if(!isset($_SESSION["deleteCesta"])
+	$deleteCesta;
+	$deleteElem;
+
+	if(!isset($_GET["deleteCesta"]))
 		$deleteCesta = false;
 	else
-		$deleteCesta = $_SESSION["deleteCesta"];
+		$deleteCesta = $_GET["deleteCesta"];
 
-	if(isset($_SESSION["deleteElem"]))
+	if(!isset($_GET["deleteElem"]))
 		$deleteElem = false;
 	else
-		$deleteElem = $_SESSION["deleteElem"];
+		$deleteElem = $_GET["deleteElem"];
 
-	$Cerv = $_GET["cerveza"];
-	$Unids = $_GET["unidades"];
+	if(!isset($_GET["cerveza"]))
+		$Cerv= NULL;
+	else
+		$Cerv= $_GET["cerveza"];
 
-	$idCesta = pedidos::loadCesta($_SESSION["user"]);
+	if(!isset($_GET["unidades"]))
+		$Unids = 1;
+	else
+		$Unids = $_GET["unidades"];
+
+
+	$mysqli = conexion::getConection();
+	$idCesta = pedidos::loadCesta($_SESSION["user"], $mysqli);
 
 	//Comprobamos si quieren borrar la cesta
-	if($deleteCesta)
+	if($deleteCesta){
 		//Queremos eliminar la cesta, y comprobamos previamente que tenemos la cesta
 		if($idCesta != NULL)
-			pedidos::eliminarPedido($idPedido);	
+			pedidos::eliminarPedido($idPedido, $mysqli);	
+	}
 	else{
 		//Comprobamos si quieren borrar algun elemento
 		if($deleteElem){
 		 	//Queremos eliminar un elemento de la cesta
-			pedidos::eliminarElementoCesta($Cerv, $idCesta);
+			pedidos::eliminarElementoCesta($Cerv, $idCesta, $mysqli);
 		 	
 		}
 		else{
 			//Si no es ninguna de las dos, es porque se quiere aniadir algo a la cesta
 			//Comprobamos si ya hay una inicializada para inicializarla o no
-			if($idCesta != NULL)
-				pedidos::addBeers($Cerv, $Unids, $idCesta);
-			else
-			 	pedidos::iniciarCesta($Cerv, $Unids);
+			if($Cerv == NULL)
+				echo "<p>Ha habido un problema con la cerveza que ha intentado añadir a la cesta<p>";
+			if($idCesta != NULL){
+				echo "se da la cesta por iniciada";
+				pedidos::addBeers($Cerv, $Unids, $idCesta, $mysqli);
+			}
+			else{
+				echo "Se inicia cesta";
+			 	pedidos::iniciarCesta($Cerv, $Unids, $mysqli);
+			 }
 		}
 	}
-
-
+	echo $Cerv, $Unids;
+/*
 	if($deleteElem)
 		header('Location: ../mostrarCesta.php');
 	else if ($deleteCesta)
 		header('Location: ../index.php');
 	else
 		header('Location: ../catalogo.php')
-
+*/
 
 ?>
