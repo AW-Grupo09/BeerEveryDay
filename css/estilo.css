@@ -48,22 +48,9 @@
 	letter-spacing: -1px;
 	background-color:black;
 	color:#FFE510;
+
 	transition-delay: 0.05s;
 }
-/*
-<a href="/link" data-clickid="home-tier2-button1" class="button yel">enlace</a>
-
-*/
-
-/*
-# .yel {
-    background-color: #FFE510;
-    color: #000!important;
-    height: 2.2em;
-    padding: 0 1.2em;
-    width: 98%!important;
-}*/
-
 /*
 -----------------------------------------------------------------------
 */

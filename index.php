@@ -27,7 +27,6 @@
                   	<div class = "texto-centrado"><a href="http://localhost/BeerEveryDay/catalogo.php">GROUPS</a></div>
                   </div>
             </div>
-            <a id= "button" href="http://localhost/BeerEveryDay/catalogo.php">Groups</a>
 
 		<?php require('comun/footer.php'); ?>
 	</div> <!-- Fin del contenedor -->
