@@ -1,0 +1,12 @@
+div.item {
+    border: 1px blue solid;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 20px;
+    width: 28%;
+    display: inline-block;
+}
+
+section#filtros {
+    display: none;
+}
