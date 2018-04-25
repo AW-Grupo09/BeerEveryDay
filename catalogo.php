@@ -14,9 +14,9 @@
         <link rel="stylesheet" type="text/css" href="css/common.css">
         <link rel="stylesheet" href="css/catalogo.css">
     </head>
-    <body>
-        <?php require('comun/header.php'); ?>
+    <body>    
         <div id="contenedor">
+            <?php require('comun/header.php'); ?>
             <header>
                 <div class="alert alert-info">
                     <h2>Filtro de Búsqueda </h2>
@@ -142,8 +142,9 @@
                 $sql='';
                 ?>
             </div>
+            <?php require('comun/footer.php'); ?>
         </div>
-        <?php require('comun/footer.php'); ?>
+        
 
 
         <script>
