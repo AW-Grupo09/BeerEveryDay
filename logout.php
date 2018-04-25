@@ -23,11 +23,9 @@
 			<h1>¡Hasta pronto!</h1>
 		</div>
 
-		<?php require ('comun/header.php'); ?>
-
+		<?php require ('comun/footer.php'); ?>	
+		
 	</div> <!-- Fin del contenedor -->
-
-	<?php require ('comun/header.php'); ?>
 
 </body>
 </html>

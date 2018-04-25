@@ -13,13 +13,16 @@ if(!isset($_SESSION["logged"]))
 <div class="header">
 	<div id = "toolbar">
 		<div id = "items">
-			<a href = 'index.php'> Home </a>
-			<a href = 'catalogo.php'> Catálogo </a>	
-			<a href = 'mostrarCesta.php'> Cesta </a>
+			<h3> <a href = 'index.php'> Home </a></h3>
+			<h3> <a href = 'catalogo.php'> Catálogo </a> </h3>
+			<h3> <a href = 'mostrarCesta.php'> Cesta </a> </h3>
+			<h3> <a href = 'mostrarCesta.php'> Grupos </a> </h3>
 		</div>
+
 		<div id="titulo">
-			<img src="./img/favicon.jpeg">
+			<img src="./img/logo.png">
 		</div>
+
 		<div id = "login">
 			<?php 
 			if($_SESSION["logged"])
@@ -28,12 +31,17 @@ if(!isset($_SESSION["logged"]))
 				echo "<h3>No has iniciado sesión</h3>";
 
 			if(isset($_SESSION["user"])&&($_SESSION["user"] == true)){ ?>
-				<a href = 'perfil.php'> Perfil </a>
-				<a href = 'logout.php'> Salir </a>
+				<h3> 
+					<a href = 'perfil.php'> Perfil </a> 
+					<a href = 'logout.php'> Salir </a> 
+				</h3>
 			<?php } else { ?>
-				<a href = 'login.php'> Login </a>
-				<a href = 'registrate.php'> Regístrate </a>
+				<h3>
+					<a href = 'login.php'> Login </a> 
+					<a href = 'registrate.php'> Regístrate </a> 
+				</h3>
 			<?php } ?>
 		</div>
+
 	</div>
 </div>

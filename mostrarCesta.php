@@ -15,7 +15,7 @@
 <html lang="es">
 <head>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<link rel="stylesheet" type="text/css" href="css/common.css" />
 	<?php
 		$mysqli = conexion::getConection();
 		$user = new usuario($_SESSION["user"], $mysqli);
@@ -26,10 +26,9 @@
 
 <body>
 
-	<?php require ('comun/header.php'); ?>
-
 	<div id="contenedor">
 
+		<?php require ('comun/header.php'); ?>
 		<div class="container">
 			
 			<?php
@@ -93,9 +92,11 @@
 		
 		</div>
 
+		<?php require('comun/footer.php'); ?>
+
 	</div>
 
-	<?php require('comun/footer.php'); ?>
+	
 
 </body>
 </html>

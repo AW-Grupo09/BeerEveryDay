@@ -1,12 +1,32 @@
+@font-face {
+	font-family: miFuente;
+	src: url(../fonts/BebasKai.otf);
+}
+
+body {
+	font-family: miFuente;
+}
+
 #contenedor {
 	display: flex;
 	flex-direction: column;
 }
 
+/*
+.container{
+	background: #ccc;
+}
+*/
+
 .header a, .footer a {
 	color: blue;
 	text-decoration: none;	
 }
+
+.header, .footer {
+	background-color: #FFC107;
+}
+
 
 #toolbar {
 	margin: 15px;
@@ -16,26 +36,35 @@
 }
 
 #toolbar>#items {
-	justify-content: space-around;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
 }
 
+/*#toolbar>#items>#item {
+	display: flex;
+	flex-wrap: wrap;
+}*/
+
 #toolbar>#titulo {
+	display: flex;
+	align-items: center;
 	justify-content: center;
 }
 
 #toolbar>#titulo>img {
-	width: 40%;
+	width: 75%;
 }
 
-
 #toolbar>#login {
-	justify-content: space-around;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: nowrap;
 }
 
 .footer {
 	bottom: 0;
 	text-align: center;
-}
-#container{
-	background: #ccc;
 }

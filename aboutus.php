@@ -2,16 +2,17 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<link rel="stylesheet" type="text/css" href="css/estilo.css" />
+	<link rel="stylesheet" type="text/css" href="css/common.css" />
 	<meta charset="utf-8">
 	<title>About us</title>
 </head>
 
 <body>
 
-	<?php require('comun/header.php'); ?>
+		<div id="contenedor"> <!-- Contenedor-->
+			<?php require('comun/header.php'); ?>
 
-	<div id="contenedor"> <!-- Contenedor-->
+		<div class="container">
 
 		<h2>About us</h2>
 
@@ -61,9 +62,13 @@
 		<p> Amante de viajar y conocer otras culturas, cinéfilo y apasionado del fútbol. Entusiasta de tomarse unas buenas cañas con amigos. </p>
 		<p> Correo: gonzamol@ucm.es </p>
 
+	</div>
+
+
+		<?php require('comun/footer.php'); ?>
 	</div> <!-- Fin del contenedor -->
 
-	<?php require('comun/footer.php'); ?>
+	
 
 </body>
 </html>
