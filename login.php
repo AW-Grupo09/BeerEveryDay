@@ -58,12 +58,8 @@
 						    <span class="psw">Has olvidado tu <a href="#">contraseña?</a></span>
 						</div>
 
-					  </div>
-
 					</fieldset>
 				</form>
-
-				
 
 				<?php 
 				if($_SESSION["LoginFailed"])
@@ -82,6 +78,7 @@
 		<?php require('comun/footer.php'); ?>
 
 	</div> <!-- Fin del contenedor -->
+	
 
 </body>
 </html>

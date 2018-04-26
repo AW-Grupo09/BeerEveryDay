@@ -6,11 +6,9 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<link rel="stylesheet" type="text/css" href="style.css" />
-	<link rel="stylesheet" type="text/css" href="css/common.css">
-	<!--<link rel="stylesheet" type="text/css" href="css/logout.css" />-->
+	<link rel="stylesheet" type="text/css" href="css/common.css"/>
 	<meta charset="utf-8">
-	<title>logout</title>
+	<title>Logout</title>
 </head>
 
 <body>

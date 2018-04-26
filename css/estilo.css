@@ -30,12 +30,12 @@
 }
 
 @font-face {
-	font-family: miFuente;
+	font-family: fuenteBoton;
 	src: url(../fonts/BEBAS.ttf);
 }
 
 .texto-centrado>a{
-	font-family: miFuente;
+	font-family: fuenteBoton;
   	font-size: 25px;
 	text-decoration:none;
 	font-weight: bold;

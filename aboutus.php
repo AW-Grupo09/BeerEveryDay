@@ -64,10 +64,9 @@
 
 	</div>
 
-
 		<?php require('comun/footer.php'); ?>
-	</div> <!-- Fin del contenedor -->
 
+	</div> <!-- Fin del contenedor -->
 	
 
 </body>

@@ -1,9 +1,3 @@
-<head>
-	<!--<link rel="stylesheet" type="text/css" href="./css/estilo.css" />-->
-	<link rel="stylesheet" type="text/css" href="./css/footer.css">
-	<meta charset="utf-8">
-</head>
-
 <div class="footer">
 	<p> 
 		<a href="contacto.php"> Contacto </a>

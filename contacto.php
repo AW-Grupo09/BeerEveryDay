@@ -11,7 +11,7 @@
 	<div id="contenedor">
 		<?php require ('comun/header.php'); ?>
 
-		<div id="container">
+		<div class="container">
 			<h1> Contacto </h1>
 
 			<form action="mailto:beer@everyday.es" method="POST">

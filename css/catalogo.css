@@ -10,3 +10,8 @@ div.item {
 section#filtros {
     display: none;
 }
+
+a {
+	color: blue;
+	text-decoration: none;	
+}

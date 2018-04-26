@@ -10,13 +10,13 @@
     <head>
         <title>Catálogo</title>
         <meta charset="utf-8">
-        <link href="css/estilo.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="css/common.css">
         <link rel="stylesheet" href="css/catalogo.css">
     </head>
     <body>    
         <div id="contenedor">
             <?php require('comun/header.php'); ?>
+            <div class="container">
             <header>
                 <div class="alert alert-info">
                     <h2>Filtro de Búsqueda </h2>
@@ -142,10 +142,13 @@
                 $sql='';
                 ?>
             </div>
-            <?php require('comun/footer.php'); ?>
-        </div>
-        
 
+        </div> <!-- Cierre de container -->
+
+            <?php require('comun/footer.php'); ?>
+
+        </div> <!-- Cierre de contenedor-->
+        
 
         <script>
             var boton = document.getElementById("expandFilter");

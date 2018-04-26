@@ -1,5 +1,11 @@
 <?php 
 	session_start(); 
+	if(!isset($_SESSION["logged"]))
+		$_SESSION["logged"] = false;
+	else{
+		if($_SESSION["logged"])
+			header('Location: index.php');
+	}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -23,8 +29,6 @@
 
 			<?php if(!isset($_SESSION['regFailed'])){?>
 				<div class="form">
-
-
 
 	      			<form enctype="multipart/form-data" class="form-style" action="logica/procesarRegistro.php" method="post">
 	      				<fieldset>
@@ -62,39 +66,28 @@
 			              <label>Repita contraseña: </label>
 			              <input type="password" name="repass" placeholder="Ambas contraseñas deben coindicir" value="" required/>
 			            
-			      			<p><label class="foto_per_label">Foto de perfil: </label></p>
-			              	<p><input id="archivo" class="foto_per" name="archivo" type="file"/></p>
+			      		  <label class="foto_per_label">Foto de perfil: </label>
+			              <label> <p> <input id="archivo" class="foto_per" name="archivo" type="file"/> </p></label>
+			      
 			            
-			         <!--
-			            <li>
-			            	<label>¿Qué rol desea adoptar? </label> <br>
-			            	<form>
-			            		<input type="radio" name="rol" value="registrado" checked> Registrado <br>
-			            		<input type="radio" name="rol" value="vendedor"> Vendedor <br>			            		
-			            	</form>
-			            </li>
-			        -->
-			            
-			              <p><button class="submit" type="submit">Regístrate</button></p>
+			              <label> <button class="submit" type="submit">Regístrate</button></label>
 			           
 			            
-			              <p><button type="reset">Reestablecer</button></p>
+			              <label> <p> <button type="reset">Reestablecer</button> </p></label>
 			            
-			              
-			            
+			                         
 			            	<p>Al hacer clic en "Registrarte", aceptas los
 			            	<a href="terminos.php"> términos y condiciones del servicio </a> y confirmas que has leído nuestra
 			            	<a href="politicadeprivacidad.php"> Política de privacidad. </a> </p>
 
 			            	<div>
-						    <!--<button type="button" class="cancelbtn">Atrás</button>-->
-						    <input type="button" value="Atrás" class="atrasbtn" onclick = "location='./index.php'"/>
-						    
-						 </div>
-			           
+						   		<input type="button" value="Atrás" class="atrasbtn" onclick = "location='./index.php'"/>
+						    </div>
+			           </fieldset>
 	    			</form>
+	    			
 			
-		</div>
+				</div>
 
 		<?php }
 		else{
@@ -107,6 +100,9 @@
 
 
 		?>
+
+	</div> <!--Cierre del container-->
+
 
 		<?php require('comun/footer.php'); ?>
 

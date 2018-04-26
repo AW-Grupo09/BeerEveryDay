@@ -14,7 +14,7 @@
 	<div id="contenedor">
 		<?php require ('comun/header.php'); ?>
 
-		<div id="container">
+		<div class="container">
 
 			<h2> FAQ - Frequently asked questions </h2>
 
