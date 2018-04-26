@@ -16,10 +16,9 @@ body {
 }
 
 .container{
-	/*background: #ccc;*/
-	margin: 25px;
-	width: 100%;
-	min-height: 100%;
+	background: white;
+	padding: 35px 60px 35px;
+	min-height: 70vh; /* para el footer abajo*/
 }
 
 
@@ -70,13 +69,12 @@ a {
 }
 
 #items>a:hover, #login>a:hover {
-    background-color: #FF6F00;
+    background-color: black;
     border-radius: 5px;
-    color: white;
+    color: #FFC107;
 }
 
 
 .footer {
-	bottom: 0;
 	text-align: center;
 }

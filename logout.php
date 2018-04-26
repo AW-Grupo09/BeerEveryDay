@@ -1,7 +1,15 @@
 <?php 
-		session_start();
-		session_destroy();
-		session_start();
+	session_start();
+	session_destroy();
+	session_start();
+
+	if(!isset($_SESSION["logged"]))
+		$_SESSION["logged"] = false;
+	else{
+		if($_SESSION["logged"])
+			header('Location: index.php');
+	}
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -19,6 +27,7 @@
 
 		<div class="container"><!--bloque del contenido central-->
 			<h1>¡Hasta pronto!</h1>
+			<p> Es una pena que te hayas ido... ¡Esperamos verte pronto! </p>
 		</div>
 
 		<?php require ('comun/footer.php'); ?>	
