@@ -75,7 +75,7 @@
 			            </li>
 			        -->
 			            
-			              <p><button class="submit" type="submit">Regístrarte</button></p>
+			              <p><button class="submit" type="submit">Regístrate</button></p>
 			           
 			            
 			              <p><button type="reset">Reestablecer</button></p>

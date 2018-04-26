@@ -1,8 +1,10 @@
 form {
-	border: 3px solid #f1f1f1;
+	border: 3px solid #FFC107; 
 	margin-left: 20%;
-	margin-right: 20%;
+    margin-right: 20%;
 	padding: 1%;
+    -webkit-border-radius: 15px;
+    border-radius: 15px; 
 }
 
 input[type=text], input[type=password] {
@@ -12,30 +14,50 @@ input[type=text], input[type=password] {
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
 }
 
 button {
-    background-color: #4CAF50;
-    color: white;
+    background-color: #FFC107; /*#4CAF50*/
+    color: black;
     padding: 1.7%;
     margin-left: 35%;
     border: none;
     cursor: pointer;
     width: 30%;
+    -webkit-border-radius: 10px;
+    border-radius: 10px; 
+    font-family: miFuente;
+    src: url(../fonts/BebasKai.otf);
+    font-size: 20px;
    
 }
 
 button:hover {
     opacity: 0.8;
+    background-color: black;
+    color: #FFC107;
 }
 
 .atrasbtn {
 	background-color: grey;
-    color: white;
+    color: black;
     padding: 1.7%;
     border: none;
     cursor: pointer;
-    width: auto;
+    width: 15%;
+    -webkit-border-radius: 10px;
+    border-radius: 10px; 
+    font-family: miFuente;
+    src: url(../fonts/BebasKai.otf);
+    font-size: 15px;
+}
+
+.atrasbtn:hover {
+    opacity: 0.8;
+    background-color: black;
+    color: #FFC107;
 }
 
 
@@ -62,5 +84,6 @@ span.psw {
 
 fieldset{
 	padding: 4%;
-
+    -webkit-border-radius: 10px;
+    border-radius: 10px; 
 }
