@@ -1,3 +1,11 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+
+
+
 @font-face {
 	font-family: miFuente;
 	src: url(../fonts/Gravity-Bold.otf);
@@ -19,6 +27,9 @@ body {
 	background: white;
 	padding: 35px 60px 35px;
 	min-height: 70vh; /* para el footer abajo*/
+
+	margin-top: 185px;
+
 }
 
 
@@ -26,6 +37,15 @@ a {
 	color: blue;
 	text-decoration: none;	
 }
+
+
+.header{
+	position: fixed;
+	width: 100%;
+	z-index: 200;
+}
+
+
 
 .header, .footer {
 	background-color: #FFC107;
