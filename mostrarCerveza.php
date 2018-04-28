@@ -1,5 +1,5 @@
 <?php 
-	include('logica/conexion.php');
+	require_once __DIR__.'/includes/config.php';
 	include('logica/cervezas.php');
 	global $sql;
 ?>
@@ -25,11 +25,10 @@
 
 	<div id="contenedor"> <!-- Contenedor-->
 
-		<?php require ('comun/header.php'); ?>
+		<?php require ('includes/comun/header.php'); ?>
 
 		<div class="container"><!--bloque del contenido central-->
-			
-			
+					
 			
 <?php
 			echo "<div>";
@@ -61,7 +60,7 @@
 								}
 							}
 						echo '</select>';
-			*/	echo '<input type="number" name="unidades" min=1 placeholder="unidades">';
+			*/	echo '<input name="unidades placeholder="unidades">';
 				//echo '<input type="submit" name="cerveza" value="'. $cerveza->getIdCerveza().'" placeholder="Añadir a la cesta""> ';
 				echo '<button class="submit" type="submit" name="cerveza" value="'. $cerveza->getIdCerveza().'">Añadir a la cesta</button>';
 				echo '</form>';
@@ -69,10 +68,9 @@
 ?>
 		</div>
 
-		<?php require('comun/footer.php'); ?>
+		<?php require('includes/comun/footer.php'); ?>
 
 	</div> <!-- Fin del contenedor -->
-
 	
 
 </body>

@@ -1,7 +1,3 @@
-<?php 
-	include('logica/conexion.php');
-	global $sql;
-?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -12,7 +8,7 @@
 	</head>
 	<body>
 	<div id="contenedor">
-		<?php require ('comun/header.php'); ?>
+		<?php require ('includes/comun/header.php'); ?>
 
 		<div class="container">
 
@@ -70,7 +66,7 @@
 
 
         </div>
-        <?php require('comun/footer.php'); ?>
+        <?php require('includes/comun/footer.php'); ?>
     </div>
 	</body>
 </html>

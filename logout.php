@@ -1,16 +1,14 @@
 <?php 
-	session_start();
+	require_once __DIR__.'/includes/config.php';
+
+	//Doble seguridad: unset + destroy
+	unset($_SESSION["login"]);
+	unset($_SESSION["esAdmin"]);
+	unset($_SESSION["nombre"]);
+
 	session_destroy();
-	session_start();
-
-	if(!isset($_SESSION["logged"]))
-		$_SESSION["logged"] = false;
-	else{
-		if($_SESSION["logged"])
-			header('Location: index.php');
-	}
-
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -21,18 +19,18 @@
 
 <body>
 
-	<div id="contenedor"> <!-- Contenedor-->
+<div id="contenedor"> <!-- Contenedor-->
 
-		<?php require ('comun/header.php'); ?>
+	<?php require ('includes/comun/header.php'); ?>
 
-		<div class="container"><!--bloque del contenido central-->
-			<h1>¡Hasta pronto!</h1>
-			<p> Es una pena que te hayas ido... ¡Esperamos verte pronto! </p>
-		</div>
+	<div class="container"><!--bloque del contenido central-->
+		<h1>¡Hasta pronto!</h1>
+		<p> Es una pena que te hayas ido... ¡Esperamos verte pronto! </p>
+	</div>
 
-		<?php require ('comun/footer.php'); ?>	
-		
-	</div> <!-- Fin del contenedor -->
+	<?php require ('includes/comun/footer.php'); ?>	
+	
+</div> <!-- Fin del contenedor -->
 
 </body>
 </html>

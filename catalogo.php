@@ -1,9 +1,8 @@
-
-    <?php
-        include('logica/conexion.php');
-        include('logica/cervezas.php');
-        global $sql;
-    ?>
+<?php
+    require_once __DIR__.'/includes/config.php';
+    include('logica/cervezas.php');
+    global $sql;
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -15,7 +14,7 @@
     </head>
     <body>    
         <div id="contenedor">
-            <?php require('comun/header.php'); ?>
+            <?php require('./includes/comun/header.php'); ?>
             <div class="container">
             <header>
                 <div class="alert alert-info">
@@ -145,7 +144,7 @@
 
         </div> <!-- Cierre de container -->
 
-            <?php require('comun/footer.php'); ?>
+            <?php require('./includes/comun/footer.php'); ?>
 
         </div> <!-- Cierre de contenedor-->
         

@@ -9,7 +9,7 @@
 	<body>
 
 	<div id="contenedor">
-		<?php require ('comun/header.php'); ?>
+		<?php require ('includes/comun/header.php'); ?>
 
 		<div class="container">
 			<h1> Contacto </h1>
@@ -33,7 +33,7 @@
 			</form>
 		</div>
 
-		<?php require('comun/footer.php'); ?>
+		<?php require('includes/comun/footer.php'); ?>
 
 	</div> <!-- Fin del contenedor -->
 

@@ -1,4 +1,7 @@
-<?php session_start(); ?>
+<?php 	
+	require_once __DIR__.'/includes/config.php';
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -10,7 +13,7 @@
 <body>
 
 		<div id="contenedor"> <!-- Contenedor-->
-			<?php require('comun/header.php'); ?>
+			<?php require('includes/comun/header.php'); ?>
 
 		<div class="container">
 
@@ -64,7 +67,7 @@
 
 	</div>
 
-		<?php require('comun/footer.php'); ?>
+		<?php require('includes/comun/footer.php'); ?>
 
 	</div> <!-- Fin del contenedor -->
 	

@@ -1,7 +1,5 @@
 <?php
 
-	session_start();
-
 	//Conexión con la base de datos
 	define('hostname','localhost');
 	define('usuario', 'root');

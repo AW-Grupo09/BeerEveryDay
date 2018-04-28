@@ -1,13 +1,12 @@
 <?php 
-
-	include('logica/usuario.php');
+	require_once __DIR__.'/includes/config.php';
+	require_once __DIR__.'/logica/pedidos.php';
+	require_once __DIR__.'/logica/cervezas.php';
+	/*include('logica/usuario.php');
 	include('logica/pedidos.php');
-	include('logica/cervezas.php');
+	include('logica/cervezas.php');*/
 
-	if(!isset($_SESSION["logged"]))
-		$_SESSION["logged"] = false;
-	else{
-		if(!$_SESSION["logged"])
+	if(!$_SESSION['login']){
 			header('Location: login.php');
 	}
 ?>
@@ -25,11 +24,11 @@
 
 	<div id="contenedor">
 
-		<?php require ('comun/header.php'); ?>
+		<?php require ('includes/comun/header.php'); ?>
 		<div class="container">
 			
 			<?php
-				$idCesta = pedidos::loadCesta($_SESSION["user"]);
+				$idCesta = pedidos::loadCesta($_SESSION["nombreUsuario"]);
 
 				if(isset($_POST['Eliminar'])){
 					pedidos::eliminarCesta($idCesta);
@@ -83,7 +82,7 @@
 		
 		</div>
 
-		<?php require('comun/footer.php'); ?>
+		<?php require('includes/comun/footer.php'); ?>
 
 	</div>
 

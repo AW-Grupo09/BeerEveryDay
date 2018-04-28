@@ -1,12 +1,12 @@
-		
 <?php 
-	include('logica/conexion.php');
-	include('logica/usuario.php');
-	if(!isset($_SESSION["logged"]))
-		$_SESSION["logged"] = false;
-	else{
-		if(!$_SESSION["logged"])
-			header('Location: index.php');
+	/*include('logica/conexion.php');
+	include('logica/usuario.php');*/
+
+	require_once __DIR__.'/includes/config.php';
+    include('includes/Usuario.php');
+
+    if(!$_SESSION['login']){
+		header('Location: index.php');
 	}
 ?>
 
@@ -17,8 +17,7 @@
 	<link rel="stylesheet" type="text/css" href="css/common.css">
 	<meta charset="utf-8">
 	<?php
-		$mysqli = conexion::getConection();
-		$user = new usuario($_SESSION["user"], $mysqli);
+		$user = Usuario::buscaUsuario($_SESSION['nombreUsuario']);
 	?>
 	<title>Perfil</title>
 
@@ -28,34 +27,34 @@
 
 	<div id="contenedor"> <!-- Contenedor-->
 
-		<?php require ('comun/header.php'); ?>
+		<?php require ('includes/comun/header.php'); ?>
 
 		<div class="container"><!--bloque del contenido central-->
 			
 
 			<div class = avatar>
 				<?php 
-					if($user->getAvatar() != NULL)
-						echo "<img width='10%' height='10%' src='img/users/" . $user->getAvatar() . " ' alt = 'Imagen de perfil'>"; 
+					if($user->avatar() != NULL)
+						echo "<img width='10%' height='10%' src='img/users/" . $user->avatar() . " ' alt = 'Imagen de perfil'>"; 
 					else
 						echo "<img width='10%' height='10%' src='img/users/default.png' alt = 'Imagen de perfil'>"; 
 				?> 
 			</div>
 
 			<div class = nickname>
-				<p>User: <?php echo $user->getIdUsuario();?></p>
+				<p>User: <?php echo $user->nombreUsuario();?></p>
 			</div>
 
 			<div class = userData>
-				<p>Nombre: <?php echo $user->getNombre();?></p>
-				<p>Apellidos: <?php echo $user->getApellido();?></p>
-				<p>Ciudad: <?php echo $user->getCiudad();?></p>
-				<p>Fecha de nacimiento: <?php echo $user->getFechaNac(); ?> </p>
+				<p>Nombre: <?php echo $user->nombre();?></p>
+				<p>Apellidos: <?php echo $user->apellidos();?></p>
+				<p>Ciudad: <?php echo $user->ciudad();?></p>
+				<p>Fecha de nacimiento: <?php echo $user->fechaNac(); ?> </p>
 			</div>
 
 		</div>
 
-		<?php require('comun/footer.php'); ?>
+		<?php require('includes/comun/footer.php'); ?>
 
 	</div> <!-- Fin del contenedor -->	
 
