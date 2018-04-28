@@ -13,6 +13,7 @@
 <html lang="es">
 <head>
 	<link rel="stylesheet" type="text/css" href="css/common.css"/>
+	<link rel="stylesheet" type="text/css" href="css/logout.css"/>
 	<meta charset="utf-8">
 	<title>Logout</title>
 </head>
@@ -24,8 +25,12 @@
 	<?php require ('includes/comun/header.php'); ?>
 
 	<div class="container"><!--bloque del contenido central-->
-		<h1>¡Hasta pronto!</h1>
-		<p> Es una pena que te hayas ido... ¡Esperamos verte pronto! </p>
+		<div class="centrado">
+			<h1>¡Hasta pronto!</h1>
+			<div class= "espaciado">
+				<p> Es una pena que te hayas ido... ¡Esperamos verte pronto! </p>
+			</div>
+		</div>
 	</div>
 
 	<?php require ('includes/comun/footer.php'); ?>	
