@@ -48,29 +48,28 @@ class pedidos{
 	}
 
 	public static function iniciarCesta($cerveza, $unidades, $mysqli){
-        //Obtiene el id mas alto y le suma 1 para un nuevo id
-        //Lo busco yo
-        /*
-        $sql = "SELECT MAX(idPedido) FROM pedidos";
-        $consulta = $mysqli->query($sql) or die ($mysqli->error. " en la línea ".(__LINE__-1));
-        $fila = mysqli_fetch_assoc($consulta);
-        $id = $fila["id"];
-        $id++;
-        */
-        $nuevoID = uniqid();
-        //Se inicializa el pedido
+        //Se inicia el pedido
+		$nuevoID = uniqid();
         $sql = "INSERT INTO pedidos(idPedido, estado) VALUES (" . $nuevoID . ",'cesta')";
         $consulta = $mysqli->query($sql) or die ($mysqli->error . " en la línea " . (__LINE__-1));
         addCerveza($cerveza, $unidades, $nuevoID);
         //Añadir en la tabla pedidos-usuarios
-
+		$this->insertarPedidosUsuarios($nuevoID, $mysqli);
     }
+	
+	public static function insertarPedidosUsuarios($idUser, $mysqli){
+		$sql "INSERT INTO `usuarios-pedidos`(`idUsuario`, `idPedido`) VALUES ('" . $this->user . "'," . $idUser . ")";
+		$consulta = $mysqli->query($sql) or die ($mysqli->error . " en la línea " . (__LINE__-1));
+	}
+	
+	public static function insertarPedidosGrupos($idGrupo, $mysqli){
+		$sql "INSERT INTO `usuarios-pedidos`(`idUsuario`, `idPedido`) VALUES ('" . $this->grupo . "'," . $nuevoID . ")";
+		$consulta = $mysqli->query($sql) or die ($mysqli->error . " en la línea " . (__LINE__-1));
+	}
 
     public static function addBeers($cerveza, $unidades, $idpedido){
-
         $sql = "INSERT INTO `pedidos-cervezas`(`idCerveza`, `idPedido`, `unidades`) VALUES (" .  $cerveza . "," . $idpedido . "," .  $unidades . ")";
         $consulta = $mysqli->query($sql) or die ($mysqli->error . " en la línea " . (__LINE__-1));
-
     }
 
     private function loadUser($idPedido, $mysqli){
@@ -83,15 +82,15 @@ class pedidos{
 
 	private function loadBeers($idPedido, $mysqli){
 		//Carga las cervezas y las unidades de un pedid
-        $sql = "SELECT idcerveza, unidades FROM `pedidos-cervezas` WHERE idpedido = ". $idPedido;
-        $consulta = $mysqli->query($sql) or die ($mysqli->error. " en la línea ".(__LINE__-1)); 
+        	$sql = "SELECT idcerveza, unidades FROM `pedidos-cervezas` WHERE idpedido = ". $idPedido;
+        	$consulta = $mysqli->query($sql) or die ($mysqli->error. " en la línea ".(__LINE__-1)); 
 
-        $i = 0;
-        while($fila= mysqli_fetch_assoc($consulta)){
-            $this->cervezas[$i] = $fila["idcerveza"];
-            $this->unidades[$i] = $fila["unidades"];
-            $i++;
-        }   
+        	$i = 0;
+        	while($fila= mysqli_fetch_assoc($consulta)){
+        	    $this->cervezas[$i] = $fila["idcerveza"];
+        	    $this->unidades[$i] = $fila["unidades"];
+        	    $i++;
+        	}   
 	}
 
 	private function loadGroup($idPedido){
