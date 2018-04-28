@@ -1,6 +1,5 @@
 <?php 
 
-	include('conexion.php');
 	include('cervezas.php');
 	include('pedidos.php');
 
@@ -28,20 +27,20 @@
 		$Unids = $_GET["unidades"];
 
 
-	$mysqli = conexion::getConection();
-	$idCesta = pedidos::loadCesta($_SESSION["user"], $mysqli);
+
+	$idCesta = pedidos::loadCesta($_SESSION["user"]);
 
 	//Comprobamos si quieren borrar la cesta
 	if($deleteCesta){
 		//Queremos eliminar la cesta, y comprobamos previamente que tenemos la cesta
 		if($idCesta != NULL)
-			pedidos::eliminarPedido($idPedido, $mysqli);	
+			pedidos::eliminarPedido($idPedido);	
 	}
 	else{
 		//Comprobamos si quieren borrar algun elemento
 		if($deleteElem){
 		 	//Queremos eliminar un elemento de la cesta
-			pedidos::eliminarElementoCesta($Cerv, $idCesta, $mysqli);
+			pedidos::eliminarElementoCesta($Cerv, $idCesta);
 		 	
 		}
 		else{
@@ -50,16 +49,15 @@
 			if($Cerv == NULL)
 				echo "<p>Ha habido un problema con la cerveza que ha intentado añadir a la cesta<p>";
 			if($idCesta != NULL){
-				echo "se da la cesta por iniciada";
-				pedidos::addBeers($Cerv, $Unids, $idCesta, $mysqli);
+				pedidos::addBeers($Cerv, $Unids, $idCesta);
+				header('Location: ../mostrarCesta.php');
 			}
 			else{
-				echo "Se inicia cesta";
-			 	pedidos::iniciarCesta($Cerv, $Unids, $mysqli);
+			 	pedidos::iniciarCesta($Cerv, $Unids, $_SESSION["user"]);
+			 	header('Location: ../mostrarCesta.php');
 			 }
 		}
 	}
-	echo $Cerv, $Unids;
 /*
 	if($deleteElem)
 		header('Location: ../mostrarCesta.php');
