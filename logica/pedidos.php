@@ -1,6 +1,9 @@
 <?php
+require_once __DIR__.'/conexion.php';
+//include('conexion.php');
 
-class pedidos{
+class pedidos {
+
 	private $idPedido;
 	private $user;
 	private $grupo;
@@ -13,8 +16,8 @@ class pedidos{
 	private $fechaLimite;
 	private $fechaEntrega;
 
-	public function __construct($idPedido, $mysqli){
-
+	public function __construct($idPedido){
+        $mysqli = conexion::getConection();
 		$query="SELECT * FROM pedidos WHERE idPedido LIKE '$idPedido'";
 		$resultado=$mysqli->query($query) or die ($mysqli->error. " en la línea ".(__LINE__-1));
 		if (mysqli_num_rows($resultado) > 0) {
@@ -29,26 +32,29 @@ class pedidos{
 			$this->fechaEntrega = $fila["fechaEntrega"];
 		}
 		
-		$this->loadUser($idPedido, $mysqli);
+		$this->loadUser($idPedido);
 		$this->loadBeers($idPedido, $mysqli);
         if($this->estado == "grupo")
             $this->grupo = LoadGrupo($idPedido);
 	}
 
-	public static function eliminarCesta($cesta, $mysqli){
+	public static function eliminarCesta($cesta){
         //Elimina cesta
+        $mysqli = conexion::getConection();
 		$query = "DELETE FROM  Pedidos WHERE idPedido = '$cesta'";
 		$correcto = $mysqli->query($query) or die ($mysqli->error . " en la línea " . (__LINE__-1));
 	}
 
-	public static function eliminarElementoCesta($cerveza, $idPedido, $mysqli){
+	public static function eliminarElementoCesta($cerveza, $idPedido){
 		//Esta funcion se encarga de eliminar un elemento de la cesta
+        $mysqli = conexion::getConection();
         $query = "DELETE FROM  `pedidos-cervezas` WHERE idcerveza = '" . $cerveza . "'  and idpedido = '" . $idPedido . "'";
         $consulta = $mysqli->query($query) or die ($mysqli->error . " en la línea " . (__LINE__-1));
 	}
 
-	public static function iniciarCesta($cerveza, $unidades, $mysqli){
+	public static function iniciarCesta($cerveza, $unidades){
         //Se inicia el pedido
+        $mysqli = conexion::getConection();
 		$nuevoID = uniqid();
         $sql = "INSERT INTO pedidos(idPedido, estado) VALUES (" . $nuevoID . ",'cesta')";
         $consulta = $mysqli->query($sql) or die ($mysqli->error . " en la línea " . (__LINE__-1));
@@ -58,22 +64,24 @@ class pedidos{
     }
 	
 	public static function insertarPedidosUsuarios($idUser, $mysqli){
-		$sql "INSERT INTO `usuarios-pedidos`(`idUsuario`, `idPedido`) VALUES ('" . $this->user . "'," . $idUser . ")";
+		$sql = "INSERT INTO `usuarios-pedidos`(`idUsuario`, `idPedido`) VALUES ('" . $this->user . "'," . $idUser . ")";
 		$consulta = $mysqli->query($sql) or die ($mysqli->error . " en la línea " . (__LINE__-1));
 	}
 	
-	public static function insertarPedidosGrupos($idGrupo, $mysqli){
-		$sql "INSERT INTO `usuarios-pedidos`(`idUsuario`, `idPedido`) VALUES ('" . $this->grupo . "'," . $nuevoID . ")";
+	public static function insertarPedidosGrupos($idGrupo){
+		$sql = "INSERT INTO `usuarios-pedidos`(`idUsuario`, `idPedido`) VALUES ('" . $this->grupo . "'," . $nuevoID . ")";
 		$consulta = $mysqli->query($sql) or die ($mysqli->error . " en la línea " . (__LINE__-1));
 	}
 
     public static function addBeers($cerveza, $unidades, $idpedido){
+        $mysqli = conexion::getConection();
         $sql = "INSERT INTO `pedidos-cervezas`(`idCerveza`, `idPedido`, `unidades`) VALUES (" .  $cerveza . "," . $idpedido . "," .  $unidades . ")";
         $consulta = $mysqli->query($sql) or die ($mysqli->error . " en la línea " . (__LINE__-1));
     }
 
-    private function loadUser($idPedido, $mysqli){
+    private function loadUser($idPedido){
         //Carga el usuario al que le corresponda el pedido
+        $mysqli = conexion::getConection();
         $sql = "SELECT idUsuario FROM `usuarios-pedidos` WHERE idPedido = $idPedido";
         $consulta = $mysqli->query($sql) or die ($mysqli->error. " en la línea ".(__LINE__-1));
         $fila = mysqli_fetch_assoc($consulta);
@@ -93,7 +101,7 @@ class pedidos{
         	}   
 	}
 
-	private function loadGroup($idPedido){
+	private function loadGroup($idPedido, $mysqli){
 		//Carga el id del grupo al que pertenece el pedido
         $sql = "SELECT idGrupo FROM `grupos-pedidos`";
         $consulta = $mysqli->query($sql) or die ($mysqli->error. " en la línea ".(__LINE__-1));
@@ -101,13 +109,15 @@ class pedidos{
         return $fila["idgrupo"];
 	}
 
-	public function loadCesta($user, $mysqli){
+	public static function loadCesta($user){
 		//Devuelve el idpedido de la cesta que corresponda al usuario
+        $mysqli = conexion::getConection();
         $sql = "SELECT pedidos.idPedido FROM pedidos, `usuarios-pedidos` WHERE pedidos.idPedido = `usuarios-pedidos`.`idPedido` and estado = 'cesta' and idusuario = '$user'";
         $consulta = $mysqli->query($sql) or die ($mysqli->error. " en la línea ".(__LINE__-1));
-        if($consulta->num_rows > 0){
-            $fila = mysqli_fetch_assoc($consulta);
-            return $fila["idpedido"];
+        $fila = mysqli_fetch_assoc($consulta);
+        if($consulta->num_rows > 0 and isset($fila["idPedido"])){
+            //$fila = mysqli_fetch_assoc($consulta);
+            return $fila["idPedido"];
         }
         else {
             return NULL;
