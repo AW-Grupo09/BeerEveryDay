@@ -37,7 +37,7 @@
 					echo " <div class='info'><p><h1> ¿ Por qué no echas un vistazo a nuestro catálogo ? </h1></p></div>";
 					echo " <div class='subinfo'><p> Puedes acceder pinchando <a href = 'catalogo.php'>aquí.</a></p></div>";
 				}else {
-					echo " <h2> Esta es la página donde puedes visualizar tus pedidos, $usernameSesion: </h2>";
+					echo " <h2> Esta es la página donde puedes visualizar tus pedidos,".  $_SESSION['nombreUsuario'] . " </h2>";
 					//echo " <div><h3>Si que tiene. </h3></div>";
 					echo " <div class='espaciado'><p> El id de tu pedido es el número: $idPedido </p></div>";
 				}

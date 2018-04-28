@@ -51,19 +51,25 @@ class pedidos {
         $consulta = $mysqli->query($query) or die ($mysqli->error . " en la línea " . (__LINE__-1));
     }
 
-    public static function iniciarCesta($cerveza, $unidades){
+    public static function iniciarCesta($cerveza, $unidades, $user){
         //Se inicia el pedido
         $mysqli = conexion::getConection();
-        $nuevoID = uniqid();
-        $sql = "INSERT INTO pedidos(idPedido, estado) VALUES (" . $nuevoID . ",'cesta')";
+        //$nuevoID = uniqid();
+        $sql = "INSERT INTO pedidos(estado) VALUES ('cesta')";
         $consulta = $mysqli->query($sql) or die ($mysqli->error . " en la línea " . (__LINE__-1));
-        addCerveza($cerveza, $unidades, $nuevoID);
         //Añadir en la tabla pedidos-usuarios
-        $this->insertarPedidosUsuarios($nuevoID, $mysqli);
+
+        $sql = "SELECT max(idPedido) as idpedido FROM pedidos";
+        $consulta = $mysqli->query($sql) or die ($mysqli->error. " en la línea ".(__LINE__-1));
+        $fila = mysqli_fetch_assoc($consulta);
+        
+        pedidos::addBeers($cerveza, $unidades, $fila['idpedido']);
+
+        pedidos::insertarPedidosUsuarios($user, $fila['idpedido'], $mysqli);
     }
     
-    public static function insertarPedidosUsuarios($idUser, $mysqli){
-        $sql = "INSERT INTO `usuarios-pedidos`(`idUsuario`, `idPedido`) VALUES ('" . $this->user . "'," . $idUser . ")";
+    public static function insertarPedidosUsuarios($idUser, $idPedido, $mysqli){
+        $sql = "INSERT INTO `usuarios-pedidos`(`idUsuario`, `idPedido`) VALUES ('" . $idUser . "'," . $idPedido . ")";
         $consulta = $mysqli->query($sql) or die ($mysqli->error . " en la línea " . (__LINE__-1));
     }
     
