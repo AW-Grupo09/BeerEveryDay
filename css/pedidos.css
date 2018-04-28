@@ -1,0 +1,16 @@
+
+div.info {
+	font-weight: bold;
+	text-align: center;
+	padding-top: 5%;
+}
+
+div.subinfo {
+	text-align: center;
+	padding-top: 2%;
+}
+
+div.espaciado {
+	padding-top: 3%;
+	padding-bottom: 3%;
+}

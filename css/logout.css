@@ -1,0 +1,9 @@
+div.centrado {
+	font-weight: bold;
+	text-align: center;
+	padding-top: 5%;
+}
+
+div.espaciado {
+	padding: 4%;
+}

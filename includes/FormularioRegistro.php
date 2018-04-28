@@ -73,11 +73,11 @@ require_once __DIR__.'/funcionImagen.php';
 		$ciudad = isset($_POST['ciudad']) ? $_POST['ciudad'] : null;
 		$email = isset($_POST['email']) ? $_POST['email'] : null; 
 		$remail = isset($_POST['remail']) ? $_POST['remail'] : null; 
-		$avatar = isset($datos['archivo']['name']) ? $datos['archivo']['name'] : null;
+		//$avatar = isset($datos['archivo']['name']) ? $datos['archivo']['name'] : null;
 		//$size = isset($datos['archivo']['size']) ? $datos['archivo']['size'] : null;
 		//$avatar = $_FILES['archivo']['name'];
 		//$size = $_FILES['archivo']['size'];
-		$directorio = '../img/users/';
+		//$directorio = '../img/users/';
 
 		if ( empty($nombreUsuario) || mb_strlen($nombreUsuario) < 5 ) {
 			$erroresFormulario[] = "El nombre de usuario tiene que tener una longitud de al menos 5 caracteres.";
@@ -96,11 +96,11 @@ require_once __DIR__.'/funcionImagen.php';
 			$erroresFormulario[] = "Los emails deben coincidir";
 		}
 
-		if(!esImagen($avatar)) {
+		/*if(!esImagen($avatar)) {
 			$erroresFormulario[] = "Esa extensión de imagen no es aceptada";
 		}
 
-		/*if(!imgValida($avatar, $size)){
+		if(!imgValida($avatar, $size)){
 			$erroresFormulario[] = "Inserta una imagen válida";
 		}*/
 
@@ -112,7 +112,7 @@ require_once __DIR__.'/funcionImagen.php';
 			} else {
 				$_SESSION['login'] = true;
 				$_SESSION['nombreUsuario'] = $nombreUsuario;
-				move_uploaded_file($datos['archivo']['tmp_name'], $directorio.$avatar);
+				//move_uploaded_file($datos['archivo']['tmp_name'], $directorio.$avatar);
 				header('Location: index.php');
 				exit();
 

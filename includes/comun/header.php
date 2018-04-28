@@ -36,7 +36,13 @@
 		<a id="item" href = 'catalogo.php'> Catálogo </a> 
 		<a id="item" href = 'grupos.php'> Grupos </a> 
 		<a id="item" href = 'mostrarCesta.php'> Mi cesta </a>
-			
+
+		<?php
+		
+		if(isset($_SESSION["login"])&&($_SESSION["login"] == true)){ ?>
+			<a id="item" href = 'mostrarPedido.php'> Mis pedidos </a>
+
+		<?php } ?>
 	</id>
 
 </div> <!-- Cierre de header-->

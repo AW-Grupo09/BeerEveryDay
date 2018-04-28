@@ -1,5 +1,7 @@
 <?php 
 
+	//require_once __DIR__.'../includes/config.php';
+	require_once '../includes/config.php';
 	include('conexion.php');
 	include('cervezas.php');
 	include('pedidos.php');
@@ -29,7 +31,7 @@
 
 
 	$mysqli = conexion::getConection();
-	$idCesta = pedidos::loadCesta($_SESSION["user"], $mysqli);
+	$idCesta = pedidos::loadCesta($_SESSION["nombreUsuario"], $mysqli);
 
 	//Comprobamos si quieren borrar la cesta
 	if($deleteCesta){

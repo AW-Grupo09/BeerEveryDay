@@ -45,7 +45,7 @@
 			
 			echo "</div>";
 
-			if($_SESSION["logged"]){
+			if(isset($_SESSION['login']) && $_SESSION['login']){
 				echo '<form  action="logica/procesarCesta.php" method="GET">';
 			/*	$cantidad = array("0" , "1" , "2" , "3");
 						echo ' Cantidad: <select name="cantidad">';
