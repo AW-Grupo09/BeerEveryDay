@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__.'/conexion.php';
+
 class cervezas{
 
 	private $idCerveza;
@@ -15,8 +17,8 @@ class cervezas{
 	private $precio;
 	private $tipo;
 
-	public function __construct($id, $mysqli){
-
+	public function __construct($id){
+		$mysqli = conexion::getConection();
 		$query="SELECT * FROM cervezas WHERE id = $id ";
 		$resultado=$mysqli->query($query) or die ($mysqli->error. " en la línea ".(__LINE__-1));
 		if (mysqli_num_rows($resultado) > 0) {
