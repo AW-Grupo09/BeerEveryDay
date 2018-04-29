@@ -94,7 +94,7 @@ class pedidos {
     }
 
     private function loadBeers($idPedido, $mysqli){
-        //Carga las cervezas y las unidades de un pedid
+        //Carga las cervezas y las unidades de un pedido
             $sql = "SELECT idcerveza, unidades FROM `pedidos-cervezas` WHERE idpedido = ". $idPedido;
             $consulta = $mysqli->query($sql) or die ($mysqli->error. " en la línea ".(__LINE__-1)); 
 
@@ -130,19 +130,54 @@ class pedidos {
     }
 
     public static function loadPedidos($user){
-        //Devuelve el id del pedidod que corresponde al usuario 
         $mysqli = conexion::getConection();
-        $sql = "SELECT pedidos.idPedido FROM pedidos, `usuarios-pedidos` WHERE pedidos.idPedido = `usuarios-pedidos`.`idPedido` and idusuario = '$user'";
+        $sql = "SELECT * FROM `usuarios-pedidos` WHERE idusuario = '$user' GROUP BY idPedido ";
         $consulta = $mysqli->query($sql) or die ($mysqli->error. " en la línea ".(__LINE__-1));
-        $fila = mysqli_fetch_assoc($consulta);
-        if($consulta->num_rows > 0 and isset($fila["idPedido"])){
-            //$fila = mysqli_fetch_assoc($consulta);
-            return $fila["idPedido"];
-        }
+ 
+        $array = array();
+
+        if (mysqli_num_rows($consulta)!=0){
+
+            while($fila = mysqli_fetch_assoc($consulta) ){
+
+                array_push( $array, $fila['idPedido']);
+                
+            }
+            return $array;
+        }     
         else {
             return NULL;
         }
     }
+
+     public static function loadInfoPedido($idPedido){
+        $mysqli = conexion::getConection();
+        //$sql = "SELECT * FROM `usuarios-pedidos` WHERE idusuario = '$user' GROUP BY idPedido ";
+
+        $sql = "SELECT idcerveza, unidades FROM `pedidos-cervezas` WHERE idpedido = ". $idPedido;
+        $consulta = $mysqli->query($sql) or die ($mysqli->error. " en la línea ".(__LINE__-1));
+ 
+        $array2 = array();
+
+        if (mysqli_num_rows($consulta)!=0){
+
+            while($fila = mysqli_fetch_assoc($consulta) ){
+
+                array_push( $array2, $fila['idcerveza']);
+                array_push( $array2, $fila['unidades']);
+               
+  
+            }
+            return $array2;
+        }     
+        else {
+            return NULL;
+        }
+    }
+
+    
+
+
 
     public function getIdPedido(){
         return $this->idPedido;

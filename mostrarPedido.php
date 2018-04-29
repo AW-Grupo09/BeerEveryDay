@@ -37,9 +37,30 @@
 					echo " <div class='info'><p><h1> ¿ Por qué no echas un vistazo a nuestro catálogo ? </h1></p></div>";
 					echo " <div class='subinfo'><p> Puedes acceder pinchando <a href = 'catalogo.php'>aquí.</a></p></div>";
 				}else {
-					echo " <h2> Esta es la página donde puedes visualizar tus pedidos,".  $_SESSION['nombreUsuario'] . " </h2>";
-					//echo " <div><h3>Si que tiene. </h3></div>";
-					echo " <div class='espaciado'><p> El id de tu pedido es el número: $idPedido </p></div>";
+					echo " <h2> Esta es la página donde puedes visualizar tus pedidos,".  $_SESSION['nombreUsuario'] .  ". </h2>";
+					
+
+					$numero = sizeof($idPedido);
+					echo "<div class ='espaciado'><h1><ul>Tus pedidos son los siguientes: </h1></div>";
+
+					for ($i = 0; $i < $numero; $i++) {
+						
+					    echo "<p><h2><li>Id del pedido: $idPedido[$i] </li></h2></p>";
+					    $pedido = new pedidos($idPedido[$i]);
+					    $estado = $pedido->getEstado();
+					    echo "Su estado es : $estado  , ";
+					    $unidades = $pedido->getUnidades();
+					    //$numUnidades = sizeof($unidades);
+					    $numUnidades = array_values($unidades)[0];
+					    echo " las unidades pedidas son: $numUnidades";
+
+					    $cervezas = $pedido->getCervezas();
+					    $numCerves = array_values($cervezas)[0];;
+					    echo " y el identificador de la cerveza es: $numCerves .";
+					    $pedido = null;
+						
+					}
+					echo "</ul>";
 				}
 
 
