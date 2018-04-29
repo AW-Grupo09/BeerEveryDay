@@ -49,15 +49,15 @@
 					    $pedido = new pedidos($idPedido[$i]);
 					    $estado = $pedido->getEstado();
 					    echo "Su estado es : $estado  , ";
+					    
 					    $unidades = $pedido->getUnidades();
-					    //$numUnidades = sizeof($unidades);
 					    $numUnidades = array_values($unidades)[0];
 					    echo " las unidades pedidas son: $numUnidades";
 
 					    $cervezas = $pedido->getCervezas();
 					    $numCerves = array_values($cervezas)[0];;
 					    echo " y el identificador de la cerveza es: $numCerves .";
-					    $pedido = null;
+					   
 						
 					}
 					echo "</ul>";
