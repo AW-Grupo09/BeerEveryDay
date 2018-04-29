@@ -131,11 +131,26 @@
                 foreach ($idsCervezas as $key => $value) {
                     $cerveza = new cervezas($value, $mysqli);
                     echo "<div class='item'>";
-                    echo "<h1> <a href = mostrarCerveza.php?id=" . $cerveza->getIdCerveza() . ">" . $cerveza->getNombre() . "</a></h1>";
-                    echo "<img alt='Imagen de cerveza' src=". $cerveza->getImagen()." width='200' height='200' />";
-                    echo "<p>" . $cerveza->getCapacidad(). " ". $cerveza->getColor()." ". $cerveza->getTipo()." ". $cerveza->getGrado()." ". $cerveza->getGrano(). " ".
-                        $cerveza->getPais()."</p>";
-                    echo "<p>" . $cerveza->getPrecio(). " € ". "</p>";
+                        echo "<div class ='seccionItem'>";
+                            echo "<img alt='Imagen de cerveza' src=". $cerveza->getImagen()." width='200' height='200'/>";
+                            echo "<div class = 'descripcion'>";
+                                echo "<h1> <a href = mostrarCerveza.php?id=" . $cerveza->getIdCerveza() . ">" . $cerveza->getNombre() . "</a></h1>";
+                                echo "<div  class = 'ficha'>";
+                                        echo "<p>" . $cerveza->getPais()."</p>";
+                                        echo "<p>" . $cerveza->getTipo()."</p>";
+                                        /*echo "<div class = 'columnax3'>";
+                                            echo "<p>" . $cerveza->getColor()."</p>";
+                                            echo "<p>" . $cerveza->getGrado()."</p>";
+                                            echo "<p>" . $cerveza->getCapacidad() ."</p>";
+                                        echo "</div>";*/
+                                        echo "<p>" . $cerveza->getColor(). "  " . $cerveza->getGrado()." º " . $cerveza->getCapacidad() . " cL" . "</p>";
+                                    /*echo "<p>" . $cerveza->getGrano(). "</p>";*/
+                                echo "</div>";
+                                echo "<p>" . $cerveza->getPrecio(). " € ". "</p>";
+                            echo "</div>";
+                        echo "</div>";
+                        /*echo "<div  class ='col'>";
+                        echo "</div>";*/
                     echo "</div>";
                 }
                 $sql='';

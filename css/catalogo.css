@@ -1,3 +1,13 @@
+@font-face {
+	font-family: Roboto-Regular;
+	src: url(../fonts/Roboto-Regular.ttf);
+}
+@font-face{
+	font-family: Roboto-Light;
+	src: url(../fonts/Roboto-Light.ttf);
+}
+
+
 div.item {
     border: 1px blue solid;
     border-radius: 5px;
@@ -5,6 +15,41 @@ div.item {
     padding: 20px;
     width: 28%;
     display: inline-block;
+    background-color: #f3f2f1;
+}
+
+.item>div.seccionItem{
+	display: flex;
+	flex‐direction: row;
+}
+.descripcion{
+	padding-left: 10px;
+	padding-right: 10px;
+	width: 50%;
+	flex‐direction:colum;
+}
+.descripcion>h1{
+	font-size: 20px;
+}
+
+.ficha{
+	padding-top: 0.5px;
+	padding-left: 7px;
+	width: 80%;
+	background-color: #FBFBEF;
+	line-height:7px;
+	font-family: Roboto-Regular;
+    text-decoration: none;
+    font-size: 13px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border-bottom: 2px solid #dbdbdb;
+    padding-bottom: 5px;
+    color:#505050;
+    -webkit-tap-highlight-color: transparent;
+}
+.columnax3{
+	flex‐direction:row;
 }
 
 section#filtros {
