@@ -192,7 +192,7 @@ class pedidos {
         $idCesta = pedidos::loadCesta($user);
         if($idCesta != NULL){
             $Date = date("Y/m/d");
-            $sql = "UPDATE pedidos SET estado = 'confirmado' , Direccion = " .$Dir. ", tarjeta = " .$Tarjeta. ", fechaPedido = " .$Date. "WHERE idpedido = ". $idCesta;
+            $sql = "UPDATE pedidos SET estado = 'confirmado' , Direccion = '" .$Dir. "', tarjeta = '" .$Tarjeta. "', fechaPedido = '" .$Date. "'WHERE idPedido = ". $idCesta;
             $consulta = $mysqli->query($sql) or die ($mysqli->error. " en la línea ".(__LINE__-1));
             return NULL;
         }
