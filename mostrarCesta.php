@@ -2,6 +2,9 @@
 	require_once __DIR__.'/includes/config.php';
 	require_once __DIR__.'/logica/pedidos.php';
 	require_once __DIR__.'/logica/cervezas.php';
+	require_once __DIR__.'/includes/FormularioPedido.php';
+
+
 	/*include('logica/usuario.php');
 	include('logica/pedidos.php');
 	include('logica/cervezas.php');*/
@@ -73,6 +76,20 @@
 								echo "<input type='submit' name='Eliminar' value='Eliminar cesta'>";
 						echo "</form>";
 						echo "</div>";
+						?>
+						<button onclick="myFunction()">Comprar la cesta</button>
+							<div id="procesarCesta">
+
+								<?php 
+									$opciones = array();
+
+									$formulario = new FormularioPedido("formPed", $opciones);
+									$formulario->gestiona();
+
+								?>
+
+							</div> 
+						<?php
 					}else {
 						pedidos::eliminarCesta($idCesta);
 						echo "<div><h1>Tu cesta está vacía.<h1></div>";
@@ -86,6 +103,16 @@
 
 	</div>
 
+<script>
+function myFunction() {
+    var x = document.getElementById("procesarCesta");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+</script>
 	
 
 </body>

@@ -45,10 +45,10 @@
 
 					for ($i = 0; $i < $numero; $i++) {
 						
-					    echo "<p><h2><li>Id del pedido: $idPedido[$i] </li></h2></p>";
+					    echo "<h2><li>Id del pedido: $idPedido[$i] </li></h2>";
 					    $pedido = new pedidos($idPedido[$i]);
 					    $estado = $pedido->getEstado();
-					    echo "Su estado es : $estado  , ";
+					    echo "<p>Su estado es : $estado  , ";
 					    
 					    $unidades = $pedido->getUnidades();
 					    $numUnidades = array_values($unidades)[0];
@@ -56,7 +56,7 @@
 
 					    $cervezas = $pedido->getCervezas();
 					    $numCerves = array_values($cervezas)[0];;
-					    echo " y el identificador de la cerveza es: $numCerves .";
+					    echo " y el identificador de la cerveza es: $numCerves .</p>";
 					   
 						
 					}

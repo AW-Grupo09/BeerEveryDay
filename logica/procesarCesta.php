@@ -37,14 +37,12 @@
 		if($idCesta != NULL)
 			pedidos::eliminarPedido($idPedido);	
 	}
-	else{
-		//Comprobamos si quieren borrar algun elemento
-		if($deleteElem){
+	//Comprobamos si quieren borrar algun elemento
+	else if($deleteElem){
 		 	//Queremos eliminar un elemento de la cesta
 			pedidos::eliminarElementoCesta($Cerv, $idCesta);
-		 	
-		}
-		else{
+	}
+	else{
 			//Si no es ninguna de las dos, es porque se quiere aniadir algo a la cesta
 			//Comprobamos si ya hay una inicializada para inicializarla o no
 			if($Cerv == NULL)
@@ -60,7 +58,7 @@
 			 	header('Location: ../mostrarCesta.php');
 			 }
 		}
-	}
+	
 	
 /*
 	if($deleteElem)

@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__.'/conexion.php';
+require_once __DIR__ . '/../includes/Aplicacion.php';
 
 class pedidos {
 
@@ -16,7 +16,8 @@ class pedidos {
     private $fechaEntrega;
 
     public function __construct($idPedido){
-        $mysqli = conexion::getConection();
+        $app = Aplicacion::getSingleton();
+        $mysqli = $app->conexionBd();
         $query="SELECT * FROM pedidos WHERE idPedido LIKE '$idPedido'";
         $resultado=$mysqli->query($query) or die ($mysqli->error. " en la línea ".(__LINE__-1));
         if (mysqli_num_rows($resultado) > 0) {
@@ -39,25 +40,27 @@ class pedidos {
 
     public static function eliminarCesta($cesta){
         //Elimina cesta
-        $mysqli = conexion::getConection();
+        $app = Aplicacion::getSingleton();
+        $mysqli = $app->conexionBd();
         $query = "DELETE FROM  Pedidos WHERE idPedido = '$cesta'";
         $correcto = $mysqli->query($query) or die ($mysqli->error . " en la línea " . (__LINE__-1));
     }
 
     public static function eliminarElementoCesta($cerveza, $idPedido){
         //Esta funcion se encarga de eliminar un elemento de la cesta
-        $mysqli = conexion::getConection();
+        $app = Aplicacion::getSingleton();
+        $mysqli = $app->conexionBd();
         $query = "DELETE FROM  `pedidos-cervezas` WHERE idcerveza = '" . $cerveza . "'  and idpedido = '" . $idPedido . "'";
         $consulta = $mysqli->query($query) or die ($mysqli->error . " en la línea " . (__LINE__-1));
     }
 
     public static function iniciarCesta($cerveza, $unidades, $user){
         //Se inicia el pedido
-        $mysqli = conexion::getConection();
+        $app = Aplicacion::getSingleton();
+        $mysqli = $app->conexionBd();
         //$nuevoID = uniqid();
         $sql = "INSERT INTO pedidos(estado) VALUES ('cesta')";
         $consulta = $mysqli->query($sql) or die ($mysqli->error . " en la línea " . (__LINE__-1));
-        //Añadir en la tabla pedidos-usuarios
 
         $sql = "SELECT max(idPedido) as idpedido FROM pedidos";
         $consulta = $mysqli->query($sql) or die ($mysqli->error. " en la línea ".(__LINE__-1));
@@ -79,14 +82,18 @@ class pedidos {
     }
 
     public static function addBeers($cerveza, $unidades, $idpedido){
-        $mysqli = conexion::getConection();
+        $app = Aplicacion::getSingleton();
+        $mysqli = $app->conexionBd();
+        if($unidades == NULL)
+            $unidades = 1;
         $sql = "INSERT INTO `pedidos-cervezas`(`idCerveza`, `idPedido`, `unidades`) VALUES (" .  $cerveza . "," . $idpedido . "," .  $unidades . ")";
         $consulta = $mysqli->query($sql) or die ($mysqli->error . " en la línea " . (__LINE__-1));
     }
 
     private function loadUser($idPedido){
         //Carga el usuario al que le corresponda el pedido
-        $mysqli = conexion::getConection();
+        $app = Aplicacion::getSingleton();
+        $mysqli = $app->conexionBd();
         $sql = "SELECT idUsuario FROM `usuarios-pedidos` WHERE idPedido = $idPedido";
         $consulta = $mysqli->query($sql) or die ($mysqli->error. " en la línea ".(__LINE__-1));
         $fila = mysqli_fetch_assoc($consulta);
@@ -116,7 +123,8 @@ class pedidos {
 
     public static function loadCesta($user){
         //Devuelve el idpedido de la cesta que corresponda al usuario
-        $mysqli = conexion::getConection();
+        $app = Aplicacion::getSingleton();
+        $mysqli = $app->conexionBd();
         $sql = "SELECT pedidos.idPedido FROM pedidos, `usuarios-pedidos` WHERE pedidos.idPedido = `usuarios-pedidos`.`idPedido` and estado = 'cesta' and idusuario = '$user'";
         $consulta = $mysqli->query($sql) or die ($mysqli->error. " en la línea ".(__LINE__-1));
         $fila = mysqli_fetch_assoc($consulta);
@@ -130,7 +138,8 @@ class pedidos {
     }
 
     public static function loadPedidos($user){
-        $mysqli = conexion::getConection();
+        $app = Aplicacion::getSingleton();
+        $mysqli = $app->conexionBd();
         $sql = "SELECT * FROM `usuarios-pedidos` WHERE idusuario = '$user' GROUP BY idPedido ";
         $consulta = $mysqli->query($sql) or die ($mysqli->error. " en la línea ".(__LINE__-1));
  
@@ -151,7 +160,8 @@ class pedidos {
     }
 
      public static function loadInfoPedido($idPedido){
-        $mysqli = conexion::getConection();
+        $app = Aplicacion::getSingleton();
+        $mysqli = $app->conexionBd();
         //$sql = "SELECT * FROM `usuarios-pedidos` WHERE idusuario = '$user' GROUP BY idPedido ";
 
         $sql = "SELECT idcerveza, unidades FROM `pedidos-cervezas` WHERE idpedido = ". $idPedido;
@@ -175,7 +185,21 @@ class pedidos {
         }
     }
 
-    
+    public static function procesarCesta($Dir, $Tarjeta, $user){
+
+        $app = Aplicacion::getSingleton();
+        $mysqli = $app->conexionBd();
+        $idCesta = pedidos::loadCesta($user);
+        if($idCesta != NULL){
+            $Date = date("Y/m/d");
+            $sql = "UPDATE pedidos SET estado = 'confirmado' , Direccion = " .$Dir. ", tarjeta = " .$Tarjeta. ", fechaPedido = " .$Date. "WHERE idpedido = ". $idCesta;
+            $consulta = $mysqli->query($sql) or die ($mysqli->error. " en la línea ".(__LINE__-1));
+            return NULL;
+        }
+        else{
+            return "<p>Error al cargar la cesta</p>";
+        }
+    }
 
 
 
