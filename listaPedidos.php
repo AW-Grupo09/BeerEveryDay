@@ -1,7 +1,7 @@
 <?php 
 	
 	require_once __DIR__.'/includes/config.php';
-	include('logica/pedidos.php');
+	include('includes/pedidos.php');
 
 	if(!$_SESSION['login']){
 		header('Location: index.php');

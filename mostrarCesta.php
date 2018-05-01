@@ -1,13 +1,13 @@
 <?php 
 	require_once __DIR__.'/includes/config.php';
-	require_once __DIR__.'/logica/pedidos.php';
-	require_once __DIR__.'/logica/cervezas.php';
+	require_once __DIR__.'/includes/pedidos.php';
+	require_once __DIR__.'/includes/cervezas.php';
 	require_once __DIR__.'/includes/FormularioPedido.php';
 
 
-	/*include('logica/usuario.php');
-	include('logica/pedidos.php');
-	include('logica/cervezas.php');*/
+	/*include('includes/usuario.php');
+	include('includes/pedidos.php');
+	include('includes/cervezas.php');*/
 
 	if(!$_SESSION['login']){
 			header('Location: login.php');

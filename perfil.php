@@ -51,6 +51,10 @@
 				<p>Ciudad: <?php echo $user->ciudad();?></p>
 				<p>Fecha de nacimiento: <?php echo $user->fechaNac(); ?> </p>
 			</div>
+			<a id="item" href = 'listaPedidos.php'> Mis pedidos </a>
+
+		
+
 
 		</div>
 

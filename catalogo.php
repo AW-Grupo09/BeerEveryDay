@@ -1,6 +1,6 @@
 <?php
     require_once __DIR__.'/includes/config.php';
-    include('logica/cervezas.php');
+    include('includes/cervezas.php');
     global $sql;
 ?>
 
