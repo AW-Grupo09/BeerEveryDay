@@ -132,7 +132,9 @@
                     $cerveza = new cervezas($value, $mysqli);
                     echo "<div class='item'>";
                         echo "<div class ='seccionItem'>";
-                            echo "<img alt='Imagen de cerveza' src=". $cerveza->getImagen()." width='200' height='200'/>";
+                            echo "<img alt='Imagen de cerveza' src=". $cerveza->getImagen()." width=80% height=80%/>";
+                        echo "</div>";
+                        echo "<div class ='seccionItem'>";
                             echo "<div class = 'descripcion'>";
                                 echo "<h1> <a href = mostrarCerveza.php?id=" . $cerveza->getIdCerveza() . ">" . $cerveza->getNombre() . "</a></h1>";
                                 echo "<div  class = 'ficha'>";
