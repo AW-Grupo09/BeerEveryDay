@@ -3,6 +3,7 @@
 	<head>
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<link rel="stylesheet" type="text/css" href="css/common.css">
+		<link rel="stylesheet" type="text/css" href="css/footer.css"/>
 		<meta charset="utf-8">
 		<title> Contacto </title>
 	</head>

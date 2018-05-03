@@ -10,6 +10,7 @@
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="css/registrate.css" />
+	<link rel="stylesheet" type="text/css" href="css/footer.css"/>
 	<title>Registro</title>
 	<link rel="stylesheet" type="text/css" href="css/common.css">
 </head>

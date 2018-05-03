@@ -10,6 +10,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<link rel="stylesheet" type="text/css" href="css/login.css" />
+	<link rel="stylesheet" type="text/css" href="css/footer.css"/>
 	<title> Login </title>
 	<link rel="stylesheet" type="text/css" href="css/common.css">
 </head>

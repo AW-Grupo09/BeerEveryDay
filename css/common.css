@@ -12,6 +12,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	align-items: stretch;
+	/*overflow: hidden;*/
 
 }
 
@@ -19,9 +20,7 @@ body {
 	background: white;
 	padding: 35px 60px 35px;
 	min-height: 70vh; /* para el footer abajo*/
-
 	margin-top: 185px;
-
 }
 
 
@@ -35,6 +34,8 @@ a {
 	position: fixed;
 	width: 100%;
 	z-index: 200;
+	width: 100%;
+	max-width: 2000px;
 }
 
 
@@ -45,7 +46,7 @@ a {
 
 
 #up {
-	padding: 10px;
+	padding: 5px;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -87,6 +88,137 @@ a {
 }
 
 
-.footer {
+
+
+/****************************FOOTER******************************/
+
+.footer *{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.footer{
+	width: 100%
+}
+
+
+.footer-container{
+	width: 100%;
+}
+
+.footer-main{
+	width: 100%;
+	max-width: 1000px;
+	margin: auto;
+	padding: 10px 0;
+	display: flex;
+	flex-wrap: wrap; 
+
+	justify-content: space-between;
+	-ms-align-items: center;
+}
+
+.footer-main .footer-columna{
+	width: calc(100% / 3);
+	text-align: justify;
+}
+
+.footer-main .footer-columna:nth-child(1){
+	padding: 0 20px;
+}
+
+
+.footer-main .footer-columna:nth-child(2){
+	padding: 0 30px;
+}
+
+.footer-main .footer-columna:nth-child(3){
+	padding: 0 50px;
+}
+
+
+.footer-main .footer-columna{
+	font-size: 19px;
+	margin-bottom: 0px;
+}
+
+
+.footer-main .footer-columna input[type="email"]{
+	border: none;
+	width: 100%;
+	border: 1px solid #000;
+	padding: 10px;
+}
+
+
+.footer-main .footer-columna input[type="submit"]{
+	border: none;
+	padding: 5px 40px;
+	background: #000;
+	color: #FFF;
+
+	font-size: 18px;
+	margin-top: 5px;
+	cursor: pointer;
+}
+
+.footer-main .footer-columna span p{
+	display: inline-block;
+	margin-left: 5px;
+	margin-bottom: 5px;
+	text-decoration: none;	
+	color: blue;
+}
+
+
+.footer-copy-redes{
+	width: 100%;
+	background: #000;
+	border-top: 2px solid #FFF;
+}
+
+.main-copy-redes{
+	width: 100%;
+	max-width: 1000px;
+	padding: 5px 0;
+	margin: auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	-ms-align-items: center;
+}
+
+
+.main-copy-redes .footer-copy{
+	width: 70%;
+	color: #FFF;
+}
+
+.main-copy-redes .footer-copy p{
+	padding: 10px;
+
+}
+
+.main-copy-redes .footer-redes{
+	width: 30%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+
+.main-copy-redes .footer-redes a{
+	display: inline-block;
+	text-decoration: none;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	border-radius: 50%;
+	background: #FFF;
+	color: #000;
 	text-align: center;
 }
+
+
+/************************************************************/

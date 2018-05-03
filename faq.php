@@ -5,6 +5,7 @@
 		<meta charset="utf-8">
 		<link href="css/estilos.css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="css/common.css">
+		<link rel="stylesheet" type="text/css" href="css/footer.css"/>
 	</head>
 	<body>
 	<div id="contenedor">

@@ -15,6 +15,7 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
 	<link rel="stylesheet" type="text/css" href="css/common.css">
+	<link rel="stylesheet" type="text/css" href="css/footer.css"/>
 	<meta charset="utf-8">
 	<?php
 		$user = Usuario::buscaUsuario($_SESSION['nombreUsuario']);
