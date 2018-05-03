@@ -1,0 +1,64 @@
+.mostrarCerveza {
+	border: 3px solid #FFC107; 
+	margin-left: center;
+}
+
+.nombreCerveza {
+	padding-left: 10px;
+	font-family: Roboto-Regular;
+	-webkit-border-radius: 15px;     
+	background-color: #FFC107;    
+}
+
+.contenidoCerveza{
+	display: flex;
+	flex-flow: row;
+}
+
+.imagenCerveza{	
+	flex-basis: 40%;
+	justify-content: flex-start;
+}
+
+.datosCerveza {
+	flex-basis: 40%;
+	font: Roboto-Regular;;
+}
+
+span{
+	border: 2px solid #FFC107;
+    border-radius: 25px;	 
+}
+ 
+input{
+	margin-top: 20px;
+	text-decoration: none;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 20px;   
+    background-color: #FFC107;
+    border-radius: 6px;
+	border: 1.42px solid #0016b0;
+}
+::placeholder { 
+    color: #ffffff;
+}
+.submit{	
+	margin-top: 20px;
+	text-decoration: none;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #FFC107;
+    border-radius: 6px;
+    border: 1.42px solid #0016b0;
+}
+
+input:hover,button:hover {
+
+    opacity: 0.7;
+    background-color: black;
+    color: #FFC107;
+    
+}
