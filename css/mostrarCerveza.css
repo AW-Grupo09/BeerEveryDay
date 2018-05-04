@@ -21,8 +21,9 @@
 }
 
 .datosCerveza {
+	margin-top: 20px;
 	flex-basis: 40%;
-	font: Roboto-Regular;;
+	font: Roboto-Regular;
 }
 
 span{
@@ -31,7 +32,7 @@ span{
 }
  
 input{
-	margin-top: 20px;
+	margin-top: 40px;
 	text-decoration: none;
     padding: 10px;
     font-weight: 600;
