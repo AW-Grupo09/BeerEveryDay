@@ -46,7 +46,8 @@
 
 					for ($i = 0; $i < $numero; $i++) {
 						
-					    echo "<h2><li>Id del pedido: $idPedido[$i] </li></h2>";
+					    echo "<h2><li><a href = mostrarPedido.php?idPedido=" . $idPedido[$i] . ">Id del pedido: $idPedido[$i] </a></li></h2>";
+
 					    $pedido = new pedidos($idPedido[$i]);
 					    $estado = $pedido->getEstado();
 					    echo "<p>Su estado es : $estado  , ";
