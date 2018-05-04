@@ -36,7 +36,7 @@
 			<div class = avatar>
 				<?php 
 					if($user->avatar() != NULL)
-						echo "<img width='10%' height='10%' src='img/users/" . $user->avatar() . " ' alt = 'Imagen de perfil'>"; 
+						echo "<img width='10%' height='10%' src='" . $user->avatar() . " ' alt = 'Imagen de perfil'>"; 
 					else
 						echo "<img width='10%' height='10%' src='img/users/default.png' alt = 'Imagen de perfil'>"; 
 				?> 

@@ -59,9 +59,11 @@ class Usuario
     
     private static function inserta($usuario)
     {
+
+        var_dump($usuario);
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
-        $query=sprintf("INSERT INTO Usuarios(nombreUsuario, nombre, password, rol, ciudad, fechaNac, email, apellidos, avatar) VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '$s')"
+        $query=sprintf("INSERT INTO Usuarios(nombreUsuario, nombre, password, rol, ciudad, fechaNac, email, apellidos, avatar) VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')"
             , $conn->real_escape_string($usuario->nombreUsuario)
             , $conn->real_escape_string($usuario->nombre)
             , $conn->real_escape_string($usuario->password)
@@ -123,6 +125,8 @@ class Usuario
     private $apellidos;
 
     private $avatar;
+
+    private $id;
 
     private function __construct($nombreUsuario, $nombre, $password, $rol, $ciudad, $fechaNac, $email, $apellidos, $avatar)
     {
