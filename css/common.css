@@ -175,6 +175,28 @@ a {
 }
 
 
+
+.footer-main .footer-columna span p:hover{
+	background-color: black;
+    border-radius: 5px;
+    color: #FFC107;
+}
+
+
+.footer-main .footer-columna p a:{
+	display: inline-block;
+	margin-left: 5px;
+	margin-bottom: 5px;
+	text-decoration: none;	
+	color: blue;
+}
+
+.footer-main .footer-columna p a:hover{
+	background-color: black;
+    border-radius: 5px;
+    color: #FFC107;
+}
+
 .footer-copy-redes{
 	width: 100%;
 	background: #000;
@@ -223,4 +245,18 @@ a {
 	text-align: center;
 }
 
+.main-copy-redes .footer-redes a:hover{
+	background-color: black;
+    border-radius: 5px;
+    color: #FFC107;
+}
+
 /************************************************************/
+
+
+/*
+a:hover {
+	background-color: black;
+    border-radius: 5px;
+    color: #FFC107;
+}*/
