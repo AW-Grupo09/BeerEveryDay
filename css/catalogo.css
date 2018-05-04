@@ -9,7 +9,8 @@
 
 
 div.item {
-    border: 1px blue solid;
+    /*border: 1px blue solid;*/
+    border: 1px #FFC107 solid;
     border-radius: 1px;
     margin: 0.1%;
     padding: 1%;
@@ -66,8 +67,28 @@ section#filtros {
     display: none;
 }
 
+/*
 a {
 	color: #505050;
 	text-decoration: none;	
+}*/
+
+
+.alert-info img{
+	width: 30px;
+	cursor: pointer;
 }
 
+
+.alert-info img:hover{
+	background-color: black;
+    border-radius: 5px;
+    color: #FFC107;
+}
+
+
+a:hover {
+	background-color: black;
+    border-radius: 5px;
+    color: #FFC107;
+}

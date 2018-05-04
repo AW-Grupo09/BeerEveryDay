@@ -18,9 +18,11 @@
             <?php require('./includes/comun/header.php'); ?>
             <div class="container">
             <header>
-                <div class="alert alert-info">
+                <!--div class="alert alert-info"-->
+                <div class="alert-info">
                     <h2>Filtro de Búsqueda </h2>
-                    <img src="img/plus.png" alt="" id="expandFilter" width="16px">
+                    <!--img src="img/plus.png" alt="" id="expandFilter" width="16px"-->
+                    <img src="img/plus.png" alt="" id="expandFilter">
                 </div>
             </header>
             <section id="filtros">
@@ -160,25 +162,25 @@
                 ?>
             </div>
 
+            <script>
+                var boton = document.getElementById("expandFilter");
+                boton.onclick = function(){
+                    var filtros = document.getElementById("filtros");
+                    if (filtros.style.display == "block") {
+                        filtros.style.display = "none";
+                        this.src = "img/plus.png";
+                    } else{
+                        filtros.style.display = "block";
+                        this.src = "img/minus.png";
+                    }
+                };
+            </script>
+
         </div> <!-- Cierre de container -->
 
             <?php require('./includes/comun/footer.php'); ?>
 
         </div> <!-- Cierre de contenedor-->
         
-
-        <script>
-            var boton = document.getElementById("expandFilter");
-            boton.onclick = function(){
-                var filtros = document.getElementById("filtros");
-                if (filtros.style.display == "block") {
-                    filtros.style.display = "none";
-                    this.src = "img/plus.png";
-                } else{
-                    filtros.style.display = "block";
-                    this.src = "img/minus.png";
-                }
-            };
-        </script>
     </body>
 </html>
