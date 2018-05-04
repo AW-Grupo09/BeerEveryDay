@@ -42,7 +42,7 @@ require_once __DIR__.'/funcionImagen.php';
 		              <input type="password" name="repass" placeholder="Ambas contraseñas deben coindicir" value="" required/>
 		            
 		      		  <label class="foto_per_label">Foto de perfil: </label>
-		              <label> <p> <input type="file" name="archivo" id="archivo" class="foto_per"/> </p></label>	      
+		              <label> <p> <input type="file" name="archivo" /> </p></label>	      
 		            
 		              <label> <button class="submit" type="submit">Regístrate</button></label>
 		           
@@ -96,14 +96,22 @@ require_once __DIR__.'/funcionImagen.php';
 			$erroresFormulario[] = "Los emails deben coincidir";
 		}
 
-		/*if(!esImagen($avatar)) {
-			$erroresFormulario[] = "Esa extensión de imagen no es aceptada";
+
+		//Imagen
+		$ruta = "./img/users/";//ruta carpeta donde queremos copiar las imágenes 
+		$uploadfile_temporal = $_FILES['archivo']['tmp_name']; //Falla porque no se carga la imagen
+		$uploadfile_nombre = $ruta . $_FILES['archivo']['name']; 
+
+		if (is_uploaded_file($uploadfile_temporal)) // verifica haya sido cargado el archivo
+		{ 
+		    move_uploaded_file($uploadfile_temporal,$uploadfile_nombre); 
+		} 
+		else
+		{
+			//echo '<p>Error al subir la imagen</p>';
 		}
-
-		if(!imgValida($avatar, $size)){
-			$erroresFormulario[] = "Inserta una imagen válida";
-		}*/
-
+		
+		//comprobar errores
 		if (count($erroresFormulario) === 0) {
 			$usuario = Usuario::crea($nombreUsuario, $nombre, $password, 'user', $ciudad, $fechaNac, $email, $apellidos, $avatar);
 			
