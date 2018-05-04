@@ -150,6 +150,7 @@ a {
 	border: 1px solid blue;
 	padding: 10px;
 	color: blue;
+	border-radius: 5px;
 }
 
 
@@ -162,6 +163,7 @@ a {
 	font-size: 18px;
 	margin-top: 5px;
 	cursor: pointer;
+	border-radius: 5px;
 }
 
 .footer-main .footer-columna input[type="submit"]:hover{

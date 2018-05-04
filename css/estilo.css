@@ -50,6 +50,8 @@
     padding-bottom:12px; 
     padding-left: 40px;
     padding-right: 40px;
+	border-radius: 5px;
+    
 }
 
 
@@ -58,10 +60,13 @@
 .texto-centrado>a:hover{
 	letter-spacing: -1px;
 	background-color:black;
-	color:#FFE510;
-
+	border-radius: 5px;
+    color: #FFC107;
 	transition-delay: 0.05s;
 }
+
+
+
 /*
 -----------------------------------------------------------------------
 */
