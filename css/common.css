@@ -161,7 +161,10 @@ a {
 	font-size: 18px;
 	margin-top: 5px;
 	cursor: pointer;
+	
 }
+
+
 
 .footer-main .footer-columna span p{
 	display: inline-block;
@@ -219,6 +222,5 @@ a {
 	color: #000;
 	text-align: center;
 }
-
 
 /************************************************************/
