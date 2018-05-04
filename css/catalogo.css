@@ -9,7 +9,6 @@
 
 
 div.item {
-    /*border: 1px blue solid;*/
     border: 1px #FFC107 solid;
     border-radius: 1px;
     margin: 0.1%;
@@ -29,6 +28,7 @@ div.item {
 	width: 50%;
 }
 
+/
 #seccionItem img{ 
 	max-width: 99%; 
 }
@@ -44,6 +44,15 @@ div.item {
 	font-family: Roboto-Regular;
 	font-size: 20px;
 }
+
+
+
+.descripcion>h1 a:hover {
+	background-color: black;
+    border-radius: 5px;
+    color: #FFC107;
+}
+
 
 .ficha{
 	padding-top: 0.5%;
@@ -67,12 +76,6 @@ section#filtros {
     display: none;
 }
 
-/*
-a {
-	color: #505050;
-	text-decoration: none;	
-}*/
-
 
 .alert-info img{
 	width: 30px;
@@ -87,8 +90,17 @@ a {
 }
 
 
-a:hover {
-	background-color: black;
-    border-radius: 5px;
-    color: #FFC107;
+.imagenes img {
+	border: none;
+	border-radius:50%;
+	overflow:hidden;
 }
+
+
+.imagenes img:hover {
+    border-radius:50%;
+	box-shadow: 0px 0px 15px 15px #FFC107;
+	transform:scale(1.1);
+}
+
+

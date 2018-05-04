@@ -134,8 +134,14 @@
                 foreach ($idsCervezas as $key => $value) {
                     $cerveza = new cervezas($value, $mysqli);
                     echo "<div class='item'>";
+
+                       
                         echo "<div class ='seccionItem'>";
-                            echo "<img alt='Imagen de cerveza' src=". $cerveza->getImagen()." width=80% height=80%/>";
+
+                            echo "<div class = 'imagenes'>";
+                                 /* echo "<img alt='Imagen de cerveza' src=". $cerveza->getImagen()." width=80% height=80%/>";*/
+                                echo "<a href = mostrarCerveza.php?id=" . $cerveza->getIdCerveza() . "> <img alt='Imagen de cerveza' src=". $cerveza->getImagen()." width=80% height=80%/> </a>";
+                            echo "</div>";
                         echo "</div>";
                         echo "<div class ='seccionItem'>";
                             echo "<div class = 'descripcion'>";
