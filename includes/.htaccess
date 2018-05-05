@@ -1,1 +1,10 @@
-Require all denied
+Options +FollowSymLinks
+IndexIgnore */*
+
+RewriteEngine on
+
+# Si un directorio o fichero existe se envia directamente la petición
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+# Envia directamente a index.php
+RewriteRule . index.php
