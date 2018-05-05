@@ -15,6 +15,7 @@
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="css/common.css" />
+	<link rel="stylesheet" type="text/css" href="css/mostrarCerveza.css" />
 	<link rel="stylesheet" type="text/css" href="css/footer.css"/>
 	<title>Cesta</title>
 
@@ -52,20 +53,39 @@
 						echo "<div>";
 						foreach ($cervezas as $idCerveza) {
 							$cerveza = new cervezas($idCerveza);
-							echo "<div>";
-
-								echo "<img alt='Imagen de cerveza' src=". $cerveza->getImagen()." width='200' height='200' />";
-								echo "<p>" . $cerveza->getNombre() . "</p>";
-								echo "<p>Precio unidad: " . $cerveza->getPrecio() . " €</p>";
-								echo "<p>Unidades: " . $unidades[$i] . "</p>";
-								echo "<p>Total: " . $cerveza->getPrecio() * $unidades[$i] . " €</p>";
-								$total = $total + ($cerveza->getPrecio()*$unidades[$i]);
-
-							echo "</div>";
+							echo "<div class= 'mostrarCerveza'>";
+								echo "<div class= 'nombreCerveza'>";
+									echo "<h1>" . $cerveza->getNombre() . "</h1>";
+								echo "</div>";// cierro div nombre
+								echo "<div class= 'contenidoCerveza'>";
+									echo "<div class= 'imagenCerveza'>";
+										echo "<img alt='Imagen de cerveza' src=". $cerveza->getImagen()." width='300' height='300' />";
+									echo "</div>";// cierro div imagen
+									//Datos de la cerveza
+									echo "<div class= 'datosCerveza'>";
+										echo "<p>DESCRIPCIÓN DEL PRODUCTO: </p>";
+										echo "<p>" . " <span>Capacidad : </span>". $cerveza->getCapacidad(). " Cl" ."</p>";
+										echo "<p>" . " <span>Color : </span>". $cerveza->getColor() ."</p>";
+										echo "<p>" . " <span>Tipo : </span>". $cerveza->getTipo() ."</p>";
+										echo "<p>". " <span>Graduación : </span>". $cerveza->getGrado() . " % "."</p>";
+										echo "<p>". " <span>Ingredientes : </span>". $cerveza->getGrano() ."</p>";
+										echo "<p>"." <span>País : </span>" . $cerveza->getPais()."</p>";
+										echo "<p>" . " <span>Precio : </span>". $cerveza->getPrecio(). " € ". "</p>";
+									echo "</div>";//cierro div datos cerveza
+									//Datos del pedido
+									echo "<div class= 'datosCerveza'>";
+										echo "<p>DATOS DEL PEDIDO:</p>";
+										echo "<p><span>Precio unidad: </span>" . $cerveza->getPrecio() . " €</p>";
+										echo "<p><span>Unidades: </span>" . $unidades[$i] . "</p>";
+										echo "<p><span>Total: </span>" . $cerveza->getPrecio() * $unidades[$i] . " €</p>";
+									echo "</div>";//cierro div datosCerveza 
+									$total = $total + ($cerveza->getPrecio()*$unidades[$i]);
+								echo "</div>";//cierro div contenidoCerveza
+							echo "</div>";//cierro div mostrar cerveza
 							$i++;
 						}
 
-						echo "<h1>Total: " . $total . " €</h1>";
+						echo "<h1 align='right'>Total: " . $total . " €</h1>";
 						echo "</div>";
 
 					}else {
