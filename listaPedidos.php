@@ -2,6 +2,7 @@
 	
 	require_once __DIR__.'/includes/config.php';
 	include('includes/pedidos.php');
+	include('includes/cervezas.php');
 
 	if(!$_SESSION['login']){
 		header('Location: index.php');
@@ -50,15 +51,18 @@
 
 					    $pedido = new pedidos($idPedido[$i]);
 					    $estado = $pedido->getEstado();
-					    echo "<p>Su estado es : $estado  , ";
-					    
-					    $unidades = $pedido->getUnidades();
-					    $numUnidades = array_values($unidades)[0];
-					    echo " las unidades pedidas son: $numUnidades";
+					    echo "<p>Su estado es : $estado<p>";
 
+					    $unidades = $pedido->getUnidades();
 					    $cervezas = $pedido->getCervezas();
-					    $numCerves = array_values($cervezas)[0];;
-					    echo " y el identificador de la cerveza es: $numCerves .</p>";
+
+					    for($j = 0; $j < count($unidades);$j++){
+					    	$numUnidades = array_values($unidades)[$j];
+					    	$cerveza = new cervezas(array_values($cervezas)[$j]);
+					    	$nombre = $cerveza->getNombre();
+
+					    	echo "<p> -Cerveza: $nombre, Unidades: $numUnidades";
+					    }
 					   
 						
 					}
