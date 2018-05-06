@@ -1,3 +1,9 @@
+@font-face {
+	font-family: Roboto-Regular;
+	src: url(../fonts/Roboto-Regular.ttf);
+}
+
+
 .mostrarCerveza {
 	border: 3px solid #FFC107; 
 	margin-left: center;
@@ -5,7 +11,7 @@
 
 .nombreCerveza {
 	padding-left: 10px;
-	font-family: Roboto-Regular;
+	/*font-family: Roboto-Regular;*/
 	-webkit-border-radius: 15px;     
 	background-color: #FFC107;    
 }
@@ -23,7 +29,7 @@
 .datosCerveza {
 	margin-top: 20px;
 	flex-basis: 40%;
-	font: Roboto-Regular;
+	/*font: Roboto-Regular;*/
 }
 
 span{
@@ -31,7 +37,7 @@ span{
     border-radius: 25px;	 
 }
  
-input{
+.container input{
 	margin-top: 40px;
 	text-decoration: none;
     padding: 10px;
@@ -56,7 +62,7 @@ input{
     border: 1.42px solid #0016b0;
 }
 
-input:hover,button:hover {
+.container input:hover,button:hover {
 
     opacity: 0.7;
     background-color: black;
