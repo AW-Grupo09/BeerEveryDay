@@ -1,0 +1,75 @@
+@font-face {
+	font-family: Roboto-Regular;
+	src: url(../fonts/Roboto-Regular.ttf);
+}
+
+
+.mostrarCerveza {
+	border: 3px solid #FFC107; 
+	margin-left: center;
+}
+
+.nombreCerveza {
+	padding-left: 10px;
+	-webkit-border-radius: 15px;     
+	background-color: #FFC107;    
+}
+
+.contenidoCerveza{
+	display: flex;
+	flex-flow: row;
+}
+
+.imagenCerveza{	
+	flex-basis: 40%;
+	justify-content: flex-start;
+}
+
+.datosCerveza {
+	margin-top: 20px;
+	flex-basis: 40%;
+}
+
+.left{
+    float: left;
+}
+.right{
+	width: 80%;
+    float: right;
+}
+
+span{
+	border: 2px solid #FFC107; 
+	border-radius: 25px;
+}
+
+.container input{
+	margin-top: 20px;
+    padding: 10px;  
+    border-radius: 4px;
+	border: 1.42px solid #0016b0;
+}
+
+fieldset{
+	border-radius: 4px;
+	border: 1.42px solid #0016b0;
+}
+
+.submit{	
+	margin-top: 20px;
+	text-decoration: none;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #FFC107;
+    border-radius: 6px;
+    border: 1.42px solid #0016b0;
+}
+
+.container button:hover {
+    opacity: 0.7;
+    background-color: black;
+    color: #FFC107;
+    
+}

@@ -15,7 +15,7 @@
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="css/common.css" />
-	<link rel="stylesheet" type="text/css" href="css/mostrarCerveza.css" />
+	<link rel="stylesheet" type="text/css" href="css/mostrarPedido.css" />
 	<link rel="stylesheet" type="text/css" href="css/footer.css"/>
 	<title>Cesta</title>
 

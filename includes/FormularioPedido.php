@@ -10,12 +10,12 @@ require_once __DIR__.'/Form.php';
 				<legend> Formulario de procesar pedido: </legend>
 
     				<label for="Dir">Dirección de entrega: </label>
-    			    <input type="text" placeholder="Introduzca aquí la dirección dónde quiera que se produzca la entrega" name="Dir" required>
+    			    <input type="text" size="30" placeholder="Introduzca aquí la dirección dónde quiera que se produzca la entrega" name="Dir" required>
 
     				<label for="Tarjeta">Tarjeta: </label>
     			    <input type="number_format" placeholder="Introduzca aquí su tarjeta para pagar la compra" name="Tarjeta" required>
 
-    				<p><button type="submit">Comprar</button></p>
+    				<p><button class="submit" type="submit">Comprar</button></p>
 
 		    </fieldset>';
  	}

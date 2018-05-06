@@ -19,7 +19,9 @@
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="css/common.css" />
+	<link rel="stylesheet" type="text/css" href="css/mostrarPedido.css" />
 	<link rel="stylesheet" type="text/css" href="css/footer.css"/>
+
 	<title>Cesta</title>
 
 </head>
@@ -59,26 +61,36 @@
 						echo "<div>";
 						foreach ($cervezas as $idCerveza) {
 							$cerveza = new cervezas($idCerveza);
-							echo "<div>";
-								echo "<form action='mostrarCesta.php' method='post'>";
-									echo "<img alt='Imagen de cerveza' src=". $cerveza->getImagen()." width='200' height='200' />";
-									echo "<p>" . $cerveza->getNombre() . "</p>";
-									echo "<p>Precio unidad: " . $cerveza->getPrecio() . " €</p>";
-									echo "<p>Unidades: " . $unidades[$i] . "</p>";
-									echo "<p>Total: " . $cerveza->getPrecio() * $unidades[$i] . " €</p>";
-									$total = $total + ($cerveza->getPrecio()*$unidades[$i]);
-									echo "<input type='submit' name='" . $idCerveza . "' value='Eliminar'>";
-								echo "</form>";
-							echo "</div>";
+							echo "<div class= 'mostrarCerveza'>";
+								echo "<div class= 'nombreCerveza'>";
+									echo "<h1>" . $cerveza->getNombre() . "</h1>";
+								echo "</div>";//nombre Cerveza
+								echo "<div class= 'contenidoCerveza'>";
+									echo "<div class= 'imagenCerveza'>";
+										echo "<img alt='Imagen de cerveza' src=". $cerveza->getImagen()." width='300' height='300' />";
+									echo "</div>";//imagen cerveza
+										//Datos del pedido
+									echo "<div class= 'datosCerveza'>";
+										echo "<p>Datos del pedido: </p>";
+										echo "<p><span>Precio unidad: </span>" . $cerveza->getPrecio() . " €</p>";
+										echo "<p><span>Unidades: </span>" . $unidades[$i] . "</p>";
+										echo "<p><span>Total: </span>" . $cerveza->getPrecio() * $unidades[$i] . " €</p>";
+									echo "</div>";//cierro div datos cerveza
+									echo "<form action='mostrarCesta.php' method='post'>";
+										$total = $total + ($cerveza->getPrecio()*$unidades[$i]);
+										echo "<button class='submit' type='submit' name='" . $idCerveza . "' value='Eliminar'>Eliminar de la cesta</button>";
+									echo "</form>";
+								echo "</div>";//contenidocerveza
+							echo "</div>";//mostrar cerveza
 							$i++;
 						}
-						echo "<h1>Total: " . $total . " €</h1>";
-						echo "<form action='mostrarCesta.php' method='post'>";
-								echo "<input type='submit' name='Eliminar' value='Eliminar cesta'>";
-						echo "</form>";
+						echo "<div class='right'><h1 align='right'>Total: " . $total . " €</h1></div>";
+						echo "<div class='left'><form action='mostrarCesta.php' method='post' align='right'>";
+								echo "<button class='submit' type='submit' name='Eliminar' value='Eliminar cesta'>Eliminar la cesta</button>";
+						echo "</form></div>";
 						echo "</div>";
 						?>
-						<button onclick="myFunction()">Comprar la cesta</button>
+						<button class='submit' onclick="myFunction()">Comprar la cesta</button>
 							<div id="procesarCesta">
 
 								<?php 
