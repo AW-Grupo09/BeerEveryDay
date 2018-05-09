@@ -73,11 +73,7 @@ require_once __DIR__.'/funcionImagen.php';
 		$ciudad = isset($_POST['ciudad']) ? $_POST['ciudad'] : null;
 		$email = isset($_POST['email']) ? $_POST['email'] : null; 
 		$remail = isset($_POST['remail']) ? $_POST['remail'] : null; 
-		//$avatar = isset($datos['archivo']['name']) ? $datos['archivo']['name'] : null;
-		//$size = isset($datos['archivo']['size']) ? $datos['archivo']['size'] : null;
 		$avatar = $_FILES['archivo']['name'];
-		//$size = $_FILES['archivo']['size'];
-		//$directorio = '../img/users/';
 
 		if ( empty($nombreUsuario) || mb_strlen($nombreUsuario) < 5 ) {
 			$erroresFormulario[] = "El nombre de usuario tiene que tener una longitud de al menos 5 caracteres.";
@@ -99,19 +95,8 @@ require_once __DIR__.'/funcionImagen.php';
 
 		//Imagen
 		$ruta = "img/users/";//ruta carpeta donde queremos copiar las imágenes 
-		/*$uploadfile_temporal = $_FILES['archivo']['tmp_name']; //Falla porque no se carga la imagen
-		$uploadfile_nombre = $ruta . $_FILES['archivo']['name']; */
-
         $imageFileType = $ruta . basename($avatar);
 
-		/*if (is_uploaded_file($uploadfile_temporal)) // verifica haya sido cargado el archivo
-		{ 
-		    move_uploaded_file($uploadfile_temporal,$uploadfile_nombre); 
-		} 
-		else
-		{
-			//echo '<p>Error al subir la imagen</p>';
-		}*/
 		
 		//comprobar errores
 		if (count($erroresFormulario) === 0) {
@@ -122,7 +107,7 @@ require_once __DIR__.'/funcionImagen.php';
 			} else {
 				$_SESSION['login'] = true;
 				$_SESSION['nombreUsuario'] = $nombreUsuario;
-				//move_uploaded_file($datos['archivo']['tmp_name'], $directorio.$avatar);
+				move_uploaded_file($_FILES['archivo']['tmp_name'], $imageFileType);
 				header('Location: index.php');
 				exit();
 
