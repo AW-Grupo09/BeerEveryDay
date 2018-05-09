@@ -86,8 +86,18 @@ class pedidos {
         $mysqli = $app->conexionBd();
         if($unidades == NULL)
             $unidades = 1;
-        $sql = "INSERT INTO `pedidos-cervezas`(`idCerveza`, `idPedido`, `unidades`) VALUES (" .  $cerveza . "," . $idpedido . "," .  $unidades . ")";
+        $sql = "SELECT idCerveza, idPedido, unidades from `pedidos-cervezas` WHERE idCerveza = " . $cerveza . " and idPedido = " . $idpedido;
         $consulta = $mysqli->query($sql) or die ($mysqli->error . " en la línea " . (__LINE__-1));
+        if(mysqli_num_rows($consulta) == 0){
+            $sql = "INSERT INTO `pedidos-cervezas`(`idCerveza`, `idPedido`, `unidades`) VALUES (" .  $cerveza . "," . $idpedido . "," .  $unidades . ")";
+            $consulta = $mysqli->query($sql) or die ($mysqli->error . " en la línea " . (__LINE__-1));
+        }else{
+            $fila = mysqli_fetch_assoc($consulta);
+            $uni = $fila['unidades'];
+            $uni = $uni + $unidades;
+            $sql = "UPDATE `pedidos-cervezas` SET unidades = " . $uni . " WHERE idCerveza = " . $cerveza . " and idPedido = " .$idpedido;
+            $consulta = $mysqli->query($sql) or die ($mysqli->error . " en la línea " . (__LINE__-1));
+        }
     }
 
     private function loadUser($idPedido){
