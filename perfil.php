@@ -30,6 +30,8 @@
 
 		<?php require ('includes/comun/header.php'); ?>
 
+		<center>
+
 		<div class="container"><!--bloque del contenido central-->
 			
 
@@ -39,6 +41,7 @@
 						echo "<img width='10%' height='10%' src='" . $user->avatar() . " ' alt = 'Imagen de perfil'>"; 
 					else
 						echo "<img width='10%' height='10%' src='img/users/default.png' alt = 'Imagen de perfil'>"; 
+					$_SESSION['avatar'] = $user->avatar();
 				?> 
 			</div>
 
@@ -54,10 +57,10 @@
 			</div>
 			<a id="item" href = 'listaPedidos.php'> Mis pedidos </a>
 
-		
-
+			<a id="item" href = "modificarPerfil.php"> Modificar perfil</a>
 
 		</div>
+		</center>
 
 		<?php require('includes/comun/footer.php'); ?>
 
