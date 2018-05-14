@@ -13,9 +13,9 @@
 	<meta charset="utf-8">	
 	<title>Cervezas</title>
 <?php
-	$mysqli = conexion::getConection();
-	$id = htmlspecialchars($_GET['id']);
-	$cerveza = new cervezas($id, $mysqli);
+	//$mysqli = conexion::getConection();
+	//$id = htmlspecialchars($_GET['id']);
+	$cerveza = new cervezas($_GET['id']);
 ?>	
 </head>
 <body>

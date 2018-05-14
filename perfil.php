@@ -53,10 +53,7 @@
 				<p>Nombre: <?php echo $user->nombre();?></p>
 				<p>Apellidos: <?php echo $user->apellidos();?></p>
 				<p>Ciudad: <?php echo $user->ciudad();?></p>
-				<?php 
-				$fecha = $user->fechaNac();
-				?>
-				<p>Fecha de nacimiento: <?php echo date("d-m-Y",strtotime($fecha)) ;?></p>
+				<p>Fecha de nacimiento: <?php echo date("d-m-Y",strtotime($user->fechaNac())) ;?></p>
 			
 			</div>
 			<a id="item" href = 'listaPedidos.php'> Mis pedidos </a>
