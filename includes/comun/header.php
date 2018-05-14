@@ -34,7 +34,7 @@
 	<id id = "items">
 		<a id="item" href = 'index.php'> Home </a>
 		<a id="item" href = 'catalogo.php'> Catálogo </a> 
-		<a id="item" href = 'grupos.php'> Grupos </a> 
+		<a id="item" href = 'mostrarGrupos.php'> Grupos </a> 
 		<a id="item" href = 'mostrarCesta.php'> Mi cesta </a>
 	</id>
 
