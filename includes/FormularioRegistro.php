@@ -100,16 +100,18 @@ require_once __DIR__.'/funcionImagen.php';
 		
 		//comprobar errores
 		if (count($erroresFormulario) === 0) {
-			$usuario = Usuario::crea($nombreUsuario, $nombre, $password, 'user', $ciudad, $fechaNac, $email, $apellidos, $imageFileType);
-			
-			if (! $usuario ) {
-		    	$erroresFormulario[] = "El usuario ya existe";
-			} else {
-				$_SESSION['login'] = true;
+
+			$usuario = usuario::buscaUsuario($nombreUsuario);
+			if ($usuario == NULL ) {
+		    	$usuario = Usuario::crea($nombreUsuario, $nombre, $password, 'user', $ciudad, $fechaNac, $email, $apellidos, $imageFileType);
+		    	$_SESSION['login'] = true;
 				$_SESSION['nombreUsuario'] = $nombreUsuario;
+				$_SESSION['esAdmin'] = strcmp($usuario->rol(), 'admin') == 0 ? true : false;     
 				move_uploaded_file($_FILES['archivo']['tmp_name'], $imageFileType);
 				header('Location: index.php');
 				exit();
+			} else {
+
 
 			}
 		}

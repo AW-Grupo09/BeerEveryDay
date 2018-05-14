@@ -23,6 +23,10 @@
                     <h2>Filtro de Búsqueda </h2>
                     <!--img src="img/plus.png" alt="" id="expandFilter" width="16px"-->
                     <img src="img/plus.png" alt="" id="expandFilter">
+                    <?php
+                    if ($_SESSION['esAdmin'])
+                        echo "<a href="vistaAddBeers.php">Añade una cerveza</a>"
+                     ?>
                 </div>
             </header>
             <section id="filtros">

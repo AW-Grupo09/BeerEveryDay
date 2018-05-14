@@ -26,6 +26,8 @@ class Usuario
                 $user = new Usuario($fila['nombreUsuario'], $fila['nombre'], $fila['password'], $fila['rol'], $fila['ciudad'], $fila['fechaNac'], $fila['email'], $fila['apellidos'], $fila['avatar']);
                 $result = $user;
             }
+            else
+                $result = NULL;
             $rs->free();
         } else {
             echo "Error al consultar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
