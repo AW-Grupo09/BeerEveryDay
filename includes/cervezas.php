@@ -66,9 +66,9 @@ class cervezas{
         $conn = $app->conexionBd();
         $sql = "SELECT max(id) FROM cervezas";
         $consulta = $mysqli->query($sql) or die ($mysqli->error. " en la línea ".(__LINE__-1));
-        $id= mysqli_fetch_assoc($consulta);
-        $query=sprintf("INSERT INTO cervezas(id, fabricante, nombre, grado, capacidad, precio, pais, artesana, color, grano, grado, tipo, Imagen, valoracionMedia) VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', 1)",
-        	$id, $Fabricante, $nombreCerveza, $Grado, $capacidad, $precio, $pais, $Artesana, $Color, $grano, $Grado, $Tipo, $imageFileType, 1;
+        $id = mysqli_fetch_assoc($consulta);
+        $query = sprintf("INSERT INTO cervezas(id, fabricante, nombre, grado, capacidad, precio, pais, artesana, color, grano, grado, tipo, Imagen, valoracionMedia) VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', 1)",
+        	$id, $Fabricante, $nombreCerveza, $Grado, $capacidad, $precio, $pais, $Artesana, $Color, $grano, $Grado, $Tipo,           $imageFileType);
         if ( $conn->query($query) ) {
             $usuario->id = $conn->insert_id;
         } else {

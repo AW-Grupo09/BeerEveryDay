@@ -1,7 +1,8 @@
 <?php 
 	
 	require_once __DIR__.'/includes/config.php';
-	include('includes/pedidos.php');
+	require_once __DIR__.'/includes/controlPedidos.php';
+	//include('includes/pedidos.php');
 	include('includes/cervezas.php');
 
 	if(!$_SESSION['login']){
@@ -30,10 +31,10 @@
 			
 			<?php
 							
-				$idPedido = pedidos::loadPedidos($_SESSION['nombreUsuario']);
+				$listaPedidos = controlPedidos::loadPedidos($_SESSION['nombreUsuario']);
 		
 						
-				if($idPedido == null){
+				if($listaPedidos == null){
 
 					echo "<p><h2> No tienes pedidos, " . $_SESSION['nombreUsuario'] ." </h2></p>";
 					echo " <div class='info'><p><h1> ¿ Por qué no echas un vistazo a nuestro catálogo ? </h1></p></div>";
@@ -42,14 +43,21 @@
 					echo " <h2> Esta es la página donde puedes visualizar tus pedidos,".  $_SESSION['nombreUsuario'] .  ". </h2>";
 					
 
-					$numero = sizeof($idPedido);
-					echo "<div class ='espaciado'><h1><ul>Tus pedidos son los siguientes: </h1></div>";
+					$numero = sizeof($listaPedidos);
+					if($numero == 0){
+						echo "<div class ='espaciado'><h1><ul>Aun no has realizado ningun pedido</h1></div>";
 
+					}else{
+						echo "<div class ='espaciado'><h1><ul>Tus pedidos son los siguientes: </h1></div>";
+
+					}
+					
 					for ($i = 0; $i < $numero; $i++) {
 						
-					    echo "<h2><li><a href = mostrarPedido.php?idPedido=" . $idPedido[$i] . ">Id del pedido: $idPedido[$i] </a></li></h2>";
+						$pedido = $listaPedidos[$i];
 
-					    $pedido = new pedidos($idPedido[$i]);
+					    echo "<h2><li><a href = mostrarPedido.php?idPedido=" . $pedido->getIdPedido() . ">Id del pedido: " . $pedido->getIdPedido() . "</a></li></h2>";
+					    
 					    $estado = $pedido->getEstado();
 					    echo "<p>Su estado es : $estado<p>";
 

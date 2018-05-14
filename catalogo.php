@@ -25,7 +25,7 @@
                     <img src="img/plus.png" alt="" id="expandFilter">
                     <?php
                     if ($_SESSION['esAdmin'])
-                        echo "<a href="vistaAddBeers.php">Añade una cerveza</a>"
+                        echo "<a href='vistaAddBeers.php'>Añade una cerveza</a>"
                      ?>
                 </div>
             </header>
