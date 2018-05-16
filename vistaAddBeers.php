@@ -25,7 +25,7 @@
 
 		<div class="container">
 
-		<h3>Modifica los datos de usuario:</h3>
+		<h3>Añade una cerveza a la base de datos</h3>
 			
 			<?php   
 				$opciones = array();

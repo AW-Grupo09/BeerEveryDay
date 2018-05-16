@@ -109,6 +109,29 @@ class Usuario
         return $usuario;
     }
     
+    //Para saber si un usuario es admin o no
+    public static function esAdmin($usuario){
+
+        $app = Aplicacion::getSingleton();
+        $conn = $app->conexionBd();
+        $query = sprintf("SELECT * FROM usuarios U WHERE U.nombreUsuario = '$nombreUsuario'", $conn->real_escape_string($nombreUsuario));
+        $rs = $conn->query($query);   
+        $result = false;
+        $isAdmin = false;
+        if ($rs) {
+            if ( $rs->num_rows == 1) {
+                $fila = $rs->fetch_assoc();
+                if($fila["rol"] == "admin")
+                    $admin = true;
+            }
+        } else {
+            echo "Error al consultar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+            exit();
+        }
+
+        return $isAdmin;
+
+    }
 
     private $nombreUsuario;
 
