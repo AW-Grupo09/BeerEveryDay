@@ -1,6 +1,6 @@
 <?php 
 	require_once __DIR__.'/includes/config.php';
-	require_once __DIR__.'/includes/pedidos.php';
+	require_once __DIR__.'/includes/controlPedidos.php';
 	require_once __DIR__.'/includes/cervezas.php';
 	require_once __DIR__.'/includes/FormularioPedido.php';
 
@@ -34,21 +34,21 @@
 		<div class="container">
 			
 			<?php
-				$idCesta = pedidos::loadCesta($_SESSION["nombreUsuario"]);
+				$idCesta = controlPedidos::loadCesta($_SESSION["nombreUsuario"]);
 
 				if(isset($_POST['Eliminar'])){
-					pedidos::eliminarCesta($idCesta);
+					controlPedidos::eliminarCesta($idCesta);
 					$cesta = null;
 				}
 						
 				if($idCesta == null){
 					echo "<div><h1>Tu cesta está vacía.<h1></div>";
 				}else {
-					$cesta = new pedidos($idCesta);
+					$cesta = controlPedidos::loadPedido($idCesta);
 
 					foreach ($cesta->getCervezas() as $idCerveza) {
 						if(isset($_POST[$idCerveza])){
-							pedidos::eliminarElementoCesta($idCerveza, $idCesta);
+							controlPedidos::eliminarElementoCesta($idCerveza, $idCesta);
 							$cesta = new pedidos($idCesta);
 						}
 					}
@@ -104,7 +104,7 @@
 							</div> 
 						<?php
 					}else {
-						pedidos::eliminarCesta($idCesta);
+						controlPedidos::eliminarCesta($idCesta);
 						echo "<div><h1>Tu cesta está vacía.<h1></div>";
 					}
 				}

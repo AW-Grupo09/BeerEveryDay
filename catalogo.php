@@ -26,6 +26,7 @@
                     <?php
                     if (isset($_SESSION["esAdmin"]) && $_SESSION["esAdmin"])
                         echo "<a href='vistaAddBeers.php'>Añade una cerveza</a>";
+
                      ?>
                 </div>
             </header>
