@@ -4,7 +4,6 @@ require_once __DIR__.'/funcionImagen.php';
 
  class FormularioRegistro extends Form{
 
-
     public function generaCamposFormulario($datosIniciales)
     {
     	return '	    <fieldset>
@@ -75,6 +74,11 @@ require_once __DIR__.'/funcionImagen.php';
 		$remail = isset($_POST['remail']) ? $_POST['remail'] : null; 
 		$avatar = $_FILES['archivo']['name'];
 
+		//Imagen
+		$ruta = "img/users/";//ruta carpeta donde queremos copiar las imágenes 
+        $imageFileType = $ruta . basename($avatar);
+
+
 		if ( empty($nombreUsuario) || mb_strlen($nombreUsuario) < 5 ) {
 			$erroresFormulario[] = "El nombre de usuario tiene que tener una longitud de al menos 5 caracteres.";
 		}
@@ -91,13 +95,13 @@ require_once __DIR__.'/funcionImagen.php';
 		if ( empty($remail) || strcmp($email, $remail) !== 0 ) {
 			$erroresFormulario[] = "Los emails deben coincidir";
 		}
-
-
-		//Imagen
-		$ruta = "img/users/";//ruta carpeta donde queremos copiar las imágenes 
-        $imageFileType = $ruta . basename($avatar);
-
 		
+		// comprueba que la imagen es válida
+		if($avatar != NULL && !funcionImagen::esImagen($avatar)){
+			$erroresFormulario[] = "Debe ser un archivo válido";
+		}
+
+
 		//comprobar errores
 		if (count($erroresFormulario) === 0) {
 

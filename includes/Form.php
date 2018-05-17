@@ -54,7 +54,7 @@ abstract class Form
         $opcionesPorDefecto = array( 'action' => null, );
         $opciones = array_merge($opcionesPorDefecto, $opciones);
 
-        $this->action   = $opciones['action'];
+        $this->action = $opciones['action'];
         
         if ( !$this->action ) {
             $this->action = htmlentities($_SERVER['PHP_SELF']);

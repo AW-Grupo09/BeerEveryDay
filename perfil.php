@@ -16,6 +16,7 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
 	<link rel="stylesheet" type="text/css" href="css/common.css">
 	<link rel="stylesheet" type="text/css" href="css/footer.css"/>
+	<link rel="stylesheet" type="text/css" href="css/perfil.css" />
 	<meta charset="utf-8">
 	<?php
 		$user = Usuario::buscaUsuario($_SESSION['nombreUsuario']);
@@ -30,38 +31,44 @@
 
 		<?php require ('includes/comun/header.php'); ?>
 
-		<center>
-
 		<div class="container"><!--bloque del contenido central-->
-			
-
-			<div class = avatar>
+			<div class = "avatar">
 				<?php 
 					if($user->avatar() != NULL)
-						echo "<img width='10%' height='10%' src='" . $user->avatar() . " ' alt = 'Imagen de perfil'>"; 
+						echo "<img src='" . $user->avatar() . " ' alt = 'Imagen de perfil'>"; 
 					else
-						echo "<img width='10%' height='10%' src='img/users/default.png' alt = 'Imagen de perfil'>"; 
+						echo "<img src='/img/users/default.png' alt = 'Imagen de perfil'>"; 
 					$_SESSION['avatar'] = $user->avatar();
 				?> 
 			</div>
 
-			<div class = nickname>
-				<p>User: <?php echo $user->nombreUsuario();?></p>
+			<div class = "userData">
+				<fieldset>
+				<legend>Datos del usuario</legend>
+					<p>Nombre de usuario: <?php echo $user->nombreUsuario();?></p>
+					<p>Nombre: <?php echo $user->nombre();?></p>
+					<p>Apellidos: <?php echo $user->apellidos();?></p>
+					<p>Email: <?php echo $user->email();?></p>
+					<p>Ciudad: <?php echo $user->ciudad();?></p>
+					<p>Fecha de nacimiento: <?php echo date("d-m-Y",strtotime($user->fechaNac())) ;?></p>
+					<form action="modificarPerfil.php">
+						<label> <button> Modificar perfil</button> </label>
+					</form>
+				</fieldset>
 			</div>
 
-			<div class = userData>
-				<p>Nombre: <?php echo $user->nombre();?></p>
-				<p>Apellidos: <?php echo $user->apellidos();?></p>
-				<p>Ciudad: <?php echo $user->ciudad();?></p>
-				<p>Fecha de nacimiento: <?php echo date("d-m-Y",strtotime($user->fechaNac())) ;?></p>
+			<?php 
+			if($user->rol() == 'admin'){ ?>
+				<div class = "adminView">
+					<h2> Esta vista es única para el administrador </h2>
+					<p> En ella podrá ver los diferentes cambios que puede realizar en la aplicación </p>
+						<form action="vistaAddBeers.php">
+							<label> <button> Añadir cerveza</button> </label>
+						</form>
+				</div>
+			<?php } ?>
 			
-			</div>
-			<a id="item" href = 'listaPedidos.php'> Mis pedidos </a>
-
-			<a id="item" href = "modificarPerfil.php"> Modificar perfil</a>
-
 		</div>
-		</center>
 
 		<?php require('includes/comun/footer.php'); ?>
 

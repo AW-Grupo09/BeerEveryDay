@@ -47,7 +47,7 @@ require_once __DIR__.'/Form.php';
                 if($usuario->compruebaPassword($password)) {
                     $_SESSION['login'] = true;
                     $_SESSION['nombreUsuario'] = $nombreUsuario;
-                    $_SESSION['esAdmin'] = Usuario::esAdmin($nombreUsuario) == 0 ? true : false;                     
+                    $_SESSION['esAdmin'] = Usuario::esAdmin($nombreUsuario) == 1 ? true : false;
                     header('Location: index.php');
                     exit();
                 } else {

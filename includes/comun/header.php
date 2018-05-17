@@ -36,6 +36,7 @@
 		<a id="item" href = 'catalogo.php'> Catálogo </a> 
 		<a id="item" href = 'mostrarGrupos.php'> Grupos </a> 
 		<a id="item" href = 'mostrarCesta.php'> Mi cesta </a>
+		<a id="item" href = 'listaPedidos.php'> Mis pedidos </a>
 	</id>
 
 </div> <!-- Cierre de header-->

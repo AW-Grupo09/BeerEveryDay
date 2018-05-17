@@ -1,6 +1,6 @@
 <?php 
 	require_once __DIR__.'/includes/config.php';
-	require_once __DIR__ .'/includes/FormModifica.php';
+	require_once __DIR__ .'/includes/FormularioModifica.php';
 
     if(!$_SESSION['login']){
 		header('Location: index.php');
@@ -14,7 +14,11 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<link rel="stylesheet" type="text/css" href="css/common.css">
 		<link rel="stylesheet" type="text/css" href="css/footer.css"/>
+		<link rel="stylesheet" type="text/css" href="css/perfil.css" />
 		<meta charset="utf-8"/>	
+		<?php
+			$user = Usuario::buscaUsuario($_SESSION['nombreUsuario']);
+		?>
 </head>
 
 <body>
@@ -22,22 +26,26 @@
 
 		<?php require ('includes/comun/header.php'); ?>
 	
-		<center>
 		<div class="container">
 
-		<img src="<?php echo $_SESSION['avatar']?>" width="200px" class="imgRedondaPerfil" alt="img">
-		<h3>Modifica los datos de usuario:</h3>
-			
+		<div class = "avatar">
+				<?php 
+					if($user->avatar() != NULL)
+						echo "<img src='" . $user->avatar() . " ' alt = 'Imagen de perfil'>"; 
+					else
+						echo "<img src='/img/users/default.png' alt = 'Imagen de perfil'>"; 
+				?> 
+			</div>
+
 			<?php   
 				$opciones = array();
 
-				$formulario = new FormModifica("FormModifica", $opciones);
+				$formulario = new FormularioModifica("formModifica", $opciones);
 				$formulario->gestiona();
 										
 			?>
 			
 		</div>
-		</center>
 
 		<?php require('includes/comun/footer.php'); ?>
 

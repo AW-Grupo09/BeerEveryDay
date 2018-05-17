@@ -43,14 +43,16 @@ class Usuario
             return false;
         }
         $user = new Usuario($nombreUsuario, $nombre, self::hashPassword($password), $rol, $ciudad, $fechaNac, $email, $apellidos, $avatar);
-        return self::guarda($user);
+        //return self::guarda($user);
+        return self::inserta($user);
     }
     
     private static function hashPassword($password)
     {
         return password_hash($password, PASSWORD_DEFAULT);
     }
-    
+
+    // guarda dejaría de existir
     public static function guarda($usuario)
     {
         if ($usuario->id !== null) {
@@ -58,14 +60,14 @@ class Usuario
         }
         return self::inserta($usuario);
     }
+
     
     private static function inserta($usuario)
     {
-
-        var_dump($usuario);
+        //var_dump($usuario);
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
-        $query=sprintf("INSERT INTO Usuarios(nombreUsuario, nombre, password, rol, ciudad, fechaNac, email, apellidos, avatar) VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')"
+        $query=sprintf("INSERT INTO usuarios(nombreUsuario, nombre, password, rol, ciudad, fechaNac, email, apellidos, avatar) VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')"
             , $conn->real_escape_string($usuario->nombreUsuario)
             , $conn->real_escape_string($usuario->nombre)
             , $conn->real_escape_string($usuario->password)
@@ -85,20 +87,25 @@ class Usuario
         return $usuario;
     }
     
-    // aun no se usa pero se usará
+    // esta actualiza sería inutil
     private static function actualiza($usuario)
     {
+        //var_dump($usuario);
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
-        $query=sprintf("UPDATE Usuarios U SET nombreUsuario = '%s', nombre='%s', password='%s', rol='%s' WHERE U.id=%i"
-            , $conn->real_escape_string($usuario->nombreUsuario)
+        $query=sprintf("UPDATE usuarios U SET nombre='%s', password='%s', apellidos='%s', ciudad='%s', email='%s', avatar='%s', fechaNac='%s' WHERE U.nombreUsuario='%s'"
             , $conn->real_escape_string($usuario->nombre)
             , $conn->real_escape_string($usuario->password)
-            , $conn->real_escape_string($usuario->rol)
-            , $usuario->id);
+            , $conn->real_escape_string($usuario->apellidos)
+            , $conn->real_escape_string($usuario->ciudad)
+            , $conn->real_escape_string($usuario->email)
+            , $conn->real_escape_string($usuario->avatar)
+            , $conn->real_escape_string($usuario->fechaNac)
+            , $conn->real_escape_string($usuario->nombreUsuario)
+            );
         if ( $conn->query($query) ) {
             if ( $conn->affected_rows != 1) {
-                echo "No se ha podido actualizar el usuario: " . $usuario->id;
+                echo "No se ha podido actualizar el usuario: " . $usuario->nombreUsuario;
                 exit();
             }
         } else {
@@ -108,13 +115,42 @@ class Usuario
         
         return $usuario;
     }
-    
+
+    public static function actualizaUser($nombreUsuario, $usuario, $nombre, $password, $apellidos, $ciudad, $email, $avatar, $fechaNac)
+    {
+        $app = Aplicacion::getSingleton();
+        $conn = $app->conexionBd();
+        $pass = self::hashPassword($password);
+        $query=sprintf("UPDATE Usuarios U SET nombre='$nombre', password='$pass', apellidos='$apellidos', ciudad='$ciudad', email='$email', avatar='$avatar', fechaNac='$fechaNac' WHERE U.nombreUsuario='$nombreUsuario'"
+            , $conn->real_escape_string($usuario->nombre)
+            , $conn->real_escape_string($usuario->password)
+            , $conn->real_escape_string($usuario->apellidos)
+            , $conn->real_escape_string($usuario->ciudad)
+            , $conn->real_escape_string($usuario->email)
+            , $conn->real_escape_string($usuario->avatar)
+            , $conn->real_escape_string($usuario->fechaNac)
+            , $conn->real_escape_string($usuario->nombreUsuario)
+            );
+        if ( $conn->query($query) ) {
+            if ( $conn->affected_rows != 1) {
+                echo "No se ha podido actualizar el usuario: " . $usuario->nombreUsuario;
+                exit();
+            }
+        } else {
+            echo "Error al insertar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+            exit();
+        }
+        
+        return $usuario;
+    }
+
+   
     //Para saber si un usuario es admin o no
     public static function esAdmin($usuario){
 
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
-        $query = sprintf("SELECT * FROM usuarios U WHERE U.nombreUsuario = '$nombreUsuario'", $conn->real_escape_string($nombreUsuario));
+        $query = sprintf("SELECT * FROM usuarios U WHERE U.nombreUsuario = '$usuario'", $conn->real_escape_string($usuario));
         $rs = $conn->query($query);   
         $result = false;
         $isAdmin = false;
@@ -122,14 +158,14 @@ class Usuario
             if ( $rs->num_rows == 1) {
                 $fila = $rs->fetch_assoc();
                 if($fila["rol"] == "admin")
-                    $admin = true;
+                    $isAdmin = true;
             }
         } else {
             echo "Error al consultar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
             exit();
         }
 
-        return $isAdmin;
+        return $isAdmin; // true si es admin, false en coc
 
     }
 

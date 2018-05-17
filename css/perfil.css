@@ -1,0 +1,57 @@
+.avatar {
+	display: flex;
+	justify-content: center;
+	padding-bottom: 2%;
+}
+
+.avatar img {
+	width: 40%;
+	border-radius: 5%;
+}
+
+.userData, .adminView {
+	border: 3px solid #FFC107;
+	margin-left: 20%;
+	margin-right: 20%;
+	padding: 1%;
+    -webkit-border-radius: 15px;
+    border-radius: 15px; 
+}
+
+.adminView {
+    margin-top: 1%;
+}
+
+input[type=text], input[type=password], input[type=date], input[type=email]  {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+}
+
+button {
+    background-color: #FFC107; /*#4CAF50*/
+    color: black;
+    padding: 1.7%;
+    margin-left: 35%;
+    border: none;
+    cursor: pointer;
+    width: 30%;
+    -webkit-border-radius: 10px;
+    border-radius: 10px; 
+    font-family: miFuente;
+    src: url(../fonts/BebasKai.otf);
+    font-size: 20px;
+   
+}
+
+button:hover {
+    opacity: 0.8;
+    background-color: black;
+    color: #FFC107;
+}
+
