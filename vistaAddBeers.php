@@ -2,10 +2,9 @@
 	require_once __DIR__.'/includes/config.php';
 	require_once __DIR__ .'/includes/FormularioSubirCerveza.php';
 
-    if(!$_SESSION['login']){
+    if(!$_SESSION['login'] || !isset($_SESSION["esAdmin"]) || !$_SESSION["esAdmin"]){
 		header('Location: index.php');
 	}
-
 ?>
 <!DOCTYPE html>
 <html>
