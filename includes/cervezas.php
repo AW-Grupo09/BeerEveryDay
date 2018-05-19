@@ -18,9 +18,10 @@ class cervezas{
 	private $tipo;
 
 	public function __construct($id){
-		//$mysqli = conexion::getConection();
+		
 		$app = Aplicacion::getSingleton();
         $mysqli = $app->conexionBd();
+
 		$query="SELECT * FROM cervezas WHERE id = $id ";
 		$resultado=$mysqli->query($query) or die ($mysqli->error. " en la línea ".(__LINE__-1));
 		if (mysqli_num_rows($resultado) > 0) {
@@ -41,7 +42,10 @@ class cervezas{
 		}
 	}
 
-	public static function getIdsCervezas($filtros,$orden,$mysqli){
+	public static function getIdsCervezas($filtros,$orden){
+		
+		$app = Aplicacion::getSingleton();
+        $mysqli = $app->conexionBd();
 		
 		if(empty($filtros) && empty($orden))
 			$sql = "SELECT id FROM cervezas";
