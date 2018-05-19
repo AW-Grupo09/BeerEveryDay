@@ -4,6 +4,7 @@
 	require_once '../includes/config.php';
 	require_once '../includes/controlPedidos.php';
 
+	//include('controlPedidos.php');
 	include('cervezas.php');
 
 	$deleteCesta;

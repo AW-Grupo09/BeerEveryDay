@@ -1,6 +1,7 @@
 <?php 
 	require_once __DIR__.'/includes/config.php';
 	require_once __DIR__.'/includes/controlPedidos.php';
+	require_once __DIR__.'/includes/pedidos.php';
 	require_once __DIR__.'/includes/cervezas.php';
 	require_once __DIR__.'/includes/FormularioPedido.php';
 
@@ -38,7 +39,7 @@
 
 				if(isset($_POST['Eliminar'])){
 					controlPedidos::eliminarCesta($idCesta);
-					$cesta = null;
+					$idCesta = null;
 				}
 						
 				if($idCesta == null){
@@ -46,12 +47,12 @@
 				}else {
 					$cesta = controlPedidos::loadPedido($idCesta);
 
-					foreach ($cesta->getCervezas() as $idCerveza) {
+					/*foreach ($cesta->getCervezas() as $idCerveza) {
 						if(isset($_POST[$idCerveza])){
 							controlPedidos::eliminarElementoCesta($idCerveza, $idCesta);
-							$cesta = new pedidos($idCesta);
+							$cesta = controlPedidos::loadPedido($idCesta);
 						}
-					}
+					}*/
 					if(sizeof($cesta->getCervezas()) > 0) {
 						$cervezas = $cesta->getCervezas();
 						$unidades = $cesta->getUnidades();

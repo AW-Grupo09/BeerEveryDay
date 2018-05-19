@@ -10,48 +10,12 @@ class pedidos {
     private $dir;
     private $tarjeta;
     private $estado;
-    private $fechapedido;
+    private $fechaPedido;
     private $fechaLimite;
     private $fechaEntrega;
 
     public function __construct($idPedido){
-        $app = Aplicacion::getSingleton();
-        $mysqli = $app->conexionBd();
-        $query="SELECT * FROM pedidos WHERE idPedido LIKE '$idPedido'";
-        $resultado=$mysqli->query($query) or die ($mysqli->error. " en la línea ".(__LINE__-1));
-        if (mysqli_num_rows($resultado) > 0) {
-            // output data of each row
-            $fila = $resultado->fetch_assoc();
-            $this->idPedido = $idPedido;
-            $this->dir = $fila["Direccion"];
-            $this->estado = $fila["estado"];
-            $this->tarjeta = $fila["tarjeta"];
-            $this->fechapedido = $fila["fechaPedido"];
-            $this->fechaLimite = $fila["fechaLimite"];
-            $this->fechaEntrega = $fila["fechaEntrega"];
-        }
-        
-        $sql = "SELECT idUsuario FROM `usuarios-pedidos` WHERE idPedido = $idPedido";
-        $consulta = $mysqli->query($sql) or die ($mysqli->error. " en la línea ".(__LINE__-1));
-        $fila = mysqli_fetch_assoc($consulta);
-        $this->user = $fila["idUsuario"];
-
-        $sql = "SELECT idcerveza, unidades FROM `pedidos-cervezas` WHERE idpedido = ". $idPedido;
-        $consulta = $mysqli->query($sql) or die ($mysqli->error. " en la línea ".(__LINE__-1)); 
-
-        $i = 0;
-        while($fila= mysqli_fetch_assoc($consulta)){
-            $this->cervezas[$i] = $fila["idcerveza"];
-            $this->unidades[$i] = $fila["unidades"];
-            $i++;
-        }  
-
-        if($this->estado == "grupo"){
-            $sql = "SELECT idGrupo FROM `grupos-pedidos`";
-            $consulta = $mysqli->query($sql) or die ($mysqli->error. " en la línea ".(__LINE__-1));
-            $fila = mysqli_fetch_assoc($consulta);
-            $this->grupo = $fila["idgrupo"];
-        }
+        $this->idPedido = $idPedido;
     }
 
 
@@ -125,6 +89,33 @@ class pedidos {
 
     public function setEstado($estado){
         $this->estado = $estado;
+        return $this;
+    }
+
+    public function getFechaPedido(){
+        return $this->fechaPedido;
+    }
+
+    public function setFechaPedido($fechaPedido){
+        $this->fechaPedido = $fechaPedido;
+        return $this;
+    }
+
+    public function getFechaLimite(){
+        return $this->fechaLimite;
+    }
+
+    public function setFechaLimite($fechaLimite){
+        $this->fechaLimite = $fechaLimite;
+        return $this;
+    }
+
+    public function getFechaENtrega(){
+        return $this->fechaEntrega;
+    }
+
+    public function setFechaEntrega($fechaEntrega){
+        $this->fechaEntrega = $fechaEntrega;
         return $this;
     }
 }
