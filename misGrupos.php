@@ -31,7 +31,7 @@
 		<div class="container">
 
 			<div class="titulo">
-                <p><h1> ¡Mis grupos! </h1></p>
+                <p><h2> ¡Mis grupos! </h2></p>
             </div>
 
             <table>
@@ -55,7 +55,7 @@
             </table>
 
             <div class="titulo">
-                <p><h1> ¡Otros grupos! </h1></p>
+                <p><h2> Crear nuevo grupo: </h2></p>
             </div>
 			
 			 <?php

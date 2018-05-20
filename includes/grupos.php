@@ -76,15 +76,14 @@ class Grupos
         return self::inserta($grupo);
     }
 
-    public static function insetaGrupoUsuarios($idUsuario, $idGrupo, $admin)
+    public static function insetaGrupoUsuarios($idUsuario, $idGrupo)
     {
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
         $query = sprintf(
-            "INSERT INTO `grupos-usuarios` VALUES('%s', '%s', '%s')",
+            "INSERT INTO `grupos-usuarios` VALUES('%s', '%s')",
             $conn->real_escape_string($idGrupo),
-            $conn->real_escape_string($idUsuario),
-            $conn->real_escape_string($admin)
+            $conn->real_escape_string($idUsuario)
         );
 
         if ($conn->query($query)) {

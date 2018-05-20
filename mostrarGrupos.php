@@ -15,7 +15,17 @@
 <body>
     <?php
     if (isset($_GET['action']) && $_GET['action'] == 'unirse') {
-        Grupos::insetaGrupoUsuarios($_SESSION['nombreUsuario'], $_GET['id'], 0);
+        if(!$_SESSION['login']){
+            header('Location: login.php');
+        }
+        else{
+            $gruposUsuarios = Grupos::insetaGrupoUsuarios($_SESSION['nombreUsuario'], $_GET['id']);
+            /*hacer las comporbaciones de que no se pueda unir a su mismo grupo*/
+            /*sigueinte modificacion es el numero de unidades de cerveza*/
+            if(isset($gruposUsuarios)){
+                echo" se ha unido correctamente";
+            }
+        }
     }
     ?>
 
@@ -54,7 +64,7 @@
 
     </div> <!-- Fin del contenedor -->
 
-    <script>
+    <script> /*eset escrip actuliza lanza mediente el metodo GET el id seleccionado*/
         function unirse(id){
             window.location = "mostrarGrupos.php?action=unirse&id=" + id;
         }
