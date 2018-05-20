@@ -16,6 +16,8 @@
 		<link rel="stylesheet" type="text/css" href="css/footer.css"/>
 		<link rel="stylesheet" type="text/css" href="css/perfil.css" />
 		<meta charset="utf-8"/>	
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+		<script type="text/javascript" src="js/guardaCambios.js"></script>
 		<?php
 			$user = Usuario::buscaUsuario($_SESSION['nombreUsuario']);
 		?>
@@ -42,10 +44,12 @@
 
 				$formulario = new FormularioModifica("formModifica", $opciones);
 				$formulario->gestiona();
-										
+
 			?>
-			
+
 		</div>
+
+
 
 		<?php require('includes/comun/footer.php'); ?>
 

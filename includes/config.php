@@ -11,6 +11,9 @@ define('BD_HOST', 'localhost');
 define('BD_NAME', 'beereveryday');
 define('BD_USER', 'root');
 define('BD_PASS', '');
+/*define('BD_USER', 'beereveyday');
+define('BD_PASS', 'admin');*/
+
 
 /**
  * Configuración del soporte de UTF-8, localización (idioma y país) y zona horaria

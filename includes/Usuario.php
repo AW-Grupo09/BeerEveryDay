@@ -43,8 +43,8 @@ class Usuario
             return false;
         }
         $user = new Usuario($nombreUsuario, $nombre, self::hashPassword($password), $rol, $ciudad, $fechaNac, $email, $apellidos, $avatar);
-        //return self::guarda($user);
-        return self::inserta($user);
+        return self::guarda($user);
+        //return self::inserta($user);
     }
     
     private static function hashPassword($password)
@@ -52,7 +52,6 @@ class Usuario
         return password_hash($password, PASSWORD_DEFAULT);
     }
 
-    // guarda dejaría de existir
     public static function guarda($usuario)
     {
         if ($usuario->id !== null) {
@@ -87,7 +86,6 @@ class Usuario
         return $usuario;
     }
     
-    // esta actualiza sería inutil
     private static function actualiza($usuario)
     {
         //var_dump($usuario);
@@ -247,6 +245,7 @@ class Usuario
         return password_verify($password, $this->password);
     }
 
+    // inutil
     public function cambiaPassword($nuevoPassword)
     {
         $this->password = self::hashPassword($nuevoPassword);

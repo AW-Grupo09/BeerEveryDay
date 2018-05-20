@@ -27,7 +27,7 @@ class FormularioModifica extends Form {
 	       <input type="date" name="fechaNac" maxlength="50" size="30" value="' . $usuario->fechaNac() . '" />
 	       <label class="foto_per_label">Foto de perfil: </label>
 		   <label> <p> <input type="file" name="archivo" value=" ' . $usuario->avatar() . '"/> </p></label>	   
-	       <label> <button class="submit" type="submit">Guardar cambios</button></label>
+	       <label> <button class="submit" type="submit" onclick="guard()">Guardar cambios</button></label>
        </fieldset>
        </div>';
  	}
@@ -89,11 +89,10 @@ class FormularioModifica extends Form {
              //Si hay exito
             array_push($datos, $nombreUsuario);
             array_push($datos, $password);
-            return "index.php";
+            return 'perfil.php';
          }
 
-       
-
+      
     }
  
 
