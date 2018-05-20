@@ -24,41 +24,7 @@
         <?php require('includes/comun/header.php'); ?>
 
         <div class="container">
-            <div class="titulo">
-                <p><h1> ¡Mis grupos! </h1></p>
-            </div>
-
-            <table>
-                <thead>
-                    <th>Nombre</th>
-                    <th>Direccion</th>
-                    <th>Ciudad</th>
-                    <th>Creador</th>
-                </thead>
-                <?php
-                $grupos = Grupos::getGruposByUser($_SESSION['nombreUsuario']);
-                foreach ($grupos as $grupo) { ?>
-                <tr>
-                    <td><?=$grupo->getNombre()?></td>
-                    <td><?=$grupo->getDireccion()?></td>
-                    <td><?=$grupo->getCreador()?></td>
-                    <td><?=$grupo->getCiudad()?></td>
-                </tr>
-                <?php } ?>
-            </table>
-
-            <?php
-
-                $opciones = array();
-
-                $formulario = new FormularioGrupo("formGrupo", $opciones);
-                $formulario->gestiona();
-
-            ?>
-
-            <div class="titulo">
-                <p><h1> ¡Otros grupos! </h1></p>
-            </div>
+            
 
             <table>
                 <thead>
