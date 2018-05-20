@@ -76,8 +76,31 @@ class Grupos
         return self::inserta($grupo);
     }
 
+    public static function buscaUsuarioenGrupos($idUsuario,$idGrupo){
+        $grupos = array();
+        $app = Aplicacion::getSingleton();
+        $conn = $app->conexionBd();
+        $query = sprintf("SELECT * FROM `grupos-usuarios` WHERE idGrupo = '%s' and idUsuario = '%s'",
+                         $conn->real_escape_string($idGrupo),
+                         $conn->real_escape_string($idUsuario)
+                         );
+        $rs = $conn->query($query);
+        if($rs){
+             if ($rs->num_rows == 1){
+                /*tranfes object usuario-grupo*/
+                $existe = true;
+            }
+            else
+                $existe = false;
+            $rs->free();
+        }
+        
+        return $existe;
+    }
+
     public static function insetaGrupoUsuarios($idUsuario, $idGrupo)
     {
+
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
         $query = sprintf(

@@ -13,21 +13,7 @@
 </head>
 
 <body>
-    <?php
-    if (isset($_GET['action']) && $_GET['action'] == 'unirse') {
-        if(!$_SESSION['login']){
-            header('Location: login.php');
-        }
-        else{
-            $gruposUsuarios = Grupos::insetaGrupoUsuarios($_SESSION['nombreUsuario'], $_GET['id']);
-            /*hacer las comporbaciones de que no se pueda unir a su mismo grupo*/
-            /*sigueinte modificacion es el numero de unidades de cerveza*/
-            if(isset($gruposUsuarios)){
-                echo" se ha unido correctamente";
-            }
-        }
-    }
-    ?>
+   
 
     <div id="contenedor">
 
@@ -57,8 +43,28 @@
                 <?php } ?>
             </table>
 
-        </div>
 
+             <?php
+                if (isset($_GET['action']) && $_GET['action'] == 'unirse') {
+                    if(!$_SESSION['login']){
+                        header('Location: login.php');
+                    }
+                    else{
+
+                        $misGrupos = Grupos::buscaUsuarioenGrupos($_SESSION['nombreUsuario'], $_GET['id']);
+                        if($misGrupos!=true){
+                            $gruposUsuarios = Grupos::insetaGrupoUsuarios($_SESSION['nombreUsuario'], $_GET['id']);
+                        /*hacer las comporbaciones de que no se pueda unir a su mismo grupo*/
+                        /*sigueinte modificacion es el numero de unidades de cerveza*/
+                            if(isset($gruposUsuarios)){
+                                echo" <p> se ha unido correctamente </p>";
+                            }
+                        }
+                    }
+                }
+            ?>
+
+        </div>
 
         <?php require('includes/comun/footer.php'); ?>
 
