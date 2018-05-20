@@ -19,15 +19,11 @@ class FormularioModifica extends Form {
 	       <input type="email" name="email" maxlength="50" size="30" value="' . $usuario->email() . '" />
 	       <label>Ciudad: </label>
 	       <input type="text" name="ciudad" maxlength="50" size="30" value="' . $usuario->ciudad() . '" />
-	       	<label>Contraseña: </label>
-	       <input type="password" name="password" maxlength="50" size="30" placeholder="Escribe tu nueva contraseña" />
-	       <label>Repite la contraseña nueva: </label>
-	       <input type="password" name="repass" maxlength="50" size="30" placeholder="Escribe otra vez tu nueva contraseña" />
 	       <label>Fecha de nacimiento: </label>
 	       <input type="date" name="fechaNac" maxlength="50" size="30" value="' . $usuario->fechaNac() . '" />
 	       <label class="foto_per_label">Foto de perfil: </label>
 		   <label> <p> <input type="file" name="archivo" value=" ' . $usuario->avatar() . '"/> </p></label>	   
-	       <label> <button class="submit" type="submit" onclick="guard()">Guardar cambios</button></label>
+	       <label> <button class="submit" type="submit" onclick="guardar()">Guardar cambios</button></label>
        </fieldset>
        </div>';
  	}
@@ -51,15 +47,6 @@ class FormularioModifica extends Form {
 		//Imagen
 		$ruta = "img/users/";//ruta carpeta donde queremos copiar las imágenes 
 	    $imageFileType = $ruta . basename($avatar);
-
-  		$password = isset($_POST['password']) ? $_POST['password'] : null;
-		if(!empty($password) && mb_strlen($password) < 5 ) {
-			$erroresFormulario[] = "El password tiene que tener una longitud de al menos 5 caracteres.";
-		}
-		$password2 = isset($_POST['repass']) ? $_POST['repass'] : null;
-		if ((!empty($password2) || !empty($password)) && (strcmp($password, $password2) !== 0) ) {
-			$erroresFormulario[] = "Los passwords deben coincidir";
-		}
 		
 		// comprueba que HAYA IMAGEN y que es válida
 		if($avatar != NULL && !funcionImagen::esImagen($avatar)){
@@ -70,8 +57,9 @@ class FormularioModifica extends Form {
 		if (count($erroresFormulario) === 0) {
 
 			$usuario = usuario::buscaUsuario($nombreUsuario);
+
 			if ($usuario != NULL) { // si encuentra el usuario, le actualiza
-		    	$usuario = Usuario::actualizaUser($nombreUsuario, $usuario, $nombre, $password, $apellidos, $ciudad, $email, $imageFileType, $fechaNac);
+		    	$usuario = Usuario::actualizaUser($nombreUsuario, $usuario, $nombre, $apellidos, $ciudad, $email, $imageFileType, $fechaNac);
 		    	//$usuario = Usuario::guarda($usuario, $nombreUsuario);
 				move_uploaded_file($_FILES['archivo']['tmp_name'], $imageFileType);
 				header('Location: perfil.php');
@@ -82,13 +70,12 @@ class FormularioModifica extends Form {
 		}
 
 
-		 if (count($erroresFormulario) > 0) {//Si hay errores devuelvo un array de errores 
+		 if (count($erroresFormulario) > 0) { //Si hay errores devuelvo un array de errores 
             return $erroresFormulario;
          }
          else{
              //Si hay exito
             array_push($datos, $nombreUsuario);
-            array_push($datos, $password);
             return 'perfil.php';
          }
 

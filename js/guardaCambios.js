@@ -11,16 +11,7 @@ function guarda(){
 	}
 };
 
-function guard(){
+function guardar(){
 	alert("¡Cambios guardados correctamente!");
 }
 
-$(document).ready(function() {
-swal({ 
-  title: "Error",
-   text: "wrong user or password",
-    type: "error" 
-  },
-  function(){
-    window.location.href = 'perfil.php';
-});

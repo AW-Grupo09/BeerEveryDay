@@ -106,7 +106,7 @@ require_once __DIR__.'/funcionImagen.php';
 		if (count($erroresFormulario) === 0) {
 
 			$usuario = usuario::buscaUsuario($nombreUsuario);
-			if ($usuario == NULL ) {
+			if ($usuario == NULL) {
 		    	$usuario = Usuario::crea($nombreUsuario, $nombre, $password, 'user', $ciudad, $fechaNac, $email, $apellidos, $imageFileType);
 		    	$_SESSION['login'] = true;
 				$_SESSION['nombreUsuario'] = $nombreUsuario;
@@ -115,8 +115,7 @@ require_once __DIR__.'/funcionImagen.php';
 				header('Location: index.php');
 				exit();
 			} else {
-
-
+				
 			}
 		}
 
