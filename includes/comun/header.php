@@ -32,11 +32,11 @@
 	</div>
 		
 	<id id = "items">
-		<a id="item" href = 'index.php'> Home </a>
-		<a id="item" href = 'catalogo.php'> Catálogo </a> 
-		<a id="item" href = 'mostrarGrupos.php'> Grupos </a> 
-		<a id="item" href = 'mostrarCesta.php'> Mi cesta </a>
-		<a id="item" href = 'listaPedidos.php'> Mis pedidos </a>
+		<a id="item" href = 'index.php'> HOME </a>
+		<a id="item" href = 'catalogo.php'> CATÁLOGO </a> 
+		<a id="item" href = 'mostrarGrupos.php'> GRUPOS </a> 
+		<a id="item" href = 'mostrarCesta.php'> MI CESTA </a>
+		<a id="item" href = 'listaPedidos.php'> MIS PEDIDOS </a>
 	</id>
 
 </div> <!-- Cierre de header-->

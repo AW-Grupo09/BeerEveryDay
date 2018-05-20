@@ -134,10 +134,9 @@
 
             <div id="filtro">
                 <?php
-                $mysqli = conexion::getConection();
-                $idsCervezas = cervezas::getIdsCervezas($sql, $sqlOrden, $mysqli);
+                $idsCervezas = cervezas::getIdsCervezas($sql, $sqlOrden);
                 foreach ($idsCervezas as $key => $value) {
-                    $cerveza = new cervezas($value, $mysqli);
+                    $cerveza = new cervezas($value);
                     echo "<div class='item'>";
 
                        
