@@ -6,7 +6,7 @@ class FormularioModificaPassword extends Form {
  	public function generaCamposFormulario($datosIniciales){
        return 
        '
-       <div class="userData">
+       <div class="modificaView">
        <fieldset>
        <legend> Modifica tu contraseña </legend>
 	       <input type="password" name="password" maxlength="50" size="30" placeholder="Escribe tu nueva contraseña" required/>

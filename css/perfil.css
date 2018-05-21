@@ -1,21 +1,25 @@
-.avatar {
-	display: flex;
-	justify-content: center;
-	padding-bottom: 2%;
-}
+
 
 .avatar img {
-	width: 40%;
+	width: 400px;
 	border-radius: 5%;
 }
 
 .userData, .adminView {
-	border: 3px solid #FFC107;
-	margin-left: 20%;
-	margin-right: 20%;
+    width: 40%;
 	padding: 1%;
+   /* border: 3px solid #FFC107;
+    -webkit-border-radius: 15px;
+    border-radius: 15px; */
+}
+
+.modificaView {
+    border: 3px solid #FFC107;
+    padding: 1%;
     -webkit-border-radius: 15px;
     border-radius: 15px; 
+    margin-left: 20%;
+    margin-right: 20%;
 }
 
 .adminView {
@@ -57,5 +61,14 @@ button:hover {
 
 #modCont {
     margin-top: 1%;
+}
+
+.perfil {
+    display: flex;
+    justify-content: space-around;
+        border: 3px solid #FFC107;
+    -webkit-border-radius: 15px;
+    border-radius: 15px; 
+    padding: 1%;
 }
 

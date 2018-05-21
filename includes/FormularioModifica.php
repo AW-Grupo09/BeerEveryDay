@@ -8,7 +8,7 @@ class FormularioModifica extends Form {
  		$usuario = Usuario::buscaUsuario($_SESSION['nombreUsuario']);
        return 
        '
-       <div class="userData">
+       <div class="modificaView">
        <fieldset>
        <legend> Modifica los datos de usuario </legend>
 	       <p> <label>Nombre: </label> </p>

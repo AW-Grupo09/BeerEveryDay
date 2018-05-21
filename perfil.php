@@ -32,36 +32,38 @@
 		<?php require ('includes/comun/header.php'); ?>
 
 		<div class="container"><!--bloque del contenido central-->
-			<div class = "avatar">
-				<?php 
-					if($user->avatar() != NULL)
-						echo "<img src='" . $user->avatar() . " ' alt = 'Imagen de perfil'>"; 
-					else
-						echo "<img src='/img/users/default.png' alt = 'Imagen de perfil'>"; 
-					$_SESSION['avatar'] = $user->avatar();
-				?> 
-			</div>
-
-			<div class = "userData">
-				<fieldset>
-				<legend>Datos del usuario</legend>
-					<p>Nombre de usuario: <?php echo $user->nombreUsuario();?></p>
-					<p>Nombre: <?php echo $user->nombre();?></p>
-					<p>Apellidos: <?php echo $user->apellidos();?></p>
-					<p>Email: <?php echo $user->email();?></p>
-					<p>Ciudad: <?php echo $user->ciudad();?></p>
-					<p>Fecha de nacimiento: <?php echo date("d-m-Y",strtotime($user->fechaNac())) ;?></p>
-					<form action="modificarPerfil.php">
-						<label> <button> Modificar perfil</button> </label>
-					</form>
-					<form action="modificarPassword.php">
-						<label> <button id = "modCont"> Modificar contraseña</button> </label>
-					</form>
+			<div class = "perfil">
+				<div class = "avatar">
+					<?php 
+						if($user->avatar() != NULL)
+							echo "<img src='" . $user->avatar() . " ' alt = 'Imagen de perfil'>"; 
+						else
+							echo "<img src='/img/users/default.png' alt = 'Imagen de perfil'>"; 
+						$_SESSION['avatar'] = $user->avatar();
+					?> 
 					<form action="modificarAvatar.php">
 						<label> <button id = "modCont"> Modificar foto de perfil</button> </label>
 					</form>
-				</fieldset>
-			</div>
+				</div>
+
+				<div class = "userData">
+					<fieldset>
+					<legend>MI PERFIL</legend>
+						<p>Nombre de usuario: <?php echo $user->nombreUsuario();?></p>
+						<p>Nombre: <?php echo $user->nombre();?></p>
+						<p>Apellidos: <?php echo $user->apellidos();?></p>
+						<p>Email: <?php echo $user->email();?></p>
+						<p>Ciudad: <?php echo $user->ciudad();?></p>
+						<p>Fecha de nacimiento: <?php echo date("d-m-Y",strtotime($user->fechaNac())) ;?></p>
+						<form action="modificarPerfil.php">
+							<label> <button> Modificar perfil</button> </label>
+						</form>
+						<form action="modificarPassword.php">
+							<label> <button id = "modCont"> Modificar contraseña</button> </label>
+						</form>
+					</fieldset>
+				</div>
+		</div>
 
 			<?php 
 			if($user->rol() == 'admin'){ ?>
