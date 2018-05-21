@@ -56,7 +56,7 @@
 				$opciones = array();
 				$addToForm = array( 'idCerveza' => $cerveza->getIdCerveza() );
 	        	$opciones = array_merge($addToForm, $opciones);
-				$formulario = new FormularioSubirCerveza("FormSubirCerveza", $opciones);
+				$formulario = new FormularioSubirCerveza("FormValCerve", $opciones);
 				$formulario->gestiona();
 			}
 ?>

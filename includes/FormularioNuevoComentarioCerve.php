@@ -22,7 +22,7 @@ require_once __DIR__.'/comentarios.php';
 
                     <input type="hidden" name="idCerveza" value="'.$opciones['idCerveza'].'">
 
-    				<p><button type="submit">Subir cerveza</button></p>
+    				<p><button type="submit">Añadir valoración</button></p>
 
 		    </fieldset>';
  	} 
@@ -75,13 +75,10 @@ require_once __DIR__.'/comentarios.php';
             array_push($datos, $nombreUsuario);
             array_push($datos, $password);
             */
-            return "index.php";
+            return "mostrarCerveza.php?id=".$idCerveza;
          }
         
     }
 
 }
-                    //<input type="text" placeholder="Introduzca aquí el tipo de la cerveza" name="Tipo" required>
-                  //  <input type="text" placeholder="Introduzca aquí el grano de la cerveza" name="Grano" required>
-                  //  <input type="text" placeholder="Introduzca aquí el color de la cerveza" name="Color" required>
 ?>
