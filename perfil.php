@@ -57,6 +57,9 @@
 					<form action="modificarPassword.php">
 						<label> <button id = "modCont"> Modificar contraseña</button> </label>
 					</form>
+					<form action="modificarAvatar.php">
+						<label> <button id = "modCont"> Modificar foto de perfil</button> </label>
+					</form>
 				</fieldset>
 			</div>
 

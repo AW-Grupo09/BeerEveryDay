@@ -114,16 +114,15 @@ class Usuario
         return $usuario;
     }
 
-    public static function actualizaUser($nombreUsuario, $usuario, $nombre, $apellidos, $ciudad, $email, $avatar, $fechaNac)
+    public static function actualizaUser($nombreUsuario, $usuario, $nombre, $apellidos, $ciudad, $email, $fechaNac)
     {
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
-        $query=sprintf("UPDATE usuarios U SET nombre='$nombre', apellidos='$apellidos', ciudad='$ciudad', email='$email', avatar='$avatar', fechaNac='$fechaNac' WHERE U.nombreUsuario='$nombreUsuario'"
+        $query=sprintf("UPDATE usuarios U SET nombre='$nombre', apellidos='$apellidos', ciudad='$ciudad', email='$email', fechaNac='$fechaNac' WHERE U.nombreUsuario='$nombreUsuario'"
             , $conn->real_escape_string($usuario->nombre)
             , $conn->real_escape_string($usuario->apellidos)
             , $conn->real_escape_string($usuario->ciudad)
             , $conn->real_escape_string($usuario->email)
-            , $conn->real_escape_string($usuario->avatar)
             , $conn->real_escape_string($usuario->fechaNac)
             , $conn->real_escape_string($usuario->nombreUsuario)
             );
@@ -147,6 +146,26 @@ class Usuario
         $pass = self::hashPassword($password);
         $query=sprintf("UPDATE usuarios U SET password='$pass' WHERE U.nombreUsuario='$nombreUsuario'"
             , $conn->real_escape_string($usuario->password)
+            , $conn->real_escape_string($usuario->nombreUsuario)
+            );
+        if ( $conn->query($query) ) {
+            if ( $conn->affected_rows != 1) {
+                echo "No se ha podido actualizar el usuario: " . $usuario->nombreUsuario;
+                exit();
+            }
+        } else {
+            echo "Error al insertar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+            exit();
+        }
+        
+        return $usuario;
+    }
+
+    public static function actualizaUserAvatar($nombreUsuario, $usuario, $avatar){
+        $app = Aplicacion::getSingleton();
+        $conn = $app->conexionBd();
+        $query=sprintf("UPDATE usuarios U SET avatar='$avatar' WHERE U.nombreUsuario='$nombreUsuario'"
+            , $conn->real_escape_string($usuario->avatar)
             , $conn->real_escape_string($usuario->nombreUsuario)
             );
         if ( $conn->query($query) ) {
