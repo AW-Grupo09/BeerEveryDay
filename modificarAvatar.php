@@ -31,15 +31,6 @@
 	
 		<div class="container">
 
-		<div class = "avatar">
-				<?php 
-					if($user->avatar() != NULL)
-						echo "<img src='" . $user->avatar() . " ' alt = 'Imagen de perfil'>"; 
-					else
-						echo "<img src='/img/users/default.png' alt = 'Imagen de perfil'>"; 
-				?> 
-			</div>
-
 			<?php   
 				$opciones = array();
 
@@ -47,6 +38,15 @@
 				$formulario->gestiona();
 
 			?>
+
+			<div class = "avatarMod">
+				<?php 
+					if($user->avatar() != NULL)
+						echo "<img src='" . $user->avatar() . " ' alt = 'Imagen de perfil'>"; 
+					else
+						echo "<img src='/img/users/default.png' alt = 'Imagen de perfil'>"; 
+				?> 
+			</div>
 
 		</div>
 

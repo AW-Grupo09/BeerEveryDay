@@ -8,7 +8,7 @@ class FormularioModificaAvatar extends Form {
  		$usuario = Usuario::buscaUsuario($_SESSION['nombreUsuario']);
        return 
        '
-       <div class="userData">
+       <div class="modificaView">
        <fieldset>
        <legend> Modifica tu foto de perfil </legend>
 		   <label> <p> <input type="file" name="archivo" value=" ' . $usuario->avatar() . '"/> </p></label>	   

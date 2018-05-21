@@ -66,7 +66,7 @@
 		</div>
 
 			<?php 
-			if($user->rol() == 'admin'){ ?>
+			/*if($user->rol() == 'admin'){ ?>
 				<div class = "adminView">
 					<h2> Esta vista es única para el administrador </h2>
 					<p> En ella podrá ver los diferentes cambios que puede realizar en la aplicación </p>
@@ -74,7 +74,7 @@
 							<label> <button> Añadir cerveza</button> </label>
 						</form>
 				</div>
-			<?php } ?>
+			<?php }*/ ?>
 			
 		</div>
 
