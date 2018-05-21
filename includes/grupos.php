@@ -3,21 +3,35 @@ require_once __DIR__ . '/Aplicacion.php';
 
 class Grupos
 {
-    public static function getGruposByUser($usuario)
-    {
+    public static function getGruposByUser($usuario){
         $grupos = array();
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
-        $query = sprintf("SELECT * FROM grupos WHERE creador = '%s'", $conn->real_escape_string($usuario));
-        $rs = $conn->query($query);
-        if ($rs) {
-            while ($fila = $rs->fetch_assoc()) {
-                $grupo = new Grupos($fila['nombre'], $fila['direccion'], $fila['creador'], $fila['ciudad']);
-                $grupo->setId($fila['id']);
-                array_push($grupos, $grupo);
+        
+        $query = sprintf("SELECT * FROM `grupos-usuarios` WHERE idUsuario = '%s'", $conn->real_escape_string($usuario));
+        $table =  $conn->query($query);
+
+        if($table){
+            while($fila = $table->fetch_assoc()){
+                
+                $idGrupo = $fila['idGrupo'];
+                $query = sprintf("SELECT * FROM grupos WHERE id = %s", $conn->real_escape_string($idGrupo));
+                $rs = $conn->query($query);
+                
+                if ($rs) {
+                    while ($fila = $rs->fetch_assoc()) {
+                        $grupo = new Grupos($fila['nombre'], $fila['direccion'], $fila['creador'], $fila['ciudad']);
+                        $grupo->setId($fila['id']);
+                        array_push($grupos, $grupo);
+                    }
+                    $rs->free();
+                } else {
+                    echo "Error al consultar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+                    exit();
+                }
             }
-            $rs->free();
-        } else {
+            $table->free();
+        }else {
             echo "Error al consultar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
             exit();
         }
