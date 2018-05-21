@@ -8,20 +8,20 @@ class Grupos
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
         
-        $query = sprintf("SELECT * FROM `grupos-usuarios` WHERE idUsuario = '%s'", $conn->real_escape_string($usuario));
+        $query = sprintf("SELECT idGrupo FROM `grupos-usuarios` WHERE idUsuario = '%s'", $conn->real_escape_string($usuario));
         $table =  $conn->query($query);
 
         if($table){
             while($fila = $table->fetch_assoc()){
                 
                 $idGrupo = $fila['idGrupo'];
-                $query = sprintf("SELECT * FROM grupos WHERE id = %s", $conn->real_escape_string($idGrupo));
+                $query = sprintf("SELECT * FROM grupos WHERE idGrupo = %s", $conn->real_escape_string($idGrupo));
                 $rs = $conn->query($query);
                 
                 if ($rs) {
                     while ($fila = $rs->fetch_assoc()) {
                         $grupo = new Grupos($fila['nombre'], $fila['direccion'], $fila['creador'], $fila['ciudad']);
-                        $grupo->setId($fila['id']);
+                        $grupo->setId($fila['idGrupo']);
                         array_push($grupos, $grupo);
                     }
                     $rs->free();
@@ -168,7 +168,7 @@ class Grupos
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
         $query=sprintf(
-            "UPDATE grupo G SET nombre = '%s', direccion='%s', ciudad='%s' WHERE G.id=%i",
+            "UPDATE grupo G SET nombre = '%s', direccion='%s', ciudad='%s' WHERE G.idGrupo=%i",
             $conn->real_escape_string($grupo->nombre),
             $conn->real_escape_string($grupo->direccion),
             $conn->real_escape_string($grupo->ciudad),
@@ -205,6 +205,10 @@ class Grupos
 
     private $id;
 
+    private $cerveza;
+
+    private $cantidad;
+
 
     public function getNombre()
     {
@@ -226,8 +230,15 @@ class Grupos
     {
         return $this->id;
     }
-    public function setId($id)
-    {
+    public function setId($id){
         $this->id = $id;
+    }
+
+    public function getCerveza(){
+        return $this->cerveza;
+    }
+
+    public function getCantidad(){
+        return $this->cantidad;
     }
 }

@@ -38,12 +38,10 @@ abstract class Form
      *     <tr>
      *       <td>action</td>
      *       <td><code>$_SERVER['PHP_SELF']</code></td>       
-     *       <td>URL asociada al atributo "action" de la etiqueta &lt;form&gt; del fomrulario y que procesará
-                 el envío del formulario.</td>
+     *       <td>URL asociada al atributo "action" de la etiqueta &lt;form&gt; del fomrulario y que procesará  el envío del formulario.</td>
      *     </tr>
      *   </tbody>
      * </table>
-
      * @param string $formId    Cadena utilizada como valor del atributo "id" de la etiqueta &lt;form&gt; asociada al
      *                          formulario y como parámetro a comprobar para verificar que el usuario ha enviado el formulario.
      *

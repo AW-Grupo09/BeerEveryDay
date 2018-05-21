@@ -20,6 +20,12 @@ require_once __DIR__.'/grupos.php';
 		            <p><label>Ciudad de envío: </label>
 		            <input type="text" name="ciudad" required/></p>
 
+		            <p><label>Cerveza: </label>
+		            <input type="text" name="ciudad" required/></p>
+
+		            <p><label>Unidades: </label>
+		            <input type="text" name="ciudad" required/></p>
+
 		            <label> <button class="crearbtn" type="submit">Crear</button></label>
 		            ';
 
