@@ -20,6 +20,8 @@ abstract class Form
      */
     private $action;
 
+    protected $opciones;
+
     /**
      * Crea un nuevo formulario.
      *

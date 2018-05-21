@@ -49,6 +49,16 @@
 			}
 			echo "</div>";//cierro div contenidoCerveza
 			echo "</div>";//cierro div mostrarCerveza
+
+			
+			//Formulario para aniadir comentario
+			if(isset($_SESSION['login']) && $_SESSION['login']){
+				$opciones = array();
+				$addToForm = array( 'idCerveza' => $cerveza->getIdCerveza() );
+	        	$opciones = array_merge($addToForm, $opciones);
+				$formulario = new FormularioSubirCerveza("FormValCerve", $opciones);
+				$formulario->gestiona();
+			}
 ?>
 		</div><!-- Fin del container -->
 
