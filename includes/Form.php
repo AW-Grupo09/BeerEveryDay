@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/usuario.php';
+require_once __DIR__ . '/Usuario.php';
 /**
  * Clase base para la gestión de formularios.
  *
@@ -19,6 +19,8 @@ abstract class Form
      * envío del formulario.
      */
     private $action;
+
+    protected $opciones;
 
     /**
      * Crea un nuevo formulario.

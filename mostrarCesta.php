@@ -22,9 +22,8 @@
 	<link rel="stylesheet" type="text/css" href="css/common.css" />
 	<link rel="stylesheet" type="text/css" href="css/mostrarPedido.css" />
 	<link rel="stylesheet" type="text/css" href="css/footer.css"/>
-
+	<script type="text/javascript" src="js/javascript.js"></script>
 	<title>Cesta</title>
-
 </head>
 
 <body>
@@ -116,18 +115,6 @@
 		<?php require('includes/comun/footer.php'); ?>
 
 	</div>
-
-<script>
-function myFunction() {
-    var x = document.getElementById("procesarCesta");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
-}
-</script>
-	
 
 </body>
 </html>

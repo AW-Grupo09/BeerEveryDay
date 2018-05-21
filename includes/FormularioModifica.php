@@ -21,9 +21,7 @@ class FormularioModifica extends Form {
 	       <input type="text" name="ciudad" maxlength="50" size="30" value="' . $usuario->ciudad() . '" />
 	       <label>Fecha de nacimiento: </label>
 	       <input type="date" name="fechaNac" maxlength="50" size="30" value="' . $usuario->fechaNac() . '" />
-	       <label class="foto_per_label">Foto de perfil: </label>
-		   <label> <p> <input type="file" name="archivo" value=" ' . $usuario->avatar() . '"/> </p></label>	   
-	       <label> <button class="submit" type="submit" onclick="guardar()">Guardar cambios</button></label>
+	       <label> <button id="guardaCambios" class="submit" type="submit">Guardar cambios</button></label>
        </fieldset>
        </div>';
  	}
@@ -42,7 +40,7 @@ class FormularioModifica extends Form {
 		$ciudad = isset($_POST['ciudad']) ? $_POST['ciudad'] : null;
 		$email = isset($_POST['email']) ? $_POST['email'] : null; 
 		//$dirAvatar = isset($_POST['archivo']) ? $_POST['archivo'] : null;
-		$avatar = $_FILES['archivo']['name'];
+		/*$avatar = $_FILES['archivo']['name'];
 
 		//Imagen
 		$ruta = "img/users/";//ruta carpeta donde queremos copiar las imágenes 
@@ -51,7 +49,7 @@ class FormularioModifica extends Form {
 		// comprueba que HAYA IMAGEN y que es válida
 		if($avatar != NULL && !funcionImagen::esImagen($avatar)){
 			$erroresFormulario[] = "Debe ser un archivo válido";
-		}
+		}*/
 
 		//comprobar errores
 		if (count($erroresFormulario) === 0) {
@@ -59,9 +57,9 @@ class FormularioModifica extends Form {
 			$usuario = usuario::buscaUsuario($nombreUsuario);
 
 			if ($usuario != NULL) { // si encuentra el usuario, le actualiza
-		    	$usuario = Usuario::actualizaUser($nombreUsuario, $usuario, $nombre, $apellidos, $ciudad, $email, $imageFileType, $fechaNac);
+		    	$usuario = Usuario::actualizaUser($nombreUsuario, $usuario, $nombre, $apellidos, $ciudad, $email, $fechaNac);
 		    	//$usuario = Usuario::guarda($usuario, $nombreUsuario);
-				move_uploaded_file($_FILES['archivo']['tmp_name'], $imageFileType);
+				//move_uploaded_file($_FILES['archivo']['tmp_name'], $imageFileType);
 				header('Location: perfil.php');
 				exit();
 			} else {

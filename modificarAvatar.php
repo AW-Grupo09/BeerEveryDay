@@ -1,6 +1,6 @@
 <?php 
 	require_once __DIR__.'/includes/config.php';
-	require_once __DIR__ .'/includes/FormularioModifica.php';
+	require_once __DIR__ .'/includes/FormularioModificaAvatar.php';
 
     if(!$_SESSION['login']){
 		header('Location: index.php');
@@ -43,7 +43,7 @@
 			<?php   
 				$opciones = array();
 
-				$formulario = new FormularioModifica("formModifica", $opciones);
+				$formulario = new FormularioModificaAvatar("formModificaAvatar", $opciones);
 				$formulario->gestiona();
 
 			?>
