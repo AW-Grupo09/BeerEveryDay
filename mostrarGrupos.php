@@ -10,10 +10,10 @@
     <title> Grupos </title>
     <link rel="stylesheet" type="text/css" href="css/common.css">
     <link rel="stylesheet" type="text/css" href="css/footer.css"/>
+    <script type="text/javascript" src="js/javascript.js"></script>
 </head>
 
 <body>
-   
 
     <div id="contenedor">
 
@@ -21,7 +21,6 @@
 
         <div class="container">
             
-
             <table>
                 <thead>
                     <th>Nombre</th>
@@ -70,10 +69,5 @@
 
     </div> <!-- Fin del contenedor -->
 
-    <script> /*eset escrip actuliza lanza mediente el metodo GET el id seleccionado*/
-        function unirse(id){
-            window.location = "mostrarGrupos.php?action=unirse&id=" + id;
-        }
-    </script>
 </body>
 </html>

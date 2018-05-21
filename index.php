@@ -27,7 +27,7 @@
                   </div>
                   <div>
                   	<img src="img/cervezalink4.jpg" alt="imagen cerveza" />
-                  	<div class = "texto-centrado"><a href="catalogo.php">GROUPS</a></div>
+                  	<div class = "texto-centrado"><a href="mostrarGrupos.php">GROUPS</a></div>
                   </div>
             </div>
 
