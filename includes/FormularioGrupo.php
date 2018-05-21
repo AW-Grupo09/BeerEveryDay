@@ -9,22 +9,19 @@ require_once __DIR__.'/grupos.php';
     public function generaCamposFormulario($datosIniciales)
     {
     	return '	<fieldset>
-					<legend> Formulario de registro: </legend>
+					<legend> Formulario nuevo grupo: </legend>
 
-          			<label>Nombre de grupo: </label>
-          			<input type="text" name="nombreGrupo" required/>
+          			<p><label>Nombre de grupo: </label>
+          			<input type="text" name="nombreGrupo" required/></p>
 
-		            <label>Dirreccion: </label>
-		            <input type="text" name="direccion" required/>
+		            <p><label>Dirección: </label>
+		            <input type="text" name="direccion" required/></p>
 
-		            <label>Ciudad: </label>
-		            <input type="text" name="ciudad" value="" required/>
+		            <p><label>Ciudad de envío: </label>
+		            <input type="text" name="ciudad" required/></p>
 
-		            <label> <button class="submit" type="submit">guardar</button></label>
-		            <div>
-					   		<input type="button" value="Atrás" class="atrasbtn" onclick = "location="./index.php""/>
-					</div>
-			           </fieldset>';
+		            <label> <button class="crearbtn" type="submit">Crear</button></label>
+		            ';
 
 
 	}

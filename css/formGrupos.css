@@ -1,0 +1,98 @@
+form {
+	border: 3px solid #FFC107;
+	margin-left: 20%;
+	margin-right: 20%;
+	padding: 1%;
+    -webkit-border-radius: 15px;
+    border-radius: 15px; 
+}
+
+input[type=text], input[type=password], input[type=date], input[type=email]  {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+}
+
+button {
+    background-color: #FFC107; /*#4CAF50*/
+    color: black;
+    padding: 1.7%;
+    margin-left: 35%;
+    border: none;
+    cursor: pointer;
+    width: 30%;
+    -webkit-border-radius: 10px;
+    border-radius: 10px; 
+    font-family: miFuente;
+    src: url(../fonts/BebasKai.otf);
+    font-size: 20px;
+   
+}
+
+button:hover {
+    opacity: 0.8;
+    background-color: black;
+    color: #FFC107;
+}
+
+.atrasbtn {
+    background-color: grey;
+    color: black;
+    padding: 1.7%;
+    border: none;
+    cursor: pointer;
+    width: 15%;
+    -webkit-border-radius: 10px;
+    border-radius: 10px; 
+    font-family: miFuente;
+    src: url(../fonts/BebasKai.otf);
+    font-size: 15px;
+}
+
+.atrasbtn:hover {
+    opacity: 0.8;
+    background-color: black;
+    color: #FFC107;
+}
+
+
+.imgcontainer {
+    text-align: center;
+    margin-bottom: 5%;
+    /*margin: 24px 0 12px 0;*/
+   /* width: 30%;*/
+}
+
+img.avatar {
+	padding-top: 2%;
+    width: 13%;
+    border-radius: 50%;
+}
+
+.container {
+    padding: 16px;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+fieldset{
+	padding-top: 5%;
+    padding-bottom: 7%;
+    padding-right: 9%;
+    padding-left: 9%;
+     -webkit-border-radius: 10px;
+    border-radius: 10px; 
+}
+
+.titulo{
+    text-align: center;
+    margin-bottom: 3%;
+}

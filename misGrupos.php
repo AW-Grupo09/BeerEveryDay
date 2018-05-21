@@ -16,10 +16,10 @@
 <html lang="es">
 <head>
 	<meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/misGrupos.css" />
 	<link rel="stylesheet" type="text/css" href="css/common.css" />
 	<link rel="stylesheet" type="text/css" href="css/footer.css"/>
 
-	<title>Mis Grupos</title>
 
 </head>
 
@@ -29,45 +29,46 @@
 
 		<?php require ('includes/comun/header.php'); ?>
 		<div class="container">
+            <div id="izquierda">
+    			<div class="titulo">
+                    <h2> ¡Mis grupos! </h2>
+                </div>
 
-			<div class="titulo">
-                <p><h2> ¡Mis grupos! </h2></p>
+                <table>
+                    <thead>
+                        <th>Nombre</th>
+                        <th>Direccion</th>
+                        <th>Ciudad</th>
+                        <th>Creador</th>
+                    </thead>
+                    <?php
+                    
+                    $grupos = Grupos::getGruposByUser($_SESSION['nombreUsuario']);
+                    foreach ($grupos as $grupo) { ?>
+                    <tr>
+                        <td><?=$grupo->getNombre()?></td>
+                        <td><?=$grupo->getDireccion()?></td>
+                        <td><?=$grupo->getCreador()?></td>
+                        <td><?=$grupo->getCiudad()?></td>
+                    </tr>
+                    <?php } ?>
+                </table>
             </div>
+            <div class="derecha">
+                <div class="titulo">
+                    <p><h2> ¿ Desea crear un nuevo grupo ?</h2></p>
+                </div>
+    			
+    			 <?php
 
-            <table>
-                <thead>
-                    <th>Nombre</th>
-                    <th>Direccion</th>
-                    <th>Ciudad</th>
-                    <th>Creador</th>
-                </thead>
-                <?php
-                
-                $grupos = Grupos::getGruposByUser($_SESSION['nombreUsuario']);
-                foreach ($grupos as $grupo) { ?>
-                <tr>
-                    <td><?=$grupo->getNombre()?></td>
-                    <td><?=$grupo->getDireccion()?></td>
-                    <td><?=$grupo->getCreador()?></td>
-                    <td><?=$grupo->getCiudad()?></td>
-                </tr>
-                <?php } ?>
-            </table>
+                    $opciones = array();
 
-            <div class="titulo">
-                <p><h2> Crear nuevo grupo: </h2></p>
+                    $formulario = new FormularioGrupo("formGrupo", $opciones);
+                    $formulario->gestiona();
+
+                ?>
             </div>
-			
-			 <?php
-
-                $opciones = array();
-
-                $formulario = new FormularioGrupo("formGrupo", $opciones);
-                $formulario->gestiona();
-
-            ?>
-
-		</div>
+    		</div>
 
 		<?php require('includes/comun/footer.php'); ?>
 

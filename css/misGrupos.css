@@ -1,0 +1,86 @@
+form {
+	padding: 1%;
+    margin: 3%;
+    -webkit-border-radius: 15px;
+    border-radius: 15px; 
+}
+
+input {
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+    
+    padding-top: 4%;
+}
+
+.atrasbtn {
+    background-color: grey;
+    color: black;
+    border: none;
+    cursor: pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+    font-family: miFuente;
+    src: url(../fonts/BebasKai.otf);
+    font-size: 15px;
+    padding: 2%;
+}
+
+.atrasbtn:hover {
+    opacity: 0.8;
+    background-color: black;
+    color: #FFC107;
+}
+
+.crearbtn {
+    background-color: #FFC107; /*#4CAF50*/
+    color: black;
+    border: none;
+    cursor: pointer;
+    padding: 2%;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+    font-family: miFuente;
+    src: url(../fonts/BebasKai.otf);
+    font-size: 20px;
+    padding-left: 3%;
+}
+
+.crearbtn:hover {
+    opacity: 0.8;
+    background-color: black;
+    color: #FFC107;
+}
+
+
+fieldset{
+	padding: 3%;
+     -webkit-border-radius: 10px;
+    border-radius: 10px; 
+    border-color: #FFC107;
+}
+
+div#derecha {
+    
+    float: left;
+    background-color: #B1D4BB;
+    padding-left: 1%;
+    margin: 2%;
+    width: 25%;
+    height: 40%;
+
+}
+
+div#izquierda {
+    margin: 2%;
+    padding: 2%;
+    float: left;
+    width: 60%;
+    height: 80%;
+    background-color: #B1D1AB;
+     -webkit-border-radius: 5px;
+    border-radius: 5px;
+    
+}
