@@ -9,9 +9,9 @@ class FormularioModificaPassword extends Form {
        <div class="userData">
        <fieldset>
        <legend> Modifica tu contraseña </legend>
-	       <input type="password" name="password" maxlength="50" size="30" placeholder="Escribe tu nueva contraseña" />
+	       <input type="password" name="password" maxlength="50" size="30" placeholder="Escribe tu nueva contraseña" required/>
 	       <label>Repite la contraseña nueva: </label>
-	       <input type="password" name="repass" maxlength="50" size="30" placeholder="Escribe otra vez tu nueva contraseña" />
+	       <input type="password" name="repass" maxlength="50" size="30" placeholder="Escribe otra vez tu nueva contraseña" required/>
 	       <label> <button class="submit" type="submit" onclick="guardar()">Guardar cambios</button></label>
        </fieldset>
        </div>';

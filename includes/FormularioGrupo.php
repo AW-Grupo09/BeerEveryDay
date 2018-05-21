@@ -13,12 +13,12 @@ require_once __DIR__.'/grupos.php';
 
           			<label>Nombre de grupo: </label>
           			<input type="text" name="nombreGrupo" required/>
-	          			
+
 		            <label>Dirreccion: </label>
 		            <input type="text" name="direccion" required/>
-		            
-		            <label>Cuidad: </label>
-		            <input type="text" name="cuidad" value="" required/>
+
+		            <label>Ciudad: </label>
+		            <input type="text" name="ciudad" value="" required/>
 
 		            <label> <button class="submit" type="submit">guardar</button></label>
 		            <div>
@@ -40,12 +40,12 @@ require_once __DIR__.'/grupos.php';
 		if ( empty($nombreGrupo) || mb_strlen($nombreGrupo) < 5 ) {
 			$erroresFormulario[] = "El nombre de grupo tiene que tener una longitud de al menos 5 caracteres.";
 		}
-		
+
 
 		//comprobar errores
 		if (count($erroresFormulario) === 0) {
 			$grupo = Grupos::creaGrupo($nombreGrupo, $direccion, $ciudad);
-			
+
 			if (! $grupo ) {
 		    	$erroresFormulario[] = "El grupo ya existe";
 			} else {
@@ -57,18 +57,18 @@ require_once __DIR__.'/grupos.php';
 		}
 
 
-		 if (count($erroresFormulario) > 0) {//Si hay errores devuelvo un array de errores 
+		 if (count($erroresFormulario) > 0) {//Si hay errores devuelvo un array de errores
             return $erroresFormulario;
          }
          else{
              //Si hay exito
             array_push($datos, $nombreGrupo);
             array_push($datos, $direccion);
-            array_push($datos, $cuidad);
+            array_push($datos, $ciudad);
             return "index.php";
          }
 
-       
+
 
     }
  }
