@@ -1,7 +1,8 @@
 <?php 
 
 	require_once __DIR__.'/includes/config.php';
-	require_once __DIR__.'/includes/controlPedidos.php';
+	require_once __DIR__.'/includes/Controller/controllerPedidos.php';
+	require_once __DIR__.'/includes/TO/TOPedidos.php';
 	require_once __DIR__.'/includes/cervezas.php';
 	require_once __DIR__.'/includes/FormularioPedido.php';
 
@@ -32,7 +33,7 @@
 				$pedido = null;
 
 				if(isset($_GET['idPedido'])){
-					$pedido = controlPedidos::loadPedido($_GET['idPedido']);
+					$pedido = controllerPedidos::loadPedido($_GET['idPedido']);
 				}else {
 					echo "<div><p>Error: No se ha seleccionado el pedido</p></div>";
 				}

@@ -1,7 +1,8 @@
 <?php 
 	
 	require_once __DIR__.'/includes/config.php';
-	require_once __DIR__.'/includes/controlPedidos.php';
+	require_once __DIR__.'/includes/Controller/controllerPedidos.php';
+	require_once __DIR__.'/includes/TO/TOPedidos.php';
 	//include('includes/pedidos.php');
 	include('includes/cervezas.php');
 
@@ -31,7 +32,7 @@
 			
 			<?php
 							
-				$listaPedidos = controlPedidos::loadPedidos($_SESSION['nombreUsuario']);
+				$listaPedidos = controllerPedidos::loadPedidos($_SESSION['nombreUsuario']);
 		
 						
 				if($listaPedidos == null){

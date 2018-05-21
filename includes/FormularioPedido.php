@@ -36,7 +36,7 @@ require_once __DIR__.'/Form.php';
         }
 
         if (count($erroresFormulario) === 0) {
-            $ret = controlPedidos::procesarCesta($Dir, $Tarjeta, $_SESSION["nombreUsuario"]);
+            $ret = controllerPedidos::procesarCesta($Dir, $Tarjeta, $_SESSION["nombreUsuario"]);
             if($ret !== NULL)
               $erroresFormulario[] = $ret;
         }

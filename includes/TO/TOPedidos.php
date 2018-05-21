@@ -1,6 +1,6 @@
 <?php
 
-class pedidos {
+class TOPedidos {
 
     private $idPedido;
     private $user;

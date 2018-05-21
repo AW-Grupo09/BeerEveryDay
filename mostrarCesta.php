@@ -1,7 +1,7 @@
 <?php 
 	require_once __DIR__.'/includes/config.php';
-	require_once __DIR__.'/includes/controlPedidos.php';
-	require_once __DIR__.'/includes/pedidos.php';
+	require_once __DIR__.'/includes/Controller/controllerPedidos.php';
+	require_once __DIR__.'/includes/TO/TOPedidos.php';
 	require_once __DIR__.'/includes/cervezas.php';
 	require_once __DIR__.'/includes/FormularioPedido.php';
 
@@ -34,24 +34,24 @@
 		<div class="container">
 			
 			<?php
-				$idCesta = controlPedidos::loadCesta($_SESSION["nombreUsuario"]);
+				$idCesta = controllerPedidos::loadCesta($_SESSION["nombreUsuario"]);
 
 				if(isset($_POST['Eliminar'])){
-					controlPedidos::eliminarCesta($idCesta);
+					controllerPedidos::eliminarCesta($idCesta);
 					$idCesta = null;
 				}
 						
 				if($idCesta == null){
 					echo "<div><h1>Tu cesta está vacía.<h1></div>";
 				}else {
-					$cesta = controlPedidos::loadPedido($idCesta);
+					$cesta = controllerPedidos::loadPedido($idCesta);
 
-					/*foreach ($cesta->getCervezas() as $idCerveza) {
+					foreach ($cesta->getCervezas() as $idCerveza) {
 						if(isset($_POST[$idCerveza])){
-							controlPedidos::eliminarElementoCesta($idCerveza, $idCesta);
-							$cesta = controlPedidos::loadPedido($idCesta);
+							controllerPedidos::eliminarElementoCesta($idCerveza, $idCesta);
+							$cesta = controllerPedidos::loadPedido($idCesta);
 						}
-					}*/
+					}
 					if(sizeof($cesta->getCervezas()) > 0) {
 						$cervezas = $cesta->getCervezas();
 						$unidades = $cesta->getUnidades();
@@ -104,7 +104,7 @@
 							</div> 
 						<?php
 					}else {
-						controlPedidos::eliminarCesta($idCesta);
+						controllerPedidos::eliminarCesta($idCesta);
 						echo "<div><h1>Tu cesta está vacía.<h1></div>";
 					}
 				}

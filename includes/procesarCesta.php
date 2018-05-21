@@ -2,7 +2,7 @@
 
 	//require_once __DIR__.'../includes/config.php';
 	require_once '../includes/config.php';
-	require_once '../includes/controlPedidos.php';
+	require_once '../includes/Controller/controllerPedidos.php';
 
 	//include('controlPedidos.php');
 	include('cervezas.php');
@@ -31,18 +31,18 @@
 		$Unids = $_GET["unidades"];
 
 
-	$idCesta = controlPedidos::loadCesta($_SESSION["nombreUsuario"]);
+	$idCesta = controllerPedidos::loadCesta($_SESSION["nombreUsuario"]);
 
 	//Comprobamos si quieren borrar la cesta
 	if($deleteCesta){
 		//Queremos eliminar la cesta, y comprobamos previamente que tenemos la cesta
 		if($idCesta != NULL)
-			controlPedidos::eliminarPedido($idPedido);	
+			controllerPedidos::eliminarPedido($idPedido);	
 	}
 	//Comprobamos si quieren borrar algun elemento
 	else if($deleteElem){
 		 	//Queremos eliminar un elemento de la cesta
-			controlPedidos::eliminarElementoCesta($Cerv, $idCesta);
+			controllerPedidos::eliminarElementoCesta($Cerv, $idCesta);
 	}
 	else{
 			//Si no es ninguna de las dos, es porque se quiere aniadir algo a la cesta
@@ -50,13 +50,13 @@
 			if($Cerv == NULL)
 				echo "<p>Ha habido un problema con la cerveza que ha intentado añadir a la cesta<p>";
 			if($idCesta != NULL){
-				echo "se da la cesta por iniciada";
-				controlPedidos::addBeers($Cerv, $Unids, $idCesta);
+				//echo "se da la cesta por iniciada";
+				controllerPedidos::addBeers($Cerv, $Unids, $idCesta);
 				header('Location: ../mostrarCesta.php');
 			}
 			else{
-				echo "Se inicia cesta";
-			 	controlPedidos::iniciarCesta($Cerv, $Unids, $_SESSION["nombreUsuario"]);
+				//echo "Se inicia cesta";
+			 	controllerPedidos::iniciarCesta($Cerv, $Unids, $_SESSION["nombreUsuario"]);
 			 	header('Location: ../mostrarCesta.php');
 			 }
 		}
