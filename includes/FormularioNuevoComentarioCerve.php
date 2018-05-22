@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__.'/Form.php';
-require_once __DIR__.'/cervezas.php';
 require_once __DIR__.'/comentarios.php';
 
  class FormularioNuevoComentarioCerve extends Form{

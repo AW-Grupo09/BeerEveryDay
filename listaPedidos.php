@@ -2,9 +2,9 @@
 	
 	require_once __DIR__.'/includes/config.php';
 	require_once __DIR__.'/includes/Controller/controllerPedidos.php';
+	require_once __DIR__.'/includes/Controller/controllerCervezas.php';
 	require_once __DIR__.'/includes/TO/TOPedidos.php';
-	//include('includes/pedidos.php');
-	include('includes/cervezas.php');
+	require_once __DIR__.'/includes/TO/TOCervezas.php';
 
 	if(!$_SESSION['login']){
 		header('Location: index.php');
@@ -67,7 +67,7 @@
 
 					    for($j = 0; $j < count($unidades);$j++){
 					    	$numUnidades = array_values($unidades)[$j];
-					    	$cerveza = new cervezas(array_values($cervezas)[$j]);
+					    	$cerveza = controllerCervezas::loadCerveza(array_values($cervezas)[$j]);
 					    	$nombre = $cerveza->getNombre();
 
 					    	echo "<p> -Cerveza: $nombre, Unidades: $numUnidades";

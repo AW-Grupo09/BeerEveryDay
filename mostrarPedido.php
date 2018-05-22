@@ -2,8 +2,9 @@
 
 	require_once __DIR__.'/includes/config.php';
 	require_once __DIR__.'/includes/Controller/controllerPedidos.php';
+	require_once __DIR__.'/includes/Controller/controllerCervezas.php';
 	require_once __DIR__.'/includes/TO/TOPedidos.php';
-	require_once __DIR__.'/includes/cervezas.php';
+	require_once __DIR__.'/includes/TO/TOCervezas.php';
 	require_once __DIR__.'/includes/FormularioPedido.php';
 
 	if(!$_SESSION['login']){
@@ -53,7 +54,7 @@
 
 						echo "<div>";
 						foreach ($cervezas as $idCerveza) {
-							$cerveza = new cervezas($idCerveza);
+							$cerveza = controllerCervezas::loadCerveza($idCerveza);
 							echo "<div class= 'mostrarCerveza'>";
 								echo "<div class= 'nombreCerveza'>";
 									echo "<h1>" . $cerveza->getNombre() . "</h1>";

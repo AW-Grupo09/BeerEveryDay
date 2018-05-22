@@ -1,6 +1,7 @@
 <?php
     require_once __DIR__.'/includes/config.php';
-    include('includes/cervezas.php');
+    require_once __DIR__.'/includes/TO/TOCervezas.php';
+    require_once __DIR__.'/includes/Controller/controllerCervezas.php';
     global $sql;
 ?>
 
@@ -129,9 +130,8 @@
 
             <div id="filtro">
                 <?php
-                $idsCervezas = cervezas::getIdsCervezas($sql, $sqlOrden);
-                foreach ($idsCervezas as $key => $value) {
-                    $cerveza = new cervezas($value);
+                $Cervezas = controllerCervezas::getCervezas($sql, $sqlOrden);
+                foreach ($Cervezas as $cerveza) {
                     echo "<div class='item'>";
 
                        

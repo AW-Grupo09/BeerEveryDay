@@ -1,7 +1,6 @@
 <?php
 require_once __DIR__.'/Form.php';
 require_once __DIR__.'/funcionImagen.php';
-require_once __DIR__.'/cervezas.php';
 
  class FormularioSubirCerveza extends Form{
 
@@ -124,13 +123,13 @@ require_once __DIR__.'/cervezas.php';
 
 
         if (count($erroresFormulario) === 0) {
-            $Existe = cervezas::existeCerveza($nombreCerveza);
+            $Existe = controllerCervezas::existeCerveza($nombreCerveza);
 
             if ($Existe) {
                 $erroresFormulario[] = "Esa cerveza ya existe";
             } else {               
                 
-                cervezas::addBeer($imageFileType,  $Artesana, $nombreCerveza, $capacidad, $Color, $Fabricante, $Grado, $grano, $precio, $pais, $Tipo);
+                controllerCervezas::addBeer($imageFileType,  $Artesana, $nombreCerveza, $capacidad, $Color, $Fabricante, $Grado, $grano, $precio, $pais, $Tipo);
                 move_uploaded_file($_FILES['archivo']['tmp_name'], $imageFileType);
                 header('Location: index.php');
                 exit();

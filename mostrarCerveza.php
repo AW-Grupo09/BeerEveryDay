@@ -1,6 +1,8 @@
 <?php 
 	require_once __DIR__.'/includes/config.php';
-	require_once __DIR__.'/includes/cervezas.php';
+	require_once __DIR__.'/includes/TO/TOCervezas.php';
+	require_once __DIR__.'/includes/Controller/controllerCervezas.php';
+	require_once __DIR__.'/includes/FormularioSubirCerveza.php';
 	
 	global $sql;
 ?>
@@ -14,9 +16,11 @@
 	<meta charset="utf-8">	
 	<title>Cervezas</title>
 <?php
-	//$mysqli = conexion::getConection();
-	//$id = htmlspecialchars($_GET['id']);
-	$cerveza = new cervezas($_GET['id']);
+	if(isset($_GET['id'])){
+		$cerveza = controllerCervezas::loadCerveza($_GET['id']);
+	}else{
+		header('Location: catalogo.php');
+	}
 ?>	
 </head>
 <body>
