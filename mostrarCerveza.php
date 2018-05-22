@@ -2,7 +2,7 @@
 	require_once __DIR__.'/includes/config.php';
 	require_once __DIR__.'/includes/TO/TOCervezas.php';
 	require_once __DIR__.'/includes/Controller/controllerCervezas.php';
-	require_once __DIR__.'/includes/FormularioSubirCerveza.php';
+	require_once __DIR__.'/includes/FormularioNuevoComentarioCerve.php';
 	
 	global $sql;
 ?>
@@ -61,7 +61,7 @@
 				$opciones = array();
 				$addToForm = array( 'idCerveza' => $cerveza->getIdCerveza() );
 	        	$opciones = array_merge($addToForm, $opciones);
-				$formulario = new FormularioSubirCerveza("FormValCerve", $opciones);
+				$formulario = new FormularioNuevoComentarioCerve("FormValCerve", $opciones);
 				$formulario->gestiona();
 			}
 ?>

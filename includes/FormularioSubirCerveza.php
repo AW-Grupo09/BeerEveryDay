@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__.'/Form.php';
 require_once __DIR__.'/funcionImagen.php';
+require_once __DIR__.'/Controller/controllerCervezas.php';
 
  class FormularioSubirCerveza extends Form{
 
