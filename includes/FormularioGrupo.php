@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__.'/Form.php';
 require_once __DIR__.'/grupos.php';
-require_once __DIR__.'/cervezas.php';
+require_once __DIR__.'/Controller/controllerCervezas.php';
 
 
  class FormularioGrupo extends Form{
@@ -10,10 +10,14 @@ require_once __DIR__.'/cervezas.php';
     public function generaCamposFormulario($datosIniciales)
     {
         $select = "";
-        $cervezas = Cervezas::getIdsCervezas("", "");
+        $cervezas = controllerCervezas::getCervezas("", "");
+
+
         foreach ($cervezas as $cerveza) {
-            $select .= "<option value='". $cerveza['id'] ."'>" . $cerveza['nombre'] . "</option>";
+            $select .= "<option value='". $cerveza->getIdCerveza() ."'>" . $cerveza->getNombre() . "</option>";
         }
+
+
     	return '	<fieldset>
 					<legend> Formulario nuevo grupo: </legend>
 
