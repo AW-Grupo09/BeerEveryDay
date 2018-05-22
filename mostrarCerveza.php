@@ -58,11 +58,15 @@
 			
 			//Formulario para aniadir comentario
 			if(isset($_SESSION['login']) && $_SESSION['login']){
-				$opciones = array();
-				$addToForm = array( 'idCerveza' => $cerveza->getIdCerveza() );
-	        	$opciones = array_merge($addToForm, $opciones);
-				$formulario = new FormularioNuevoComentarioCerve("FormularioNuevoComentarioCerve", $opciones);
-				$formulario->gestiona();
+				if(!controllerComentarios::existeVal($cerveza->getIdCerveza(),$_SESSION['nombreUsuario'])){
+					$opciones = array();
+					$addToForm = array( 'idCerveza' => $cerveza->getIdCerveza() );
+		        	$opciones = array_merge($addToForm, $opciones);
+					$formulario = new FormularioNuevoComentarioCerve("FormularioNuevoComentarioCerve", $opciones);
+					$formulario->gestiona();
+				}
+				else
+					echo "<p>Ya has valorado esta cerveza! Si quieres volver a valorarla necesitas eliminar tu valoración anterior</p>";
 			}
 ?>
 		</div><!-- Fin del container -->
