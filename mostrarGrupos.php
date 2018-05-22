@@ -25,7 +25,7 @@
                 <thead>
                     <th>Nombre</th>
                     <th>Direccion</th>
-                    <th>Ciudad</th>
+                    <th>Cuidad</th>
                     <th>Creador</th>
                     <th></th>
                 </thead>

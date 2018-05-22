@@ -50,15 +50,16 @@ require_once __DIR__.'/Controller/controllerCervezas.php';
 		$nombreGrupo = isset($_POST['nombreGrupo']) ? $_POST['nombreGrupo'] : null;
 		$direccion = isset($_POST['direccion']) ? $_POST['direccion'] : null;
 		$ciudad = isset($_POST['ciudad']) ? $_POST['ciudad'] : null;
+        $idCerveza = isset($_POST['cerveza']) ? $_POST['cerveza'] : null;
+        $unidades = isset($_POST['unidades']) ? $_POST['unidades'] : null;
 
 		if ( empty($nombreGrupo) || mb_strlen($nombreGrupo) < 5 ) {
         	$erroresFormulario[] = "El nombre de grupo tiene que tener una longitud de al menos 5 caracteres.";
 		}
 
-
 		//comprobar errores
 		if (count($erroresFormulario) === 0) {
-			$grupo = Grupos::creaGrupo($nombreGrupo, $direccion, $ciudad);
+			$grupo = Grupos::creaGrupo($nombreGrupo, $direccion, $ciudad,$idCerveza,$unidades);
 
 			if (! $grupo ) {
 		    	$erroresFormulario[] = "El grupo ya existe";
@@ -79,6 +80,8 @@ require_once __DIR__.'/Controller/controllerCervezas.php';
             array_push($datos, $nombreGrupo);
             array_push($datos, $direccion);
             array_push($datos, $ciudad);
+            array_push($datos, $idCerveza);
+            array_push($datos, $unidades);
             return "index.php";
         }
     }

@@ -3,7 +3,30 @@ require_once __DIR__ . '/Aplicacion.php';
 
 class Grupos
 {
-    public static function getGruposByUser($usuario)
+   
+
+    public static function getGrupos()
+    {
+        $grupos = array();
+        $app = Aplicacion::getSingleton();
+        $conn = $app->conexionBd();
+        $query = sprintf("SELECT * FROM grupos");
+        $rs = $conn->query($query);
+        if ($rs) {
+            while ($fila = $rs->fetch_assoc()) {
+                $grupo = new Grupos($fila['nombre'], $fila['direccion'], $fila['creador'], $fila['ciudad'],$fila['idCerveza'],$fila['cantidad']);
+                $grupo->setId($fila['idGrupo']);
+                array_push($grupos, $grupo);
+            }
+            $rs->free();
+        } else {
+            echo "Error al consultar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+            exit();
+        }
+        return $grupos;
+    }
+
+     public static function getGruposByUser($usuario)
     {
         $grupos = array();
         $app = Aplicacion::getSingleton();
@@ -20,7 +43,7 @@ class Grupos
 
                 if ($rs) {
                     while ($fila = $rs->fetch_assoc()) {
-                        $grupo = new Grupos($fila['nombre'], $fila['direccion'], $fila['creador'], $fila['ciudad']);
+                        $grupo = new Grupos($fila['nombre'], $fila['direccion'], $fila['creador'], $fila['ciudad'],$fila['idCerveza'],$fila['cantidad']);
                         $grupo->setId($fila['idGrupo']);
                         array_push($grupos, $grupo);
                     }
@@ -38,27 +61,6 @@ class Grupos
         return $grupos;
     }
 
-    public static function getGrupos()
-    {
-        $grupos = array();
-        $app = Aplicacion::getSingleton();
-        $conn = $app->conexionBd();
-        $query = sprintf("SELECT * FROM grupos");
-        $rs = $conn->query($query);
-        if ($rs) {
-            while ($fila = $rs->fetch_assoc()) {
-                $grupo = new Grupos($fila['nombre'], $fila['direccion'], $fila['creador'], $fila['ciudad']);
-                $grupo->setId($fila['idGrupo']);
-                array_push($grupos, $grupo);
-            }
-            $rs->free();
-        } else {
-            echo "Error al consultar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
-            exit();
-        }
-        return $grupos;
-    }
-
     public static function buscaGrupo($nombreGrupo)
     {
         $app = Aplicacion::getSingleton();
@@ -69,7 +71,7 @@ class Grupos
         if ($rs) {
             if ($rs->num_rows == 1) {
                 $fila = $rs->fetch_assoc();
-                $grupo = new Grupos($fila['nombre'], $fila['direccion'], $fila['creador'], $fila['ciudad']);
+                $grupo = new Grupos($fila['nombre'], $fila['direccion'], $fila['creador'], $fila['ciudad'],$fila['idCerveza'],$fila['cantidad']);
                 $grupo->setId($fila['idGrupo']);
             }
             $rs->free();
@@ -80,13 +82,13 @@ class Grupos
         return $grupo;
     }
 
-    public static function creaGrupo($nombre, $direccion, $ciudad)
+    public static function creaGrupo($nombre, $direccion, $ciudad,$idCerveza,$cantidad)
     {
         $grupo = self::buscaGrupo($nombre);
         if ($grupo) {
             return false;
         }
-        $grupo = new Grupos($nombre, $direccion, $_SESSION['nombreUsuario'], $ciudad);
+        $grupo = new Grupos($nombre, $direccion, $_SESSION['nombreUsuario'], $ciudad,$idCerveza,$cantidad);
         return self::inserta($grupo);
     }
 
@@ -149,11 +151,13 @@ class Grupos
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
         $query = sprintf(
-            "INSERT INTO grupos(nombre, direccion, creador, ciudad) VALUES('%s', '%s', '%s', '%s')",
+            "INSERT INTO grupos(nombre, direccion, creador, ciudad,idCerveza,cantidad) VALUES('%s', '%s', '%s', '%s',%s,%s)",
             $conn->real_escape_string($grupo->nombre),
             $conn->real_escape_string($grupo->direccion),
             $conn->real_escape_string($grupo->creador),
-            $conn->real_escape_string($grupo->ciudad)
+            $conn->real_escape_string($grupo->ciudad),
+            $conn->real_escape_string($grupo->idCerveza),
+            $conn->real_escape_string($grupo->cantidad)
         );
         if ($conn->query($query)) {
             $grupo->id = $conn->insert_id;
@@ -189,12 +193,14 @@ class Grupos
         return $grupo;
     }
 
-    private function __construct($nombre, $direccion, $creador, $ciudad)
+    private function __construct($nombre, $direccion, $creador, $ciudad,$idCerveza,$cantidad)
     {
         $this->nombre = $nombre;
         $this->direccion = $direccion;
         $this->creador = $creador;
         $this->ciudad = $ciudad;
+        $this->idCerveza = $idCerveza;
+        $this->cantidad = $cantidad;
     }
 
     private $nombre;
@@ -207,7 +213,7 @@ class Grupos
 
     private $id;
 
-    private $cerveza;
+    private $idCerveza;
 
     private $cantidad;
 
