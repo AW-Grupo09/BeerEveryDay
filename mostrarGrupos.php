@@ -33,7 +33,7 @@
                 $grupos = Grupos::getGrupos();
                 foreach ($grupos as $grupo) { ?>
                 <tr>
-                    <td><?=$grupo->getNombre()?></td>
+                    <td><a href = "vistaGrupo.php?nombreGrupo=<?=$grupo->getNombre()?> "><?=$grupo->getNombre()?> </a></td>
                     <td><?=$grupo->getDireccion()?></td>
                     <td><?=$grupo->getCiudad()?></td>
                     <td><?=$grupo->getCreador()?></td>

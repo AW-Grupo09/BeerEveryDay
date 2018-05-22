@@ -132,13 +132,9 @@
                 <?php
                 $Cervezas = controllerCervezas::getCervezas($sql, $sqlOrden);
                 foreach ($Cervezas as $cerveza) {
-                    echo "<div class='item'>";
-
-                       
+                    echo "<div class='item'>";      
                         echo "<div class ='seccionItem'>";
-
                             echo "<div class = 'imagenes'>";
-                                 /* echo "<img alt='Imagen de cerveza' src=". $cerveza->getImagen()." width=80% height=80%/>";*/
                                 echo "<a href = mostrarCerveza.php?id=" . $cerveza->getIdCerveza() . "> <img alt='Imagen de cerveza' src=". $cerveza->getImagen()." width=80% height=80%/> </a>";
                             echo "</div>";
                         echo "</div>";
@@ -148,19 +144,11 @@
                                 echo "<div  class = 'ficha'>";
                                         echo "<p>" . $cerveza->getPais()."</p>";
                                         echo "<p>" . $cerveza->getTipo()."</p>";
-                                        /*echo "<div class = 'columnax3'>";
-                                            echo "<p>" . $cerveza->getColor()."</p>";
-                                            echo "<p>" . $cerveza->getGrado()."</p>";
-                                            echo "<p>" . $cerveza->getCapacidad() ."</p>";
-                                        echo "</div>";*/
                                         echo "<p>" . $cerveza->getColor(). "  " . $cerveza->getGrado()." º " . $cerveza->getCapacidad() . " cL" . "</p>";
-                                    /*echo "<p>" . $cerveza->getGrano(). "</p>";*/
                                 echo "</div>";
                                 echo "<p>" . $cerveza->getPrecio(). " € ". "</p>";
                             echo "</div>";
                         echo "</div>";
-                        /*echo "<div  class ='col'>";
-                        echo "</div>";*/
                     echo "</div>";
                 }
                 $sql='';
