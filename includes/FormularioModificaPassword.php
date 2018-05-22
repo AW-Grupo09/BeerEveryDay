@@ -25,11 +25,11 @@ class FormularioModificaPassword extends Form {
 
   		$password = isset($_POST['password']) ? $_POST['password'] : null;
 		if(!empty($password) && mb_strlen($password) < 5 ) {
-			$erroresFormulario[] = "El password tiene que tener una longitud de al menos 5 caracteres.";
+			$erroresFormulario[] = "La contraseña tiene que tener una longitud de al menos 5 caracteres.";
 		}
 		$password2 = isset($_POST['repass']) ? $_POST['repass'] : null;
 		if ((!empty($password2) || !empty($password)) && (strcmp($password, $password2) !== 0) ) {
-			$erroresFormulario[] = "Los passwords deben coincidir";
+			$erroresFormulario[] = "Las contraseñas deben coincidir";
 		}
 		
 		//comprobar errores

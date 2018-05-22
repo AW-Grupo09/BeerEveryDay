@@ -19,6 +19,7 @@
 		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 		<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
 		<script type="text/javascript" src="js/guardaCambios.js"></script>
+		<script type="text/javascript" src="js/correoValido.js"></script>
 		<?php
 			$user = Usuario::buscaUsuario($_SESSION['nombreUsuario']);
 		?>
