@@ -5,6 +5,7 @@ require_once __DIR__.'/Controller/controllerComentarios.php';
  class FormularioNuevoComentarioCerve extends Form{
 
  	public function generaCamposFormulario($datosIniciales){
+        $this->action = htmlentities($_SERVER['PHP_SELF']). "?id=". $this->opciones['idCerveza'];
        return '	
             <fieldset>
 				<legend> Formulario para añadir comentarios: </legend>
@@ -13,11 +14,11 @@ require_once __DIR__.'/Controller/controllerComentarios.php';
     			    <input type="text" placeholder="Introduce aqui el comentario" name="comentario" required>
 
                     <label for="val">Valoración: </label>
-                    <input type="radio" name="val" value="rubia" checked> 1
-                    <input type="radio" name="val" value="negra"> 2
-                    <input type="radio" name="val" value="tostada"> 3  
-                    <input type="radio" name="val" value="blanca"> 4 
-                    <input type="radio" name="val" value="tostada"> 5 
+                    <input type="radio" name="val" value="1" checked> 1
+                    <input type="radio" name="val" value="2"> 2
+                    <input type="radio" name="val" value="3"> 3  
+                    <input type="radio" name="val" value="4"> 4 
+                    <input type="radio" name="val" value="5"> 5 
 
                     <input type="hidden" name="idCerveza" value="'.$this->opciones['idCerveza'].'">
 
@@ -57,9 +58,10 @@ require_once __DIR__.'/Controller/controllerComentarios.php';
                 $erroresFormulario[] = "Ya has valorado esa cerveza";
             } else {               
                 
-                echo $comentario;
                 controllerComentarios::insertarValoracion($val, $comentario, $idCerveza, $idUsuario);
-               // header('Location: mostrarCerveza.php?id='.$idCerveza);
+                controllerComentarios::updateValoracionMedia($idCerveza);
+
+                //header('Location: mostrarCerveza.php?id='.$idCerveza);
                 exit();
 
             }
@@ -70,12 +72,8 @@ require_once __DIR__.'/Controller/controllerComentarios.php';
             return $erroresFormulario;
          }
          else{
-            /*
-             //Si hay exito
-            array_push($datos, $nombreUsuario);
-            array_push($datos, $password);
-            */
-           // return "mostrarCerveza.php?id=".$idCerveza;
+
+            // return "mostrarCerveza.php?id=".$idCerveza;
          }
         
     }
