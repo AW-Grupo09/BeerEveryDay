@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__.'/Form.php';
 require_once __DIR__.'/grupos.php';
+require_once __DIR__.'/cervezas.php';
 
 
  class FormularioGrupo extends Form{
@@ -8,6 +9,11 @@ require_once __DIR__.'/grupos.php';
 
     public function generaCamposFormulario($datosIniciales)
     {
+        $select = "";
+        $cervezas = Cervezas::getIdsCervezas("", "");
+        foreach ($cervezas as $cerveza) {
+            $select .= "<option value='". $cerveza['id'] ."'>" . $cerveza['nombre'] . "</option>";
+        }
     	return '	<fieldset>
 					<legend> Formulario nuevo grupo: </legend>
 
@@ -21,15 +27,16 @@ require_once __DIR__.'/grupos.php';
 		            <input type="text" name="ciudad" required/></p>
 
 		            <p><label>Cerveza: </label>
-		            <input type="text" name="ciudad" required/></p>
+		            <select name="cerveza" required/>
+                    ' . $select . '
+                    </select>
+                    </p>
 
 		            <p><label>Unidades: </label>
-		            <input type="text" name="ciudad" required/></p>
+		            <input type="number" name="unidades" min="50" required/></p>
 
 		            <label> <button class="crearbtn" type="submit">Crear</button></label>
 		            ';
-
-
 	}
 
    public function procesaFormulario($datos)
@@ -41,7 +48,7 @@ require_once __DIR__.'/grupos.php';
 		$ciudad = isset($_POST['ciudad']) ? $_POST['ciudad'] : null;
 
 		if ( empty($nombreGrupo) || mb_strlen($nombreGrupo) < 5 ) {
-			$erroresFormulario[] = "El nombre de grupo tiene que tener una longitud de al menos 5 caracteres.";
+        	$erroresFormulario[] = "El nombre de grupo tiene que tener una longitud de al menos 5 caracteres.";
 		}
 
 
@@ -52,26 +59,23 @@ require_once __DIR__.'/grupos.php';
 			if (! $grupo ) {
 		    	$erroresFormulario[] = "El grupo ya existe";
 			} else {
+                Grupos::insetaGrupoUsuarios($_SESSION['nombreUsuario'], $grupo->getId());
 				$_SESSION['nombreGrupo'] = $nombreGrupo;
 				header('Location: index.php');
 				exit();
-
 			}
 		}
 
 
-		 if (count($erroresFormulario) > 0) {//Si hay errores devuelvo un array de errores
+        if (count($erroresFormulario) > 0) {//Si hay errores devuelvo un array de errores
             return $erroresFormulario;
-         }
-         else{
+        }
+        else{
              //Si hay exito
             array_push($datos, $nombreGrupo);
             array_push($datos, $direccion);
             array_push($datos, $ciudad);
             return "index.php";
-         }
-
-
-
+        }
     }
  }

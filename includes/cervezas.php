@@ -18,7 +18,7 @@ class cervezas{
 	private $tipo;
 
 	public function __construct($id){
-		
+
 		$app = Aplicacion::getSingleton();
         $mysqli = $app->conexionBd();
 
@@ -43,24 +43,18 @@ class cervezas{
 	}
 
 	public static function getIdsCervezas($filtros,$orden){
-		
+
 		$app = Aplicacion::getSingleton();
         $mysqli = $app->conexionBd();
-		
-		if(empty($filtros) && empty($orden))
-			$sql = "SELECT id FROM cervezas";
-		else
-			$sql = "SELECT id FROM cervezas WHERE id > 0 ".$filtros. ' group by id ' . $orden;
-		
-		$consulta = $mysqli->query($sql) or die ($mysqli->error. " en la línea ".(__LINE__-1)); 
 
-		$resultado = array();
-		$i = 0;
-		while($fila= mysqli_fetch_assoc($consulta)){
-			$resultado[$i]= $fila["id"];
-			$i++;
-		}	
-		return $resultado;
+		if(empty($filtros) && empty($orden))
+			$sql = "SELECT id, nombre FROM cervezas";
+		else
+			$sql = "SELECT id, nombre FROM cervezas WHERE id > 0 ".$filtros. ' group by id ' . $orden;
+
+		$consulta = $mysqli->query($sql) or die ($mysqli->error. " en la línea ".(__LINE__-1));
+
+        return mysqli_fetch_all($consulta, MYSQLI_ASSOC);
 	}
 
  	public static function addBeer($imageFileType,  $Artesana, $nombreCerveza, $capacidad, $Color, $Fabricante, $Grado, $grano, $precio, $pais, $Tipo){
@@ -87,7 +81,7 @@ class cervezas{
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
         $query = sprintf("SELECT * FROM cervezas U WHERE U.id = '$idCerveza'", $conn->real_escape_string($idCerveza));
-        $rs = $conn->query($query);   
+        $rs = $conn->query($query);
         $result = false;
         if ($rs) {
             if ( $rs->num_rows == 1) {
@@ -169,7 +163,7 @@ class cervezas{
 	public function getPais(){
 		return $this->pais;
 	}
-	
+
 	public function setPrecio($precio){
 		$this->precio = $precio;
 	}
