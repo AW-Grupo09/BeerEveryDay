@@ -19,23 +19,6 @@ class comentarios {
 
     }
 
-    public static function addCommentCerve($comentario, $idCerveza, $idUsuario, $valoracion){
-        //Add comment to dataBase
-
-
-    }
-
-    public static function addCommentGroup($comentario, $idGrupo, $idUsuario){
-        //add comment to database
-
-
-    }
-
-    public static function updateBeerRating($idCerveza){
-        //Se encarga de actualizar la valoracion de una cerveza
-
-    }
-
     public function getIdComentario(){
         return $this->idComentario;
     }

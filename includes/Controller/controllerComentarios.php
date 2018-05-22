@@ -1,9 +1,9 @@
 <?php
 
-require_once __DIR__ . '/../includes/Aplicacion.php';
-include('includes/comentarios.php');
+require_once __DIR__ . '/../Aplicacion.php';
 
-class controlComentarios {
+
+class controllerComentarios {
 
     public static function cargarComentario($idComentario){
 
@@ -11,7 +11,6 @@ class controlComentarios {
         $mysqli = $app->conexionBd();
         $query = "SELECT * FROM `comentarios-cervezas` WHERE idComentario = '$idComentario'";
         $resultado = $mysqli->query($query) or die ($mysqli->error. " en la línea ".(__LINE__-1));
-
         if (mysqli_num_rows($resultado) > 0) {
             $fila = $resultado->fetch_assoc();
             $comentario = new comentarios($idComentario, $fila["valoracion"], $fila["comentario"], $fila["idCerveza"], 
@@ -60,16 +59,30 @@ class controlComentarios {
         }
     }
 
-    public static function insertarComentario($valoracion, $comentario, $idCerveza, $idUsuario){
+    public static function insertarValoracion($valoracion, $comentario, $idCerveza, $idUsuario){
     	$app = Aplicacion::getSingleton();
         $mysqli = $app->conexionBd();
-    	$query = 'INSERT INTO `comentarios-cervezas`(valoracion, comentario, idCerveza, idUsuario) VALUES (' . $valoracion . ', "' . 
-    		$comentario . '", "' . $idCerveza . '", "' . $idUsuario . '")';
+        echo $valoracion, $idCerveza, $idComentario, $idUsuario;
+        $sql = "SELECT max(idComentario) FROM comentarios-cervezas";
+        $idComentario = $mysqli->query($query) or die ($mysqli->error. " en la línea ".(__LINE__-1));
+        $idComentario = $idComentario['idComentario'];
+    	$query = 'INSERT INTO `comentarios-cervezas`(idComentario, valoracion, comentario, idCerveza, idUsuario, fecha) VALUES ("'.$idComentario . '","'. $valoracion . '", "' .  $comentario . '", "' . $idCerveza . '", "' . $idUsuario . '", "'.NOW().'")';
     	$resultado = $mysqli->query($query) or die ($mysqli->error. " en la línea ".(__LINE__-1));
     	//return controlComentarios::cargarComentario($mysqli->insert_id);
     }
 
-    public static function eliminarComentario($idComentario){
+    public static function insertarComentarioGrupo($comentario, $idGrupo, $idUsuario){
+        $app = Aplicacion::getSingleton();
+        $mysqli = $app->conexionBd();
+        $sql = "SELECT max(idComentario) FROM comentarios-grupos";
+        $idComentario = $mysqli->query($query) or die ($mysqli->error. " en la línea ".(__LINE__-1));
+        $idComentario = $idComentario['idComentario'];
+        $query = 'INSERT INTO `comentarios-grupos`(idComentario, comentario, idGrupo, idUsuario, fecha) VALUES ("'.$idComentario . '","' . $comentario . '", "' . $idCerveza . '", "' . $idUsuario . '", "'.NOW().'")';
+        $resultado = $mysqli->query($query) or die ($mysqli->error. " en la línea ".(__LINE__-1));
+        //return controlComentarios::cargarComentario($mysqli->insert_id);
+    }
+
+    public static function eliminarValoracion($idComentario){
     	$app = Aplicacion::getSingleton();
         $mysqli = $app->conexionBd();
     	$query = 'DELETE FROM `comentarios-cervezas` WHERE idComentario = "' . $idComentario . '"';
@@ -81,6 +94,7 @@ class controlComentarios {
     }
 
     public static function modificarComentario($idComentario, $valoracion, $comentario){
+        //No se usa de momento
     	$app = Aplicacion::getSingleton();
         $mysqli = $app->conexionBd();
     	$query = 'UPDATE `comentarios-cervezas` SET valoracion = ' . $valoracion . ', comentario = "' . $comentario . '" WHERE idComentario = "' . $idComentario . '"';
@@ -91,7 +105,8 @@ class controlComentarios {
     	}
     }
 
-    public static function valoracionMedia($idCerveza){
+    public static function updateValoracionMedia($idCerveza){
+        //No se usa de momento
     	$app = Aplicacion::getSingleton();
         $mysqli = $app->conexionBd();
     	$query = 'SELECT sum(valoracion)/count(valoracion) as valoracionMedia FROM `comentarios-cervezas` WHERE idCerveza = ' . $idCerveza . ' group by idCerveza';
@@ -101,10 +116,24 @@ class controlComentarios {
             $fila = $resultado->fetch_assoc();
             $valoracion = $fila["valoracionMedia"];
             $valoracion = round($valoracion, 2);
+            $sql = "UPDATE `cervezas` SET valoracionMedia = " . $valoracion . " WHERE id = " . $idCerveza;
+            $mysqli->query($query) or die ($mysqli->error. " en la línea ".(__LINE__-1));
             return $valoracion;
         } else{
         	return 0;
         }
+    }
+
+    public static function existeVal($idCerveza, $idUsuario){
+
+        $app = Aplicacion::getSingleton();
+        $mysqli = $app->conexionBd();
+        $query = "SELECT idComentario FROM `comentarios-cervezas` WHERE idUsuario = '" . $idUsuario . "' AND idCerveza = '".$idCerveza;
+        $resultado = $mysqli->query($query) or die ($mysqli->error. " en la línea ".(__LINE__-1));
+        if(mysqli_num_rows($resultado) == 0)
+            return false;
+        else 
+            return true;
     }
 
 }

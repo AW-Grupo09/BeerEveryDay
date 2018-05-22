@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__.'/Form.php';
-require_once __DIR__.'/comentarios.php';
+require_once __DIR__.'/Controller/controllerComentarios.php';
 
  class FormularioNuevoComentarioCerve extends Form{
 
@@ -19,7 +19,7 @@ require_once __DIR__.'/comentarios.php';
                     <input type="radio" name="val" value="blanca"> 4 
                     <input type="radio" name="val" value="tostada"> 5 
 
-                    <input type="hidden" name="idCerveza" value="'.$opciones['idCerveza'].'">
+                    <input type="hidden" name="idCerveza" value="'.$this->opciones['idCerveza'].'">
 
     				<p><button type="submit">Añadir valoración</button></p>
 
@@ -51,14 +51,15 @@ require_once __DIR__.'/comentarios.php';
         }
 
         if (count($erroresFormulario) === 0) {
-            $Existe = comentarios::existeVal($idCerveza, $idUsuario);
+            $Existe = controllerComentarios::existeVal($idCerveza, $idUsuario);
 
             if ($Existe) {
                 $erroresFormulario[] = "Ya has valorado esa cerveza";
             } else {               
                 
-                comentarios::addCommentCerve($idCerveza, $comentario, $idUsuario, $idCerveza, $val);
-                header('Location: mostrarCerveza.php?id='.$idCerveza);
+                echo $comentario;
+                controllerComentarios::insertarValoracion($val, $comentario, $idCerveza, $idUsuario);
+               // header('Location: mostrarCerveza.php?id='.$idCerveza);
                 exit();
 
             }
@@ -74,7 +75,7 @@ require_once __DIR__.'/comentarios.php';
             array_push($datos, $nombreUsuario);
             array_push($datos, $password);
             */
-            return "mostrarCerveza.php?id=".$idCerveza;
+           // return "mostrarCerveza.php?id=".$idCerveza;
          }
         
     }
