@@ -35,14 +35,14 @@ require_once __DIR__.'/Form.php';
 
         $password = isset($_POST['password']) ? $_POST['password'] : null;
         if (empty($password) ) {
-            $erroresFormulario[] = "El password no puede estar vacío.";
+            $erroresFormulario[] = "La contraseña no puede estar vacía.";
         }
 
         if (count($erroresFormulario) === 0) {
             $usuario = Usuario::buscaUsuario($nombreUsuario);
 
             if (!$usuario) {
-                $erroresFormulario[] = "El usuario o el password no coinciden";
+                $erroresFormulario[] = "El usuario o la contraseña no coinciden";
             } else {               
                 if($usuario->compruebaPassword($password)) {
                     $_SESSION['login'] = true;
@@ -51,7 +51,7 @@ require_once __DIR__.'/Form.php';
                     header('Location: index.php');
                     exit();
                 } else {
-                    $erroresFormulario[] = "El usuario o el password no coinciden";
+                    $erroresFormulario[] = "El usuario o la contraseña no coinciden";
                 }
             }
         }

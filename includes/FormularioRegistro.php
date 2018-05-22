@@ -6,15 +6,15 @@ require_once __DIR__.'/funcionImagen.php';
 
     public function generaCamposFormulario($datosIniciales)
     {
-    	return '	    <fieldset>
-						<legend> Formulario de registro: </legend>
+    	return '	  <fieldset>
+					  <legend> Formulario de registro: </legend>
 
-						<div class="imgcontainer">
-					   		<img src="img/users/default.png" alt="Avatar" class="avatar">
-					    </div>
+					  <div class="imgcontainer">
+					  <img src="img/users/default.png" alt="Avatar" class="avatar">
+					  </div>
      			
-          				<label>Nombre de usuario: </label>
-          				<input type="text" name="nombreUsuario" required/>
+          			  <label>Nombre de usuario: </label>
+          			  <input type="text" name="nombreUsuario" required/>
 	          			
 		              <label>Nombre: </label>
 		              <input type="text" name="nombre" required autofocus/>
@@ -26,7 +26,7 @@ require_once __DIR__.'/funcionImagen.php';
 		              <input type="date" name="fechaNac" placeholder="aaaa/mm/dd" required/>
 		           
 		              <label>Ciudad: </label>
-		              <input type="text" name="ciudad" value=""/>
+		              <input type="text" name="ciudad" value=""/ required>
             		
 		              <label>E-mail:</label>
 		              <input type="email" name="email" placeholder="example123@example.com" required/>
@@ -85,17 +85,21 @@ require_once __DIR__.'/funcionImagen.php';
 
 		$password = isset($_POST['password']) ? $_POST['password'] : null;
 		if ( empty($password) || mb_strlen($password) < 5 ) {
-			$erroresFormulario[] = "El password tiene que tener una longitud de al menos 5 caracteres.";
+			$erroresFormulario[] = "La contraseña tiene que tener una longitud de al menos 5 caracteres.";
 		}
 		$password2 = isset($_POST['repass']) ? $_POST['repass'] : null;
 		if ( empty($password2) || strcmp($password, $password2) !== 0 ) {
-			$erroresFormulario[] = "Los passwords deben coincidir";
+			$erroresFormulario[] = "Las contraseñas deben coincidir";
 		}
 
-		if ( empty($remail) || strcmp($email, $remail) !== 0 ) {
+		if (empty($remail) || strcmp($email, $remail) !== 0 ) {
 			$erroresFormulario[] = "Los emails deben coincidir";
 		}
-		
+
+		if(Usuario::correoExiste($nombreUsuario, $email)){
+			$erroresFormulario[] = "Ese correo ya está en uso";
+		}
+
 		// comprueba que la imagen es válida
 		if($avatar != NULL && !funcionImagen::esImagen($avatar)){
 			$erroresFormulario[] = "Debe ser un archivo válido";

@@ -1,6 +1,7 @@
 <?php
 
 include_once('DAO.php');
+require_once __DIR__.'\..\TO\TOCervezas.php';
 
 class DAOCervezas {
 

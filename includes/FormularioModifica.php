@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__.'/Form.php';
 require_once __DIR__.'/funcionImagen.php';
+require_once __DIR__.'/Usuario.php';
 
 class FormularioModifica extends Form {
 
@@ -16,7 +17,9 @@ class FormularioModifica extends Form {
 	       <label>Apellidos: </label>
 	       <input type="text" name="apellidos" maxlength="50" size="30" value="' . $usuario->apellidos() . '" />
 	       <label>Email: </label>
-	       <input type="email" name="email" maxlength="50" size="30" value="' . $usuario->email() . '" />
+	       <input id="campoEmail" type="email"  name="email" maxlength="50" size="30" value="' . $usuario->email() . '" />
+	       <img id="correoNo" src="img/icons/no.png" style="display: none" alt="No"/> 
+		   <img id="correoOk" src="img/icons/ok.png" alt="Ok"/>
 	       <label>Ciudad: </label>
 	       <input type="text" name="ciudad" maxlength="50" size="30" value="' . $usuario->ciudad() . '" />
 	       <label>Fecha de nacimiento: </label>
@@ -39,17 +42,14 @@ class FormularioModifica extends Form {
 		$fechaNac= isset($_POST['fechaNac']) ? $_POST['fechaNac'] : null;
 		$ciudad = isset($_POST['ciudad']) ? $_POST['ciudad'] : null;
 		$email = isset($_POST['email']) ? $_POST['email'] : null; 
-		//$dirAvatar = isset($_POST['archivo']) ? $_POST['archivo'] : null;
-		/*$avatar = $_FILES['archivo']['name'];
 
-		//Imagen
-		$ruta = "img/users/";//ruta carpeta donde queremos copiar las imágenes 
-	    $imageFileType = $ruta . basename($avatar);
-		
-		// comprueba que HAYA IMAGEN y que es válida
-		if($avatar != NULL && !funcionImagen::esImagen($avatar)){
-			$erroresFormulario[] = "Debe ser un archivo válido";
-		}*/
+		if(empty($nombre) || empty($apellidos) || empty($fechaNac) || empty($ciudad) || empty($email)){
+			$erroresFormulario[] = "No puede quedarse ningun campo vacío";
+		}
+
+		if(Usuario::correoExiste($nombreUsuario, $email)){
+			$erroresFormulario[] = "Ese correo ya está en uso";
+		}
 
 		//comprobar errores
 		if (count($erroresFormulario) === 0) {
@@ -58,8 +58,6 @@ class FormularioModifica extends Form {
 
 			if ($usuario != NULL) { // si encuentra el usuario, le actualiza
 		    	$usuario = Usuario::actualizaUser($nombreUsuario, $usuario, $nombre, $apellidos, $ciudad, $email, $fechaNac);
-		    	//$usuario = Usuario::guarda($usuario, $nombreUsuario);
-				//move_uploaded_file($_FILES['archivo']['tmp_name'], $imageFileType);
 				header('Location: perfil.php');
 				exit();
 			} else {

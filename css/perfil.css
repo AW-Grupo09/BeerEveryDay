@@ -35,8 +35,24 @@
     margin-top: 1%;
 }
 
-input[type=text], input[type=password], input[type=date], input[type=email]  {
+label {
     width: 100%;
+    display: inline-block;
+}
+
+input[type=text], input[type=password], input[type=date]  {
+    width: 97%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+}
+
+input[type=email]{
+    width: 97%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;

@@ -35,10 +35,10 @@
 			<div class = "perfil">
 				<div class = "avatar">
 					<?php 
-						if($user->avatar() != NULL)
+						if($user->avatar() != "img/users/")
 							echo "<img src='" . $user->avatar() . " ' alt = 'Imagen de perfil'>"; 
 						else
-							echo "<img src='/img/users/default.png' alt = 'Imagen de perfil'>"; 
+							echo '<img src="img/users/default.png">'; 
 						$_SESSION['avatar'] = $user->avatar();
 					?> 
 					<form action="modificarAvatar.php">
