@@ -6,9 +6,21 @@ require_once __DIR__.'\..\DAO\DAOPedidos.php';
 
 class controllerPedidos {
 
+    private static $daoPedido;
+
     public static function loadPedido($idPedido){
         $daoPedido = new DAOPedidos();
         return $daoPedido->loadPedido($idPedido);
+    }
+
+    public static function loadPedidos($user){
+        $daoPedido = new DAOPedidos();
+        $resultado = $daoPedido->loadPedidos($user);
+        $pedidos = array();
+        for($i = 0; $i < count($resultado); $i++ ){
+            array_push($pedidos, $daoPedido->loadPedido($resultado[$i]));
+        }
+        return $pedidos;
     }
 
     public static function eliminarCesta($cesta){
@@ -57,21 +69,18 @@ class controllerPedidos {
     }
 
     public static function loadCesta($user){
+        //cargar pedido y pasar el pedido
         $daoPedido = new DAOPedidos();
-        return $daoPedido->loadCesta($user);
-    }
-
-    public static function loadPedidos($user){
-        $daoPedido = new DAOPedidos();
-        $resultado = $daoPedido->loadPedidos($user);
-        $pedidos = array();
-        for($i = 0; $i < count($resultado); $i++ ){
-            array_push($pedidos, $daoPedido->loadPedido($resultado[$i]));
+        $id = $daoPedido->loadCesta($user);
+        if($id != null){
+            return $daoPedido->loadPedido($id);
+        }else{
+            return null;
         }
-        return $pedidos;
+        
     }
 
-     public static function loadInfoPedido($idPedido){
+    public static function loadInfoPedido($idPedido){
         $daoPedido = new DAOPedidos();
         return $DAOPedidos->loadInfoPedido($idPedido);
     }

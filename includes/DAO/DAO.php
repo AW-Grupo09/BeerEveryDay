@@ -4,11 +4,6 @@ require_once __DIR__ . '/../../includes/Aplicacion.php';
 
 class DAO {
 
-	private $mysqli;
-    private $bdDatosConexion;
-    private $inicializada = false;
-    private $conn;
-
  	public function __construct(){
         $app = Aplicacion::getSingleton();
         $this->mysqli = $app->conexionBd();

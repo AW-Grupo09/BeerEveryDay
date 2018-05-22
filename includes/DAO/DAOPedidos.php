@@ -55,6 +55,21 @@ class DAOPedidos {
         return $pedido;
     }
 
+    public function loadPedidos($user){
+        $sql = "SELECT * FROM `usuarios-pedidos` WHERE idusuario = '$user' GROUP BY idPedido ";
+        $consulta = $this->dao->ejecutarConsulta($sql);
+        $array = array();
+        if (count($consulta) != 0){
+            for($i = 0; $i < count($consulta); $i++ ){
+                array_push( $array, $consulta[$i]['idPedido']);
+            }
+            return $array;
+        }     
+        else {
+            return NULL;
+        }
+    }
+
     public function eliminarCesta($cesta){
         $sql = "DELETE FROM  Pedidos WHERE idPedido = '$cesta'";
         $consulta = $this->dao->ejecutarModificacion($sql);
@@ -116,22 +131,7 @@ class DAOPedidos {
         }
     }
 
-    public function loadPedidos($user){
-        $sql = "SELECT * FROM `usuarios-pedidos` WHERE idusuario = '$user' GROUP BY idPedido ";
-        $consulta = $this->dao->ejecutarConsulta($sql);
-        $array = array();
-        if (count($consulta) != 0){
-            for($i = 0; $i < count($consulta); $i++ ){
-                array_push( $array, $consulta[$i]['idPedido']);
-            }
-            return $array;
-        }     
-        else {
-            return NULL;
-        }
-    }
-
-     public function loadInfoPedido($idPedido){
+    public function loadInfoPedido($idPedido){
         $sql = "SELECT idcerveza, unidades FROM `pedidos-cervezas` WHERE idpedido = ". $idPedido;
         $consulta = $this->dao->ejecutarConsulta($sql);
  

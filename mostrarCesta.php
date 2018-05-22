@@ -34,22 +34,22 @@
 		<div class="container">
 			
 			<?php
-				$idCesta = controllerPedidos::loadCesta($_SESSION["nombreUsuario"]);
+				$cesta = controllerPedidos::loadCesta($_SESSION["nombreUsuario"]);
 
 				if(isset($_POST['Eliminar'])){
-					controllerPedidos::eliminarCesta($idCesta);
-					$idCesta = null;
+					controllerPedidos::eliminarCesta($cesta->getIdPedido());
+					$cesta = null;
 				}
 						
-				if($idCesta == null){
+				if($cesta == null){
 					echo "<div><h1>Tu cesta está vacía.<h1></div>";
 				}else {
-					$cesta = controllerPedidos::loadPedido($idCesta);
+					//$cesta = controllerPedidos::loadPedido($idCesta);
 
 					foreach ($cesta->getCervezas() as $idCerveza) {
 						if(isset($_POST[$idCerveza])){
-							controllerPedidos::eliminarElementoCesta($idCerveza, $idCesta);
-							$cesta = controllerPedidos::loadPedido($idCesta);
+							controllerPedidos::eliminarElementoCesta($idCerveza, $cesta->getIdPedido());
+							$cesta = controllerPedidos::loadPedido($cesta->getIdPedido());
 						}
 					}
 					if(sizeof($cesta->getCervezas()) > 0) {
@@ -104,7 +104,7 @@
 							</div> 
 						<?php
 					}else {
-						controllerPedidos::eliminarCesta($idCesta);
+						controllerPedidos::eliminarCesta($cesta->getIdPedido());
 						echo "<div><h1>Tu cesta está vacía.<h1></div>";
 					}
 				}
