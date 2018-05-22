@@ -58,7 +58,7 @@
 							<li><a href = 'mostrarCesta.php'> MI CESTA </a> </li>
 							<?php 
 								if(isset($_SESSION['esAdmin']) && $_SESSION['esAdmin']){ ?>
-									<li><a href = 'vistaAddBeers.php'> ADMIN </a> </li>
+									<li><a href = 'admin.php'> ADMIN </a> </li>
 								<?php } ?>
 						</ul>
 					<?php } ?>

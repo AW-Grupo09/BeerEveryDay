@@ -53,7 +53,6 @@ require_once __DIR__.'/Controller/controllerCervezas.php';
 
                     <label class="foto_per_label">Foto: </label>
                     <label> <p> <input type="file" name="archivo" /> </p></label>       
-                    
 
     				<p><button type="submit">Subir cerveza</button></p>
 
@@ -65,9 +64,9 @@ require_once __DIR__.'/Controller/controllerCervezas.php';
         $erroresFormulario = array();
 
         //Preparacion de la imagen
-        $avatar = $_FILES['archivo']['name'];
-        $ruta = "img/imagenCervezas/";//ruta carpeta donde queremos copiar las imágenes 
-        $imageFileType = $ruta . basename($avatar);
+        $imgCerveza = $_FILES['archivo']['name'];
+        $ruta = "img/imagenCervezas/"; //ruta carpeta donde queremos copiar las imágenes 
+        $imageFileType = $ruta . basename($imgCerveza);
 
         $Artesana = isset($_POST['Artesana']) ? true : false;
         
@@ -121,20 +120,16 @@ require_once __DIR__.'/Controller/controllerCervezas.php';
         else if($Tipo != "lager" && $Tipo != "ale" && $Tipo != "pilsner")
             $erroresFormulario[] = "El tipo no tiene un valor valido";
 
-
-
         if (count($erroresFormulario) === 0) {
             $Existe = controllerCervezas::existeCerveza($nombreCerveza);
 
             if ($Existe) {
                 $erroresFormulario[] = "Esa cerveza ya existe";
-            } else {               
-                
+            } else {                         
                 controllerCervezas::addBeer($imageFileType,  $Artesana, $nombreCerveza, $capacidad, $Color, $Fabricante, $Grado, $grano, $precio, $pais, $Tipo);
                 move_uploaded_file($_FILES['archivo']['tmp_name'], $imageFileType);
                 header('Location: index.php');
                 exit();
-
             }
         }
 
