@@ -144,11 +144,26 @@ class DAOPedidos {
             return NULL;
         }
     }
-
     public function procesarCesta($Dir, $idCesta, $Date){
         $sql = "UPDATE pedidos SET estado = 'confirmado' , Direccion = '" .$Dir. "', fechaPedido = '" .$Date. "'WHERE idPedido = ". $idCesta;
         $consulta = $this->dao->ejecutarModificacion($sql);
     }
+
+    public function insertarPedido($direccion,$date,$dateLimite){
+        $sql ="INSERT INTO pedidos(estado,fechaPedido,fechaEntrega,fechaLimite,Direccion) VALUES ('cesta',".$date.",".$dateLimite.",'$direccion')";
+        echo $sql;
+        $consulta = $this->dao->ejecutarModificacion($sql);
+    }
+
+    public function getIdPedido(){
+         $sql = "SELECT max(idPedido) as idpedido FROM pedidos";
+        $consulta = $this->dao->ejecutarConsulta($sql);
+        return  $consulta[0]['idpedido'];
+    }
+
+
+
+
 }
 
 ?>

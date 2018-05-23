@@ -72,12 +72,19 @@ require_once __DIR__.'/Controller/controllerPedidos.php';
 		    	$erroresFormulario[] = "El grupo ya existe";
 			} else {
 
+
                 Grupos::insertaGrupoUsuarios($_SESSION['nombreUsuario'], $grupo->getId(),$tusUnidades);
 
-                Grupos::insertaGrupoPedidos();
-				$_SESSION['nombreGrupo'] = $nombreGrupo;
-				header('Location: index.php');
-				exit();
+                echo $unidades .'</br>';
+                
+                $idPedido = controllerPedidos::procesarPedido($idCerveza,$direccion,$unidades);
+
+                Grupos::insertaGrupoPedidos($grupo->getId(),$idPedido);
+
+                $_SESSION['nombreGrupo'] = $nombreGrupo;
+                header('Location: index.php');
+                exit();
+
 			}
 		}
 

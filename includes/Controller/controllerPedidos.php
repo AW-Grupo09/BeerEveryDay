@@ -94,6 +94,17 @@ class controllerPedidos {
         $daoPedido->procesarCesta($Dir, $idCesta, $Date);
     }
 
+    public static function procesarPedido($idCerveza,$dirreccion,$unidades){
+        $daoPedido = new DAOPedidos();
+        $date = date("Y/m/d");
+        $dateLimite = date("Y/m/d"); /*faltaria sumarle los 14 dias */
+
+        $daoPedido->insertarPedido($dirreccion,$date,$dateLimite);
+        $idPedido = $daoPedido->getIdPedido();
+        $daoPedido->insertarCervezas($idCerveza,$unidades,$idPedido);
+        
+        return $idPedido;
+    }
 
     
 }
