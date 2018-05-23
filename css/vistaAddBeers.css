@@ -1,0 +1,55 @@
+form {
+	display:flex;
+	border: 3px solid #FFC107;
+	margin-left: 20%;
+	margin-right: 20%;
+	padding: 1%;
+    -webkit-border-radius: 15px;
+    border-radius: 15px; 
+}
+fieldset{
+	padding-top: 5%;
+    padding-bottom: 7%;
+    padding-right: 9%;
+    padding-left: 9%;
+    -webkit-border-radius: 10px;
+    border-radius: 10px; 
+}
+input[type=text]{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+    margin-bottom: 20px;
+}
+h3{
+	text-align: center;
+    margin-bottom: 3%;
+}
+
+button {
+    background-color: #FFC107; /*#4CAF50*/
+    color: black;
+    padding: 1.7%;
+    margin-left: 35%;
+    border: none;
+    cursor: pointer;
+    width: 30%;
+    -webkit-border-radius: 10px;
+    border-radius: 10px; 
+    font-family: miFuente;
+    src: url(../fonts/BebasKai.otf);
+    font-size: 20px;
+   
+}
+
+button:hover {
+    opacity: 0.8;
+    background-color: black;
+    color: #FFC107;
+}
+
