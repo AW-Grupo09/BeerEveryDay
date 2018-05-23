@@ -11,7 +11,7 @@ class Grupos
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
         $query = sprintf(
-            "INSERT INTO `grupos-pedidos` VALUES('%s', '%s')",
+            "INSERT INTO `grupo-pedidos` VALUES('%s', '%s')",
             $conn->real_escape_string($idGrupo),
             $conn->real_escape_string($idPedido)
         );

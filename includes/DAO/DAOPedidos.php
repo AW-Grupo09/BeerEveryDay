@@ -150,8 +150,7 @@ class DAOPedidos {
     }
 
     public function insertarPedido($direccion,$date,$dateLimite){
-        $sql ="INSERT INTO pedidos(estado,fechaPedido,fechaEntrega,fechaLimite,Direccion) VALUES ('cesta',".$date.",".$dateLimite.",'$direccion')";
-        echo $sql;
+        $sql ="INSERT INTO pedidos(estado,fechaPedido,fechaLimite,Direccion) VALUES ('cesta',".$date.",".$dateLimite.",'$direccion')";
         $consulta = $this->dao->ejecutarModificacion($sql);
     }
 
