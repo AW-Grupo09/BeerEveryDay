@@ -13,21 +13,21 @@ require_once __DIR__.'/Controller/controllerCervezas.php';
     				<label for="nombreCerveza">Nombre de cerveza: </label>
     			    <input type="text" placeholder="Introduzca aquí el nombre de la cerveza" name="nombreCerveza" required>
 
-                    <label for="Artesana">Es artesana: </label>
-                    <input type="checkbox" name="Artesana" checked>
+                    <label for="Artesana">Es artesana: 
+                    <input type="checkbox" name="Artesana" checked></label>
 
     				<label for="capacidad">Capacidad en centilitros: </label>
     			    <input type="text" placeholder="Introduzca aquí la capacidad de la cerveza" name="capacidad" required>
 
                     <label for="color">Color: </label>
 
-
-                    <input type="radio" name="Color" value="rubia" checked> Rubia
-                    <input type="radio" name="Color" value="negra"> Negra
-                    <input type="radio" name="Color" value="tostada"> Tostada  
-                    <input type="radio" name="Color" value="blanca"> Blanca 
-                    <input type="radio" name="Color" value="tostada"> Tostada 
-                    <input type="radio" name="Color" value="ambar"> Ambar 
+                    <div id="radios">
+                        <input type="radio" name="Color" value="rubia" checked> Rubia
+                        <input type="radio" name="Color" value="negra"> Negra
+                        <input type="radio" name="Color" value="tostada"> Tostada  
+                        <input type="radio" name="Color" value="blanca"> Blanca 
+                        <input type="radio" name="Color" value="ambar"> Ambar 
+                    </div>
 
                     <label for="fabricante">Fabricante: </label>
                     <input type="text" placeholder="Introduzca aquí el fabricante de la cerveza" name="Fabricante" required>
@@ -36,9 +36,11 @@ require_once __DIR__.'/Controller/controllerCervezas.php';
                     <input type="text" placeholder="Introduzca aquí el grado de la cerveza" name="Grado" required>
 
                     <label for="grano">Grano: </label>
-                    <input type="radio" name="Grano" value="cebada"> Cebada 
-                    <input type="radio" name="Grano" value="trigo"> Trigo 
-                    <input type="radio" name="Grano" value="avena"> Avena 
+                        <div id="radios">
+                        <input type="radio" name="Grano" value="cebada"> Cebada 
+                        <input type="radio" name="Grano" value="trigo"> Trigo 
+                        <input type="radio" name="Grano" value="avena"> Avena 
+                    </div>
 
                     <label for="precio">Precio: </label>
                     <input type="text" placeholder="Introduzca aquí el precio de la cerveza" name="precio" required>
@@ -47,9 +49,11 @@ require_once __DIR__.'/Controller/controllerCervezas.php';
                     <input type="text" placeholder="Introduzca aquí el país de la cerveza" name="pais" required>
 
                     <label for="Tipo">Tipo: </label>
-                    <input type="radio" name="Tipo" value="lager"> Lager 
-                    <input type="radio" name="Tipo" value="ale"> Ale 
-                    <input type="radio" name="Tipo" value="pilsner"> Pilsner 
+                    <div id="radios">
+                        <input type="radio" name="Tipo" value="lager"> Lager 
+                        <input type="radio" name="Tipo" value="ale"> Ale 
+                        <input type="radio" name="Tipo" value="pilsner"> Pilsner 
+                    </div>
 
                     <label class="foto_per_label">Foto: </label>
                     <label> <p> <input type="file" name="archivo" /> </p></label>       

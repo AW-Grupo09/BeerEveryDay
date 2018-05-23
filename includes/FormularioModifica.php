@@ -24,7 +24,7 @@ class FormularioModifica extends Form {
 	       <input type="text" name="ciudad" maxlength="50" size="30" value="' . $usuario->ciudad() . '" />
 	       <label>Fecha de nacimiento: </label>
 	       <input type="date" name="fechaNac" maxlength="50" size="30" value="' . $usuario->fechaNac() . '" />
-	       <label> <button id="guardaCambios" class="submit" type="submit" onclick="guardar()" >Guardar cambios</button></label>
+	       <label> <button id="guardaCambios" class="submit" type="submit" >Guardar cambios</button></label>
        </fieldset>
        </div>';
  	}

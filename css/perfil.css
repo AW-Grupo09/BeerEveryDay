@@ -35,7 +35,7 @@
 }
 
 input[type=text], input[type=password], input[type=date], input[type=email]  {
-    width: 100%;
+    width: 97%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -56,18 +56,8 @@ button {
     border-radius: 6px;
     border: 1.42px solid #0016b0;
     cursor: pointer;
-
-   /* background-color: #FFC107; /*#4CAF50*/
-    /*color: black;
-    padding: 1.7%;
-    margin-left: 35%;
-    border: none;
-    cursor: pointer;
-    width: 30%;
-    border-radius: 10px;
-    font-size: 20px;*/
-    /*margin-bottom: 1%;*/
 }
+
 button:hover {
     opacity: 0.8;
     background-color: black;
