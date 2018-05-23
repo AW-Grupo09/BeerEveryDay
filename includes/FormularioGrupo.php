@@ -69,13 +69,13 @@ require_once __DIR__.'/Controller/controllerPedidos.php';
 		if (count($erroresFormulario) === 0) {
 			$grupo = Grupos::creaGrupo($nombreGrupo, $direccion, $ciudad);
 
-			if (! $grupo ) {
+			if (!$grupo ) {
 		    	$erroresFormulario[] = "El grupo ya existe";
 			} else {
 
-                Grupos::insetaGrupoUsuarios($_SESSION['nombreUsuario'], $grupo->getId(),$tusUnidades);
+                Grupos::insertaGrupoUsuarios($_SESSION['nombreUsuario'], $grupo->getId(),$tusUnidades);
 
-                Grupos::insetaGrupoPedidos()
+                Grupos::insertaGrupoPedidos();
 				$_SESSION['nombreGrupo'] = $nombreGrupo;
 				header('Location: index.php');
 				exit();

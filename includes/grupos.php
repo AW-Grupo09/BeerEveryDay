@@ -6,7 +6,7 @@ class Grupos
 
     /*----------------------------------------------FUNCIONES PARA LA TABLA DE GRUPOS-PEDIDOS -------------------------------------------------------*/
 
-    public static function insetaGrupoPedidos($idGrupo,$idPedido){
+    public static function insertaGrupoPedidos($idGrupo,$idPedido){
 
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
@@ -93,7 +93,7 @@ class Grupos
     }
 
     /*Funcion que inserta un usuario y idGrupo en la tabla GRUPOS-USUARIOS*/
-    public static function insetaGrupoUsuarios($idUsuario, $idGrupo,$unidades){
+    public static function insertaGrupoUsuarios($idUsuario, $idGrupo,$unidades){
 
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
