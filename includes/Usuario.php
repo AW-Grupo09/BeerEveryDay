@@ -92,7 +92,8 @@ class Usuario
         if ( $conn->query($query) ) {
             if ( $conn->affected_rows != 1) {
                 //echo "No se ha podido actualizar el usuario: " . $usuario->nombreUsuario;
-                echo "No ha habido cambios en el usuario:" . $usuario->nombreUsuario;
+                header('Location: perfil.php');
+                //echo "No ha habido cambios en el usuario:" . $usuario->nombreUsuario;
                 exit();
             }
         } else {
@@ -264,8 +265,8 @@ class Usuario
     }
 
     // inutil
-    public function cambiaPassword($nuevoPassword)
+   /* public function cambiaPassword($nuevoPassword)
     {
         $this->password = self::hashPassword($nuevoPassword);
-    }
+    }*/
 }

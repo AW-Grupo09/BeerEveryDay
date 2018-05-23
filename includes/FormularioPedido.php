@@ -36,7 +36,8 @@ require_once __DIR__.'/Form.php';
         }
 
         if (count($erroresFormulario) === 0) {
-            $ret = controllerPedidos::procesarCesta($Dir, $Tarjeta, $_SESSION["nombreUsuario"]);
+            $idPedido = controllerPedidos::loadCesta($_SESSION["nombreUsuario"]);
+            $ret = controllerPedidos::procesarCesta($Dir, $_SESSION["nombreUsuario"]);
             if($ret !== NULL)
               $erroresFormulario[] = $ret;
         }
@@ -49,7 +50,8 @@ require_once __DIR__.'/Form.php';
              //Si hay exito
             array_push($datos, $Dir);
             array_push($datos, $Tarjeta);
-            return "index.php";
+            //return "index.php";
+            return "mostrarPedido.php?idPedido=" . $idPedido->getIdPedido();
          }
         
     }
