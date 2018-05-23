@@ -67,6 +67,7 @@ require_once __DIR__.'/Controller/controllerCervezas.php';
         $imgCerveza = $_FILES['archivo']['name'];
         $ruta = "img/imagenCervezas/"; //ruta carpeta donde queremos copiar las imágenes 
         $imageFileType = $ruta . basename($imgCerveza);
+        $imageFileType = strtolower($imageFileType); // para guardar todo en minúsculas
 
         $Artesana = isset($_POST['Artesana']) ? true : false;
         
@@ -119,6 +120,11 @@ require_once __DIR__.'/Controller/controllerCervezas.php';
         }
         else if($Tipo != "lager" && $Tipo != "ale" && $Tipo != "pilsner")
             $erroresFormulario[] = "El tipo no tiene un valor valido";
+
+        // comprueba que la imagen es válida
+        if($imgCerveza != NULL && !funcionImagen::esImagen($imgCerveza)){
+            $erroresFormulario[] = "Debe ser un archivo válido";
+        }
 
         if (count($erroresFormulario) === 0) {
             $Existe = controllerCervezas::existeCerveza($nombreCerveza);
