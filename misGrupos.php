@@ -2,11 +2,6 @@
 	require_once __DIR__.'/includes/config.php';
 	require_once __DIR__.'/includes/FormularioGrupo.php';
 
-
-	/*include('includes/usuario.php');
-	include('includes/pedidos.php');
-	include('includes/cervezas.php');*/
-
 	if(!$_SESSION['login']){
 			header('Location: login.php');
 	}
@@ -29,34 +24,32 @@
 
 		<?php require ('includes/comun/header.php'); ?>
 		<div class="container">
+            <h1> ¡Te encuentras en la sección de "Mis grupos"! </h1>
             <div id="izquierda">
-    			<div class="titulo">
-                    <h2> ¡Mis grupos! </h2>
+    			<div id="titulo">
+                    Aquí puedes ver cuáles son tus grupos:
                 </div>
 
-                <table>
-                    <thead>
-                        <th>Nombre</th>
-                        <th>Direccion</th>
-                        <th>Ciudad</th>
-                        <th>Creador</th>
-                    </thead>
-                    <?php
-                    
-                    $grupos = Grupos::getGruposByUser($_SESSION['nombreUsuario']);
+               <div id="grupo">
+                <?php
+                 $grupos = Grupos::getGruposByUser($_SESSION['nombreUsuario']);
                     foreach ($grupos as $grupo) { ?>
-                    <tr>
-                        <td><?=$grupo->getNombre()?></td>
-                        <td><?=$grupo->getDireccion()?></td>
-                        <td><?=$grupo->getCreador()?></td>
-                        <td><?=$grupo->getCiudad()?></td>
-                    </tr>
-                    <?php } ?>
-                </table>
+                        <fieldset>
+                        <legend><?=$grupo->getNombre()?> </legend>
+                        <p><span>Dirección: </span>  <?=$grupo->getDireccion()?></p>
+                        <span>Ciudad: </span> <?=$grupo->getCiudad()?>
+                        <div id="creador">
+                            <span>Creado por: </span><?=$grupo->getCreador()?>
+                        </div>
+                        </fieldset>
+
+                    <?php 
+                } ?>
             </div>
-            <div class="derecha">
-                <div class="titulo">
-                    <p><h2> ¿ Desea crear un nuevo grupo ?</h2></p>
+            </div>
+            <div id="derecha">
+                <div id="titulo">
+                     ¿ Quieres crear un grupo nuevo ?
                 </div>
     			
     			 <?php

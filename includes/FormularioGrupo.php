@@ -22,26 +22,25 @@ require_once __DIR__.'/Controller/controllerPedidos.php';
     	return '	<fieldset>
 					<legend> Formulario nuevo grupo: </legend>
 
-          			<p><label>Nombre de grupo: </label>
-          			<input type="text" name="nombreGrupo" required/></p>
+          			<label>Nombre de grupo: </label>
+          			<input type="text" name="nombreGrupo" required/>
 
-		            <p><label>Dirección: </label>
-		            <input type="text" name="direccion" required/></p>
+		            <label>Dirección: </label>
+		            <input type="text" name="direccion" required/>
 
-		            <p><label>Ciudad de envío: </label>
-		            <input type="text" name="ciudad" required/></p>
+		            <label>Ciudad de envío: </label>
+		            <input type="text" name="ciudad" required/>
 
-		            <p><label>Cerveza: </label>
+		            <label>Cerveza: </label>
 		            <select name="cerveza" required/>
                     ' . $select . '
-                    </select>
-                    </p>
+                    </select><br>
+                    
+                    <label>Unidades: </label>
+		            <input type="number" name="unidades" min="50" required/>
 
-		            <p><label>Unidades: </label>
-		            <input type="number" name="unidades" min="50" required/></p>
-
-                    <p><label>Tus unidades: </label>
-                    <input type="number" name="tusUnidades" min="10" required/></p>
+                    <label>Tus unidades: </label>
+                    <input type="number" name="tusUnidades" min="10" required/>
 
 		            <label> <button class="crearbtn" type="submit">Crear</button></label>
 		            ';
