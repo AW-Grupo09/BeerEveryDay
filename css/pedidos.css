@@ -1,16 +1,61 @@
-
-div.info {
-	font-weight: bold;
-	text-align: center;
+.info {
+	font-weight: bold;	
 	padding-top: 5%;
 }
 
-div.subinfo {
-	text-align: center;
+.subinfo {	
 	padding-top: 2%;
 }
 
-div.espaciado {
+.espaciado {
 	padding-top: 2%;
 	padding-bottom: 2%;
-	
+}
+
+.container{
+	margin-top: 200px;
+    margin-bottom: 20px;
+	border: 3px solid #FFC107;
+    padding: 1%;
+    border-radius: 15px; 
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+#pedido{
+	margin-top: 50px;
+	padding-left: 10px;
+	padding-right: 10px;
+	border-radius: 15px;     
+	background-color: #FFC107; 
+
+}
+
+a:hover{
+	opacity:0.8;
+	color: blue;
+}
+
+#radius{
+	border: 2px solid #FFC107;
+    border-radius: 25px;	
+    padding-right: 10px;
+    padding-left: 5px; 
+    font-weight:bold;
+}     
+
+#nombre{
+	font-weight:bold;
+	font-style: italic;
+}
+
+.nota {
+	background: #FFEA83;
+	opacity:0.75;
+	background-position: 15px 50%; /* x-pos y-pos */
+	text-align: left;
+	padding: 5px 20px 5px 45px;
+	border-top: 2px solid #FFC107;
+	border-bottom: 2px solid #FFC107;
+	color:#000000; 
+}

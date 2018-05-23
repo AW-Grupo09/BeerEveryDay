@@ -8,7 +8,6 @@ class TOPedidos {
     private $cervezas = array();
     private $unidades = array();
     private $dir;
-    private $tarjeta;
     private $estado;
     private $fechaPedido;
     private $fechaLimite;
@@ -71,15 +70,6 @@ class TOPedidos {
 
     public function setDir($dir){
         $this->dir = $dir;
-        return $this;
-    }
-
-    public function getTarjeta(){
-        return $this->tarjeta;
-    }
-
-    public function setTarjeta($tarjeta){
-        $this->tarjeta = $tarjeta;
         return $this;
     }
 

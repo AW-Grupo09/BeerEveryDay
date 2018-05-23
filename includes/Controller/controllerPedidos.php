@@ -17,8 +17,10 @@ class controllerPedidos {
         $daoPedido = new DAOPedidos();
         $resultado = $daoPedido->loadPedidos($user);
         $pedidos = array();
-        for($i = 0; $i < count($resultado); $i++ ){
-            array_push($pedidos, $daoPedido->loadPedido($resultado[$i]));
+        if($resultado != NULL){
+            for($i = 0; $i < count($resultado); $i++ ){
+                array_push($pedidos, $daoPedido->loadPedido($resultado[$i]));
+            }
         }
         return $pedidos;
     }
@@ -85,11 +87,11 @@ class controllerPedidos {
         return $DAOPedidos->loadInfoPedido($idPedido);
     }
 
-    public static function procesarCesta($Dir, $Tarjeta, $user){
+    public static function procesarCesta($Dir, $user){
         $daoPedido = new DAOPedidos();
         $idCesta = $daoPedido->loadCesta($user);
         $Date = date("Y/m/d");
-        $daoPedido->procesarCesta($Dir, $Tarjeta, $idCesta, $Date);
+        $daoPedido->procesarCesta($Dir, $idCesta, $Date);
     }
 
 

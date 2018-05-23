@@ -41,15 +41,15 @@
 					echo " <div class='info'><p><h1> ¿ Por qué no echas un vistazo a nuestro catálogo ? </h1></p></div>";
 					echo " <div class='subinfo'><p> Puedes acceder pinchando <a href = 'catalogo.php'>aquí.</a></p></div>";
 				}else {
-					echo " <h2> Esta es la página donde puedes visualizar tus pedidos,".  $_SESSION['nombreUsuario'] .  ". </h2>";
+					echo " <h2 class=nota> Esta es la página donde puedes visualizar tus pedidos, ".  $_SESSION['nombreUsuario'] .  ". </h2>";
 					
 
 					$numero = sizeof($listaPedidos);
 					if($numero == 0){
-						echo "<div class ='espaciado'><h1><ul>Aun no has realizado ningun pedido</h1></div>";
+						echo "<div class ='espaciado'><h1><ul><span id=radius>Aun no has realizado ningun pedido</span></h1></div>";
 
 					}else{
-						echo "<div class ='espaciado'><h1><ul>Tus pedidos son los siguientes: </h1></div>";
+						echo "<div class ='espaciado'><h1><ul><span id=radius>Tus pedidos son los siguientes:</span> </h1></div>";
 
 					}
 					
@@ -60,7 +60,7 @@
 					    echo "<h2><li><a href = mostrarPedido.php?idPedido=" . $pedido->getIdPedido() . ">Id del pedido: " . $pedido->getIdPedido() . "</a></li></h2>";
 					    
 					    $estado = $pedido->getEstado();
-					    echo "<p>Su estado es : $estado<p>";
+					    echo "<p id=state>Su estado es :<span id=radius> $estado</span><p>";
 
 					    $unidades = $pedido->getUnidades();
 					    $cervezas = $pedido->getCervezas();
@@ -70,7 +70,7 @@
 					    	$cerveza = controllerCervezas::loadCerveza(array_values($cervezas)[$j]);
 					    	$nombre = $cerveza->getNombre();
 
-					    	echo "<p> -Cerveza: $nombre, Unidades: $numUnidades";
+					    	echo "<p id=beer> -Cerveza: <span id=nombre>$nombre</span>, Unidades: $numUnidades";
 					    }
 					   
 						

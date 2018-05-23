@@ -7,7 +7,6 @@
 	require_once '../includes/TO/TOCervezas.php';
 
 	//include('controlPedidos.php');
-	include('cervezas.php');
 
 	$deleteCesta;
 	$deleteElem;

@@ -19,7 +19,6 @@ class DAOPedidos {
         if (count($consulta) > 0) {
             $pedido->setDir($consulta[0]["Direccion"]);
             $pedido->setEstado($consulta[0]["estado"]);
-            $pedido->setTarjeta($consulta[0]["tarjeta"]);
             $pedido->setFechaPedido($consulta[0]["fechaPedido"]);
             $pedido->setFechaLimite($consulta[0]["fechaLimite"]);
             $pedido->setFechaEntrega($consulta[0]["fechaEntrega"]);
@@ -146,8 +145,8 @@ class DAOPedidos {
         }
     }
 
-    public function procesarCesta($Dir, $Tarjeta, $idCesta, $Date){
-        $sql = "UPDATE pedidos SET estado = 'confirmado' , Direccion = '" .$Dir. "', tarjeta = '" .$Tarjeta. "', fechaPedido = '" .$Date. "'WHERE idPedido = ". $idCesta;
+    public function procesarCesta($Dir, $idCesta, $Date){
+        $sql = "UPDATE pedidos SET estado = 'confirmado' , Direccion = '" .$Dir. "', fechaPedido = '" .$Date. "'WHERE idPedido = ". $idCesta;
         $consulta = $this->dao->ejecutarModificacion($sql);
     }
 }
