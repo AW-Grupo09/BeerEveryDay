@@ -8,6 +8,7 @@
 <head>
     <meta charset="utf-8">
     <title> Grupos </title>
+    <link rel="stylesheet" type="text/css" href="css/mostrarGrupos.css">
     <link rel="stylesheet" type="text/css" href="css/common.css">
     <link rel="stylesheet" type="text/css" href="css/footer.css"/>
     <script type="text/javascript" src="js/javascript.js"></script>
@@ -20,29 +21,26 @@
         <?php require('includes/comun/header.php'); ?>
 
         <div class="container">
-            
-            <table>
-                <thead>
-                    <th>Nombre</th>
-                    <th>Direccion</th>
-                    <th>Cuidad</th>
-                    <th>Creador</th>
-                    <th></th>
-                </thead>
+            <h2> Listado de grupos actuales: </h2>
                 <?php
                 $grupos = Grupos::getGrupos();
                 foreach ($grupos as $grupo) { ?>
-                <tr>
-                    <td><a href = "vistaGrupo.php?nombreGrupo=<?=$grupo->getNombre()?> "><?=$grupo->getNombre()?> </a></td>
-                    <td><?=$grupo->getDireccion()?></td>
-                    <td><?=$grupo->getCiudad()?></td>
-                    <td><?=$grupo->getCreador()?></td>
-                    <td><button onclick="unirse(<?=$grupo->getId()?>)">Unirse</button></td>
-                </tr>
+
+                 <fieldset>
+                        <legend><a href = "vistaGrupo.php?nombreGrupo=<?=$grupo->getNombre()?> "><?=$grupo->getNombre()?> </a></legend>
+                        <div id="izquierda">
+                            <span>Dirección: </span>  <?=$grupo->getDireccion()?>
+                            <span>Ciudad: </span> <?=$grupo->getCiudad()?>
+                            <p><span>Creado por: </span><?=$grupo->getCreador()?></p>
+                        </div>
+                        
+                        
+                    <div id="derecha">
+                        <button class= "unirsebtn" onclick="unirse(<?=$grupo->getId()?>)">Unirse</button>
+                    </div>
+                </fieldset>
                 <?php } ?>
-            </table>
-
-
+            
              <?php
                 if (isset($_GET['action']) && $_GET['action'] == 'unirse') {
                     if(!$_SESSION['login']){
@@ -52,7 +50,7 @@
 
                         $misGrupos = Grupos::buscaUsuarioenGrupos($_SESSION['nombreUsuario'], $_GET['id']);
                         if($misGrupos!=true){
-                            $gruposUsuarios = Grupos::insetaGrupoUsuarios($_SESSION['nombreUsuario'], $_GET['id'],10);
+                            $gruposUsuarios = Grupos::insertaGrupoUsuarios($_SESSION['nombreUsuario'], $_GET['id'],10);
                         /*hacer las comporbaciones de que no se pueda unir a su mismo grupo*/
                         /*sigueinte modificacion es el numero de unidades de cerveza*/
                             if(isset($gruposUsuarios)){

@@ -1,0 +1,56 @@
+legend {
+    background-color: #FFEA83;
+    border-radius: 5px; 
+    border: 2px solid #FFC107;
+}
+
+.unirsebtn {
+    background-color: #FFC107; /*#4CAF50*/
+    color: black;
+    border: none;
+    cursor: pointer;
+    padding: 6%;
+    border-radius: 5px; 
+    font-family: miFuente;
+    font-size: 17px;
+    margin-top: 4%;
+    margin-left: 35%;
+    width: 80%;
+    height: 70%;
+}
+
+.unirsebtn:hover {
+    opacity: 0.8;
+    background-color: black;
+    color: #FFC107;
+}
+
+
+fieldset{
+    border-radius: 10px; 
+    border-color: #FFC107;
+    margin-top: 2%;
+    margin-left: 7%;
+    margin-right: 7%;
+}
+
+
+span{
+    font-weight: bold;
+    padding: 1%;
+}
+
+h2{
+    text-align: center;
+}
+
+div#derecha {
+    float: left;
+    width: 25%;
+}
+
+div#izquierda {
+    float: left;
+    width: 70%;
+    margin-top: 1%;
+}
