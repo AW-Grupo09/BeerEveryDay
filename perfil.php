@@ -6,7 +6,7 @@
     include('includes/Usuario.php');
 
     if(!$_SESSION['login']){
-		header('Location: index.php');
+		header('Location: login.php');
 	}
 ?>
 
@@ -35,10 +35,10 @@
 			<div class = "perfil">
 				<div class = "avatar">
 					<?php 
-						if($user->avatar() != NULL)
+						if($user->avatar() != "img/users/")
 							echo "<img src='" . $user->avatar() . " ' alt = 'Imagen de perfil'>"; 
 						else
-							echo "<img src='/img/users/default.png' alt = 'Imagen de perfil'>"; 
+							echo '<img src="img/users/default.png">'; 
 						$_SESSION['avatar'] = $user->avatar();
 					?> 
 					<form action="modificarAvatar.php">
@@ -48,13 +48,13 @@
 
 				<div class = "userData">
 					<fieldset>
-					<legend id=titulo>MI PERFIL</legend>
-						<p><span>Nombre de usuario: </span><?php echo $user->nombreUsuario();?></p>
-						<p><span>Nombre: </span><?php echo $user->nombre();?></p>
-						<p><span>Apellidos: </span><?php echo $user->apellidos();?></p>
-						<p><span>Email: </span><?php echo $user->email();?></p>
-						<p><span>Ciudad: </span><?php echo $user->ciudad();?></p>
-						<p><span>Fecha de nacimiento: </span><?php echo date("d-m-Y",strtotime($user->fechaNac())) ;?></p>
+					<legend>MI PERFIL</legend>
+						<p>Nombre de usuario: <?php echo $user->nombreUsuario();?></p>
+						<p>Nombre: <?php echo $user->nombre();?></p>
+						<p>Apellidos: <?php echo $user->apellidos();?></p>
+						<p>Email: <?php echo $user->email();?></p>
+						<p>Ciudad: <?php echo $user->ciudad();?></p>
+						<p>Fecha de nacimiento: <?php echo date("d-m-Y",strtotime($user->fechaNac())) ;?></p>
 						<form action="modificarPerfil.php">
 							<label> <button> Modificar perfil</button> </label>
 						</form>

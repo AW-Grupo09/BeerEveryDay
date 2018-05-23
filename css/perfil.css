@@ -1,6 +1,6 @@
 .avatar img {
-    width: 400px;
-    border-radius: 5%;
+	width: 400px;
+	border-radius: 5%;
 }
 
 .avatarMod {
@@ -16,7 +16,7 @@
 
 .userData, .adminView {
     width: 40%;
-    padding: 1%;
+	padding: 1%;
    /* border: 3px solid #FFC107;
     -webkit-border-radius: 15px;
     border-radius: 15px; */
@@ -26,6 +26,7 @@
     border: 3px solid #FFC107;
     padding: 1%;
     -webkit-border-radius: 15px;
+    border-radius: 15px; 
     margin-left: 20%;
     margin-right: 20%;
 }
@@ -34,8 +35,24 @@
     margin-top: 1%;
 }
 
-input[type=text], input[type=password], input[type=date], input[type=email]  {
+label {
     width: 100%;
+    display: inline-block;
+}
+
+input[type=text], input[type=password], input[type=date]  {
+    width: 97%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+}
+
+input[type=email]{
+    width: 97%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -46,47 +63,25 @@ input[type=text], input[type=password], input[type=date], input[type=email]  {
 }
 
 button {
-    margin-top: 20px;
-    text-decoration: none;
-    padding: 10px;
-    font-weight: 600;
-    font-size: 20px;
-    color: #ffffff;
-    background-color: #FFC107;
-    border-radius: 6px;
-    border: 1.42px solid #0016b0;
-    cursor: pointer;
-
-
-
-   /* background-color: #FFC107; /*#4CAF50*/
-    /*color: black;
+    background-color: #FFC107; /*#4CAF50*/
+    color: black;
     padding: 1.7%;
     margin-left: 35%;
     border: none;
     cursor: pointer;
     width: 30%;
-    border-radius: 10px;
-    font-size: 20px;*/
+    -webkit-border-radius: 10px;
+    border-radius: 10px; 
+    font-family: miFuente;
+    src: url(../fonts/BebasKai.otf);
+    font-size: 20px;
     /*margin-bottom: 1%;*/
 }
+
 button:hover {
     opacity: 0.8;
     background-color: black;
     color: #FFC107;
-}
-
-legend{
-    border: 2px solid #FFC107;
-    border-radius: 25px;   
-    background-color: #FFEA83;
-    color: black;
-    padding: 1.7%;
-} 
-span{
-    padding-left: 7px;
-    border: 2px solid #FFC107;
-    border-radius: 25px;     
 }
 
 #modCont {
@@ -96,7 +91,8 @@ span{
 .perfil {
     display: flex;
     justify-content: space-around;
-    border: 3px solid #FFC107;
+        border: 3px solid #FFC107;
+    -webkit-border-radius: 15px;
     border-radius: 15px; 
     padding: 1%;
 }
