@@ -52,7 +52,7 @@
 
                         $misGrupos = Grupos::buscaUsuarioenGrupos($_SESSION['nombreUsuario'], $_GET['id']);
                         if($misGrupos!=true){
-                            $gruposUsuarios = Grupos::insetaGrupoUsuarios($_SESSION['nombreUsuario'], $_GET['id']);
+                            $gruposUsuarios = Grupos::insetaGrupoUsuarios($_SESSION['nombreUsuario'], $_GET['id'],10);
                         /*hacer las comporbaciones de que no se pueda unir a su mismo grupo*/
                         /*sigueinte modificacion es el numero de unidades de cerveza*/
                             if(isset($gruposUsuarios)){

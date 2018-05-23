@@ -2,6 +2,7 @@
 require_once __DIR__.'/Form.php';
 require_once __DIR__.'/grupos.php';
 require_once __DIR__.'/Controller/controllerCervezas.php';
+require_once __DIR__.'/Controller/controllerPedidos.php';
 
 
  class FormularioGrupo extends Form{
@@ -39,12 +40,14 @@ require_once __DIR__.'/Controller/controllerCervezas.php';
 		            <p><label>Unidades: </label>
 		            <input type="number" name="unidades" min="50" required/></p>
 
+                    <p><label>Tus unidades: </label>
+                    <input type="number" name="tusUnidades" min="10" required/></p>
+
 		            <label> <button class="crearbtn" type="submit">Crear</button></label>
 		            ';
 	}
 
-   public function procesaFormulario($datos)
-    {
+   public function procesaFormulario($datos){
     	$erroresFormulario = array();
 
 		$nombreGrupo = isset($_POST['nombreGrupo']) ? $_POST['nombreGrupo'] : null;
@@ -52,19 +55,27 @@ require_once __DIR__.'/Controller/controllerCervezas.php';
 		$ciudad = isset($_POST['ciudad']) ? $_POST['ciudad'] : null;
         $idCerveza = isset($_POST['cerveza']) ? $_POST['cerveza'] : null;
         $unidades = isset($_POST['unidades']) ? $_POST['unidades'] : null;
+        $tusUnidades = isset($_POST['tusUnidades']) ? $_POST['tusUnidades'] : null;
 
 		if ( empty($nombreGrupo) || mb_strlen($nombreGrupo) < 5 ) {
         	$erroresFormulario[] = "El nombre de grupo tiene que tener una longitud de al menos 5 caracteres.";
 		}
 
+        if($tusUnidades > $unidades){
+            $erroresFormulario[] = "No puedes seleccionar un numero mayores de cervezas que las unidades del pedido.";
+        }
+
 		//comprobar errores
 		if (count($erroresFormulario) === 0) {
-			$grupo = Grupos::creaGrupo($nombreGrupo, $direccion, $ciudad,$idCerveza,$unidades);
+			$grupo = Grupos::creaGrupo($nombreGrupo, $direccion, $ciudad);
 
 			if (! $grupo ) {
 		    	$erroresFormulario[] = "El grupo ya existe";
 			} else {
-                Grupos::insetaGrupoUsuarios($_SESSION['nombreUsuario'], $grupo->getId());
+
+                Grupos::insetaGrupoUsuarios($_SESSION['nombreUsuario'], $grupo->getId(),$tusUnidades);
+
+                Grupos::insetaGrupoPedidos()
 				$_SESSION['nombreGrupo'] = $nombreGrupo;
 				header('Location: index.php');
 				exit();
@@ -82,6 +93,7 @@ require_once __DIR__.'/Controller/controllerCervezas.php';
             array_push($datos, $ciudad);
             array_push($datos, $idCerveza);
             array_push($datos, $unidades);
+            array_push($datos, $tusUnidades);
             return "index.php";
         }
     }
