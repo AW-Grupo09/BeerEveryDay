@@ -1,9 +1,5 @@
 <?php 
-	/*include('logica/conexion.php');
-	include('logica/usuario.php');*/
-
 	require_once __DIR__.'/includes/config.php';
-    include('includes/Usuario.php');
 
     if(!$_SESSION['login']){
 		header('Location: index.php');

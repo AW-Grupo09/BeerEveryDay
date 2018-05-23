@@ -1,5 +1,4 @@
 <?php
-require_once __DIR__ . '/Usuario.php';
 /**
  * Clase base para la gestión de formularios.
  *

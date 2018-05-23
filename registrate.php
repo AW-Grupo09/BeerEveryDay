@@ -1,6 +1,5 @@
 <?php 
 	require_once __DIR__.'/includes/config.php';
-	require_once __DIR__.'/includes/Usuario.php';
 	require_once __DIR__.'/includes/FormularioRegistro.php';
 
 ?>

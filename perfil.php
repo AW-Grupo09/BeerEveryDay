@@ -1,13 +1,13 @@
 <?php 
-	/*include('logica/conexion.php');
-	include('logica/usuario.php');*/
 
 	require_once __DIR__.'/includes/config.php';
-    include('includes/Usuario.php');
+    include('includes/Controller/controllerUsuario.php');
+    include('includes/TO/TOUsuarios.php');
 
     if(!$_SESSION['login']){
 		header('Location: login.php');
 	}
+	
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +19,7 @@
 	<link rel="stylesheet" type="text/css" href="css/perfil.css" />
 	<meta charset="utf-8">
 	<?php
-		$user = Usuario::buscaUsuario($_SESSION['nombreUsuario']);
+		$user = controllerUsuario::buscaUsuario($_SESSION['nombreUsuario']);
 	?>
 	<title>Perfil</title>
 
@@ -35,11 +35,11 @@
 			<div class = "perfil">
 				<div class = "avatar">
 					<?php 
-						if($user->avatar() != "img/users/")
-							echo "<img src='" . $user->avatar() . " ' alt = 'Imagen de perfil'>"; 
+						if($user->getAvatar() != "img/users/")
+							echo "<img src='" . $user->getAvatar() . " ' alt = 'Imagen de perfil'>"; 
 						else
 							echo '<img src="img/users/default.png">'; 
-						$_SESSION['avatar'] = $user->avatar();
+						$_SESSION['avatar'] = $user->getAvatar();
 					?> 
 					<form action="modificarAvatar.php">
 						<label> <button id = "modCont"> Modificar foto de perfil</button> </label>
@@ -49,12 +49,12 @@
 				<div class = "userData">
 					<fieldset>
 						<legend>MI PERFIL</legend>
-						<p><span>Nombre de usuario: </span><?php echo $user->nombreUsuario();?></p>
-						<p><span>Nombre: </span><?php echo $user->nombre();?></p>
-						<p><span>Apellidos: </span><?php echo $user->apellidos();?></p>
-						<p><span>Email: </span><?php echo $user->email();?></p>
-						<p><span>Ciudad: </span><?php echo $user->ciudad();?></p>
-						<p><span>Fecha de nacimiento: </span><?php echo date("d-m-Y",strtotime($user->fechaNac())) ;?></p>
+						<p><span>Nombre de usuario: </span><?php echo $user->getNombreUsuario();?></p>
+						<p><span>Nombre: </span><?php echo $user->getNombre();?></p>
+						<p><span>Apellidos: </span><?php echo $user->getApellidos();?></p>
+						<p><span>Email: </span><?php echo $user->getEmail();?></p>
+						<p><span>Ciudad: </span><?php echo $user->getCiudad();?></p>
+						<p><span>Fecha de nacimiento: </span><?php echo date("d-m-Y",strtotime($user->getFechaNac())) ;?></p>
 						<form action="modificarPerfil.php">
 							<label> <button> Modificar perfil</button> </label>
 						</form>

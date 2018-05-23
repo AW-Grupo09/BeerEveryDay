@@ -39,7 +39,7 @@ require_once __DIR__.'/Form.php';
         }
 
         if (count($erroresFormulario) === 0) {
-            $usuario = Usuario::buscaUsuario($nombreUsuario);
+            $usuario = controllerUsuario::buscaUsuario($nombreUsuario);
 
             if (!$usuario) {
                 $erroresFormulario[] = "El usuario o la contraseña no coinciden";
@@ -47,7 +47,7 @@ require_once __DIR__.'/Form.php';
                 if($usuario->compruebaPassword($password)) {
                     $_SESSION['login'] = true;
                     $_SESSION['nombreUsuario'] = $nombreUsuario;
-                    $_SESSION['esAdmin'] = Usuario::esAdmin($nombreUsuario) == 1 ? true : false;
+                    $_SESSION['esAdmin'] = controllerUsuario::esAdmin($nombreUsuario) == 1 ? true : false;
                     header('Location: index.php');
                     exit();
                 } else {

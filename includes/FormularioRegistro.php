@@ -1,6 +1,8 @@
 <?php
 require_once __DIR__.'/Form.php';
 require_once __DIR__.'/funcionImagen.php';
+require_once __DIR__.'/Controller/controllerUsuario.php';
+require_once __DIR__.'/TO/TOUsuarios.php';
 
  class FormularioRegistro extends Form{
 
@@ -109,12 +111,13 @@ require_once __DIR__.'/funcionImagen.php';
 		//comprobar errores
 		if (count($erroresFormulario) === 0) {
 
-			$usuario = usuario::buscaUsuario($nombreUsuario);
+			$usuario = controllerUsuario::buscaUsuario($nombreUsuario);
 			if ($usuario == NULL) {
-		    	$usuario = Usuario::crea($nombreUsuario, $nombre, $password, 'user', $ciudad, $fechaNac, $email, $apellidos, $imageFileType);
+		    	$usuario = controllerUsuario::crea($nombreUsuario, $nombre, $password, 'user', $ciudad, $fechaNac, $email, $apellidos, $imageFileType);
 		    	$_SESSION['login'] = true;
 				$_SESSION['nombreUsuario'] = $nombreUsuario;
-				$_SESSION['esAdmin'] = Usuario::esAdmin($nombreUsuario) == 0 ? true : false;     
+				$_SESSION['esAdmin'] = controllerUsuario::esAdmin($nombreUsuario);
+				//$_SESSION['esAdmin'] = controllerUsuario::esAdmin($nombreUsuario) == 0 ? true : false;     
 				move_uploaded_file($_FILES['archivo']['tmp_name'], $imageFileType);
 				header('Location: index.php');
 				exit();

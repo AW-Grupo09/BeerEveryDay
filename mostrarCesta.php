@@ -6,11 +6,6 @@
 	require_once __DIR__.'/includes/TO/TOCervezas.php';
 	require_once __DIR__.'/includes/FormularioPedido.php';
 
-
-	/*include('includes/usuario.php');
-	include('includes/pedidos.php');
-	include('includes/cervezas.php');*/
-
 	if(!$_SESSION['login']){
 			header('Location: login.php');
 	}

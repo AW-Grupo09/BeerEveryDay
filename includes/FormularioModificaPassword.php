@@ -1,5 +1,8 @@
 <?php
+
 require_once __DIR__.'/Form.php';
+require_once __DIR__.'/TO/TOUsuarios.php';
+require_once __DIR__.'/Controller/controllerUsuario.php';
 
 class FormularioModificaPassword extends Form {
 
@@ -35,10 +38,10 @@ class FormularioModificaPassword extends Form {
 		//comprobar errores
 		if (count($erroresFormulario) === 0) {
 
-			$usuario = usuario::buscaUsuario($nombreUsuario);
+			$usuario = controllerUsuario::buscaUsuario($nombreUsuario);
 
 			if ($usuario != NULL) { // si encuentra el usuario, le actualiza
-		    	$usuario = Usuario::actualizaUserPassword($nombreUsuario, $usuario, $password);
+		    	$usuario = controllerUsuario::actualizaUserPassword($nombreUsuario, $usuario, $password);
 				header('Location: perfil.php');
 				exit();
 			} else {

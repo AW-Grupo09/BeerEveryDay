@@ -20,7 +20,7 @@
 		<script type="text/javascript" src="js/guardaCambios.js"></script>
 		<script type="text/javascript" src="js/correoValido.js"></script>
 		<?php
-			$user = Usuario::buscaUsuario($_SESSION['nombreUsuario']);
+			$user = controllerUsuario::buscaUsuario($_SESSION['nombreUsuario']);
 		?>
 </head>
 

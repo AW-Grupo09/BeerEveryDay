@@ -1,6 +1,8 @@
 <?php 
 	require_once __DIR__.'/includes/config.php';
 	require_once __DIR__ .'/includes/FormularioModificaAvatar.php';
+	require_once __DIR__ .'/includes/Controller/controllerUsuario.php';
+	require_once __DIR__.'/includes/TO/TOUsuarios.php';
 
     if(!$_SESSION['login']){
 		header('Location: index.php');
@@ -20,7 +22,7 @@
 		<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
 		<script type="text/javascript" src="js/guardaCambios.js"></script>
 		<?php
-			$user = Usuario::buscaUsuario($_SESSION['nombreUsuario']);
+			$user = controllerUsuario::buscaUsuario($_SESSION['nombreUsuario']);
 		?>
 </head>
 
@@ -41,11 +43,11 @@
 
 			<div class = "avatarMod">
 				<?php 
-					if($user->avatar() != "img/users/")
-						echo "<img src='" . $user->avatar() . " ' alt = 'Imagen de perfil'>"; 
+					if($user->getAvatar() != "img/users/")
+						echo "<img src='" . $user->getAvatar() . " ' alt = 'Imagen de perfil'>"; 
 					else
 						echo '<img src="img/users/default.png">'; 
-					$_SESSION['avatar'] = $user->avatar();
+					$_SESSION['avatar'] = $user->getAvatar();
 				?>
 			</div>
 
