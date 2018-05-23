@@ -9,8 +9,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-		<title>Añadir cervezas</title>
+		<title>Añadir cervezas</title>		
+		<link rel="stylesheet" type="text/css" href="css/vistaAddBeers.css" />
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
+
 		<link rel="stylesheet" type="text/css" href="css/common.css">
 		<link rel="stylesheet" type="text/css" href="css/footer.css"/>
 		<meta charset="utf-8"/>	
