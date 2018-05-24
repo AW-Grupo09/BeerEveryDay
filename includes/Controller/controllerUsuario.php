@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__.'\..\DAO\DAOUsuario.php';
+require_once __DIR__.'/../DAO/DAOUsuario.php';
 
 class controllerUsuario
 {

@@ -2,7 +2,7 @@
 
 
 //require_once __DIR__ . '/../includes/Aplicacion.php';
-require_once __DIR__.'\..\DAO\DAOPedidos.php';
+require_once __DIR__.'/../DAO/DAOPedidos.php';
 
 class controllerPedidos {
 
