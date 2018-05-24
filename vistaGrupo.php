@@ -12,6 +12,7 @@
 	<link rel="stylesheet" type="text/css" href="css/common.css" />
 	<link rel="stylesheet" type="text/css" href="css/footer.css"/>
 	<link rel="stylesheet" type="text/css" href="css/vistaGrupo.css"/>
+	<script type="text/javascript" src="js/javascript.js"></script>
 	<meta charset="utf-8">	
 	<title>Cervezas</title>
 
@@ -20,29 +21,32 @@
 	<div id="contenedor"> <!-- Contenedor-->
 		<?php require ('includes/comun/header.php'); ?>
 		<div class="container"><!--bloque del contenido central-->	
-			<div id="izquierda">
+			<div class="structGrupos">
 				<?php
 					if(isset($_GET['idGrupo'])){
-							$grupo = Grupos::getGrupoById($_GET['idGrupo']);
-							?>
-							<div class = "titulo"><h1> <?=$grupo->getNombre() ?></h1></div>
-							<p><span>Dirección: </span> <?=$grupo->getDireccion()?></p>
-	                        <p><span>Ciudad: </span> <?=$grupo->getCiudad()?></p>
-	                        <p><span>Creado por: </span><?=$grupo->getCreador()?></p>
+						$grupo = Grupos::getGrupoById($_GET['idGrupo']);?>
+						<div class ="izquierda">	
+
+							<div class = "titulo"><?=$grupo->getNombre() ?></div>
+							<div class = "informacionGrupos">
+								<p><span>Dirección: </span> <?=$grupo->getDireccion()?></p>
+		                        <p><span>Ciudad: </span> <?=$grupo->getCiudad()?></p>
+		                        <p><span>Creado por: </span><?=$grupo->getCreador()?></p>
+		                    </div>
+	                    </div>
+
+	                    <div class="derecha">
+	                    	<div class="titulo">
+			                     ¿ Quieres unirte al grupo ?
+			                </div>
+			                <div> 
+			                	<button class= "unirsebtn"  onclick="unirse(<?=$grupo->getId()?>)">Confirmar</button>
+			                </div>
+	                    </div>
 
 					<?php }
 				?>	
-			</div>
-            <div id="derecha">
-                <div id="titulo">
-                     ¿ Quieres unirte al grupo ?
-                </div>
-
-                <div> 
-                	<button class= "unirsebtn" onclick="unirse()">Unirse</button>
-
-                </div>
-                
+			
                 <?php
 	                if (isset($_GET['action']) && $_GET['action'] == 'unirse') {
 	                    if(!$_SESSION['login']){
@@ -50,11 +54,10 @@
 	                    }
 	                    else{
 
+	                    	echo "estoy en los grupos de dentro ";
 	                        $misGrupos = Grupos::buscaUsuarioenGrupos($_SESSION['nombreUsuario'], $_GET['id']);
 	                        if($misGrupos!=true){
 	                            $gruposUsuarios = Grupos::insertaGrupoUsuarios($_SESSION['nombreUsuario'], $_GET['id'],10);
-	                        /*hacer las comporbaciones de que no se pueda unir a su mismo grupo*/
-	                        /*sigueinte modificacion es el numero de unidades de cerveza*/
 	                            if(isset($gruposUsuarios)){
 	                                echo" <p> se ha unido correctamente </p>";
 	                            }
@@ -62,7 +65,7 @@
 	                    }
 	                }
             	?>	    		
-            </div>
+           	</div>
             <div id = "addComment">
             	<?php
             	/*
