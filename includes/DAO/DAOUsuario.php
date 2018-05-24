@@ -4,6 +4,10 @@ include_once('DAO.php');
 
 class DAOUsuario extends DAO{
 
+    public function __construct() {
+       parent::__construct();
+    }
+
     public function buscaUsuario($nombreUsuario) {
         $query = "SELECT * FROM usuarios U WHERE U.nombreUsuario = '$nombreUsuario'";
         $rs = $this->ejecutarConsulta($query);

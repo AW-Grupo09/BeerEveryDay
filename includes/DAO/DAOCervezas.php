@@ -5,6 +5,10 @@ require_once __DIR__.'/../TO/TOCervezas.php';
 
 class DAOCervezas extends DAO{
 
+    public function __construct() {
+       parent::__construct();
+    }
+
     public function loadCerveza($id){
     	$cerveza = new TOCervezas($id);
 

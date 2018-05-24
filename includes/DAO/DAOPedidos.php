@@ -4,6 +4,10 @@ include_once('DAO.php');
 
 class DAOPedidos extends DAO{
 
+    public function __construct() {
+       parent::__construct();
+    }
+
     public function loadPedido($idPedido){
         $pedido = new TOPedidos($idPedido);
 

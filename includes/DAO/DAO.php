@@ -1,19 +1,34 @@
 <?php
 
-require_once __DIR__ . '/../../includes/Aplicacion.php';
-
 class DAO {
 
     private $mysqli;
 
  	public function __construct(){
-        $app = Aplicacion::getSingleton();
-        $this->mysqli = $app->conexionBd();
+        if ( !$this->mysqli )
+        {
+            $this->mysqli = new mysqli('127.0.0.1', 'root', '', 'beereveryday');
+            if ( $this->mysqli->connect_errno) {
+                echo "Fallo al conectar a MySQL: (" . $this->mysqli->connect_errno . ") " . $this->mysqli->connect_error ;
+            }
+            
+            if(!$this->mysqli->set_charset("utf8")) {
+                printf("<hr>Error loading character set utf8 (Err. nº %d): %s\n<hr/>",  $this->mysqli->errno, $this->mysqli->error);
+                exit();
+            }
+            
+            ini_set('default_charset', 'UTF-8');
+                  
+        } else{
+
+        }
+        
+        if ( !$this->mysqli ) {
+            echo "fail";
+        }
     }
 
     public function ejecutarConsulta($sql){
-        $app = Aplicacion::getSingleton();
-        $this->mysqli = $app->conexionBd();
     	if($sql != ""){
     		$consulta = $this->mysqli->query($sql) or die ($mysqli->error. " en la línea ".(__LINE__-1));
     		$tablaDatos = array();
@@ -27,10 +42,8 @@ class DAO {
     }
 
     public function ejecutarModificacion($sql){
-        $app = Aplicacion::getSingleton();
-        $this->mysqli = $app->conexionBd();
     	if($sql != ""){
-    		$consulta = $this->mysqli->query($sql) or die ($mysqli->error. " en la línea ".(__LINE__-1));
+    		$consulta = $this->mysqli->query($sql) or die ($this->mysqli->error. " en la línea ".(__LINE__-1));
     		return $this->mysqli->affected_rows;
     	} else{
     		return 0;
