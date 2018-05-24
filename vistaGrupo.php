@@ -1,6 +1,7 @@
 <?php 
 	require_once __DIR__.'/includes/config.php';
 	require_once __DIR__.'/includes/FormularioGrupo.php';
+	require_once __DIR__.'/includes/FormularioNuevoComentarioGrupo.php';
 	global $sql;
 ?>
 
@@ -64,6 +65,22 @@
 	                    }
 	                }
             	?>	    		
+            </div>
+            <div id = "addComment">
+            	<?php
+            	/*
+            	//Formulario para aniadir comentario
+				if(isset($_SESSION['login']) && $_SESSION['login']){
+					
+					$opciones = array();
+					$addToForm = array( 'idGrupo' => $_GET['nombreGrupo']);
+			        $opciones = array_merge($addToForm, $opciones);
+					$formulario = new FormularioNuevoComentarioGrupo("FormularioNuevoComentarioGrupo", $opciones);
+					$formulario->gestiona();
+				}
+					*/
+				?>
+			
             </div>
 		</div><!-- Fin del container -->
 

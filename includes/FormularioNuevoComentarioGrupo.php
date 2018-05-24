@@ -3,6 +3,7 @@ require_once __DIR__.'/Form.php';
 require_once __DIR__.'/funcionImagen.php';
 require_once __DIR__.'/grupos.php';
 require_once __DIR__.'/comentarios.php';
+require_once __DIR__.'/Controller/controllerComentarios.php';
 
  class FormularioNuevoComentarioGrupo extends Form{
 
@@ -11,10 +12,10 @@ require_once __DIR__.'/comentarios.php';
             <fieldset>
                 <legend> Formulario para añadir comentarios: </legend>
 
-                    <label for="comentario">Nombre de cerveza: </label>
+                    <label for="comentario">Añade un comentario </label>
                     <input type="text" placeholder="Introduce aqui el comentario" name="comentario" required>
 
-                    <input type="hidden" name="idGrupo" value="'.$opciones['idGrupo'].'">
+                    <input type="hidden" name="idGrupo" value="'.$this->opciones['idGrupo'].'">
 
                     <p><button type="submit">Añadir comentario</button></p>
 
@@ -41,12 +42,11 @@ require_once __DIR__.'/comentarios.php';
         }
 
         if (count($erroresFormulario) === 0) {
-         
-            comentarios::addCommentGroup($idGrupo, $comentario, $idUsuario);
-            header('Location: mostrarGrupo.php?id='.$idGrupo);
+            
+            controllerComentarios::insertarComentarioGrupo($idUsuario, $comentario, $idGrupo);
             exit();
 
-            }
+            
         }
 
 

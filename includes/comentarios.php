@@ -8,14 +8,17 @@ class comentarios {
     private $idCerveza;
     private $idUsuario;
     private $idGrupo;
+    private $fecha;
 
-    public function __construct($idComentario, $valoracion, $comentario, $idCerveza, $idUsuario, $idGrupo){
+    public function __construct($idComentario, $valoracion, $comentario, $idCerveza, $idUsuario, $idGrupo, $fecha){
 
         $this->idComentario = $idComentario;
         $this->valoracion = $valoracion;
         $this->comentario = $comentario;
         $this->idCerveza = $idCerveza;
         $this->idUsuario = $idUsuario;
+        $this->idGrupo = $idGrupo;
+        $this->fecha = $fecha;
 
     }
 
@@ -65,6 +68,17 @@ class comentarios {
         return $this;
     }
 
+    public function getFecha()
+    {
+        return $this->fecha;
+    }
+
+    public function setFecha($fecha)
+    {
+        $this->fecha = $fecha;
+
+        return $this;
+    }
 }
 
 ?>

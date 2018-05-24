@@ -62,7 +62,12 @@ abstract class Form
         if($this->action == "/BeerEveryDay/mostrarCerveza.php"){
              $this->action = htmlentities($_SERVER['PHP_SELF']). "?id=".$opciones['idCerveza'];
              $this->opciones = $opciones;
-         }
+        }
+        else if($this->action == "/BeerEveryDay/vistaGrupo.php"){
+             $this->action = htmlentities($_SERVER['PHP_SELF']). "?nombreGrupo=".$opciones['idGrupo'];
+             $this->opciones = $opciones;
+        }
+
     }
   
     /**

@@ -13,6 +13,8 @@
 	<link rel="stylesheet" type="text/css" href="css/common.css" />
 	<link rel="stylesheet" type="text/css" href="css/mostrarCerveza.css" />
 	<link rel="stylesheet" type="text/css" href="css/footer.css"/>
+	<script type="text/javascript" src="js/deleteComent.js"></script>
+	<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
 	<meta charset="utf-8">	
 	<title>Cervezas</title>
 <?php
@@ -54,26 +56,37 @@
 			}
 			echo "</div>";//cierro div contenidoCerveza
 			echo "</div>";//cierro div mostrarCerveza
+		?>
 
-			
-			//Formulario para aniadir comentario
-			if(isset($_SESSION['login']) && $_SESSION['login']){
-				if(!controllerComentarios::existeVal($cerveza->getIdCerveza(),$_SESSION['nombreUsuario'])){
-					$opciones = array();
-					$addToForm = array( 'idCerveza' => $cerveza->getIdCerveza() );
-		        	$opciones = array_merge($addToForm, $opciones);
-					$formulario = new FormularioNuevoComentarioCerve("FormularioNuevoComentarioCerve", $opciones);
-					$formulario->gestiona();
+        <div id = "valoraciones">
+        	<?php
+        		controllerComentarios::mostrarValoracionesCerveza($cerveza->getIdCerveza());
+        	  ?>
+        </div>
+		
+		<div id = "addComment">
+            	<?php
+            	//Formulario para aniadir comentario
+				if(isset($_SESSION['login']) && $_SESSION['login']){
+					if(!controllerComentarios::existeVal($cerveza->getIdCerveza(),$_SESSION['nombreUsuario'])){
+						$opciones = array();
+						$addToForm = array( 'idCerveza' => $cerveza->getIdCerveza() );
+			        	$opciones = array_merge($addToForm, $opciones);
+						$formulario = new FormularioNuevoComentarioCerve("FormularioNuevoComentarioCerve", $opciones);
+						$formulario->gestiona();
+					}
+					else
+						echo "<p>Ya has valorado esta cerveza! Si quieres volver a valorarla necesitas eliminar tu valoración anterior</p>";
 				}
-				else
-					echo "<p>Ya has valorado esta cerveza! Si quieres volver a valorarla necesitas eliminar tu valoración anterior</p>";
-			}
-?>
-		</div><!-- Fin del container -->
+				?>
+			
+        </div>
 
-		<?php require('includes/comun/footer.php'); ?>
+	</div><!-- Fin del container -->
 
-	</div> <!-- Fin del contenedor -->
+	<?php require('includes/comun/footer.php'); ?>
+
+</div> <!-- Fin del contenedor -->
 	
 
 </body>
