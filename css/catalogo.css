@@ -22,8 +22,6 @@ div.item {
 }
 
 .item>div.seccionItem{
-	/*display: flex;
-	flex‐direction: colum;*/
 	float:left;
 	width: 50%;
 }

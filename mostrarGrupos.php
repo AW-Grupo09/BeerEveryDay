@@ -27,40 +27,21 @@
                 foreach ($grupos as $grupo) { ?>
 
                  <fieldset>
-                        <legend><a href = "vistaGrupo.php?idGrupo=<?=$grupo->getId()?> "><?=$grupo->getNombre()?> </a></legend>
-                        <div id="izquierda">
-                            <span>Dirección: </span>  <?=$grupo->getDireccion()?>
-                            <span>Ciudad: </span> <?=$grupo->getCiudad()?>
-                            <p><span>Creado por: </span><?=$grupo->getCreador()?></p>
-                        </div>
-                        
-                        
+                    
+                    <div id="izquierda">
+
+                        <form>
+                        <input type="button" class= "unirsebtn" value="<?=$grupo->getNombre()?>" onclick="window.location.href='vistaGrupo.php?idGrupo=<?=$grupo->getId()?>'"/>
+                        </form>
+                    
+                    </div>
                     <div id="derecha">
-                        <button class= "unirsebtn" onclick="unirse(<?=$grupo->getId()?>)">Unirse</button>
+                        <span>Dirección: </span>  <?=$grupo->getDireccion()?>
+                        <span>Ciudad: </span> <?=$grupo->getCiudad()?>
+                        <p><span>Creado por: </span><?=$grupo->getCreador()?></p>
                     </div>
                 </fieldset>
                 <?php } ?>
-            
-             <?php
-                if (isset($_GET['action']) && $_GET['action'] == 'unirse') {
-                    if(!$_SESSION['login']){
-                        header('Location: login.php');
-                    }
-                    else{
-
-                        $misGrupos = Grupos::buscaUsuarioenGrupos($_SESSION['nombreUsuario'], $_GET['id']);
-                        if($misGrupos!=true){
-                            $gruposUsuarios = Grupos::insertaGrupoUsuarios($_SESSION['nombreUsuario'], $_GET['id'],10);
-                        /*hacer las comporbaciones de que no se pueda unir a su mismo grupo*/
-                        /*sigueinte modificacion es el numero de unidades de cerveza*/
-                            if(isset($gruposUsuarios)){
-                                echo" <p> se ha unido correctamente </p>";
-                            }
-                        }
-                    }
-                }
-            ?>
-
         </div>
 
         <?php require('includes/comun/footer.php'); ?>
