@@ -2,6 +2,7 @@
 	require_once __DIR__.'/includes/config.php';
 	require_once __DIR__.'/includes/FormularioGrupo.php';
 	require_once __DIR__.'/includes/FormularioNuevoComentarioGrupo.php';
+	require_once __DIR__.'/includes/grupos.php';
 	global $sql;
 ?>
 
@@ -23,17 +24,16 @@
             <div id="izquierda">
     			<div id="titulo">
 		            <?php
-						if(isset($_GET['nombreGrupo'])){
-							$nombre =   $_GET['nombreGrupo'];
-							echo '<h1> '.$nombre .'</h1>';
+						if(isset($_GET['idGrupo'])){
+							$infoGrupos = Grupos::getGrupoById($_GET['idGrupo']);
+							echo '<h1> '.$infoGrupos->getNombre() .'</h1>';
 						}
 					?>	
                 </div>
-
-               <div id="grupo">
-                <?php
-                 /*informacion de los grupos.
-                */?>
+                <div id="grupo">
+	                <?php
+	                 /*informacion de los grupos.
+	                */?>
             	</div>
             </div>
             <div id="derecha">

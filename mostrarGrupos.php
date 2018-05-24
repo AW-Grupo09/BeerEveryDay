@@ -27,7 +27,7 @@
                 foreach ($grupos as $grupo) { ?>
 
                  <fieldset>
-                        <legend><a href = "vistaGrupo.php?nombreGrupo=<?=$grupo->getNombre()?> "><?=$grupo->getNombre()?> </a></legend>
+                        <legend><a href = "vistaGrupo.php?idGrupo=<?=$grupo->getId()?> "><?=$grupo->getNombre()?> </a></legend>
                         <div id="izquierda">
                             <span>Dirección: </span>  <?=$grupo->getDireccion()?>
                             <span>Ciudad: </span> <?=$grupo->getCiudad()?>

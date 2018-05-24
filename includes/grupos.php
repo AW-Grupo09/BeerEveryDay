@@ -134,6 +134,29 @@ class Grupos
         return $grupos;
     }
 
+    public static function getGrupoById($idGrupo){
+        $app = Aplicacion::getSingleton();
+        $conn = $app->conexionBd();
+        $query = sprintf("SELECT * FROM grupos WHERE idGrupo = %s", $conn->real_escape_string($idGrupo));
+        $rs = $conn->query($query);
+        $grupo = false;
+        if ($rs) {
+            if ($rs->num_rows == 1) {
+                $fila = $rs->fetch_assoc();
+                $grupo = new Grupos($fila['nombre'], $fila['direccion'], $fila['creador'], $fila['ciudad']);
+                $grupo->setId($fila['idGrupo']);
+            }
+            $rs->free();
+        } else {
+            echo "Error al consultar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+            exit();
+        }
+        return $grupo;
+    }
+
+
+
+
     /*Crea un grupo en la TABLA GRUPOS si este no existe. Si existe devuelve FALSE*/
     public static function creaGrupo($nombre, $direccion, $ciudad)
     {
@@ -166,6 +189,9 @@ class Grupos
         }
         return $grupo;
     }
+
+
+
 
     public static function actualizaGrupo($nombre, $direccion, $ciudad){
         $grupo = self::buscaGrupo($nombre);
