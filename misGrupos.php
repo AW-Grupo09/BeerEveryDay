@@ -35,7 +35,7 @@
                  $grupos = Grupos::getGruposByUser($_SESSION['nombreUsuario']);
                     foreach ($grupos as $grupo) { ?>
                         <fieldset>
-                        <legend><?=$grupo->getNombre()?> </legend>
+                        <legend><a href = "vistaGrupo.php?nombreGrupo=<?=$grupo->getNombre()?> "><?=$grupo->getNombre()?> </a></legend>
                         <p><span>Dirección: </span>  <?=$grupo->getDireccion()?></p>
                         <span>Ciudad: </span> <?=$grupo->getCiudad()?>
                         <div id="creador">

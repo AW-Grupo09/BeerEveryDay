@@ -1,0 +1,115 @@
+form {
+    border-radius: 15px;
+    padding: 2%; 
+   
+}
+
+input {
+    width: 100%;
+    padding: 8px 16px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+ 
+}
+select{
+    width: 100%;
+    padding: 8px 16px;
+    margin: 8px 0;
+     box-sizing: border-box;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+}
+
+legend {
+    background-color: #FFEA83;
+    border-radius: 5px; 
+    border: 2px solid #FFC107;
+}
+
+.atrasbtn {
+    background-color: grey;
+    color: black;
+    border: none;
+    cursor: pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+    font-family: miFuente;
+    src: url(../fonts/BebasKai.otf);
+    font-size: 15px;
+    padding: 2%;
+}
+
+.atrasbtn:hover {
+    opacity: 0.8;
+    background-color: black;
+    color: #FFC107;
+}
+
+.crearbtn {
+    background-color: #FFC107; /*#4CAF50*/
+    color: black;
+    border: none;
+    cursor: pointer;
+    padding: 2%;
+    border-radius: 5px; 
+    font-family: miFuente;
+    font-size: 17px;
+    margin-left: 40%;
+}
+
+.crearbtn:hover {
+    opacity: 0.8;
+    background-color: black;
+    color: #FFC107;
+}
+
+
+fieldset{
+    border-radius: 10px; 
+    border-color: #FFC107;
+    margin-top: 2%;
+}
+
+div#derecha {
+    
+    float: left;
+    width: 45%;
+    height: 40%;
+
+}
+
+div#izquierda {
+    padding: 2%;
+    float: left;
+    width: 45%;
+    height: 80%;
+     -webkit-border-radius: 5px;
+    border-radius: 5px;
+    
+}
+
+div#grupo {
+    margin:5%;
+}
+
+div#creador{
+    float: right;
+}
+
+div#titulo{
+    text-align: center;
+    font-weight: bold;
+    font-size: 150%;
+    color: #FFC107;
+}
+span{
+    font-weight: bold;
+}
+
+h1{
+    text-align: center;
+}
