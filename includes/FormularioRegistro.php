@@ -49,8 +49,7 @@ require_once __DIR__.'/TO/TOUsuarios.php';
 		           
 		            
 		              <label> <p> <button type="reset">Reestablecer</button> </p></label>
-		            
-		                         
+		                                     
 		            	<p>Al hacer clic en "Registrarte", aceptas los
 		            	<a href="terminos.php"> términos y condiciones del servicio </a> y confirmas que has leído nuestra
 		            	<a href="politicadeprivacidad.php"> Política de privacidad. </a> </p>
@@ -78,7 +77,7 @@ require_once __DIR__.'/TO/TOUsuarios.php';
 
 		//Imagen
 		$ruta = "img/users/";//ruta carpeta donde queremos copiar las imágenes 
-        $imageFileType = $ruta . basename($avatar);
+        $imageFileType = $ruta . strtolower(basename($avatar));
 
 
 		if ( empty($nombreUsuario) || mb_strlen($nombreUsuario) < 5 ) {
