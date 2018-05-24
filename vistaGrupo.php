@@ -21,24 +21,26 @@
 	<div id="contenedor"> <!-- Contenedor-->
 		<?php require ('includes/comun/header.php'); ?>
 		<div class="container"><!--bloque del contenido central-->	
-			
+			<div class="structGrupos">
 				<?php
 					if(isset($_GET['idGrupo'])){
 						$grupo = Grupos::getGrupoById($_GET['idGrupo']);?>
-						<div id="izquierda">	
+						<div class ="izquierda">	
 
-							<div class = "titulo"><h1> <?=$grupo->getNombre() ?></h1></div>
-							<p><span>Dirección: </span> <?=$grupo->getDireccion()?></p>
-	                        <p><span>Ciudad: </span> <?=$grupo->getCiudad()?></p>
-	                        <p><span>Creado por: </span><?=$grupo->getCreador()?></p>
+							<div class = "titulo"><?=$grupo->getNombre() ?></div>
+							<div class = "informacionGrupos">
+								<p><span>Dirección: </span> <?=$grupo->getDireccion()?></p>
+		                        <p><span>Ciudad: </span> <?=$grupo->getCiudad()?></p>
+		                        <p><span>Creado por: </span><?=$grupo->getCreador()?></p>
+		                    </div>
 	                    </div>
 
-	                    <div id="derecha">
-	                    	<div id="titulo">
+	                    <div class="derecha">
+	                    	<div class="titulo">
 			                     ¿ Quieres unirte al grupo ?
 			                </div>
 			                <div> 
-			                	<button class= "unirsebtn"  onclick="unirse(<?=$grupo->getId()?>)">Unirse</button>
+			                	<button class= "unirsebtn"  onclick="unirse(<?=$grupo->getId()?>)">Confirmar</button>
 			                </div>
 	                    </div>
 
@@ -63,7 +65,7 @@
 	                    }
 	                }
             	?>	    		
-           
+           	</div>
             <div id = "addComment">
             	<?php
             	/*

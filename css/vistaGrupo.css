@@ -1,4 +1,15 @@
 
+.structGrupos{
+    padding-left: 15%;
+    padding-right: 15%;
+
+
+}
+.informacionGrupos{
+    padding: 5%;
+
+
+}
 
 .unirsebtn {
     background-color: #FFC107;
@@ -21,41 +32,32 @@
     color: #FFC107;
 }
 
-
-
 fieldset{
     border-radius: 10px; 
     border-color: #FFC107;
     margin-top: 2%;
 }
 
-div#derecha {
+.derecha {
     
     float: left;
     width: 45%;
     height: 40%;
+    padding: 2%;
 
 }
 
-div#izquierda {
+.izquierda {
     padding: 2%;
     float: left;
     width: 45%;
     height: 80%;
-     -webkit-border-radius: 5px;
+    -webkit-border-radius: 5px;
     border-radius: 5px;
     
 }
 
-div#grupo {
-    margin:5%;
-}
-
-div#creador{
-    float: right;
-}
-
-div#titulo{
+.titulo{
     text-align: center;
     font-weight: bold;
     font-size: 150%;
