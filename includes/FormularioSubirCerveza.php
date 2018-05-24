@@ -37,7 +37,7 @@ require_once __DIR__.'/Controller/controllerCervezas.php';
 
                     <label for="grano">Grano: </label>
                         <div id="radios">
-                        <input type="radio" name="Grano" value="cebada"> Cebada 
+                        <input type="radio" name="Grano" value="cebada" checked> Cebada 
                         <input type="radio" name="Grano" value="trigo"> Trigo 
                         <input type="radio" name="Grano" value="avena"> Avena 
                     </div>
@@ -50,7 +50,7 @@ require_once __DIR__.'/Controller/controllerCervezas.php';
 
                     <label for="Tipo">Tipo: </label>
                     <div id="radios">
-                        <input type="radio" name="Tipo" value="lager"> Lager 
+                        <input type="radio" name="Tipo" value="lager" checked> Lager 
                         <input type="radio" name="Tipo" value="ale"> Ale 
                         <input type="radio" name="Tipo" value="pilsner"> Pilsner 
                     </div>
@@ -70,8 +70,7 @@ require_once __DIR__.'/Controller/controllerCervezas.php';
         //Preparacion de la imagen
         $imgCerveza = $_FILES['archivo']['name'];
         $ruta = "img/imagenCervezas/"; //ruta carpeta donde queremos copiar las imágenes 
-        $imageFileType = $ruta . basename($imgCerveza);
-        $imageFileType = strtolower($imageFileType); // para guardar todo en minúsculas
+        $imageFileType = $ruta . strtolower(basename($imgCerveza));
 
         $Artesana = isset($_POST['Artesana']) ? true : false;
         
