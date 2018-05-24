@@ -4,6 +4,7 @@ require_once __DIR__ . '/../../includes/Aplicacion.php';
 
 class DAO {
 
+    private $mysqli;
 
  	public function __construct(){
         $app = Aplicacion::getSingleton();
@@ -11,6 +12,8 @@ class DAO {
     }
 
     public function ejecutarConsulta($sql){
+        $app = Aplicacion::getSingleton();
+        $this->mysqli = $app->conexionBd();
     	if($sql != ""){
     		$consulta = $this->mysqli->query($sql) or die ($mysqli->error. " en la línea ".(__LINE__-1));
     		$tablaDatos = array();
@@ -24,7 +27,8 @@ class DAO {
     }
 
     public function ejecutarModificacion($sql){
-
+        $app = Aplicacion::getSingleton();
+        $this->mysqli = $app->conexionBd();
     	if($sql != ""){
     		$consulta = $this->mysqli->query($sql) or die ($mysqli->error. " en la línea ".(__LINE__-1));
     		return $this->mysqli->affected_rows;

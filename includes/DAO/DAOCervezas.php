@@ -3,19 +3,13 @@
 include_once('DAO.php');
 require_once __DIR__.'/../TO/TOCervezas.php';
 
-class DAOCervezas {
-
-    private $dao;
-
-	public function __construct(){
-        $this->dao = new DAO();
-    }
+class DAOCervezas extends DAO{
 
     public function loadCerveza($id){
     	$cerveza = new TOCervezas($id);
 
         $query = "SELECT * FROM cervezas WHERE id = $id ";
-        $consulta = $this->dao->ejecutarConsulta($query);
+        $consulta = $this->ejecutarConsulta($query);
 
         if (count($consulta) > 0) {
             $cerveza->setNombre($consulta[0]["nombre"]);
@@ -42,7 +36,7 @@ class DAOCervezas {
 		else
 			$sql = "SELECT id FROM cervezas WHERE id > 0 ". $filtros . ' group by id ' . $orden;
 		
-		$consulta = $this->dao->ejecutarConsulta($sql);
+		$consulta = $this->ejecutarConsulta($sql);
 
 		$resultado = array();
 		for($i = 0; $i < count($consulta); $i++ ){
@@ -57,13 +51,13 @@ class DAOCervezas {
         //	$Fabricante, $nombreCerveza, $Grado, $capacidad, $precio, $pais, $Artesana, $Color, $grano, $Tipo, $imageFileType, 1);
         $sql = "INSERT INTO cervezas(fabricante, nombre, grado, capacidad, precio, pais, artesana, color, grano, tipo, Imagen, valoracionMedia) VALUES('$Fabricante', '$nombreCerveza', '$Grado', '$capacidad', '$precio', '$pais', '$Artesana', '$Color', '$grano', '$Tipo', '$imageFileType', '1')";
 
-        $this->dao->ejecutarModificacion($sql);
+        $this->ejecutarModificacion($sql);
  	}
 
  	public function existeCerveza($nombre)
     {
         $query = "SELECT * FROM cervezas WHERE nombre = '" . $nombre . "'";
-        $consulta = $this->dao->ejecutarConsulta($query);
+        $consulta = $this->ejecutarConsulta($query);
         if (count($consulta) == 0) {
         	echo "esta en false";
             return false;
