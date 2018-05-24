@@ -19,23 +19,20 @@
 <body>
 	<div id="contenedor"> <!-- Contenedor-->
 		<?php require ('includes/comun/header.php'); ?>
-		<div class="container"><!--bloque del contenido central-->					
-		
-            <div id="izquierda">
-    			<div id="titulo">
-		            <?php
-						if(isset($_GET['idGrupo'])){
-							$infoGrupos = Grupos::getGrupoById($_GET['idGrupo']);
-							echo '<h1> '.$infoGrupos->getNombre() .'</h1>';
-						}
-					?>	
-                </div>
-                <div id="grupo">
-	                <?php
-	                 /*informacion de los grupos.
-	                */?>
-            	</div>
-            </div>
+		<div class="container"><!--bloque del contenido central-->	
+			<div id="izquierda">
+				<?php
+					if(isset($_GET['idGrupo'])){
+							$grupo = Grupos::getGrupoById($_GET['idGrupo']);
+							?>
+							<div class = "titulo"><h1> <?=$grupo->getNombre() ?></h1></div>
+							<p><span>Dirección: </span> <?=$grupo->getDireccion()?></p>
+	                        <p><span>Ciudad: </span> <?=$grupo->getCiudad()?></p>
+	                        <p><span>Creado por: </span><?=$grupo->getCreador()?></p>
+
+					<?php }
+				?>	
+			</div>
             <div id="derecha">
                 <div id="titulo">
                      ¿ Quieres unirte al grupo ?
