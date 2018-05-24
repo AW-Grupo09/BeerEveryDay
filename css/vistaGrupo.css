@@ -1,71 +1,26 @@
-form {
-    border-radius: 15px;
-    padding: 2%; 
-   
-}
 
-input {
-    width: 100%;
-    padding: 8px 16px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-    -webkit-border-radius: 5px;
-    border-radius: 5px; 
- 
-}
-select{
-    width: 100%;
-    padding: 8px 16px;
-    margin: 8px 0;
-     box-sizing: border-box;
-    -webkit-border-radius: 5px;
-    border-radius: 5px; 
-}
 
-legend {
-    background-color: #FFEA83;
-    border-radius: 5px; 
-    border: 2px solid #FFC107;
-}
-
-.atrasbtn {
-    background-color: grey;
-    color: black;
-    border: none;
-    cursor: pointer;
-    -webkit-border-radius: 5px;
-    border-radius: 5px; 
-    font-family: miFuente;
-    src: url(../fonts/BebasKai.otf);
-    font-size: 15px;
-    padding: 2%;
-}
-
-.atrasbtn:hover {
-    opacity: 0.8;
-    background-color: black;
-    color: #FFC107;
-}
-
-.crearbtn {
-    background-color: #FFC107; /*#4CAF50*/
+.unirsebtn {
+    background-color: #FFC107;
     color: black;
     border: none;
     cursor: pointer;
     padding: 2%;
-    border-radius: 5px; 
+    border-radius: 5px;
     font-family: miFuente;
     font-size: 17px;
-    margin-left: 40%;
+    margin-top: 4%;
+    margin-left: 35%;
+    width: 21%;
+    height: 10%;
 }
 
-.crearbtn:hover {
+.unirsebtn:hover {
     opacity: 0.8;
     background-color: black;
     color: #FFC107;
 }
+
 
 
 fieldset{
