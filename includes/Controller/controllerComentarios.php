@@ -94,16 +94,17 @@ class controllerComentarios {
     public static function mostrarValoracionesCerveza($idCerveza){
 
         $idsComentarios = controllerComentarios::cargarValoraciones($idCerveza);
-        foreach($idsComentarios as $idComentario){
-            $comentario = controllerComentarios::cargarValoracion($idComentario);
-            echo "<p id = 'autorComent'>" . $comentario->getidUsuario(). "</p>";
-            echo "<p id = 'dateComent'> Fecha:" . $comentario->getFecha(). "</p>";
-            echo "<p id = 'val'>" . $comentario->getValoracion(). "/5</p>";
-            echo "<p id = 'coment'>" . $comentario->getComentario(). "</p>";
+        if($idsComentarios != NULL)
+            foreach($idsComentarios as $idComentario){
+                $comentario = controllerComentarios::cargarValoracion($idComentario);
+                echo "<p id = 'autorComent'>" . $comentario->getidUsuario(). "</p>";
+                echo "<p id = 'dateComent'> Fecha:" . $comentario->getFecha(). "</p>";
+                echo "<p id = 'val'>" . $comentario->getValoracion(). "/5</p>";
+                echo "<p id = 'coment'>" . $comentario->getComentario(). "</p>";
 
-            if(isset($_SESSION['nombreUsuario']) && $_SESSION['nombreUsuario'] == $comentario->getIdUsuario())
-                echo '<input type="button" id="myBtn" onclick="deleteVal('.$idComentario.')" value="Eliminar valoración">';             
-            
+                if(isset($_SESSION['nombreUsuario']) && $_SESSION['nombreUsuario'] == $comentario->getIdUsuario())
+                    echo '<input type="button" id="myBtn" onclick="deleteVal('.$idComentario.')" value="Eliminar valoración">';             
+                
         }
 
     }
