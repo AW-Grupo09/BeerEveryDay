@@ -28,7 +28,10 @@
 	padding-right: 10px;
 	border-radius: 15px;     
 	background-color: #FFC107; 
+}
 
+li {
+	list-style: none;
 }
 
 a:hover{

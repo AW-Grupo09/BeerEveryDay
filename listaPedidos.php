@@ -57,7 +57,7 @@
 						
 						$pedido = $listaPedidos[$i];
 
-					    echo "<h2><li><a href = mostrarPedido.php?idPedido=" . $pedido->getIdPedido() . ">Id del pedido: " . $pedido->getIdPedido() . "</a></li></h2>";
+					    echo "<h2><li><a id='pedido' href = mostrarPedido.php?idPedido=" . $pedido->getIdPedido() . ">Id del pedido: " . $pedido->getIdPedido() . "</a></li></h2>";
 					    
 					    $estado = $pedido->getEstado();
 					    echo "<p id=state>Su estado es :<span id=radius> $estado</span><p>";
