@@ -13,6 +13,7 @@
 	<link rel="stylesheet" type="text/css" href="css/footer.css"/>
 	<link rel="stylesheet" type="text/css" href="css/vistaGrupo.css"/>
 	<script type="text/javascript" src="js/javascript.js"></script>
+	<script type="text/javascript" src="js/prototype.js" ></script>  
 	<meta charset="utf-8">	
 	<title>Cervezas</title>
 
@@ -39,14 +40,25 @@
 	                    	<div class="titulo">
 			                     ¿ Quieres unirte al grupo ?
 			                </div>
-			                <div> 
+			                <div>
+			                	<label> Unidades:</label>
+		            			<input type="number" name="unidades" onKeyUp="comprobar(this.value)" min="1" required/>
+		            			<span id="comprobar_mensaje"></span> 
 			                	<button class= "unirsebtn"  onclick="unirse(<?=$grupo->getId()?>)">Confirmar</button>
 			                </div>
 	                    </div>
 
 					<?php }
 				?>	
-			
+				<?php
+				if(isset($GET['cantidad'])){
+
+					$cantidad = $GET['cantidad'];
+					if($cantidad > 10 )
+						echo "Este nick está ocupado"; 
+				}
+
+				?>
                 <?php
 	                if (isset($_GET['action']) && $_GET['action'] == 'unirse') {
 	                    if(!$_SESSION['login']){
@@ -54,7 +66,6 @@
 	                    }
 	                    else{
 
-	                    	echo "estoy en los grupos de dentro ";
 	                        $misGrupos = Grupos::buscaUsuarioenGrupos($_SESSION['nombreUsuario'], $_GET['id']);
 	                        if($misGrupos!=true){
 	                            $gruposUsuarios = Grupos::insertaGrupoUsuarios($_SESSION['nombreUsuario'], $_GET['id'],10);
