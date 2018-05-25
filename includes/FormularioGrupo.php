@@ -33,6 +33,7 @@ require_once __DIR__.'/Controller/controllerPedidos.php';
 
 		            <label>Cerveza: </label>
 		            <select name="cerveza" required/>
+                    <option >Seleccione su cerveza</option>
                     ' . $select . '
                     </select><br>
                     
