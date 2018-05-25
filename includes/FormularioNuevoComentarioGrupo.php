@@ -13,7 +13,7 @@ require_once __DIR__.'/Controller/controllerComentarios.php';
                 <legend> Formulario para añadir comentarios: </legend>
 
                     <label for="comentario">Añade un comentario </label>
-                    <input type="text" placeholder="Introduce aqui el comentario" name="comentario" required>
+                    <input type="text" placeholder = "Introduce aqui el comentario " name="comentario" required>
 
                     <input type="hidden" name="idGrupo" value="'.$this->opciones['idGrupo'].'">
 
