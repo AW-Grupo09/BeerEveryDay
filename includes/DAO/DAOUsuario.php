@@ -9,7 +9,7 @@ class DAOUsuario extends DAO{
     }
 
     public function buscaUsuario($nombreUsuario) {
-        $query = "SELECT * FROM usuarios U WHERE U.nombreUsuario = '$nombreUsuario'";
+        $query = "SELECT * FROM usuarios U WHERE U.nombreUsuario = '" . mysqli_real_escape_string($this->mysqli, $nombreUsuario) . "'";
         $rs = $this->ejecutarConsulta($query);
         $result = false;
         if ($rs) {
@@ -27,15 +27,15 @@ class DAOUsuario extends DAO{
    
     public function inserta($usuario) {
         $query=sprintf("INSERT INTO usuarios(nombreUsuario, nombre, password, rol, ciudad, fechaNac, email, apellidos, avatar) VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')"
-            , $usuario->getNombreUsuario()
-            , $usuario->getNombre()
-            , $usuario->getPassword()
-            , $usuario->getRol()
-            , $usuario->getCiudad()
-            , $usuario->getFechaNac()
-            , $usuario->getEmail()
-            , $usuario->getApellidos()
-            , $usuario->getAvatar()
+            , mysqli_real_escape_string($this->mysqli, $usuario->getNombreUsuario())
+            , mysqli_real_escape_string($this->mysqli, $usuario->getNombre())
+            , mysqli_real_escape_string($this->mysqli, $usuario->getPassword())
+            , mysqli_real_escape_string($this->mysqli, $usuario->getRol())
+            , mysqli_real_escape_string($this->mysqli, $usuario->getCiudad())
+            , mysqli_real_escape_string($this->mysqli, $usuario->getFechaNac())
+            , mysqli_real_escape_string($this->mysqli, $usuario->getEmail())
+            , mysqli_real_escape_string($this->mysqli, $usuario->getApellidos())
+            , mysqli_real_escape_string($this->mysqli, $usuario->getAvatar())
             );
 
         $this->ejecutarModificacion($query);
@@ -43,7 +43,12 @@ class DAOUsuario extends DAO{
     
    
     public function actualizaUser($nombreUsuario, $usuario, $nombre, $apellidos, $ciudad, $email, $fechaNac) {
-        $query = "UPDATE usuarios U SET nombre='$nombre', apellidos='$apellidos', ciudad='$ciudad', email='$email', fechaNac='$fechaNac' WHERE U.nombreUsuario='$nombreUsuario'";
+        $query = "UPDATE usuarios U SET nombre='" . mysqli_real_escape_string($this->mysqli, $nombre) . 
+            "', apellidos='" . mysqli_real_escape_string($this->mysqli, $apellidos) . 
+            "', ciudad='" . mysqli_real_escape_string($this->mysqli, $ciudad) . 
+            "', email='" . mysqli_real_escape_string($this->mysqli, $email) . 
+            "', fechaNac='" . mysqli_real_escape_string($this->mysqli, $fechaNac) . 
+            "' WHERE U.nombreUsuario='$nombreUsuario'";
         $this->ejecutarModificacion($query);
     }
 
@@ -75,7 +80,7 @@ class DAOUsuario extends DAO{
     }
 
     public function correoExiste($nombreUsuario, $email) {
-        $query = "SELECT * FROM usuarios U WHERE U.nombreUsuario != '$nombreUsuario' and U.email = '$email'";
+        $query = "SELECT * FROM usuarios U WHERE U.nombreUsuario != '$nombreUsuario' and U.email = '" . mysqli_real_escape_string($this->mysqli, $email) . "'";
         $rs = $this->ejecutarConsulta($query);
         $repiteEmail = false;
         if ($rs) {

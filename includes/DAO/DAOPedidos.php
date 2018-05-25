@@ -143,7 +143,7 @@ class DAOPedidos extends DAO{
         }
     }
     public function procesarCesta($Dir, $idCesta, $Date){
-        $sql = "UPDATE pedidos SET estado = 'confirmado' , Direccion = '" .$Dir. "', fechaPedido = '" .$Date. "'WHERE idPedido = ". $idCesta;
+        $sql = "UPDATE pedidos SET estado = 'confirmado' , Direccion = '" . mysqli_real_escape_string($this->mysqli, $Dir) . "', fechaPedido = '" .$Date. "'WHERE idPedido = ". $idCesta;
         $consulta = $this->ejecutarModificacion($sql);
     }
 

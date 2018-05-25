@@ -2,7 +2,7 @@
 
 class DAO {
 
-    private $mysqli;
+    public $mysqli;
 
  	public function __construct(){
         if ( !$this->mysqli )
