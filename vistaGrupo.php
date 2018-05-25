@@ -41,7 +41,8 @@
 			                </div>
 			                <div>
 			                	<label> Unidades:</label>
-		            			<input type="number" name="unidades" onKeyUp="comprobar(this.value)" min="1" required/>
+
+		            			<input type="number" name="unidades" placeholder="El mínimo es 1" min="1" required/>
 		            			<span id="comprobar_mensaje"></span> 
 			                	<button class= "unirsebtn"  onclick="unirse(<?=$grupo->getId()?>)">Confirmar</button>
 			                </div>

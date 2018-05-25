@@ -37,10 +37,10 @@ require_once __DIR__.'/Controller/controllerPedidos.php';
                     </select><br>
                     
                     <label>Unidades: </label>
-		            <input type="number" name="unidades" min="50" required/>
+		            <input type="number" name="unidades" placeholder="El mínimo es 50" min="50" required/>
 
                     <label>Tus unidades: </label>
-                    <input type="number" name="tusUnidades" min="10" required/>
+                    <input type="number" name="tusUnidades" placeholder="El mínimo es 1" min="1" required/>
 
 		            <label> <button class="crearbtn" type="submit">Crear</button></label>
 		            ';
