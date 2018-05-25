@@ -75,7 +75,6 @@
 		                    echo '<input type="button" id="myBtn" onclick="deleteVal('. $comentario->getIdComentario() .')" value="Eliminar valoración">';             
 		                
 		        }
-        		//controllerComentarios::mostrarValoracionesCerveza($cerveza->getIdCerveza());
         	  ?>
         </div>
 		

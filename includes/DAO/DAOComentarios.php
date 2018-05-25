@@ -98,10 +98,8 @@ class DAOComentarios extends DAO{
     	$resultado = $this->ejecutarModificacion($query);
 
     	if($resultado == 0){
-    		echo "Error al eliminar comentario";
+    		return "Error al eliminar comentario";
     	}
-        else
-            Header('Location: '.$_SERVER['PHP_SELF']);
     }
 
     public function updateValoracionMedia($idCerveza){

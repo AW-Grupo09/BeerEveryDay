@@ -3,6 +3,8 @@
 	require_once __DIR__.'/includes/FormularioGrupo.php';
 	require_once __DIR__.'/includes/FormularioNuevoComentarioGrupo.php';
 	require_once __DIR__.'/includes/grupos.php';
+	require_once __DIR__.'/includes/Controller/controllerComentarios.php';
+	require_once __DIR__.'/includes/TO/TOComentarios.php';
 	global $sql;
 ?>
 
@@ -79,19 +81,36 @@
 	                }
             	?>	    		
            	</div>
+
+           	<div id = "comentarios">
+	        	<?php
+	        		/*
+	        		$comentarios = controllerComentarios::cargarComentariosGrupos($_GET['idGrupo']);
+			        if($comentarios != NULL)
+			            foreach($comentarios as $comentario){
+			                echo "<p id = 'autorComent'>" . $comentario->getIdUsuario(). "</p>";
+			                echo "<p id = 'dateComent'> Fecha:" . $comentario->getFecha(). "</p>";
+			                echo "<p id = 'coment'>" . $comentario->getComentario(). "</p>";
+		        		}
+		        	*/	
+	        	?>
+       		 </div>
+		
             <div id = "addComment">
             	<?php
-            	/*
+            	
             	//Formulario para aniadir comentario
 				if(isset($_SESSION['login']) && $_SESSION['login']){
-					
-					$opciones = array();
-					$addToForm = array( 'idGrupo' => $_GET['nombreGrupo']);
-			        $opciones = array_merge($addToForm, $opciones);
-					$formulario = new FormularioNuevoComentarioGrupo("FormularioNuevoComentarioGrupo", $opciones);
-					$formulario->gestiona();
+					$misGrupos = Grupos::buscaUsuarioenGrupos($_SESSION['nombreUsuario'], $_GET['idGrupo']);
+					if($misGrupos){
+						$opciones = array();
+						$addToForm = array( 'idGrupo' => $_GET['nombreGrupo']);
+				        $opciones = array_merge($addToForm, $opciones);
+						$formulario = new FormularioNuevoComentarioGrupo("FormularioNuevoComentarioGrupo", $opciones);
+						$formulario->gestiona();
+					}
 				}
-					*/
+					
 				?>
 			
             </div>

@@ -46,6 +46,33 @@ class controllerComentarios {
             return NULL;
         }
     }
+    
+
+    public static function insertarValoracion($valoracion, $comentario, $idCerveza, $idUsuario){
+    	$daoComentarios = new DAOComentarios();
+        $daoComentarios->insertarValoracion($valoracion, $comentario, $idCerveza, $idUsuario);
+    }
+
+    public static function insertarComentarioGrupo($comentario, $idGrupo, $idUsuario){
+        $daoComentarios = new DAOComentarios();
+        $daoComentarios->insertarComentarioGrupo($comentario, $idGrupo, $idUsuario);
+    }
+
+    public static function eliminarValoracion($idComentario){
+    	$daoComentarios = new DAOComentarios();
+        $daoComentarios->eliminarValoracion($idComentario);
+    }
+
+    public static function updateValoracionMedia($idCerveza){
+        $daoComentarios = new DAOComentarios();
+        return $daoComentarios->updateValoracionMedia($idCerveza);
+    }
+
+    public static function existeVal($idCerveza, $idUsuario){
+        $daoComentarios = new DAOComentarios();
+        return $daoComentarios->existeVal($idCerveza, $idUsuario);
+    }
+}
 
     /*public static function mostrarComentariosGrupo($idGrupo){
 
@@ -76,32 +103,5 @@ class controllerComentarios {
 
     }*/
 
-    
-
-    public static function insertarValoracion($valoracion, $comentario, $idCerveza, $idUsuario){
-    	$daoComentarios = new DAOComentarios();
-        $daoComentarios->insertarValoracion($valoracion, $comentario, $idCerveza, $idUsuario);
-    }
-
-    public static function insertarComentarioGrupo($comentario, $idGrupo, $idUsuario){
-        $daoComentarios = new DAOComentarios();
-        $daoComentarios->insertarComentarioGrupo($comentario, $idGrupo, $idUsuario);
-    }
-
-    public static function eliminarValoracion($idComentario){
-    	$daoComentarios = new DAOComentarios();
-        $daoComentarios->eliminarValoracion($idComentario);
-    }
-
-    public static function updateValoracionMedia($idCerveza){
-        $daoComentarios = new DAOComentarios();
-        return $daoComentarios->updateValoracionMedia($idCerveza);
-    }
-
-    public static function existeVal($idCerveza, $idUsuario){
-        $daoComentarios = new DAOComentarios();
-        return $daoComentarios->existeVal($idCerveza, $idUsuario);
-    }
-}
 
 ?>
