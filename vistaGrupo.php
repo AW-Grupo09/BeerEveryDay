@@ -72,7 +72,10 @@
 	                                echo" <p> se ha unido correctamente </p>";
 	                            }
 	                        }
+	                        else{
+
 	                    }
+	                        }
 	                }
             	?>	    		
            	</div>

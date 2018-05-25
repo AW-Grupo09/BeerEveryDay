@@ -72,6 +72,13 @@ div.item {
 
 section#filtros {
     display: none;
+    margin-bottom: 2%;
+    margin-top: 1%;
+}
+
+section#filtros fieldset{
+	border-radius: 5px;
+	border-color: #FFC107;
 }
 
 

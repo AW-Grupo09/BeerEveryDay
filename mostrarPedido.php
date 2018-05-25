@@ -52,6 +52,14 @@
 						$i = 0;
 						$total = 0;
 
+						echo "<div class='infoPedido'>";
+						echo "<h2> DATOS GENERALES DEL PEDIDO </h2>";
+						echo "<p> Id del pedido: " . $_GET['idPedido'] . "</p>";
+						echo "<p> Su estado es: " . $pedido->getEstado() . "</p>";
+						echo "<p> Fecha pedido: " . $pedido->getFechaPedido() . "</p>";
+						echo "<p> Dirección de entrega: " . $pedido->getDir() . "</p>";
+						echo "</div>";
+
 						echo "<div>";
 						foreach ($cervezas as $idCerveza) {
 							$cerveza = controllerCervezas::loadCerveza($idCerveza);
