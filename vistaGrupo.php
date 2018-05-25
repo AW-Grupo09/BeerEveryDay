@@ -101,10 +101,10 @@
             	
             	//Formulario para aniadir comentario
 				if(isset($_SESSION['login']) && $_SESSION['login']){
-					$misGrupos = Grupos::buscaUsuarioenGrupos($_SESSION['nombreUsuario'], $_GET['idGrupo']);
+					$misGrupos = Grupos::buscaUsuarioenGrupos($_SESSION['idGrupo'], $_GET['idGrupo']);
 					if($misGrupos){
 						$opciones = array();
-						$addToForm = array( 'idGrupo' => $_GET['nombreGrupo']);
+						$addToForm = array( 'idGrupo' => $_GET['idGrupo']);
 				        $opciones = array_merge($addToForm, $opciones);
 						$formulario = new FormularioNuevoComentarioGrupo("FormularioNuevoComentarioGrupo", $opciones);
 						$formulario->gestiona();
