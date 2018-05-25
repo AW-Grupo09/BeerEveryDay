@@ -35,7 +35,11 @@
     
     float: left;
     width: 50%;
+<<<<<<< HEAD
     height: 80%;
+=======
+    height: 40%;
+>>>>>>> 62f06d86ecba90da0a738d60b884dd3ccd1e6932
 
 }
 
@@ -62,7 +66,11 @@ fieldset{
 }
 
 input {
+<<<<<<< HEAD
+    width: 26%;
+=======
     width: 25%;
+>>>>>>> 62f06d86ecba90da0a738d60b884dd3ccd1e6932
     padding: 8px 16px;
     margin: 8px 0;
     display: inline-block;

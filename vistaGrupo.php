@@ -25,41 +25,57 @@
 		<div class="container"><!--bloque del contenido central-->	
 			<div class="structGrupos">
 				<?php
+					if (isset($_GET['unidades'])) {
+						Grupos::insertaGrupoUsuarios($_SESSION['nombreUsuario'], $_GET['idGrupo'], $_GET['unidades']);
+					}
 					if(isset($_GET['idGrupo'])){
 						$grupo = Grupos::getGrupoById($_GET['idGrupo']);?>
-						<div class ="izquierda">	
-
-							<div class = "titulo"><h3> <?=$grupo->getNombre() ?> </h3></div>
+						<?php
+		
+				            $cantidadtotal = controllerPedidos::cantidadTotal($grupo->getId());
+							$fechaLimite = controllerPedidos::fechaLimite($grupo->getId());
+				            $cantidadActual = controllerPedidos::cantidadActual( $grupo->getId());
+							$cantidaddisponible = $cantidadtotal - $cantidadActual;
+						?>
+						<div class ="izquierda">
+							<div class = "titulo"><?=$grupo->getNombre() ?></div>
 							<div class = "informacionGrupos">
 								<p><span>Dirección: </span> <?=$grupo->getDireccion()?></p>
 		                        <p><span>Ciudad: </span> <?=$grupo->getCiudad()?></p>
 		                        <p><span>Creado por: </span><?=$grupo->getCreador()?></p>
+		                        <p><span>Fecha limite: </span><?=$fechaLimite?></p>
+		                        <p><span>Cantidad total: </span><?=$cantidadtotal?></p>
+		                        <p><span>Cantidad disponible: </span><?=$cantidaddisponible?></p>
 		                    </div>
 	                    </div>
 
 	                    <div class="derecha">
 	                    	<div class="titulo">
-			                    <h3> ¿Quieres unirte al grupo? </h3>
+			                     ¿ Quieres unirte al grupo ?
 			                </div>
 			                <div>
+				                <form action="" method="get">
 				                	<label> Unidades:</label>
-			            			<input type="number" name="unidades" placeholder="1" min="1" required/>
-			            			<span id="comprobar_mensaje"></span> 
-				                	<button class= "unirsebtn"  onclick="unirse(<?=$grupo->getId()?>)">Confirmar</button>
+									<input type="hidden" name="idGrupo" value="<?=$grupo->getId()?>">
+			            			<input type="number" name="unidades" placeholder="El mínimo es 1" min="1" max="<?=$cantidaddisponible?>" required/>
+			            			<span id="comprobar_mensaje"></span>
+				                	<button type="submit" class= "unirsebtn" onclick="unirse(<?=$grupo->getId()?>)">Confirmar</button>
+				                	<script>
+				                		function unirse(){
+				                			var unidades = document.getElementsByName("unidades");
+				                			if (unidades[0].value > <?=$cantidaddisponible?>) {
+				                				alert("No hay suficientes cervezas disponibles");
+				                				return false;
+				                			}
+				                		}
+				                	</script>
+			                	</form>
 			                </div>
 	                    </div>
 
 					<?php }
-				?>	
-				<?php
-				if(isset($GET['cantidad'])){
-
-					$cantidad = $GET['cantidad'];
-					if($cantidad > 10 )
-						echo "Este nick está ocupado"; 
-				}
-
 				?>
+
                 <?php
 	                if (isset($_GET['action']) && $_GET['action'] == 'unirse') {
 	                    if(!$_SESSION['login']){
@@ -81,6 +97,10 @@
 	                }
             	?>	    		
            	</div>
+<<<<<<< HEAD
+
+=======
+>>>>>>> 62f06d86ecba90da0a738d60b884dd3ccd1e6932
            	<div class="structGrupos">
 	           	<div id = "comentarios">
 		        	<?php

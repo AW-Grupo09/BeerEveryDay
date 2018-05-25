@@ -106,7 +106,20 @@ class controllerPedidos {
         return $idPedido;
     }
 
-    
+    public static function cantidadTotal($idGrupo){
+        $daoPedido = new DAOPedidos();
+        return $daoPedido->cantidadTotalCervezas($idGrupo);
+    }
+
+    public static function fechaLimite($idGrupo){
+        $daoPedido = new DAOPedidos();
+        return $daoPedido->fechaLimitePedido($idGrupo);
+    }
+
+    public static function cantidadActual($idGrupo){
+        $daoPedido = new DAOPedidos();
+        return $daoPedido->cantidadActualCervezas($idGrupo);
+    }
 }
 
 ?>

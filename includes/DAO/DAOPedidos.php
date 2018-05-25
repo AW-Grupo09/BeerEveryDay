@@ -153,11 +153,25 @@ class DAOPedidos extends DAO{
     }
 
     public function getIdPedido(){
-         $sql = "SELECT max(idPedido) as idpedido FROM pedidos";
+        $sql = "SELECT max(idPedido) as idpedido FROM pedidos";
         $consulta = $this->ejecutarConsulta($sql);
         return  $consulta[0]['idpedido'];
     }
-
+    public function cantidadTotalCervezas($idGrupo){
+        $sql = "SELECT * FROM `grupo-pedidos` gp INNER JOIN `pedidos-cervezas` pc ON gp.idPedido = pc.idPedido WHERE gp.idGrupo = ". $idGrupo;
+        $consulta = $this->ejecutarConsulta($sql);
+        return $consulta[0]['unidades'];
+    }
+    public function fechaLimitePedido($idGrupo){
+        $sql = "SELECT * FROM `grupo-pedidos` gp INNER JOIN `pedidos` p ON gp.idPedido = p.idPedido WHERE gp.idGrupo = " . $idGrupo;
+        $consulta = $this->ejecutarConsulta($sql);
+        return $consulta[0]['fechaLimite'];
+    }
+    public function cantidadActualCervezas($idGrupo){
+        $sql = "SELECT SUM(unidades) AS unidades FROM `grupos-usuarios` WHERE idGrupo = " . $idGrupo; 
+        $consulta = $this->ejecutarConsulta($sql);
+        return $consulta[0]['unidades'];
+    }
 
 
 
