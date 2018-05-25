@@ -97,7 +97,7 @@ require_once __DIR__.'/TO/TOUsuarios.php';
 			$erroresFormulario[] = "Los emails deben coincidir";
 		}
 
-		if(Usuario::correoExiste($nombreUsuario, $email)){
+		if(controllerUsuario::correoExiste($nombreUsuario, $email)){
 			$erroresFormulario[] = "Ese correo ya está en uso";
 		}
 

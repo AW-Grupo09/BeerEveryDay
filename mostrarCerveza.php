@@ -52,7 +52,7 @@
 
 			if(isset($_SESSION['login']) && $_SESSION['login']){
 				echo '<form  action="includes/procesarCesta.php" method="GET">';			
-				echo '<input type="number" name="unidades" min=1 placeholder="Unidades">';
+				echo '<input type="number" name="unidades" min="1" placeholder="Unidades">';
 				echo '<button class="submit" type="submit" name="cerveza" value="'. $cerveza->getIdCerveza().'">Añadir a la cesta</button>';
 				echo '</form>';
 			}

@@ -27,7 +27,7 @@
 						$grupo = Grupos::getGrupoById($_GET['idGrupo']);?>
 						<div class ="izquierda">	
 
-							<div class = "titulo"><?=$grupo->getNombre() ?></div>
+							<div class = "titulo"><h3> <?=$grupo->getNombre() ?> </h3></div>
 							<div class = "informacionGrupos">
 								<p><span>Dirección: </span> <?=$grupo->getDireccion()?></p>
 		                        <p><span>Ciudad: </span> <?=$grupo->getCiudad()?></p>
@@ -37,14 +37,13 @@
 
 	                    <div class="derecha">
 	                    	<div class="titulo">
-			                     ¿ Quieres unirte al grupo ?
+			                    <h3> ¿Quieres unirte al grupo? </h3>
 			                </div>
 			                <div>
-			                	<label> Unidades:</label>
-
-		            			<input type="number" name="unidades" placeholder="El mínimo es 1" min="1" required/>
-		            			<span id="comprobar_mensaje"></span> 
-			                	<button class= "unirsebtn"  onclick="unirse(<?=$grupo->getId()?>)">Confirmar</button>
+				                	<label> Unidades:</label>
+			            			<input type="number" name="unidades" placeholder="1" min="1" required/>
+			            			<span id="comprobar_mensaje"></span> 
+				                	<button class= "unirsebtn"  onclick="unirse(<?=$grupo->getId()?>)">Confirmar</button>
 			                </div>
 	                    </div>
 

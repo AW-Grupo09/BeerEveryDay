@@ -27,19 +27,20 @@
                 foreach ($grupos as $grupo) { ?>
 
                  <fieldset>
-                    
-                    <div id="izquierda">
+                    <legend> <?php echo $grupo->getNombre(); ?></legend>
 
-                        <form>
-                        <input type="button" class= "unirsebtn" value="<?=$grupo->getNombre()?>" onclick="window.location.href='vistaGrupo.php?idGrupo=<?=$grupo->getId()?>'"/>
-                        </form>
-                    
-                    </div>
-                    <div id="derecha">
+                   <div id="izquierda">
                         <span>Dirección: </span>  <?=$grupo->getDireccion()?>
                         <span>Ciudad: </span> <?=$grupo->getCiudad()?>
                         <p><span>Creado por: </span><?=$grupo->getCreador()?></p>
                     </div>
+
+                    <div id="derecha">
+                        <form>
+                        <input type="button" class= "unirsebtn" value="Ver grupo" onclick="window.location.href='vistaGrupo.php?idGrupo=<?=$grupo->getId()?>'"/>
+                        </form>
+                    </div>
+ 
                 </fieldset>
                 <?php } ?>
         </div>
