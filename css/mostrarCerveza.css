@@ -118,3 +118,29 @@ input[type="radio"] {
 input[type="radio"]:checked ~ label {
   color: orange;
 }
+/*Mostrar Comentarios*/
+#star{
+	color: orange;
+}
+#showComment{
+    border: 3px solid #6495ED;
+    border-top-left-radius:     1em 5em;
+    border-top-right-radius:    1em 5em;
+    border-bottom-right-radius: 1em 5em;
+    border-bottom-left-radius:  1em 5em;
+    background: #d6f5f5;
+    margin-bottom: 10px;
+}
+#spanId{
+    background: white;
+    border: 2px solid white;
+    border-radius: 25px;
+}
+#autorComent{
+    font-family: bold;
+    font-size: 20px;
+}
+#titleComment{
+     font-family: bold;
+    font-size: 25px;
+}
