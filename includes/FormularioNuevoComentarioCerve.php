@@ -9,21 +9,25 @@ require_once __DIR__.'/TO/TOComentarios.php';
         $this->action = htmlentities($_SERVER['PHP_SELF']). "?id=". $this->opciones['idCerveza'];
        return '	
             <fieldset>
-				<legend> Formulario para añadir comentarios: </legend>
+				<legend> Añadir comentarios y puntuación: </legend>
 
-    				<label for="comentario">Nombre de cerveza: </label>
-    			    <input type="text" placeholder="Introduce aqui el comentario" name="comentario" required>
-
-                    <label for="val">Valoración: </label>
-                    <input type="radio" name="val" value="1" checked> 1
-                    <input type="radio" name="val" value="2"> 2
-                    <input type="radio" name="val" value="3"> 3  
-                    <input type="radio" name="val" value="4"> 4 
-                    <input type="radio" name="val" value="5"> 5 
-
+    			    <input id="comentario" type="text" placeholder="Introduce aqui el comentario" name="comentario" required>
+                    <p>Valoración de cerveza: </p>
+                    <p class="clasificacion">
+                        <input id="radio1" type="radio" name="estrellas" value="5">
+                        <label for="radio1" id="radio1">★</label>
+                        <input id="radio2" type="radio" name="estrellas" value="4">
+                        <label for="radio2" id="radio2">★</label>
+                        <input id="radio3" type="radio" name="estrellas" value="3">
+                        <label for="radio3" id="radio3">★</label>
+                        <input id="radio4" type="radio" name="estrellas" value="2">
+                        <label for="radio4" id="radio4">★</label>
+                        <input id="radio5" type="radio" name="estrellas" value="1">
+                        <label for="radio5" id="radio5">★</label>
+                    </p>
                     <input type="hidden" name="idCerveza" value="'.$this->opciones['idCerveza'].'">
 
-    				<p><button type="submit">Añadir valoración</button></p>
+    				<p><button id=addVal type="submit">Añadir valoración</button></p>
 
 		    </fieldset>';
  	} 

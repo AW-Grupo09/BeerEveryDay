@@ -3,15 +3,15 @@
 	src: url(../fonts/Roboto-Regular.ttf);
 }
 
-
 .mostrarCerveza {
-	border: 3px solid #FFC107; 
+	border: 3px solid #FFC107;
+	border-radius: 10px; 
 	margin-left: center;
+	margin-bottom: 10px;
 }
 
 .nombreCerveza {
 	padding-left: 10px;
-	/*font-family: Roboto-Regular;*/
 	-webkit-border-radius: 15px;     
 	background-color: #FFC107;    
 }
@@ -29,7 +29,6 @@
 .datosCerveza {
 	margin-top: 20px;
 	flex-basis: 40%;
-	/*font: Roboto-Regular;*/
 }
 
 span{
@@ -50,7 +49,7 @@ span{
 ::placeholder { 
     color: #ffffff;
 }
-.submit{	
+.submit,#addVal{	
 	margin-top: 20px;
 	text-decoration: none;
     padding: 10px;
@@ -62,10 +61,60 @@ span{
     border: 1.42px solid #0016b0;
 }
 
-.container input:hover,button:hover {
-
+.container input:hover,button:hover,#addVal:hover {
     opacity: 0.7;
     background-color: black;
-    color: #FFC107;
-    
+    color: #FFC107;    
+    cursor: pointer;
+}
+fieldset{
+	border: 3px solid #FFC107;
+    border-radius: 10px; 
+}
+#comentario{
+	width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    background-color: #FFEC83;
+    box-sizing: border-box;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+legend{
+    border: 2px solid #FFC107;
+    border-radius: 25px;   
+    background-color: #FFEA83;
+    color: black;
+} 
+/*Valoraciones five stars*/
+p {
+  text-align: left;
+  margin-left: 15px;
+}
+
+label {
+	font-size: 20px;
+	margin-left: 15px;
+	color: grey;
+}
+
+.clasificacion {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+}
+
+label:hover,
+label:hover ~ label {
+	cursor: pointer;
+	color: orange;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"]:checked ~ label {
+  color: orange;
 }
