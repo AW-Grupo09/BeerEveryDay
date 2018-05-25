@@ -65,11 +65,16 @@
 
         		$comentarios = controllerComentarios::cargarValoraciones($cerveza->getIdCerveza());
 		        if($comentarios != NULL)
+		        	echo "<p id='titleComment'>Comentarios:</p>";
 		            foreach($comentarios as $comentario){
-		                echo "<p id = 'autorComent'>" . $comentario->getIdUsuario(). "</p>";
+		            	 
+		            	echo "<div id='showComment'>";		            	
+		                echo "<p id = 'autorComent'><span id='spanId'>" . $comentario->getIdUsuario(). "
+		                </span></p>";
 		                echo "<p id = 'dateComent'> Fecha:" . $comentario->getFecha(). "</p>";
-		                echo "<p id = 'val'>" . $comentario->getValoracion(). "/5</p>";
-		                echo "<p id = 'coment'>" . $comentario->getComentario(). "</p>";
+						for($i=1;$i<=$comentario->getValoracion();$i++)echo"<label id=star>★</label>";	
+						echo "<p id = 'coment'>" . $comentario->getComentario(). "</p>";
+		                echo "</div>";
 
 		                if(isset($_SESSION['nombreUsuario']) && $_SESSION['nombreUsuario'] == $comentario->getIdUsuario())
 		                    echo '<input type="button" id="myBtn" onclick="deleteVal('. $comentario->getIdComentario() .')" value="Eliminar valoración">';             
