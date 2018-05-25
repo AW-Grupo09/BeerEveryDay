@@ -1,14 +1,13 @@
 
 .structGrupos{
-    padding-left: 15%;
-    padding-right: 15%;
+    padding-left: 20%;
+    padding-right: 20%;
+    margin-bottom: 15%;
 
 
 }
 .informacionGrupos{
     padding-left: 20%;
-
-
 }
 
 .unirsebtn {
@@ -35,16 +34,14 @@
 .derecha {
     
     float: left;
-    width: 45%;
+    width: 50%;
     height: 40%;
-    padding: 2%;
 
 }
 
 .izquierda {
-    padding: 2%;
     float: left;
-    width: 45%;
+    width: 50%;
     height: 80%;
     -webkit-border-radius: 5px;
     border-radius: 5px;
