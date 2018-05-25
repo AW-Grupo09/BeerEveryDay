@@ -1,11 +1,17 @@
+.vistaGrupo {
+    display: flex;
+    flex-wrap: wrap;
+}
 
 .structGrupos{
-    padding-left: 20%;
-    padding-right: 20%;
-    margin-bottom: 15%;
-
-
+    width: 100%;
 }
+
+.structComentarios {
+    width: 100%;
+    margin-left: 8%;
+}
+
 .informacionGrupos{
     padding-left: 20%;
 }

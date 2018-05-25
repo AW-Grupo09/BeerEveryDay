@@ -21,7 +21,7 @@
         <?php require('includes/comun/header.php'); ?>
 
         <div class="container">
-            <h2> Listado de grupos actuales: </h2>
+            <h2> ¡Estos son los grupos actualmente activos en BeerEveryDay! </h2>
                 <?php
                 $grupos = Grupos::getGrupos();
                 foreach ($grupos as $grupo) { ?>

@@ -12,6 +12,7 @@ require_once __DIR__.'/TO/TOComentarios.php';
 				<legend> Añadir comentarios y puntuación: </legend>
 
     			    <input id="comentario" type="text" placeholder="Introduce aqui el comentario" name="comentario" required>
+                    
                     <p>Valoración de cerveza: </p>
                     <p class="clasificacion">
                         <input id="radio1" type="radio" name="estrellas" value="5">

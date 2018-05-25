@@ -23,6 +23,8 @@
 	<div id="contenedor"> <!-- Contenedor-->
 		<?php require ('includes/comun/header.php'); ?>
 		<div class="container"><!--bloque del contenido central-->	
+
+		<div class="vistaGrupo">
 			<div class="structGrupos">
 				<?php
 					if (isset($_GET['unidades'])) {
@@ -57,7 +59,7 @@
 				                <form action="" method="get">
 				                	<label> Unidades:</label>
 									<input type="hidden" name="idGrupo" value="<?=$grupo->getId()?>">
-			            			<input type="number" name="unidades" placeholder="El mínimo es 1" min="1" max="<?=$cantidaddisponible?>" required/>
+			            			<input type="number" name="unidades" placeholder="1" min="1" max="<?=$cantidaddisponible?>" required/>
 			            			<span id="comprobar_mensaje"></span>
 				                	<button type="submit" class= "unirsebtn" onclick="unirse(<?=$grupo->getId()?>)">Confirmar</button>
 				                	<script>
@@ -84,7 +86,7 @@
 	                    else{
 
 	                        $misGrupos = Grupos::buscaUsuarioenGrupos($_SESSION['nombreUsuario'], $_GET['id']);
-	                        if($misGrupos!=true){
+	                        if($misGrupos != true){
 	                            $gruposUsuarios = Grupos::insertaGrupoUsuarios($_SESSION['nombreUsuario'], $_GET['id'],10);
 	                            if(isset($gruposUsuarios)){
 	                                echo" <p> se ha unido correctamente </p>";
@@ -97,7 +99,8 @@
 	                }
             	?>	    		
            	</div>
-           	<div class="structGrupos">
+           	
+           	<div class="structComentarios">
 	           	<div id = "comentarios">
 		        	<?php
 		        		
@@ -131,6 +134,9 @@
 					?>
 	            </div>
 	        </div>
+	    </div>
+
+
 		</div><!-- Fin del container -->
 
 		<?php require('includes/comun/footer.php'); ?>

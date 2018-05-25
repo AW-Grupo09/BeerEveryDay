@@ -10,13 +10,9 @@ require_once __DIR__.'/Controller/controllerComentarios.php';
  	  public function generaCamposFormulario($datosIniciales){
        return ' 
             <fieldset>
-                <legend> Formulario para añadir comentarios: </legend>
-
-                    <label for="comentario">Añade un comentario </label>
+                <legend> Añade aquí tu comentario </legend>
                     <input type="text" placeholder = "Introduce aqui el comentario " name="comentario" required>
-
                     <input type="hidden" name="idGrupo" value="'.$this->opciones['idGrupo'].'">
-
                     <p><button type="submit">Añadir comentario</button></p>
 
             </fieldset>';
