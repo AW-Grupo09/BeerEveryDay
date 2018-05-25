@@ -13,7 +13,6 @@
 	<link rel="stylesheet" type="text/css" href="css/footer.css"/>
 	<link rel="stylesheet" type="text/css" href="css/vistaGrupo.css"/>
 	<script type="text/javascript" src="js/javascript.js"></script>
-	<script type="text/javascript" src="js/prototype.js" ></script>  
 	<meta charset="utf-8">	
 	<title>Cervezas</title>
 
