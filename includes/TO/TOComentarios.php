@@ -8,14 +8,17 @@ class TOComentarios {
     private $idCerveza;
     private $idUsuario;
     private $idGrupo;
+    private $fecha;
 
-    public function __construct($idComentario, $valoracion, $comentario, $idCerveza, $idUsuario, $idGrupo){
+    public function __construct($idComentario, $valoracion, $comentario, $idCerveza, $idUsuario, $idGrupo, $fecha){
 
         $this->idComentario = $idComentario;
         $this->valoracion = $valoracion;
         $this->comentario = $comentario;
         $this->idCerveza = $idCerveza;
         $this->idUsuario = $idUsuario;
+        $this->idGrupo = $idGrupo;
+        $this->fecha = $fecha;
 
     }
 
@@ -62,6 +65,24 @@ class TOComentarios {
 
     public function setIdUsuario($idUsuario){
         $this->idUsuario = $idUsuario;
+        return $this;
+    }
+
+    public function getIdGrupo(){
+        return $this->idUsuario;
+    }
+
+    public function setIdGrupo($idGrupo){
+        $this->idGrupo = $idGrupo;
+        return $this;
+    }
+
+    public function getFecha(){
+        return $this->fecha;
+    }
+
+    public function setFecha($fecha){
+        $this->fecha = $fecha;
         return $this;
     }
 

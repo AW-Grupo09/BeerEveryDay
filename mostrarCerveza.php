@@ -2,6 +2,8 @@
 	require_once __DIR__.'/includes/config.php';
 	require_once __DIR__.'/includes/TO/TOCervezas.php';
 	require_once __DIR__.'/includes/Controller/controllerCervezas.php';
+	require_once __DIR__.'/includes/TO/TOComentarios.php';
+	require_once __DIR__.'/includes/Controller/controllerComentarios.php';
 	require_once __DIR__.'/includes/FormularioNuevoComentarioCerve.php';
 	
 	global $sql;
@@ -60,7 +62,20 @@
 
         <div id = "valoraciones">
         	<?php
-        		controllerComentarios::mostrarValoracionesCerveza($cerveza->getIdCerveza());
+
+        		$comentarios = controllerComentarios::cargarValoraciones($cerveza->getIdCerveza());
+		        if($comentarios != NULL)
+		            foreach($comentarios as $comentario){
+		                echo "<p id = 'autorComent'>" . $comentario->getIdUsuario(). "</p>";
+		                echo "<p id = 'dateComent'> Fecha:" . $comentario->getFecha(). "</p>";
+		                echo "<p id = 'val'>" . $comentario->getValoracion(). "/5</p>";
+		                echo "<p id = 'coment'>" . $comentario->getComentario(). "</p>";
+
+		                if(isset($_SESSION['nombreUsuario']) && $_SESSION['nombreUsuario'] == $comentario->getIdUsuario())
+		                    echo '<input type="button" id="myBtn" onclick="deleteVal('. $comentario->getIdComentario() .')" value="Eliminar valoración">';             
+		                
+		        }
+        		//controllerComentarios::mostrarValoracionesCerveza($cerveza->getIdCerveza());
         	  ?>
         </div>
 		
