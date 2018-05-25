@@ -82,3 +82,9 @@ fieldset{
     color: #FFC107;
     
 }
+
+#pago input{
+	width: 98%;		
+	margin-bottom: 1%;
+}
+

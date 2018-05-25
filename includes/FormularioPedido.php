@@ -8,14 +8,15 @@ require_once __DIR__.'/Form.php';
        return '	
         <fieldset>
 				<legend> Formulario de procesar pedido: </legend>
-
+            <div id="pago">
     				<label for="Dir">Dirección de entrega: </label>
-    			    <input type="text" size="30" placeholder="Introduzca aquí la dirección dónde quiera que se produzca la entrega" name="Dir" required>
+    			  <input type="text" minlength="10" placeholder="Introduzca aquí la dirección dónde quiera que se produzca la entrega" name="Dir" required>
 
-    				<label for="Tarjeta">Tarjeta: </label>
-    			    <input type="number_format" placeholder="Introduzca aquí su tarjeta para pagar la compra" name="Tarjeta" required>
+    				<label for="Tarjeta">Tarjeta: </label> 
+    			  <input type="number_format" minlength="16" maxlength="16" placeholder="Introduzca aquí su tarjeta para pagar la compra" name="Tarjeta" required>
 
     				<p><button class="submit" type="submit">Comprar</button></p>
+            </div>
 
 		    </fieldset>';
  	}

@@ -64,7 +64,7 @@ abstract class Form
              $this->opciones = $opciones;
         }
         else if($this->action == "/BeerEveryDay/vistaGrupo.php"){
-             $this->action = htmlentities($_SERVER['PHP_SELF']). "?nombreGrupo=".$opciones['idGrupo'];
+             $this->action = htmlentities($_SERVER['PHP_SELF']). "?idGrupo=".$opciones['idGrupo'];
              $this->opciones = $opciones;
         }
 

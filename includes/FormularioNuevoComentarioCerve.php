@@ -66,7 +66,7 @@ require_once __DIR__.'/TO/TOComentarios.php';
                 controllerComentarios::insertarValoracion($val, $comentario, $idCerveza, $idUsuario);
                 controllerComentarios::updateValoracionMedia($idCerveza);
 
-                //header('Location: mostrarCerveza.php?id='.$idCerveza);
+                header('Location: mostrarCerveza.php?id='.$idCerveza);
                 exit();
 
             }

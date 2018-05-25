@@ -55,11 +55,11 @@ class DAOComentarios extends DAO{
 
     public function cargarComentariosGrupos($idGrupo){
 
-        $query = "SELECT idComentario FROM `comentarios-cervezas` WHERE idGrupo = '" . $idGrupo . "' ORDER BY fecha";
+        $query = "SELECT idComentario FROM `comentarios-grupos` WHERE idGrupo = '" . $idGrupo . "' ORDER BY fecha";
         $resultado = $this->ejecutarConsulta($query);
 
         $comentarios = array();
-        if (count($consulta) != 0){
+        if (count($resultado) != 0){
 
             foreach ($resultado as $fila) {
                 array_push($comentarios,  $fila["idComentario"]);
@@ -98,10 +98,8 @@ class DAOComentarios extends DAO{
     	$resultado = $this->ejecutarModificacion($query);
 
     	if($resultado == 0){
-    		echo "Error al eliminar comentario";
+    		return "Error al eliminar comentario";
     	}
-        else
-            Header('Location: '.$_SERVER['PHP_SELF']);
     }
 
     public function updateValoracionMedia($idCerveza){
