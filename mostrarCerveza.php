@@ -65,7 +65,7 @@
 
         		$comentarios = controllerComentarios::cargarValoraciones($cerveza->getIdCerveza());
 		        if($comentarios != NULL)
-		        	echo "<p id='titleComment'>Comentarios:</p>";
+		        	echo "<p id='titleComment'><span id='spanTitle'>Comentarios:</span></p>";
 		            foreach($comentarios as $comentario){
 		            	 
 		            	echo "<div id='showComment'>";		            	

@@ -141,6 +141,13 @@ input[type="radio"]:checked ~ label {
     font-size: 20px;
 }
 #titleComment{
-     font-family: bold;
+   
+    font-family: bold;
     font-size: 25px;
 }
+#spanTitle{
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 2px solid #FFC107;
+    background-color: #FFEA83;
+} 
