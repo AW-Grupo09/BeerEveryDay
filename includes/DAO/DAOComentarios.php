@@ -55,11 +55,11 @@ class DAOComentarios extends DAO{
 
     public function cargarComentariosGrupos($idGrupo){
 
-        $query = "SELECT idComentario FROM `comentarios-cervezas` WHERE idGrupo = '" . $idGrupo . "' ORDER BY fecha";
+        $query = "SELECT idComentario FROM `comentarios-grupos` WHERE idGrupo = '" . $idGrupo . "' ORDER BY fecha";
         $resultado = $this->ejecutarConsulta($query);
 
         $comentarios = array();
-        if (count($consulta) != 0){
+        if (count($resultado) != 0){
 
             foreach ($resultado as $fila) {
                 array_push($comentarios,  $fila["idComentario"]);

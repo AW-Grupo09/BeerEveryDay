@@ -84,7 +84,7 @@
 
            	<div id = "comentarios">
 	        	<?php
-	        		/*
+	        		
 	        		$comentarios = controllerComentarios::cargarComentariosGrupos($_GET['idGrupo']);
 			        if($comentarios != NULL)
 			            foreach($comentarios as $comentario){
@@ -92,7 +92,7 @@
 			                echo "<p id = 'dateComent'> Fecha:" . $comentario->getFecha(). "</p>";
 			                echo "<p id = 'coment'>" . $comentario->getComentario(). "</p>";
 		        		}
-		        	*/	
+		        		
 	        	?>
        		 </div>
 		

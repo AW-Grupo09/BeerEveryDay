@@ -36,7 +36,7 @@ class controllerComentarios {
         $daoComentarios = new DAOComentarios();
         $resultado = $daoComentarios->cargarComentariosGrupos($idGrupo);
         $comentarios = array();
-        if (count($resultado) != 0){
+        if ($resultado != NULL && count($resultado) != 0){
             foreach ($resultado as $idComentario){
                 array_push($comentarios,  controllerComentarios::cargarComentario($idComentario));
             }
