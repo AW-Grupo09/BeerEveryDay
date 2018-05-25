@@ -97,10 +97,6 @@
 	                }
             	?>	    		
            	</div>
-<<<<<<< HEAD
-
-=======
->>>>>>> 62f06d86ecba90da0a738d60b884dd3ccd1e6932
            	<div class="structGrupos">
 	           	<div id = "comentarios">
 		        	<?php
