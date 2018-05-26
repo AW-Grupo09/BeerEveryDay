@@ -28,8 +28,23 @@
 			<div class="structGrupos">
 				<?php
 					if (isset($_GET['unidades'])) {
-						Grupos::insertaGrupoUsuarios($_SESSION['nombreUsuario'], $_GET['idGrupo'], $_GET['unidades']);
+						if(!$_SESSION['login']){
+			                header('Location: login.php');
+			            }else{
+							$misGrupos = Grupos::buscaUsuarioenGrupos($_SESSION['nombreUsuario'], $_GET['idGrupo']);
+			                if($misGrupos != true){
+			                $gruposUsuarios = Grupos::insertaGrupoUsuarios($_SESSION['nombreUsuario'], $_GET['idGrupo'], $_GET['unidades']);
+				                if(isset($gruposUsuarios)){
+				                    echo "<div class='mensajeInfo'><div class='titulo2'> Te has unido correctamente </div> </div>";
+				                }
+			                }
+			                else{
+			                    echo "<div class='mensajeInfo'> <div class='titulo2'> Ya perteneces al grupo </div></div>";
+			                }
+						}
 					}
+
+
 					if(isset($_GET['idGrupo'])){
 						$grupo = Grupos::getGrupoById($_GET['idGrupo']);?>
 						<?php
@@ -62,42 +77,28 @@
 			            			<input type="number" name="unidades" placeholder="1" min="1" max="<?=$cantidaddisponible?>" required/>
 			            			<span id="comprobar_mensaje"></span>
 				                	<button type="submit" class= "unirsebtn" onclick="unirse(<?=$grupo->getId()?>)">Confirmar</button>
-				                	<script>
-				                		function unirse(){
-				                			var unidades = document.getElementsByName("unidades");
-				                			if (unidades[0].value > <?=$cantidaddisponible?>) {
-				                				alert("No hay suficientes cervezas disponibles");
-				                				return false;
-				                			}
-				                		}
-				                	</script>
 			                	</form>
 			                </div>
+
+			                <?php /*if (isset($_GET['unidades'])) {
+								if(!$_SESSION['login']){
+			                        header('Location: login.php');
+			                    }else{
+									$misGrupos = Grupos::buscaUsuarioenGrupos($_SESSION['nombreUsuario'], $_GET['idGrupo']);
+			                        if($misGrupos != true){
+			                            $gruposUsuarios = Grupos::insertaGrupoUsuarios($_SESSION['nombreUsuario'], $_GET['idGrupo'], $_GET['unidades']);
+			                            if(isset($gruposUsuarios)){
+			                                echo "<div class='mensajeInfo'><div class='titulo2'> Te has unido correctamente </div> </div>";
+			                            }
+			                        }
+			                        else{
+			                        	 	echo "<div class='mensajeInfo'> <div class='titulo2'> Ya perteces al grupo </div></div>";
+			                        }
+								}
+							}*/?>
 	                    </div>
-
 					<?php }
-				?>
-
-                <?php
-	                if (isset($_GET['action']) && $_GET['action'] == 'unirse') {
-	                    if(!$_SESSION['login']){
-	                        header('Location: login.php');
-	                    }
-	                    else{
-
-	                        $misGrupos = Grupos::buscaUsuarioenGrupos($_SESSION['nombreUsuario'], $_GET['id']);
-	                        if($misGrupos != true){
-	                            $gruposUsuarios = Grupos::insertaGrupoUsuarios($_SESSION['nombreUsuario'], $_GET['id'],10);
-	                            if(isset($gruposUsuarios)){
-	                                echo" <p> se ha unido correctamente </p>";
-	                            }
-	                        }
-	                        else{
-
-	                    }
-	                        }
-	                }
-            	?>	    		
+				?> 		
            	</div>
            	
            	<div class="structComentarios">
