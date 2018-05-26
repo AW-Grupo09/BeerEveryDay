@@ -121,7 +121,7 @@
 	            	
 	            	//Formulario para aniadir comentario
 					if(isset($_SESSION['login']) && $_SESSION['login']){
-
+						echo "1";
 						$misGrupos = Grupos::buscaUsuarioenGrupos($_SESSION['nombreUsuario'], $_GET['idGrupo']);
 						if($misGrupos){
 							$opciones = array();

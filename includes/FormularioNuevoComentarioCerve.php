@@ -9,22 +9,17 @@ require_once __DIR__.'/TO/TOComentarios.php';
         $this->action = htmlentities($_SERVER['PHP_SELF']). "?id=". $this->opciones['idCerveza'];
        return '	
             <fieldset>
-				<legend> Añadir comentarios y puntuación: </legend>
+				<legend> Añadir valoración: </legend>
 
     			    <input id="comentario" type="text" placeholder="Introduce aqui el comentario" name="comentario" required>
                     
                     <p>Valoración de cerveza: </p>
                     <p class="clasificacion">
-                        <input id="radio1" type="radio" name="estrellas" value="5">
-                        <label for="radio1" id="radio1">★</label>
-                        <input id="radio2" type="radio" name="estrellas" value="4">
-                        <label for="radio2" id="radio2">★</label>
-                        <input id="radio3" type="radio" name="estrellas" value="3">
-                        <label for="radio3" id="radio3">★</label>
-                        <input id="radio4" type="radio" name="estrellas" value="2">
-                        <label for="radio4" id="radio4">★</label>
-                        <input id="radio5" type="radio" name="estrellas" value="1">
-                        <label for="radio5" id="radio5">★</label>
+                        <input type="radio" name="val" value="1" checked> 1/5
+                        <input type="radio" name="val" value="2"> 2/5
+                        <input type="radio" name="val" value="3"> 3/5 
+                        <input type="radio" name="val" value="4"> 4/5
+                        <input type="radio" name="val" value="5"> 5/5
                     </p>
                     <input type="hidden" name="idCerveza" value="'.$this->opciones['idCerveza'].'">
 

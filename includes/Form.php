@@ -84,7 +84,7 @@ abstract class Form
             if ( is_array($result) ) {
                 echo $this->generaFormulario($result, $_POST);
             } else {
-                header('Location: '.$result);
+                //header('Location: '.$result);
                 exit();
             }
         }  

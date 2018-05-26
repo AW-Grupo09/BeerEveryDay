@@ -27,7 +27,7 @@ class DAOComentarios extends DAO{
         if (count($resultado) > 0) {
             $date = date_create($resultado[0]["fecha"]);
             $date = date_format($date, 'Y/m/d H:i:s');
-            $comentario = new comentarios($idComentario,  1, $resultado[0]["comentario"] ,$resultado[0]["idCerveza"] , $resultado[0]["idUsuario"], $resultado[0]['idGrupo'], $date);
+            $comentario = new TOcomentarios($idComentario,  1, $resultado[0]["comentario"] ,NULL , $resultado[0]["idUsuario"], $resultado[0]['idGrupo'], $date);
             return $comentario;
         } else{
             return null;
@@ -84,11 +84,14 @@ class DAOComentarios extends DAO{
 
     public function insertarComentarioGrupo($comentario, $idGrupo, $idUsuario){
 
-        $sql = "SELECT max(idComentario) FROM comentarios-grupos";
-        $consulta = $this->ejecutarConsulta($sql);
-        if(count($consulta) > 0){
-            $idComentario = $resultado['idComentario'] + 1;
-            $query = 'INSERT INTO `comentarios-grupos`(idComentario, comentario, idGrupo, idUsuario, fecha) VALUES ("'.$idComentario . '","' . $comentario . '", "' . $idGrupo . '", "' . $idUsuario . '", now())';
+        echo "4";
+        $sql = "SELECT max(idComentario) as idComentario FROM `comentarios-grupos`";
+        $resultado = $this->ejecutarConsulta($sql);
+        echo "5";
+        if(count($resultado) > 0){
+            $newID = $resultado[0]['idComentario'] + 1;
+            echo $idUsuario;
+            $query = 'INSERT INTO `comentarios-grupos`(idComentario, comentario, idGrupo, idUsuario, fecha) VALUES ("'.$newID . '","' . $comentario . '", "' . $idGrupo . '", "' . $idUsuario . '", now())';
             $this->ejecutarModificacion($query);
         }
     }

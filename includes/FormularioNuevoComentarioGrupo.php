@@ -38,9 +38,9 @@ require_once __DIR__.'/Controller/controllerComentarios.php';
         }
 
         if (count($erroresFormulario) === 0) {
-            
-            controllerComentarios::insertarComentarioGrupo($idUsuario, $comentario, $idGrupo);
-            exit();
+            echo "2";
+            controllerComentarios::insertarComentarioGrupo($comentario, $idGrupo, $idUsuario);
+            //header('Location: vistaGrupo.php?id='.$idGrupo);
 
             
         }
@@ -55,7 +55,7 @@ require_once __DIR__.'/Controller/controllerComentarios.php';
             array_push($datos, $nombreUsuario);
             array_push($datos, $password);
             */
-            return 'mostrarGrupo.php?id='.$idGrupo;
+            //return 'vistaGrupo.php?id='.$idGrupo;
          }
         
     

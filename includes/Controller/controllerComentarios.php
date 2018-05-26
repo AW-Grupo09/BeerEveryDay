@@ -54,6 +54,7 @@ class controllerComentarios {
     }
 
     public static function insertarComentarioGrupo($comentario, $idGrupo, $idUsuario){
+        echo "3";
         $daoComentarios = new DAOComentarios();
         $daoComentarios->insertarComentarioGrupo($comentario, $idGrupo, $idUsuario);
     }
