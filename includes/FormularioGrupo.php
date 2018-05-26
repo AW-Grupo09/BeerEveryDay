@@ -75,8 +75,6 @@ require_once __DIR__.'/Controller/controllerPedidos.php';
 
 
                 Grupos::insertaGrupoUsuarios($_SESSION['nombreUsuario'], $grupo->getId(),$tusUnidades);
-
-                echo $unidades .'</br>';
                 
                 $idPedido = controllerPedidos::procesarPedido($idCerveza,$direccion,$unidades);
 
