@@ -7,6 +7,7 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="css/common.css" />
 	<link rel="stylesheet" type="text/css" href="css/footer.css"/>
+	<link rel="stylesheet" type="text/css" href="css/itemFooter.css"/>
 	<meta charset="utf-8">
 	<title>About us</title>
 </head>

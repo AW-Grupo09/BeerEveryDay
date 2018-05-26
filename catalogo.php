@@ -19,11 +19,9 @@
             <?php require('./includes/comun/header.php'); ?>
             <div class="container">
             <header>
-                <!--div class="alert alert-info"-->
                 <div class="alert-info">
                     <h2>Filtro de Búsqueda </h2>
-                    <!--img src="img/plus.png" alt="" id="expandFilter" width="16px"-->
-                    <img src="img/plus.png" alt="" id="expandFilter">
+                    <img src="img/icons/plus.png" alt="" id="expandFilter">
                 </div>
             </header>
             <section id="filtros">
@@ -161,10 +159,10 @@
                     var filtros = document.getElementById("filtros");
                     if (filtros.style.display == "block") {
                         filtros.style.display = "none";
-                        this.src = "img/plus.png";
+                        this.src = "img/icons/plus.png";
                     } else{
                         filtros.style.display = "block";
-                        this.src = "img/minus.png";
+                        this.src = "img/icons/minus.png";
                     }
                 };
             </script>
