@@ -172,9 +172,20 @@ class DAOPedidos extends DAO{
         $consulta = $this->ejecutarConsulta($sql);
         return $consulta[0]['unidades'];
     }
+    public function nombreCervezaById($idGrupo){
 
+        $sql = "SELECT * FROM `grupo-pedidos` WHERE idGrupo = ". $idGrupo;
+        $consultaGrupo = $this->ejecutarConsulta($sql);;
+        $idPedido =  $consultaGrupo[0]['idPedido'];
 
+        $sql = "SELECT idCerveza FROM `pedidos-cervezas` WHERE idPedido = ". $idPedido;
+        $consultaPedido = $this->ejecutarConsulta($sql);
+        $idCerveza = $consultaPedido[0]['idCerveza'];
 
+        $sql = "SELECT nombre FROM cervezas WHERE id = ". $idCerveza;
+        $consultaCerveza = $this->ejecutarConsulta($sql);
+        return $consultaCerveza[0]['nombre'];
+    }
 }
 
 ?>

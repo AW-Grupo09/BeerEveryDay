@@ -120,6 +120,12 @@ class controllerPedidos {
         $daoPedido = new DAOPedidos();
         return $daoPedido->cantidadActualCervezas($idGrupo);
     }
+
+    public static function getCervezasById($idGrupo){
+        $daoPedido = new DAOPedidos();
+        return $daoPedido->nombreCervezaById($idGrupo);
+
+    }
 }
 
 ?>

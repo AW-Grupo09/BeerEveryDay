@@ -2,8 +2,9 @@
 	require_once __DIR__.'/includes/config.php';
 	require_once __DIR__.'/includes/FormularioGrupo.php';
 	require_once __DIR__.'/includes/FormularioNuevoComentarioGrupo.php';
-	require_once __DIR__.'/includes/grupos.php';
+	require_once __DIR__.'/includes/Controller/controllerPedidos.php';
 	require_once __DIR__.'/includes/Controller/controllerComentarios.php';
+	require_once __DIR__.'/includes/grupos.php';
 	require_once __DIR__.'/includes/TO/TOComentarios.php';
 	global $sql;
 ?>
@@ -48,7 +49,7 @@
 					if(isset($_GET['idGrupo'])){
 						$grupo = Grupos::getGrupoById($_GET['idGrupo']);?>
 						<?php
-		
+							$cerveza = controllerPedidos::getCervezasById($grupo->getId());
 				            $cantidadtotal = controllerPedidos::cantidadTotal($grupo->getId());
 							$fechaLimite = controllerPedidos::fechaLimite($grupo->getId());
 				            $cantidadActual = controllerPedidos::cantidadActual( $grupo->getId());
@@ -57,6 +58,7 @@
 						<div class ="izquierda">
 							<div class = "titulo"><?=$grupo->getNombre() ?></div>
 							<div class = "informacionGrupos">
+								<p><span>Cerveza:</span></p><?=$cerveza?></p>
 								<p><span>Dirección: </span> <?=$grupo->getDireccion()?></p>
 		                        <p><span>Ciudad: </span> <?=$grupo->getCiudad()?></p>
 		                        <p><span>Creado por: </span><?=$grupo->getCreador()?></p>
