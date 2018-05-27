@@ -118,6 +118,7 @@
 
 					                <div id="admin"> 
 					                	<?php 
+					                	if(isset($_SESSION['login']) && $_SESSION['login']){
 					                		if($grupo->getCreador() == $_SESSION['nombreUsuario']){
 					                			echo "<h3> Eres el creador de este grupo</h3>";
 					                			echo "<p> aquí tienes información del pedido </p>";
@@ -128,6 +129,7 @@
 					                		}
 					                		else
 					                			echo "El creador del grupo tiene toda la info acerca del pedido";
+					                	}
 					                	?>
 
 
