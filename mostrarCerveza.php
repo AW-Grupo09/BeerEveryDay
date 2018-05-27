@@ -64,8 +64,9 @@
         	<?php
 
         		$comentarios = controllerComentarios::cargarValoraciones($cerveza->getIdCerveza());
-		        if($comentarios != NULL)
+		        if($comentarios != NULL){
 		        	echo "<p id='titleComment'><span id='spanTitle'>Comentarios:</span></p>";
+
 		            foreach($comentarios as $comentario){
 		            	 
 		            	echo "<div id='showComment'>";		            	
@@ -78,7 +79,7 @@
 
 		                if(isset($_SESSION['nombreUsuario']) && $_SESSION['nombreUsuario'] == $comentario->getIdUsuario())
 		                    echo '<input type="button" id="myBtn" onclick="deleteVal('. $comentario->getIdComentario() .')" value="Eliminar valoración">';             
-		                
+		          	}
 		        }
         	  ?>
         </div>
