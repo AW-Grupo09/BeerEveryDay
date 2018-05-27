@@ -39,23 +39,29 @@
 			echo "<div class= 'contenidoCerveza'>";
 			echo "<div class= 'imagenCerveza'>";
 			echo "<img alt='Imagen de cerveza' src=". $cerveza->getImagen()." width='300' height='300' />";
+			/*$maxI=$cerveza->getValoracion();
+			echo "<p id='titleComment'><span id='spanTitle'>Valoración: </span></p>"
+			for($i=1;$i<=$maxI;$i++)echo"<label id=star>★</label>";
+			*/
+
 			echo "</div>";// cierro div imagen
 			echo "<div class= 'datosCerveza'>";
-			echo "<p>" . " <span>Capacidad : </span>". $cerveza->getCapacidad(). " Cl" ."</p>";
-			echo "<p>" . " <span>Color : </span>". $cerveza->getColor() ."</p>";
-			echo "<p>" . " <span>Tipo : </span>". $cerveza->getTipo() ."</p>";
-			echo "<p>". " <span>Graduación : </span>". $cerveza->getGrado() . " % "."</p>";
-			echo "<p>". " <span>Ingredientes : </span>". $cerveza->getGrano() ."</p>";
-			echo "<p>"." <span>País : </span>" . $cerveza->getPais()."</p>";
-			echo "<p>" . " <span>Precio : </span>". $cerveza->getPrecio(). " € ". "</p>";
+			echo "<p><span>Capacidad : </span>". $cerveza->getCapacidad(). " Cl" ."</p>";
+			echo "<p><span>Color : </span>". $cerveza->getColor() ."</p>";
+			echo "<p><span>Tipo : </span>". $cerveza->getTipo() ."</p>";
+			echo "<p><span>Graduación : </span>". $cerveza->getGrado() . " % "."</p>";
+			echo "<p><span>Ingredientes : </span>". $cerveza->getGrano() ."</p>";
+			echo "<p><span>País : </span>" . $cerveza->getPais()."</p>";
+			echo "<p><span>Precio : </span>". $cerveza->getPrecio(). " € ". "</p>";
 			echo "</div>";//cierro div datosCerveza
-
+			
 			if(isset($_SESSION['login']) && $_SESSION['login']){
 				echo '<form  action="includes/procesarCesta.php" method="GET">';			
 				echo '<input type="number" name="unidades" min="1" placeholder="Unidades">';
 				echo '<button class="submit" type="submit" name="cerveza" value="'. $cerveza->getIdCerveza().'">Añadir a la cesta</button>';
 				echo '</form>';
 			}
+
 			echo "</div>";//cierro div contenidoCerveza
 			echo "</div>";//cierro div mostrarCerveza
 		?>
@@ -69,10 +75,12 @@
 
 		            foreach($comentarios as $comentario){
 		            	 
-		            	echo "<div id='showComment'>";		            	
-		                echo "<p id = 'autorComent'><span id='spanId'>" . $comentario->getIdUsuario(). "
+		            	echo "<div id='showComment'>";
+		            	echo "<p id = 'dateComent'> Fecha: " . $comentario->getFecha(). "</p>";
+
+		            	echo "<p id = 'autorComent'><span id='spanId'>" . $comentario->getIdUsuario(). "
 		                </span></p>";
-		                echo "<p id = 'dateComent'> Fecha:" . $comentario->getFecha(). "</p>";
+		                
 						for($i=1;$i<=$comentario->getValoracion();$i++)echo"<label id=star>★</label>";	
 						echo "<p id = 'coment'>" . $comentario->getComentario(). "</p>";
 		                echo "</div>";

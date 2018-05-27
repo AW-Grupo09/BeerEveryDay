@@ -112,12 +112,18 @@
 		        	<?php
 		        		
 		        		$comentarios = controllerComentarios::cargarComentariosGrupos($_GET['idGrupo']);
-				        if($comentarios != NULL)
-				            foreach($comentarios as $comentario){
-				                echo "<p id = 'autorComent'>" . $comentario->getIdUsuario(). "</p>";
-				                echo "<p id = 'dateComent'> Fecha:" . $comentario->getFecha(). "</p>";
+				        if($comentarios != NULL){
+				        	echo "<p id='titleComment'><span id='spanTitle'>Comentarios:</span></p>";
+
+				            foreach($comentarios as $comentario){				            	
+				            	echo "<div id='showComment'>";
+				            	echo "<p id = 'dateComent'> Fecha: " . $comentario->getFecha(). "</p>";
+				                echo "<p id = 'autorComent'><span id='spanId'>" . $comentario->getIdUsuario(). "</span></p>";
+				                
 				                echo "<p id = 'coment'>" . $comentario->getComentario(). "</p>";
+				                echo "</div>";
 			        		}
+			        	}
 			        		
 		        	?>
 	       		</div>

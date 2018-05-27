@@ -30,10 +30,9 @@
 	margin-top: 20px;
 	flex-basis: 40%;
 }
-
 span{
 	border: 2px solid #FFC107;
-    border-radius: 25px;	 
+    border-radius: 25px;	
 }
  
 .container input{
@@ -69,7 +68,7 @@ span{
 }
 fieldset{
 	border: 3px solid #FFC107;
-    border-radius: 10px; 
+    border-radius: 10px;
 }
 #comentario{
 	width: 100%;
@@ -84,11 +83,14 @@ fieldset{
 }
 legend{
     border: 2px solid #FFC107;
-    border-radius: 25px;   
+    border-radius: 25px;
     background-color: #FFEA83;
     color: black;
 } 
 /*Valoraciones five stars*/
+#dateComent{
+    float: right;
+}
 p {
   text-align: left;
   margin-left: 15px;
@@ -132,6 +134,7 @@ input[type="radio"]:checked ~ label {
     margin-bottom: 10px;
 }
 #spanId{
+    font-weight: bold; 
     background: white;
     border: 2px solid white;
     border-radius: 25px;
@@ -140,14 +143,15 @@ input[type="radio"]:checked ~ label {
     font-family: bold;
     font-size: 20px;
 }
-#titleComment{
-   
+#titleComment{   
     font-family: bold;
     font-size: 25px;
 }
 #spanTitle{
+    font-weight: bold; 
     padding-left: 10px;
     padding-right: 10px;
     border: 2px solid #FFC107;
+    border-radius: 25px;
     background-color: #FFEA83;
 } 
