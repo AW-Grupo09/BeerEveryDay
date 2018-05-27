@@ -74,22 +74,37 @@
 
 		                    </div>
 	                    </div>
+			                    <div class="derecha">
+			                <?php 	
+			                    if(isset($_SESSION['login']) && $_SESSION['login']){
+									$misGrupos = controllerGrupos::buscaUsuarioenGrupos($_SESSION['nombreUsuario'], $_GET['idGrupo']);
+				                    if(!$misGrupos)
+				                    	echo'<div class="titulo"> ¿ Quieres unirte al grupo ? </div>';
+								    else 
+										echo'<div class="titulo"> ¿ Quieres modificar el numero de cervezas ? </div>';
+								}
+							?>
+					                <div>
+						                <form action="" method="get">
+						                	<label> Unidades:</label>
+											<input type="hidden" name="idGrupo" value="<?=$grupo->getId()?>">
+					            			<input type="number" name="unidades" placeholder="1" min="1" max="<?=$cantidaddisponible?>" required/>
+					            			<span id="comprobar_mensaje"></span>
+		                    <?php 	
+			                    if(isset($_SESSION['login']) && $_SESSION['login']){
+									$misGrupos = controllerGrupos::buscaUsuarioenGrupos($_SESSION['nombreUsuario'], $_GET['idGrupo']);
+				                    if(!$misGrupos)
+				                    	echo'<button type="submit" class= "unirsebtn" onclick="unirse(<?=$grupo->getId()?>)">Confirmar</button>';
+								    else 
+										echo'<button type="submit" class= "unirsebtn" onclick="unirse(<?=$grupo->getId()?>)">Modificar</button>';
+								}
+							?>
 
-	                    <div class="derecha">
-	                    	<div class="titulo">
-			                     ¿ Quieres unirte al grupo ?
-			                </div>
-			                <div>
-				                <form action="" method="get">
-				                	<label> Unidades:</label>
-									<input type="hidden" name="idGrupo" value="<?=$grupo->getId()?>">
-			            			<input type="number" name="unidades" placeholder="1" min="1" max="<?=$cantidaddisponible?>" required/>
-			            			<span id="comprobar_mensaje"></span>
-				                	<button type="submit" class= "unirsebtn" onclick="unirse(<?=$grupo->getId()?>)">Confirmar</button>
-			                	</form>
-			                </div>
-	                    </div>
-					<?php }
+					                	</form>
+					                </div>
+			                    </div>
+					<?php 
+				}
 				?> 		
            	</div>
            	
