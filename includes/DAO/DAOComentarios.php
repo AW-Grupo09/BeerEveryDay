@@ -84,13 +84,11 @@ class DAOComentarios extends DAO{
 
     public function insertarComentarioGrupo($comentario, $idGrupo, $idUsuario){
 
-        echo "4";
+
         $sql = "SELECT max(idComentario) as idComentario FROM `comentarios-grupos`";
         $resultado = $this->ejecutarConsulta($sql);
-        echo "5";
         if(count($resultado) > 0){
             $newID = $resultado[0]['idComentario'] + 1;
-            echo $idUsuario;
             $query = 'INSERT INTO `comentarios-grupos`(idComentario, comentario, idGrupo, idUsuario, fecha) VALUES ("'.$newID . '","' . $comentario . '", "' . $idGrupo . '", "' . $idUsuario . '", now())';
             $this->ejecutarModificacion($query);
         }

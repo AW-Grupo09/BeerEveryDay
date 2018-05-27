@@ -15,15 +15,15 @@ require_once __DIR__.'/TO/TOComentarios.php';
                     
                     <p>Valoración de cerveza: </p>
                     <p class="clasificacion">
-                        <input id="radio1" type="radio" name="estrellas" value="5">
+                        <input id="radio1" type="radio" name="val" value="5">
                         <label for="radio1" id="radio1">★</label>
-                        <input id="radio2" type="radio" name="estrellas" value="4">
+                        <input id="radio2" type="radio" name="val" value="4">
                         <label for="radio2" id="radio2">★</label>
-                        <input id="radio3" type="radio" name="estrellas" value="3">
+                        <input id="radio3" type="radio" name="val" value="3">
                         <label for="radio3" id="radio3">★</label>
-                        <input id="radio4" type="radio" name="estrellas" value="2">
+                        <input id="radio4" type="radio" name="val" value="2">
                         <label for="radio4" id="radio4">★</label>
-                        <input id="radio5" type="radio" name="estrellas" value="1">
+                        <input id="radio5" type="radio" name="val" value="1">
                         <label for="radio5" id="radio5">★</label>
                     </p>
                     <input type="hidden" name="idCerveza" value="'.$this->opciones['idCerveza'].'">

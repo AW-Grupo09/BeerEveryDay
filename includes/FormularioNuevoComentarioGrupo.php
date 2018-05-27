@@ -6,7 +6,7 @@ require_once __DIR__.'/Controller/controllerComentarios.php';
 
  class FormularioNuevoComentarioGrupo extends Form{
 
- 	  public function generaCamposFormulario($datosIniciales){
+ 	public function generaCamposFormulario($datosIniciales){
        return ' 
             <fieldset>
                 <legend> Añade aquí tu comentario </legend>
@@ -37,9 +37,10 @@ require_once __DIR__.'/Controller/controllerComentarios.php';
         }
 
         if (count($erroresFormulario) === 0) {
-            echo "2";
+
             controllerComentarios::insertarComentarioGrupo($comentario, $idGrupo, $idUsuario);
-            //header('Location: vistaGrupo.php?id='.$idGrupo);
+            echo "<script type='text/javascript'> window.location.replace(BeerEveryDay/vistaGrupo.php?idGrupo=.".$idGrupo."); </script>";
+
 
             
         }
@@ -54,7 +55,7 @@ require_once __DIR__.'/Controller/controllerComentarios.php';
             array_push($datos, $nombreUsuario);
             array_push($datos, $password);
             */
-            //return 'vistaGrupo.php?id='.$idGrupo;
+            return 'vistaGrupo.php?idGrupo='.$idGrupo;
          }
         
     
