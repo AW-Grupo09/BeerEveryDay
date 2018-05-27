@@ -1,6 +1,6 @@
 <?php 
 
-	require_once '../includes/config.php';
+	session_start();
 	require_once '../includes/Controller/controllerPedidos.php';
 	require_once '../includes/TO/TOPedidos.php';
 	require_once '../includes/TO/TOCervezas.php';

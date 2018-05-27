@@ -83,9 +83,9 @@
 				                    if(isset($_SESSION['login']) && $_SESSION['login']){
 										$misGrupos = controllerGrupos::buscaUsuarioenGrupos($_SESSION['nombreUsuario'], $_GET['idGrupo']);
 					                    if(!$misGrupos)
-					                    	echo'<div class="titulo"> ¿ Quieres unirte al grupo ? </div>';
+					                    	echo'<div class="titulo"> ¿Quieres unirte al grupo? </div>';
 									    else 
-											echo'<div class="titulo"> ¿ Quieres modificar el numero de cervezas ? </div>';
+											echo'<div class="titulo"> ¿Quieres modificar el numero de cervezas? </div>';
 									}
 								?>
 					                <div>
@@ -136,7 +136,7 @@
 		        		
 		        		$comentarios = controllerComentarios::cargarComentariosGrupos($_GET['idGrupo']);
 				        if($comentarios != NULL){
-				        	echo "<p id='titleComment'><span id='spanTitle'>Comentarios:</span></p>";
+				        	echo "<p id='titleComment'><span id='spanTitle'>Comentarios</span></p>";
 
 				            foreach($comentarios as $comentario){				            	
 				            	echo "<div id='showComment'>";
