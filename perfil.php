@@ -1,6 +1,6 @@
 <?php 
 
-	require_once __DIR__.'/includes/config.php';
+	session_start();
     include('includes/Controller/controllerUsuario.php');
     include('includes/TO/TOUsuarios.php');
 

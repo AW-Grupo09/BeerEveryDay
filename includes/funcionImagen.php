@@ -17,12 +17,6 @@ class funcionImagen{
 		}
 	}
 
-	public static function imgValida($avatar, $size){
-		if(($avatar == !NULL) && ($size <= 2000000))
-			return true;
-		else
-			return false;
-	}
 }
 
 ?>

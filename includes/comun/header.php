@@ -15,8 +15,7 @@
 			else
 				echo "No has iniciado sesión";
 
-			// habra que cambiar algo
-			if(isset($_SESSION["login"])&&($_SESSION["login"] == true)){ ?>
+			if(isset($_SESSION["login"])&&($_SESSION["login"] === true)){ ?>
 				<a href = 'perfil.php'> Perfil </a> 
 				<a href = 'logout.php'> Salir </a> 
 
@@ -30,16 +29,6 @@
 
 	</div>
 		
-	<!--<div id = "items">
-		<a id="item" href = 'index.php'> HOME </a>
-		<a id="item" href = 'catalogo.php'> CATÁLOGO </a> 
-		<a id="item" href = 'mostrarGrupos.php'> GRUPOS </a> 
-		<a id="item" href = 'mostrarCesta.php'> MI CESTA </a>
-		<a id="item" href = 'listaPedidos.php'> MIS PEDIDOS </a>
-		<a id="item" href = 'misGrupos.php'> MIS GRUPOS </a>
-
-	</div>-->
-
 	<div id = "items">
 		<ul class="nav">
 				<li><a href='index.php'>HOME</a></li>
@@ -51,13 +40,12 @@
 				</li>
 				<li><a href='perfil.php'>MI CUENTA</a>
 					<?php 
-					if(isset($_SESSION['login']) && $_SESSION['login']) { ?>
+					if(isset($_SESSION['login']) && $_SESSION['login']===true) { ?>
 						<ul>
-							<!--<li><a href='perfil.php'>MI PERFIL</a>-->
 							<li><a href='listaPedidos.php'>MIS PEDIDOS</a></li>
 							<li><a href = 'mostrarCesta.php'> MI CESTA </a> </li>
 							<?php 
-								if(isset($_SESSION['esAdmin']) && $_SESSION['esAdmin']){ ?>
+								if(isset($_SESSION['esAdmin']) && $_SESSION['esAdmin']===true){ ?>
 									<li><a href = 'admin.php'> ADMIN </a> </li>
 								<?php } ?>
 						</ul>
