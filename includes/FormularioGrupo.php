@@ -82,7 +82,7 @@ require_once __DIR__.'/Controller/controllerPedidos.php';
 
                 $_SESSION['nombreGrupo'] = $nombreGrupo;
 
-                header('Location: misGrupos.php');
+                header('Location: index.php');
 
                 exit();
 
