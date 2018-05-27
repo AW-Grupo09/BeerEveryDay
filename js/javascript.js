@@ -3,13 +3,13 @@
     window.location = "./mostrarGrupos.php?action=unirse&id=" + id;
 }*/
 
-function unirse(){
+/*function unirse(){
 	var unidades = document.getElementsByName("unidades");
 	if (unidades[0].value > <?=$cantidaddisponible?>) {
 		alert("No hay suficientes cervezas disponibles");
 		return false;
 	}
-}
+}*/
 
 function myFunction() {
     var x = document.getElementById("procesarCesta");
