@@ -39,8 +39,8 @@ require_once __DIR__.'/Controller/controllerComentarios.php';
         if (count($erroresFormulario) === 0) {
 
             controllerComentarios::insertarComentarioGrupo($comentario, $idGrupo, $idUsuario);
-            echo "<script type='text/javascript'> window.location.replace(BeerEveryDay/vistaGrupo.php?idGrupo=.".$idGrupo."); </script>";
-
+            //echo "<script type='text/javascript'> window.location.replace(BeerEveryDay/vistaGrupo.php?idGrupo=.".$idGrupo."); </script>";
+            header('Location: vistaGrupo.php?idGrupo='.$idGrupo);
 
             
         }

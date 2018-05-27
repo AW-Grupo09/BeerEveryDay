@@ -91,20 +91,6 @@
            	</div>
            	
            	<div class="structComentarios">
-	           	<div id = "comentarios">
-		        	<?php
-		        		
-		        		$comentarios = controllerComentarios::cargarComentariosGrupos($_GET['idGrupo']);
-				        if($comentarios != NULL)
-				            foreach($comentarios as $comentario){
-				                echo "<p id = 'autorComent'>" . $comentario->getIdUsuario(). "</p>";
-				                echo "<p id = 'dateComent'> Fecha:" . $comentario->getFecha(). "</p>";
-				                echo "<p id = 'coment'>" . $comentario->getComentario(). "</p>";
-			        		}
-			        		
-		        	?>
-	       		</div>
-		
 	            <div id = "addComment">
 	            	<?php
 	            	
@@ -122,6 +108,20 @@
 						
 					?>
 	            </div>
+	           	<div id = "comentarios">
+		        	<?php
+		        		
+		        		$comentarios = controllerComentarios::cargarComentariosGrupos($_GET['idGrupo']);
+				        if($comentarios != NULL)
+				            foreach($comentarios as $comentario){
+				                echo "<p id = 'autorComent'>" . $comentario->getIdUsuario(). "</p>";
+				                echo "<p id = 'dateComent'> Fecha:" . $comentario->getFecha(). "</p>";
+				                echo "<p id = 'coment'>" . $comentario->getComentario(). "</p>";
+			        		}
+			        		
+		        	?>
+	       		</div>
+		
 	        </div>
 	    </div>
 
