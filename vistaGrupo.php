@@ -4,8 +4,9 @@
 	require_once __DIR__.'/includes/FormularioNuevoComentarioGrupo.php';
 	require_once __DIR__.'/includes/Controller/controllerPedidos.php';
 	require_once __DIR__.'/includes/Controller/controllerComentarios.php';
-	require_once __DIR__.'/includes/grupos.php';
+	require_once __DIR__.'/includes/Controller/controllerGrupos.php';
 	require_once __DIR__.'/includes/TO/TOComentarios.php';
+	require_once __DIR__.'/includes/TO/TOGrupos.php';
 	global $sql;
 ?>
 
@@ -32,9 +33,9 @@
 						if(!$_SESSION['login']){
 			                header('Location: login.php');
 			            }else{
-							$misGrupos = Grupos::buscaUsuarioenGrupos($_SESSION['nombreUsuario'], $_GET['idGrupo']);
+							$misGrupos = controllerGrupos::buscaUsuarioenGrupos($_SESSION['nombreUsuario'], $_GET['idGrupo']);
 			                if($misGrupos != true){
-			                $gruposUsuarios = Grupos::insertaGrupoUsuarios($_SESSION['nombreUsuario'], $_GET['idGrupo'], $_GET['unidades']);
+			                $gruposUsuarios = controllerGrupos::insertaGrupoUsuarios($_SESSION['nombreUsuario'], $_GET['idGrupo'], $_GET['unidades']);
 				                if(isset($gruposUsuarios)){
 				                    echo "<div class='mensajeInfo'><div class='titulo2'> Te has unido correctamente </div> </div>";
 				                }
@@ -47,7 +48,7 @@
 
 
 					if(isset($_GET['idGrupo'])){
-						$grupo = Grupos::getGrupoById($_GET['idGrupo']);?>
+						$grupo = controllerGrupos::getGrupoById($_GET['idGrupo']);?>
 						<?php
 							$cerveza = controllerPedidos::getCervezasById($grupo->getId());
 				            $cantidadtotal = controllerPedidos::cantidadTotal($grupo->getId());
@@ -124,7 +125,7 @@
 	            	//Formulario para aniadir comentario
 					if(isset($_SESSION['login']) && $_SESSION['login']){
 						echo "1";
-						$misGrupos = Grupos::buscaUsuarioenGrupos($_SESSION['nombreUsuario'], $_GET['idGrupo']);
+						$misGrupos = controllerGrupos::buscaUsuarioenGrupos($_SESSION['nombreUsuario'], $_GET['idGrupo']);
 						if($misGrupos){
 							$opciones = array();
 							$addToForm = array( 'idGrupo' => $_GET['idGrupo']);

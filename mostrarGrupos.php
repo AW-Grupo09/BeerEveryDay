@@ -2,6 +2,7 @@
 <?php
     require_once __DIR__.'/includes/config.php';
     require_once __DIR__.'/includes/FormularioGrupo.php';
+     require_once __DIR__.'/includes/TO/TOGrupos.php';
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +25,7 @@
         <div class="container">
             <h2> ¡Estos son los grupos actualmente activos en BeerEveryDay! </h2>
                 <?php
-                $grupos = Grupos::getGrupos();
+                $grupos = controllerGrupos::getGrupos();
                 foreach ($grupos as $grupo) { ?>
 
                  <fieldset>

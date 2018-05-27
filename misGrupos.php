@@ -1,6 +1,8 @@
 <?php 
 	require_once __DIR__.'/includes/config.php';
 	require_once __DIR__.'/includes/FormularioGrupo.php';
+    require_once __DIR__.'/includes/Controller/controllerGrupos.php';
+    require_once __DIR__.'/includes/TO/TOGrupos.php';
 
 	if(!$_SESSION['login']){
 			header('Location: login.php');
@@ -32,7 +34,7 @@
 
                <div id="grupo">
                 <?php
-                 $grupos = Grupos::getGruposByUser($_SESSION['nombreUsuario']);
+                 $grupos = controllerGrupos::getGruposByUser($_SESSION['nombreUsuario']);
                     foreach ($grupos as $grupo) { ?>
                         <fieldset>
                         <legend><a href = "vistaGrupo.php?idGrupo=<?=$grupo->getId()?> "><?=$grupo->getNombre()?> </a></legend>

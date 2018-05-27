@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__.'/Form.php';
-require_once __DIR__.'/grupos.php';
+require_once __DIR__.'/Controller/controllerGrupos.php';
 require_once __DIR__.'/Controller/controllerCervezas.php';
 require_once __DIR__.'/Controller/controllerPedidos.php';
 
@@ -67,18 +67,18 @@ require_once __DIR__.'/Controller/controllerPedidos.php';
 
 		//comprobar errores
 		if (count($erroresFormulario) === 0) {
-			$grupo = Grupos::creaGrupo($nombreGrupo, $direccion, $ciudad);
+			$grupo = controllerGrupos::creaGrupo($nombreGrupo, $direccion, $ciudad);
 
 			if (!$grupo ) {
 		    	$erroresFormulario[] = "El grupo ya existe";
 			} else {
 
 
-                Grupos::insertaGrupoUsuarios($_SESSION['nombreUsuario'], $grupo->getId(),$tusUnidades);
+                controllerGrupos::insertaGrupoUsuarios($_SESSION['nombreUsuario'], $grupo->getId(),$tusUnidades);
                 
                 $idPedido = controllerPedidos::procesarPedido($idCerveza,$direccion,$unidades);
 
-                Grupos::insertaGrupoPedidos($grupo->getId(),$idPedido);
+                controllerGrupos::insertaGrupoPedidos($grupo->getId(),$idPedido);
 
                 $_SESSION['nombreGrupo'] = $nombreGrupo;
                 header('Location: index.php');
