@@ -13,7 +13,6 @@
     <link rel="stylesheet" type="text/css" href="css/mostrarGrupos.css">
     <link rel="stylesheet" type="text/css" href="css/common.css">
     <link rel="stylesheet" type="text/css" href="css/footer.css"/>
-    <script type="text/javascript" src="js/javascript.js"></script>
 </head>
 
 <body>

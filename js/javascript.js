@@ -20,3 +20,12 @@ function myFunction() {
     }
 }
 
+function salirGrupo(idGrupo, idUser){
+    //Esta funcion se usa para salir de un grupo
+    $.get('includes/salirGrupo.php', {q: idGrupo, w:idUser}, 
+    function(returnedData){
+         console.log(returnedData);
+         location.reload();
+    });
+
+}
