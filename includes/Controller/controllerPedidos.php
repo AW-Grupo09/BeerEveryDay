@@ -123,6 +123,11 @@ class controllerPedidos {
         $daoPedido = new DAOPedidos();
         return $daoPedido->cantidadActualCervezas($idGrupo);
     }
+
+    public static function cantidadUsuarioGrupo($idGrupo, $nombreUsuario){
+        $daoPedido = new DAOPedidos();
+        return $daoPedido->cantidadCervezasUsuario($idGrupo, $nombreUsuario);
+    }
     
     public static function getCervezaByIdGrupo($idGrupo){
         $daoPedido = new DAOPedidos();
