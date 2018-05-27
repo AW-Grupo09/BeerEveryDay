@@ -36,7 +36,6 @@ span{
 }
  
 .container input{
-	margin-top: 40px;
 	text-decoration: none;
     padding: 10px;
     font-weight: 600;
@@ -44,6 +43,9 @@ span{
     background-color: #FFC107;
     border-radius: 6px;
 	border: 1.42px solid #0016b0;
+}
+#number{
+    margin-top: 40px;
 }
 ::placeholder { 
     color: #ffffff;
@@ -90,6 +92,7 @@ legend{
 /*Valoraciones five stars*/
 #dateComent{
     float: right;
+    padding-right: 10px;
 }
 p {
   text-align: left;
@@ -154,4 +157,8 @@ input[type="radio"]:checked ~ label {
     border: 2px solid #FFC107;
     border-radius: 25px;
     background-color: #FFEA83;
-} 
+}
+#myBtn{
+    position: relative;    
+    left:80%;
+}
