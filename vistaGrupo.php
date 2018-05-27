@@ -17,11 +17,9 @@
 	<link rel="stylesheet" type="text/css" href="css/common.css" />
 	<link rel="stylesheet" type="text/css" href="css/footer.css"/>
 	<link rel="stylesheet" type="text/css" href="css/vistaGrupo.css"/>
-<<<<<<< HEAD
-=======
 	<script type="text/javascript" src="js/javascript.js"></script>
 	<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
->>>>>>> d14a62eb87399d10964322ce908b541a0164b04f
+
 	<meta charset="utf-8">	
 	<title>Cervezas</title>
 
