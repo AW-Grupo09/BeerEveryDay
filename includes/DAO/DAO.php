@@ -49,6 +49,15 @@ class DAO {
     		return 0;
     	}
     }
+
+    public function ejecutarInsert_Id($sql){
+        if($sql != ""){
+            $consulta = $this->mysqli->query($sql) or die ($this->mysqli->error. " en la línea ".(__LINE__-1));
+            return mysqli_insert_id($this->mysqli);
+        } else{
+            return NULL;
+        }
+    }
 }
 
 ?>

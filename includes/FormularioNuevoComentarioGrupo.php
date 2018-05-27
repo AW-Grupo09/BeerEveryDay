@@ -1,7 +1,6 @@
 <?php
 require_once __DIR__.'/Form.php';
 require_once __DIR__.'/funcionImagen.php';
-require_once __DIR__.'/grupos.php';
 require_once __DIR__.'/TO/TOComentarios.php';
 require_once __DIR__.'/Controller/controllerComentarios.php';
 
