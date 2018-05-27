@@ -96,8 +96,11 @@ class controllerPedidos {
 
     public static function procesarPedido($idCerveza,$dirreccion,$unidades){
         $daoPedido = new DAOPedidos();
+        
         $date = date("Y/m/d");
-        $dateLimite = date("Y/m/d"); /*faltaria sumarle los 14 dias */
+        $dateLimite = strtotime ('+14 day' , strtotime ( $date ));
+        $dateLimite = date("Y/m/d",$dateLimite);
+
 
         $daoPedido->insertarPedido($dirreccion,$date,$dateLimite);
         $idPedido = $daoPedido->getIdPedido();
