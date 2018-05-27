@@ -51,7 +51,7 @@ class DAOPedidos extends DAO{
     }
 
     public function loadPedidos($user){
-        $sql = "SELECT * FROM `usuarios-pedidos` WHERE idusuario = '$user' GROUP BY idPedido ";
+        $sql = "SELECT * FROM `usuarios-pedidos` WHERE idusuario = '" . $this->mysqli->real_escape_string($user) . "' GROUP BY idPedido ";
         $consulta = $this->ejecutarConsulta($sql);
         $array = array();
         if (count($consulta) != 0){
@@ -86,7 +86,7 @@ class DAOPedidos extends DAO{
     }
     
     public function insertarPedidosUsuarios($idUser, $idPedido){
-        $sql = "INSERT INTO `usuarios-pedidos`(`idUsuario`, `idPedido`) VALUES ('" . $idUser . "'," . $idPedido . ")";
+        $sql = "INSERT INTO `usuarios-pedidos`(`idUsuario`, `idPedido`) VALUES ('" . $this->mysqli->real_escape_string($idUser) . "'," . $idPedido . ")";
         $consulta = $this->ejecutarModificacion($sql);
     }
     
@@ -116,7 +116,7 @@ class DAOPedidos extends DAO{
     }
 
     public function loadCesta($user){
-        $sql = "SELECT pedidos.idPedido FROM pedidos, `usuarios-pedidos` WHERE pedidos.idPedido = `usuarios-pedidos`.`idPedido` and estado = 'cesta' and idusuario = '$user'";
+        $sql = "SELECT pedidos.idPedido FROM pedidos, `usuarios-pedidos` WHERE pedidos.idPedido = `usuarios-pedidos`.`idPedido` and estado = 'cesta' and idusuario = '" . $this->mysqli->real_escape_string($user) . "'";
         $consulta = $this->ejecutarConsulta($sql);
         if(count($consulta) > 0 and isset($consulta[0]["idPedido"])){
             return $consulta[0]["idPedido"];
@@ -148,7 +148,7 @@ class DAOPedidos extends DAO{
     }
 
     public function insertarPedido($direccion,$date,$dateLimite){
-        $sql ="INSERT INTO pedidos(estado,fechaPedido,fechaLimite,Direccion) VALUES ('cesta',".$date.",".$dateLimite.",'$direccion')";
+        $sql ="INSERT INTO pedidos(estado,fechaPedido,fechaLimite,Direccion) VALUES ('cesta','" .$date. "','" .$dateLimite. "','" . $this->mysqli->real_escape_string($direccion) . "')";
         $consulta = $this->ejecutarModificacion($sql);
     }
 
@@ -172,15 +172,20 @@ class DAOPedidos extends DAO{
         $consulta = $this->ejecutarConsulta($sql);
         return $consulta[0]['unidades'];
     }
-    public function getCervezaById($idGrupo){
-
+    
+    public function getIdPedidoByGroup($idGrupo){
         $sql = "SELECT * FROM `grupo-pedidos` WHERE idGrupo = ". $idGrupo;
         $consultaGrupo = $this->ejecutarConsulta($sql);;
         $idPedido =  $consultaGrupo[0]['idPedido'];
-
+        return $idPedido;
+    }
+    public function getIdCerveza($idPedido){
         $sql = "SELECT idCerveza FROM `pedidos-cervezas` WHERE idPedido = ". $idPedido;
         $consultaPedido = $this->ejecutarConsulta($sql);
         $idCerveza = $consultaPedido[0]['idCerveza'];
+        return $idCerveza;
+    }
+    public function getCervezaById($idCerveza){
 
         $sql = "SELECT * FROM cervezas WHERE id = ". $idCerveza;
         $consulta = $this->ejecutarConsulta($sql);
@@ -205,6 +210,10 @@ class DAOPedidos extends DAO{
         } else{
             return null;
         }
+    }
+    public function actualizarEstado($idPedido ,$Date){
+        $sql = "UPDATE pedidos SET estado = 'enviado' ,fechaPedido = '" .$Date. "'WHERE idPedido = ". $idPedido;
+        $consulta = $this->ejecutarModificacion($sql);
     }
 }
 

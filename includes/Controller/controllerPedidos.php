@@ -96,8 +96,11 @@ class controllerPedidos {
 
     public static function procesarPedido($idCerveza,$dirreccion,$unidades){
         $daoPedido = new DAOPedidos();
+        
         $date = date("Y/m/d");
-        $dateLimite = date("Y/m/d"); /*faltaria sumarle los 14 dias */
+        $dateLimite = strtotime ('+14 day' , strtotime ( $date ));
+        $dateLimite = date("Y/m/d",$dateLimite);
+
 
         $daoPedido->insertarPedido($dirreccion,$date,$dateLimite);
         $idPedido = $daoPedido->getIdPedido();
@@ -120,11 +123,19 @@ class controllerPedidos {
         $daoPedido = new DAOPedidos();
         return $daoPedido->cantidadActualCervezas($idGrupo);
     }
-
+    
     public static function getCervezaByIdGrupo($idGrupo){
         $daoPedido = new DAOPedidos();
-        return $daoPedido->getCervezaById($idGrupo);
+        $idPedido = $daoPedido->getIdPedidoByGroup($idGrupo);
+        $idCerveza = $daoPedido->getIdCerveza($idPedido);
+        return $daoPedido->getCervezaById($idCerveza);
 
+    }
+    public static function actualizarEstadoPedido($idGrupo){
+        $daoPedido = new DAOPedidos();
+        $idPedido = $daoPedido->getIdPedidoByGroup($idGrupo);
+        $Date = date("Y/m/d");
+        $daoPedido->actualizarEstado($idPedido, $Date);
     }
 }
 

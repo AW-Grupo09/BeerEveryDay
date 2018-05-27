@@ -48,23 +48,23 @@ class DAOUsuario extends DAO{
             "', ciudad='" . mysqli_real_escape_string($this->mysqli, $ciudad) . 
             "', email='" . mysqli_real_escape_string($this->mysqli, $email) . 
             "', fechaNac='" . mysqli_real_escape_string($this->mysqli, $fechaNac) . 
-            "' WHERE U.nombreUsuario='$nombreUsuario'";
+            "' WHERE U.nombreUsuario='" . $this->mysqli->real_escape_string($nombreUsuario) . "'";
         $this->ejecutarModificacion($query);
     }
 
     public function actualizaUserPassword($nombreUsuario, $usuario, $pass) {
-        $query = "UPDATE usuarios U SET password='$pass' WHERE U.nombreUsuario='$nombreUsuario'";
+        $query = "UPDATE usuarios U SET password='" . $this->mysqli->real_escape_string($pass) . "' WHERE U.nombreUsuario='" . $this->mysqli->real_escape_string($nombreUsuario) . "'";
         $this->ejecutarModificacion($query);
     }
 
     public function actualizaUserAvatar($nombreUsuario, $usuario, $avatar) {
-        $query = "UPDATE usuarios U SET avatar='$avatar' WHERE U.nombreUsuario='$nombreUsuario'";
+        $query = "UPDATE usuarios U SET avatar='" . $this->mysqli->real_escape_string($avatar) . "' WHERE U.nombreUsuario='$nombreUsuario'";
         $this->ejecutarModificacion($query);
     }
 
    
     public function esAdmin($usuario) {
-        $query = "SELECT * FROM usuarios U WHERE U.nombreUsuario = '$usuario'";
+        $query = "SELECT * FROM usuarios U WHERE U.nombreUsuario = '" . $this->mysqli->real_escape_string($usuario) . "'";
         $rs = $this->ejecutarConsulta($query);
         $isAdmin = false;
         if ($rs) {
@@ -80,7 +80,7 @@ class DAOUsuario extends DAO{
     }
 
     public function correoExiste($nombreUsuario, $email) {
-        $query = "SELECT * FROM usuarios U WHERE U.nombreUsuario != '$nombreUsuario' and U.email = '" . mysqli_real_escape_string($this->mysqli, $email) . "'";
+        $query = "SELECT * FROM usuarios U WHERE U.nombreUsuario != '" . $this->mysqli->real_escape_string($nombreUsuario) . "' and U.email = '" . mysqli_real_escape_string($this->mysqli, $email) . "'";
         $rs = $this->ejecutarConsulta($query);
         $repiteEmail = false;
         if ($rs) {
