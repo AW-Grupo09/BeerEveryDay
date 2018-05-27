@@ -148,7 +148,7 @@ class DAOPedidos extends DAO{
     }
 
     public function insertarPedido($direccion,$date,$dateLimite){
-        $sql ="INSERT INTO pedidos(estado,fechaPedido,fechaLimite,Direccion) VALUES ('cesta'," . $date . "," . $dateLimite . ",'" . $this->mysqli->real_escape_string($direccion) . "')";
+        $sql ="INSERT INTO pedidos(estado,fechaPedido,fechaLimite,Direccion) VALUES ('cesta','" .$date. "','" .$dateLimite. "','" . $this->mysqli->real_escape_string($direccion) . "')";
         $consulta = $this->ejecutarModificacion($sql);
     }
 
@@ -172,15 +172,19 @@ class DAOPedidos extends DAO{
         $consulta = $this->ejecutarConsulta($sql);
         return $consulta[0]['unidades'];
     }
-    public function getCervezaById($idGrupo){
-
+    public function getIdPedidoByGroup($idGrupo){
         $sql = "SELECT * FROM `grupo-pedidos` WHERE idGrupo = ". $idGrupo;
         $consultaGrupo = $this->ejecutarConsulta($sql);;
         $idPedido =  $consultaGrupo[0]['idPedido'];
-
+        return $idPedido;
+    }
+    public function getIdCerveza($idPedido){
         $sql = "SELECT idCerveza FROM `pedidos-cervezas` WHERE idPedido = ". $idPedido;
         $consultaPedido = $this->ejecutarConsulta($sql);
         $idCerveza = $consultaPedido[0]['idCerveza'];
+        return $idCerveza;
+    }
+    public function getCervezaById($idCerveza){
 
         $sql = "SELECT * FROM cervezas WHERE id = ". $idCerveza;
         $consulta = $this->ejecutarConsulta($sql);
@@ -205,6 +209,10 @@ class DAOPedidos extends DAO{
         } else{
             return null;
         }
+    }
+    public function actualizarEstado($idPedido ,$Date){
+        $sql = "UPDATE pedidos SET estado = 'enviado' ,fechaPedido = '" .$Date. "'WHERE idPedido = ". $idPedido;
+        $consulta = $this->ejecutarModificacion($sql);
     }
 }
 
