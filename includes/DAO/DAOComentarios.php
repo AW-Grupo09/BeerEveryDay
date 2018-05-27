@@ -55,7 +55,7 @@ class DAOComentarios extends DAO{
 
     public function cargarComentariosGrupos($idGrupo){
 
-        $query = "SELECT idComentario FROM `comentarios-grupos` WHERE idGrupo = '" . $idGrupo . "' ORDER BY fecha";
+        $query = "SELECT idComentario FROM `comentarios-grupos` WHERE idGrupo = '" . $idGrupo . "' ORDER BY fecha DESC";
         $resultado = $this->ejecutarConsulta($query);
 
         $comentarios = array();
