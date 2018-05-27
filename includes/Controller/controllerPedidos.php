@@ -101,7 +101,6 @@ class controllerPedidos {
         $dateLimite = strtotime ('+14 day' , strtotime ( $date ));
         $dateLimite = date("Y/m/d",$dateLimite);
 
-
         $daoPedido->insertarPedido($dirreccion,$date,$dateLimite);
         $idPedido = $daoPedido->getIdPedido();
         $daoPedido->insertarCervezas($idCerveza,$unidades,$idPedido);
@@ -141,6 +140,16 @@ class controllerPedidos {
         $idPedido = $daoPedido->getIdPedidoByGroup($idGrupo);
         $Date = date("Y/m/d");
         $daoPedido->actualizarEstado($idPedido, $Date);
+    }
+
+    public static function getIdPedidoByGroup($idGrupo){
+        $daoPedido = new DAOPedidos();
+        return $daoPedido->getIdPedidoByGroup($idGrupo);
+    }
+
+    public static function getEstadoPedidoGroup($idGrupo){
+        $daoPedido = new DAOPedidos();
+        return $daoPedido->getEstadoPedidoGroup($idGrupo);
     }
 }
 

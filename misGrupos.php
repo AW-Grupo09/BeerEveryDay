@@ -35,8 +35,9 @@
                 <?php
                  $grupos = controllerGrupos::getGruposByUser($_SESSION['nombreUsuario']);
                  if(empty($grupos)){
-                    echo "<p id='nogrupo'> Vaya.. parece que aún no estás en ningún grupo.. </p>";
+                    echo "<p id='nogrupo'> Vaya... parece que aún no estás en ningún grupo... </p>";
                     echo "<p id='nogrupo'> <a href='mostrarGrupos.php'>¿Por qué no te animas a ver los que hay? </a> </p>";
+                    echo "<p id='nogrupo'> También puedes crear tu propio grupo con el formulario de la derecha.</p>";
                  }
                  else{
 

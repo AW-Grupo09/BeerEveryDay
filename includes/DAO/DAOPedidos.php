@@ -185,6 +185,15 @@ class DAOPedidos extends DAO{
         $idPedido =  $consultaGrupo[0]['idPedido'];
         return $idPedido;
     }
+
+    public function getEstadoPedidoGroup($idGrupo){
+        $sql = "SELECT `estado` FROM `grupo-pedidos` AS `grupo` JOIN `pedidos` AS `pedidos` WHERE idGrupo = ". $idGrupo AND "grupo.idPedido = pedidos.idPedido";
+        $consultaGrupo = $this->ejecutarConsulta($sql);;
+        $estado =  $consultaGrupo[0]['estado'];
+        return $estado;
+    }
+
+
     public function getIdCerveza($idPedido){
         $sql = "SELECT idCerveza FROM `pedidos-cervezas` WHERE idPedido = ". $idPedido;
         $consultaPedido = $this->ejecutarConsulta($sql);

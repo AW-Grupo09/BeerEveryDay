@@ -115,6 +115,25 @@
 
 					                	</form>
 					                </div>
+
+					                <div id="admin"> 
+					                	<?php 
+					                		if($grupo->getCreador() == $_SESSION['nombreUsuario']){
+					                			echo "<h3> Eres el creador de este grupo</h3>";
+					                			echo "<p> aquí tienes información del pedido </p>";
+					                			$idPed = controllerPedidos::getIdPedidoByGroup($_GET['idGrupo']);
+					                			echo "<p> Id del pedido: " . $idPed . "</p>";
+					                			$estado = controllerPedidos::getEstadoPedidoGroup($_GET['idGrupo']);
+					                			echo "Estado del pedido: " . $estado;
+					                		}
+					                		else
+					                			echo "El creador del grupo tiene toda la info acerca del pedido";
+					                	?>
+
+
+					                </div>
+
+
 			                    </div>
 					<?php 
 				}
@@ -132,7 +151,7 @@
 
 				            foreach($comentarios as $comentario){				            	
 				            	echo "<div id='showComment'>";
-				            	echo "<p id = 'dateComent'> Fecha: " . $comentario->getFecha(). "</p>";
+				            	echo "<p id = 'dateComent'> " . $comentario->getFecha(). "</p>";
 				                echo "<p id = 'autorComent'><span id='spanId'>" . $comentario->getIdUsuario(). "</span></p>";
 				                
 				                echo "<p id = 'coment'>" . $comentario->getComentario(). "</p>";

@@ -19,7 +19,7 @@
 	<link rel="stylesheet" type="text/css" href="css/mostrarPedido.css" />
 	<link rel="stylesheet" type="text/css" href="css/footer.css"/>
 	<script type="text/javascript" src="js/javascript.js"></script>
-	<title>Cesta</title>
+	<title>Mi cesta</title>
 </head>
 
 <body>

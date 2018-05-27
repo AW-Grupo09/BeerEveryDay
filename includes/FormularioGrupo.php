@@ -18,7 +18,6 @@ require_once __DIR__.'/Controller/controllerPedidos.php';
             $select .= "<option value='". $cerveza->getIdCerveza() ."'>" . $cerveza->getNombre() . "</option>";
         }
 
-
     	return '	<fieldset>
 					<legend> Formulario nuevo grupo: </legend>
 
