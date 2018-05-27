@@ -16,8 +16,7 @@
     <link rel="stylesheet" type="text/css" href="css/misGrupos.css" />
 	<link rel="stylesheet" type="text/css" href="css/common.css" />
 	<link rel="stylesheet" type="text/css" href="css/footer.css"/>
-
-
+    <title>Mis grupos</title>
 </head>
 
 <body>

@@ -20,7 +20,7 @@
 			<div class="footer-columna">
 				<h3>SUSCRÍBETE</h3>
 					<input type="email" placeholder="Escríba su correo">
-					<input type="submit" value="Suscribirse">
+					<input type="submit" id="subs" value="Suscribirse">
 			</div>
 
 			<div class="footer-columna">

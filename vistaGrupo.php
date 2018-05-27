@@ -19,9 +19,8 @@
 	<link rel="stylesheet" type="text/css" href="css/vistaGrupo.css"/>
 	<script type="text/javascript" src="js/javascript.js"></script>
 	<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
-
 	<meta charset="utf-8">	
-	<title>Cervezas</title>
+	<title>Grupo</title>
 
 </head>
 <body>
@@ -39,16 +38,9 @@
 							$misGrupos = controllerGrupos::buscaUsuarioenGrupos($_SESSION['nombreUsuario'], $_GET['idGrupo']);
 			                if($misGrupos != true){
 			                $gruposUsuarios = controllerGrupos::insertaGrupoUsuarios($_SESSION['nombreUsuario'], $_GET['idGrupo'], $_GET['unidades']);
-				                if(isset($gruposUsuarios)){
-				                    echo "<div class='mensajeInfo'><div class='titulo2'> Te has unido correctamente </div> </div>";
-				                }
-			                }
-			                else{
-			                    echo "<div class='mensajeInfo'> <div class='titulo2'> Ya perteneces al grupo </div></div>";
 			                }
 						}
 					}
-
 
 					if(isset($_GET['idGrupo'])){
 						$grupo = controllerGrupos::getGrupoById($_GET['idGrupo']);?>
@@ -85,23 +77,33 @@
 					                    if(!$misGrupos)
 					                    	echo'<div class="titulo"> ¿Quieres unirte al grupo? </div>';
 									    else 
-											echo'<div class="titulo"> ¿Quieres modificar el numero de cervezas? </div>';
+											echo'<div class="titulo"> Eres miembro de este grupo </div>';
 									}
 								?>
 					                <div>
+					                	<?php $misGrupos = controllerGrupos::buscaUsuarioenGrupos($_SESSION['nombreUsuario'], $_GET['idGrupo']);
+						                    if(!$misGrupos) { ?>
 						                <form action="" method="get">
 						                	<label> Unidades:</label>
 											<input type="hidden" name="idGrupo" value="<?=$grupo->getId()?>">
 					            			<input type="number" name="unidades" placeholder="1" min="1" max="<?=$cantidaddisponible?>" required/>
 					            			<span id="comprobar_mensaje"></span>
-				                    <?php 	
+				                    <?php 	}
 
 					                    if(isset($_SESSION['login']) && $_SESSION['login']){
 											$misGrupos = controllerGrupos::buscaUsuarioenGrupos($_SESSION['nombreUsuario'], $_GET['idGrupo']);
-						                    if(!$misGrupos)
-						                    	echo'<button type="submit" class= "unirsebtn" onclick="unirse(<?=$grupo->getId()?>)">Confirmar</button>';
-										    else 
-												echo'<button type="submit" class= "unirsebtn" onclick="unirse(<?=$grupo->getId()?>)">Modificar</button>';
+						                    if(!$misGrupos){
+						                    	echo '<button type="submit" class= "unirsebtn" onclick="unirse(<?=$grupo->getId()?>)">Confirmar</button>';
+
+						                    }
+										    else {
+
+									             if(isset($_SESSION['login']) && $_SESSION['login']){
+													$misGrupos = controllerGrupos::buscaUsuarioenGrupos($_SESSION['nombreUsuario'], $_GET['idGrupo']);
+												    if($misGrupos)
+												    	echo '<input type="button" id="salir" onclick="salirGrupo('. $_GET['idGrupo'] .', `'.$_SESSION['nombreUsuario'].'`)" value="Salir del grupo">';   
+												 } 
+										    }
 										}
 									?>
 
@@ -114,23 +116,7 @@
            	</div>
            	
            	<div class="structComentarios">
-	            <div id = "addComment">
-	            	<?php
-	            	
-	            	//Formulario para aniadir comentario
-					if(isset($_SESSION['login']) && $_SESSION['login']){
-						$misGrupos = controllerGrupos::buscaUsuarioenGrupos($_SESSION['nombreUsuario'], $_GET['idGrupo']);
-						if($misGrupos){
-							$opciones = array();
-							$addToForm = array( 'idGrupo' => $_GET['idGrupo']);
-					        $opciones = array_merge($addToForm, $opciones);
-							$formulario = new FormularioNuevoComentarioGrupo("FormularioNuevoComentarioGrupo", $opciones);
-							$formulario->gestiona();
-						}
-					}
-						
-					?>
-	            </div>
+	            
 	           	<div id = "comentarios">
 		        	<?php
 		        		
@@ -150,14 +136,23 @@
 			        		
 		        	?>
 	       		</div>
-
-                <?php 	
-	             if(isset($_SESSION['login']) && $_SESSION['login']){
-					$misGrupos = controllerGrupos::buscaUsuarioenGrupos($_SESSION['nombreUsuario'], $_GET['idGrupo']);
-				    if($misGrupos)
-				    	echo '<input type="button" id="myBtn" onclick="salirGrupo('. $_GET['idGrupo'] .', `'.$_SESSION['nombreUsuario'].'`)" value="Salir del grupo">';   
-				 } 
-				?>	       		
+	     		<div id = "addComment">
+		            	<?php
+		            	
+		            	//Formulario para aniadir comentario
+						if(isset($_SESSION['login']) && $_SESSION['login']){
+							$misGrupos = controllerGrupos::buscaUsuarioenGrupos($_SESSION['nombreUsuario'], $_GET['idGrupo']);
+							if($misGrupos){
+								$opciones = array();
+								$addToForm = array( 'idGrupo' => $_GET['idGrupo']);
+						        $opciones = array_merge($addToForm, $opciones);
+								$formulario = new FormularioNuevoComentarioGrupo("FormularioNuevoComentarioGrupo", $opciones);
+								$formulario->gestiona();
+							}
+						}
+							
+						?>
+		            </div>
 		
 	        </div>
 	    </div>
