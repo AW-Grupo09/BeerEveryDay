@@ -7,6 +7,7 @@
 	require_once __DIR__.'/includes/Controller/controllerGrupos.php';
 	require_once __DIR__.'/includes/TO/TOComentarios.php';
 	require_once __DIR__.'/includes/TO/TOGrupos.php';
+	require_once __DIR__.'/includes/TO/TOCervezas.php';
 	global $sql;
 ?>
 
@@ -50,7 +51,7 @@
 					if(isset($_GET['idGrupo'])){
 						$grupo = controllerGrupos::getGrupoById($_GET['idGrupo']);?>
 						<?php
-							$cerveza = controllerPedidos::getCervezasById($grupo->getId());
+							$cerveza = controllerPedidos::getCervezaByIdGrupo($grupo->getId());
 				            $cantidadtotal = controllerPedidos::cantidadTotal($grupo->getId());
 							$fechaLimite = controllerPedidos::fechaLimite($grupo->getId());
 				            $cantidadActual = controllerPedidos::cantidadActual( $grupo->getId());
@@ -59,13 +60,15 @@
 						<div class ="izquierda">
 							<div class = "titulo"><?=$grupo->getNombre() ?></div>
 							<div class = "informacionGrupos">
-								<p><span>Cerveza:</span></p><?=$cerveza?></p>
+								<p><span>Cerveza: </span><?=$cerveza->getNombre()?></p>
+								 <p><span>Precio por unidad con el descuento: </span><?=$cerveza->getPrecio()?><p>
 								<p><span>Dirección: </span> <?=$grupo->getDireccion()?></p>
 		                        <p><span>Ciudad: </span> <?=$grupo->getCiudad()?></p>
 		                        <p><span>Creado por: </span><?=$grupo->getCreador()?></p>
 		                        <p><span>Fecha limite: </span><?=$fechaLimite?></p>
 		                        <p><span>Cantidad total: </span><?=$cantidadtotal?></p>
 		                        <p><span>Cantidad disponible: </span><?=$cantidaddisponible?></p>
+
 		                    </div>
 	                    </div>
 
@@ -82,23 +85,6 @@
 				                	<button type="submit" class= "unirsebtn" onclick="unirse(<?=$grupo->getId()?>)">Confirmar</button>
 			                	</form>
 			                </div>
-
-			                <?php /*if (isset($_GET['unidades'])) {
-								if(!$_SESSION['login']){
-			                        header('Location: login.php');
-			                    }else{
-									$misGrupos = Grupos::buscaUsuarioenGrupos($_SESSION['nombreUsuario'], $_GET['idGrupo']);
-			                        if($misGrupos != true){
-			                            $gruposUsuarios = Grupos::insertaGrupoUsuarios($_SESSION['nombreUsuario'], $_GET['idGrupo'], $_GET['unidades']);
-			                            if(isset($gruposUsuarios)){
-			                                echo "<div class='mensajeInfo'><div class='titulo2'> Te has unido correctamente </div> </div>";
-			                            }
-			                        }
-			                        else{
-			                        	 	echo "<div class='mensajeInfo'> <div class='titulo2'> Ya perteces al grupo </div></div>";
-			                        }
-								}
-							}*/?>
 	                    </div>
 					<?php }
 				?> 		

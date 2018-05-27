@@ -172,7 +172,7 @@ class DAOPedidos extends DAO{
         $consulta = $this->ejecutarConsulta($sql);
         return $consulta[0]['unidades'];
     }
-    public function nombreCervezaById($idGrupo){
+    public function getCervezaById($idGrupo){
 
         $sql = "SELECT * FROM `grupo-pedidos` WHERE idGrupo = ". $idGrupo;
         $consultaGrupo = $this->ejecutarConsulta($sql);;
@@ -182,9 +182,29 @@ class DAOPedidos extends DAO{
         $consultaPedido = $this->ejecutarConsulta($sql);
         $idCerveza = $consultaPedido[0]['idCerveza'];
 
-        $sql = "SELECT nombre FROM cervezas WHERE id = ". $idCerveza;
-        $consultaCerveza = $this->ejecutarConsulta($sql);
-        return $consultaCerveza[0]['nombre'];
+        $sql = "SELECT * FROM cervezas WHERE id = ". $idCerveza;
+        $consulta = $this->ejecutarConsulta($sql);
+
+        $cerveza = new TOCervezas($idCerveza);
+
+        if (count($consulta) > 0) {
+            $cerveza->setNombre($consulta[0]["nombre"]);
+            $cerveza->setArtesana($consulta[0]["artesana"]);
+            $cerveza->setCapacidad($consulta[0]["capacidad"]);
+            $cerveza->setColor($consulta[0]["color"]);
+            $cerveza->setFabricante($consulta[0]["fabricante"]);
+            $cerveza->setGrado($consulta[0]["grado"]);
+            $cerveza->setGrano($consulta[0]["grano"]);
+            $cerveza->setImagen($consulta[0]["Imagen"]);
+            $cerveza->setPais($consulta[0]["pais"]);
+            $precio = $consulta[0]["precio"] - ($consulta[0]["precio"]*0.15);
+            $precio = round($precio,2);
+            $cerveza->setPrecio($precio);
+            $cerveza->setTipo($consulta[0]["tipo"]);
+            return $cerveza;
+        } else{
+            return null;
+        }
     }
 }
 
