@@ -1,5 +1,5 @@
 <?php 
-	require_once __DIR__.'/includes/config.php';
+	session_start();
 
 	//Doble seguridad: unset + destroy
 	unset($_SESSION["login"]);

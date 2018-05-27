@@ -92,6 +92,12 @@ class controllerGrupos
         $daoGrupos = new DAOGrupos();
         return $daoGrupos->actualiza($grupo);
     }
+
+    public static function salirGrupo($idGrupo,$idUsuario){
+        $daoGrupos = new DAOGrupos();
+        return $daoGrupos->salirGrupo($idGrupo, $idUsuario);
+    }
+
 }
 
 ?>

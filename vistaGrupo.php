@@ -1,5 +1,5 @@
 <?php 
-	require_once __DIR__.'/includes/config.php';
+	session_start();
 	require_once __DIR__.'/includes/FormularioGrupo.php';
 	require_once __DIR__.'/includes/FormularioNuevoComentarioGrupo.php';
 	require_once __DIR__.'/includes/Controller/controllerPedidos.php';
@@ -18,6 +18,8 @@
 	<link rel="stylesheet" type="text/css" href="css/footer.css"/>
 	<link rel="stylesheet" type="text/css" href="css/vistaGrupo.css"/>
 	<script type="text/javascript" src="js/javascript.js"></script>
+	<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+
 	<meta charset="utf-8">	
 	<title>Cervezas</title>
 
@@ -74,22 +76,40 @@
 
 		                    </div>
 	                    </div>
+			                    <div class="derecha">
+				                <?php 	
+				                	//Para que muestre una cosa u otra en funcion de si eres del grupo o no
 
-	                    <div class="derecha">
-	                    	<div class="titulo">
-			                     ¿ Quieres unirte al grupo ?
-			                </div>
-			                <div>
-				                <form action="" method="get">
-				                	<label> Unidades:</label>
-									<input type="hidden" name="idGrupo" value="<?=$grupo->getId()?>">
-			            			<input type="number" name="unidades" placeholder="1" min="1" max="<?=$cantidaddisponible?>" required/>
-			            			<span id="comprobar_mensaje"></span>
-				                	<button type="submit" class= "unirsebtn" onclick="unirse(<?=$grupo->getId()?>)">Confirmar</button>
-			                	</form>
-			                </div>
-	                    </div>
-					<?php }
+				                    if(isset($_SESSION['login']) && $_SESSION['login']){
+										$misGrupos = controllerGrupos::buscaUsuarioenGrupos($_SESSION['nombreUsuario'], $_GET['idGrupo']);
+					                    if(!$misGrupos)
+					                    	echo'<div class="titulo"> ¿ Quieres unirte al grupo ? </div>';
+									    else 
+											echo'<div class="titulo"> ¿ Quieres modificar el numero de cervezas ? </div>';
+									}
+								?>
+					                <div>
+						                <form action="" method="get">
+						                	<label> Unidades:</label>
+											<input type="hidden" name="idGrupo" value="<?=$grupo->getId()?>">
+					            			<input type="number" name="unidades" placeholder="1" min="1" max="<?=$cantidaddisponible?>" required/>
+					            			<span id="comprobar_mensaje"></span>
+				                    <?php 	
+
+					                    if(isset($_SESSION['login']) && $_SESSION['login']){
+											$misGrupos = controllerGrupos::buscaUsuarioenGrupos($_SESSION['nombreUsuario'], $_GET['idGrupo']);
+						                    if(!$misGrupos)
+						                    	echo'<button type="submit" class= "unirsebtn" onclick="unirse(<?=$grupo->getId()?>)">Confirmar</button>';
+										    else 
+												echo'<button type="submit" class= "unirsebtn" onclick="unirse(<?=$grupo->getId()?>)">Modificar</button>';
+										}
+									?>
+
+					                	</form>
+					                </div>
+			                    </div>
+					<?php 
+				}
 				?> 		
            	</div>
            	
@@ -130,6 +150,14 @@
 			        		
 		        	?>
 	       		</div>
+
+                <?php 	
+	             if(isset($_SESSION['login']) && $_SESSION['login']){
+					$misGrupos = controllerGrupos::buscaUsuarioenGrupos($_SESSION['nombreUsuario'], $_GET['idGrupo']);
+				    if($misGrupos)
+				    	echo '<input type="button" id="myBtn" onclick="salirGrupo('. $_GET['idGrupo'] .', `'.$_SESSION['nombreUsuario'].'`)" value="Salir del grupo">';   
+				 } 
+				?>	       		
 		
 	        </div>
 	    </div>

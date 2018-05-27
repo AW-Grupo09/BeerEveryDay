@@ -1,6 +1,6 @@
 
 <?php
-    require_once __DIR__.'/includes/config.php';
+    session_start();
     require_once __DIR__.'/includes/FormularioGrupo.php';
      require_once __DIR__.'/includes/TO/TOGrupos.php';
 ?>
@@ -13,7 +13,6 @@
     <link rel="stylesheet" type="text/css" href="css/mostrarGrupos.css">
     <link rel="stylesheet" type="text/css" href="css/common.css">
     <link rel="stylesheet" type="text/css" href="css/footer.css"/>
-    <script type="text/javascript" src="js/javascript.js"></script>
 </head>
 
 <body>

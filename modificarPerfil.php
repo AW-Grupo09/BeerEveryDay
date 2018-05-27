@@ -1,5 +1,5 @@
 <?php 
-	require_once __DIR__.'/includes/config.php';
+	session_start();
 	require_once __DIR__ .'/includes/FormularioModifica.php';
 
     if(!$_SESSION['login']){
@@ -17,7 +17,6 @@
 		<link rel="stylesheet" type="text/css" href="css/perfil.css" />
 		<meta charset="utf-8"/>	
 		<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
-		<script type="text/javascript" src="js/guardaCambios.js"></script>
 		<script type="text/javascript" src="js/correoValido.js"></script>
 		<?php
 			$user = controllerUsuario::buscaUsuario($_SESSION['nombreUsuario']);

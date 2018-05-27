@@ -1,5 +1,5 @@
 <?php 
-	require_once __DIR__.'/includes/config.php';
+	session_start();
 	require_once __DIR__ .'/includes/FormularioModificaPassword.php';
 
     if(!$_SESSION['login']){
@@ -16,8 +16,6 @@
 		<link rel="stylesheet" type="text/css" href="css/footer.css"/>
 		<link rel="stylesheet" type="text/css" href="css/perfil.css" />
 		<meta charset="utf-8"/>	
-		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-		<script type="text/javascript" src="js/guardaCambios.js"></script>
 </head>
 
 <body>

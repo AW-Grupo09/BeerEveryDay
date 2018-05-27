@@ -173,6 +173,18 @@ class DAOGrupos extends DAO {
 
         return $grupo;
     }
+
+    public function salirGrupo($idGrupo,$idUsuario){
+
+
+        $query = 'DELETE FROM `grupos-usuarios` WHERE idUsuario = "' . $idUsuario . '" AND idGrupo = "' . $idGrupo. '"';
+        $resultado = $this->ejecutarModificacion($query);
+
+        if($resultado == 0){
+            return "Error al salir del grupo";
+        }
+
+    } 
 }
 
 ?>

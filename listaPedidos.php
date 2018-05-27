@@ -1,6 +1,6 @@
 <?php 
 	
-	require_once __DIR__.'/includes/config.php';
+	session_start();
 	require_once __DIR__.'/includes/Controller/controllerPedidos.php';
 	require_once __DIR__.'/includes/Controller/controllerCervezas.php';
 	require_once __DIR__.'/includes/TO/TOPedidos.php';
