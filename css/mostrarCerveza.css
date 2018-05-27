@@ -159,8 +159,8 @@ input[type="radio"]:checked ~ label {
     background-color: #FFEA83;
 }
 #myBtn{
-    position: relative;    
-    left:80%;
+    position: relative; 
+    left:83%;   
 }
 #starYellow{
     color: orange;
@@ -169,4 +169,8 @@ input[type="radio"]:checked ~ label {
 #starGrey{
     color: grey;
     font-size: 30px;
+}
+#puntuacionMedia{
+ margin-left: 25px; 
+ margin-bottom: 3px; 
 }

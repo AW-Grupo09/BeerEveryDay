@@ -40,11 +40,13 @@
 			echo "<div class= 'imagenCerveza'>";
 			echo "<img alt='Imagen de cerveza' src=". $cerveza->getImagen()." width='300' height='300' />";
 			$maxI = $cerveza->getValoracion();
+			echo "<div id='puntuacionMedia'>" ;
 			echo "<p id='titleComment'><span id='spanTitle'>Puntuación media: </span></p>";
 			for($i=1;$i<=$maxI;$i++)
 				echo"<label id=starYellow>★</label>";
 			for($l=$maxI;$l<5;$l++)
 				echo"<label id=starGrey>★</label>";
+			echo "</div>";
 			
 
 			echo "</div>";// cierro div imagen
