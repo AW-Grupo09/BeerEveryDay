@@ -81,7 +81,7 @@ require_once __DIR__.'/Controller/controllerPedidos.php';
                 controllerGrupos::insertaGrupoPedidos($grupo->getId(),$idPedido);
 
                 $_SESSION['nombreGrupo'] = $nombreGrupo;
-                header('Location: index.php');
+                header('Location: mostrarGrupos.php');
                 exit();
 
 			}
