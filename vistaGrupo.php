@@ -58,7 +58,7 @@
 							<div class = "titulo"><?=$grupo->getNombre() ?></div>
 							<div class = "informacionGrupos">
 								<p><span>Cerveza: </span><?=$cerveza->getNombre()?></p>
-								 <p><span>Precio por unidad con el descuento: </span><?=$cerveza->getPrecio()?><p>
+								<p><span>Precio por unidad con el descuento: </span><?=$cerveza->getPrecio()?><p>
 								<p><span>Dirección: </span> <?=$grupo->getDireccion()?></p>
 		                        <p><span>Ciudad: </span> <?=$grupo->getCiudad()?></p>
 		                        <p><span>Creado por: </span><?=$grupo->getCreador()?></p>
@@ -81,14 +81,17 @@
 									}
 								?>
 					                <div>
-					                	<?php $misGrupos = controllerGrupos::buscaUsuarioenGrupos($_SESSION['nombreUsuario'], $_GET['idGrupo']);
+					                	<?php 
+					                	if(isset($_SESSION['login']) && $_SESSION['login']){
+					                	$misGrupos = controllerGrupos::buscaUsuarioenGrupos($_SESSION['nombreUsuario'], $_GET['idGrupo']);
 						                    if(!$misGrupos) { ?>
 						                <form action="" method="get">
 						                	<label> Unidades:</label>
 											<input type="hidden" name="idGrupo" value="<?=$grupo->getId()?>">
-					            			<input type="number" name="unidades" placeholder="1" min="1" max="<?=$cantidaddisponible?>" required/>
+					            			<input type="number" name="unidades" placeholder="Mínimo 1" min="1" max="<?=$cantidaddisponible?>" required/>
 					            			<span id="comprobar_mensaje"></span>
 				                    <?php 	}
+				                		}
 
 					                    if(isset($_SESSION['login']) && $_SESSION['login']){
 											$misGrupos = controllerGrupos::buscaUsuarioenGrupos($_SESSION['nombreUsuario'], $_GET['idGrupo']);
@@ -100,8 +103,11 @@
 
 									             if(isset($_SESSION['login']) && $_SESSION['login']){
 													$misGrupos = controllerGrupos::buscaUsuarioenGrupos($_SESSION['nombreUsuario'], $_GET['idGrupo']);
-												    if($misGrupos)
-												    	echo '<input type="button" id="salir" onclick="salirGrupo('. $_GET['idGrupo'] .', `'.$_SESSION['nombreUsuario'].'`)" value="Salir del grupo">';   
+												    if($misGrupos){
+												    	echo '<input type="button" id="salir" onclick="salirGrupo('. $_GET['idGrupo'] .', `'.$_SESSION['nombreUsuario'].'`)" value="Salir del grupo">';  
+												    	$unidades = controllerPedidos::cantidadUsuarioGrupo($_GET['idGrupo'], $_SESSION['nombreUsuario']);
+												    	echo "<p id='uds'> Las unidades que has solicitado son " . $unidades;
+												    }
 												 } 
 										    }
 										}

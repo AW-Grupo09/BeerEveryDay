@@ -1,8 +1,9 @@
 form {
     border-radius: 15px;
     padding: 2%; 
-   
 }
+
+
 
 input {
     width: 100%;
@@ -112,4 +113,12 @@ span{
 
 h1{
     text-align: center;
+}
+
+#nogrupo {
+    font-size: 18px;
+}
+
+#nogrupo a{
+    color: blue;
 }

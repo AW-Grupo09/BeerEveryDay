@@ -28,12 +28,18 @@
             <h1> ¡Te encuentras en la sección de "Mis grupos"! </h1>
             <div id="izquierda">
     			<div id="titulo">
-                    Aquí puedes ver cuáles son tus grupos:
+                    GRUPOS A LOS QUE PERTENECES
                 </div>
 
                <div id="grupo">
                 <?php
                  $grupos = controllerGrupos::getGruposByUser($_SESSION['nombreUsuario']);
+                 if(empty($grupos)){
+                    echo "<p id='nogrupo'> Vaya.. parece que aún no estás en ningún grupo.. </p>";
+                    echo "<p id='nogrupo'> <a href='mostrarGrupos.php'>¿Por qué no te animas a ver los que hay? </a> </p>";
+                 }
+                 else{
+
                     foreach ($grupos as $grupo) { ?>
                         <fieldset>
                         <legend><a href = "vistaGrupo.php?idGrupo=<?=$grupo->getId()?> "><?=$grupo->getNombre()?> </a></legend>
@@ -45,6 +51,7 @@
                         </fieldset>
 
                     <?php 
+                     }
                 } ?>
             </div>
             </div>

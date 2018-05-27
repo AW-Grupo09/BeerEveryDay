@@ -172,6 +172,12 @@ class DAOPedidos extends DAO{
         $consulta = $this->ejecutarConsulta($sql);
         return $consulta[0]['unidades'];
     }
+
+    public function cantidadCervezasUsuario($idGrupo, $nombreUsuario){
+        $sql = "SELECT unidades AS unidades FROM `grupos-usuarios` WHERE idGrupo = " . $idGrupo AND " idUsuario = " . $nombreUsuario; 
+        $consulta = $this->ejecutarConsulta($sql);
+        return $consulta[0]['unidades'];
+    }
     
     public function getIdPedidoByGroup($idGrupo){
         $sql = "SELECT * FROM `grupo-pedidos` WHERE idGrupo = ". $idGrupo;
