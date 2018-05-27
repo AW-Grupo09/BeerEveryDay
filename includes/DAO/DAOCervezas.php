@@ -53,14 +53,25 @@ class DAOCervezas extends DAO{
 
         //$sql = sprintf("INSERT INTO cervezas(fabricante, nombre, grado, capacidad, precio, pais, artesana, color, grano, tipo, Imagen, valoracionMedia) VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '1')",
         //	$Fabricante, $nombreCerveza, $Grado, $capacidad, $precio, $pais, $Artesana, $Color, $grano, $Tipo, $imageFileType, 1);
-        $sql = "INSERT INTO cervezas(fabricante, nombre, grado, capacidad, precio, pais, artesana, color, grano, tipo, Imagen, valoracionMedia) VALUES('$Fabricante', '$nombreCerveza', '$Grado', '$capacidad', '$precio', '$pais', '$Artesana', '$Color', '$grano', '$Tipo', '$imageFileType', '1')";
+        $sql = "INSERT INTO cervezas(fabricante, nombre, grado, capacidad, precio, pais, artesana, color, grano, tipo, Imagen, valoracionMedia) VALUES('" . 
+        $this->mysqli->real_escape_string($Fabricante) . "', '" . 
+        $this->mysqli->real_escape_string($nombreCerveza) . "', '" . 
+        $this->mysqli->real_escape_string($Grado) . "', '" . 
+        $this->mysqli->real_escape_string($capacidad) . "', '" .
+        $this->mysqli->real_escape_string($precio) . "', '" .
+        $this->mysqli->real_escape_string($pais) . "', '" .
+        $this->mysqli->real_escape_string($Artesana) . "', '" .
+        $this->mysqli->real_escape_string($Color) . "', '" .
+        $this->mysqli->real_escape_string($grano) . "', '" .
+        $this->mysqli->real_escape_string($Tipo) . "', '" .
+        $this->mysqli->real_escape_string($imageFileType) . "', '1')";
 
         $this->ejecutarModificacion($sql);
  	}
 
  	public function existeCerveza($nombre)
     {
-        $query = "SELECT * FROM cervezas WHERE nombre = '" . $nombre . "'";
+        $query = "SELECT * FROM cervezas WHERE nombre = '" . $this->mysqli->real_escape_string($nombre) . "'";
         $consulta = $this->ejecutarConsulta($query);
         if (count($consulta) == 0) {
         	echo "esta en false";

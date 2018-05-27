@@ -77,7 +77,7 @@ class DAOComentarios extends DAO{
         $consulta = $this->ejecutarConsulta($sql);
         if(count($consulta) > 0){
             $idComentario = $consulta[0]['idComentario'] + 1;
-            $query = 'INSERT INTO `comentarios-cervezas`(idComentario, valoracion, comentario, idCerveza, idUsuario, fecha) VALUES ("'.$idComentario . '","'. $valoracion . '", "' .  $comentario . '", "' . $idCerveza . '", "' . $idUsuario . '", now())';
+            $query = 'INSERT INTO `comentarios-cervezas`(idComentario, valoracion, comentario, idCerveza, idUsuario, fecha) VALUES ("'.$idComentario . '","'. $valoracion . '", "' .  $this->mysqli->real_escape_string($comentario) . '", "' . $idCerveza . '", "' . $this->mysqli->real_escape_string($idUsuario) . '", now())';
             $this->ejecutarModificacion($query);
         }
     }
@@ -89,7 +89,7 @@ class DAOComentarios extends DAO{
         $resultado = $this->ejecutarConsulta($sql);
         if(count($resultado) > 0){
             $newID = $resultado[0]['idComentario'] + 1;
-            $query = 'INSERT INTO `comentarios-grupos`(idComentario, comentario, idGrupo, idUsuario, fecha) VALUES ("'.$newID . '","' . $comentario . '", "' . $idGrupo . '", "' . $idUsuario . '", now())';
+            $query = 'INSERT INTO `comentarios-grupos`(idComentario, comentario, idGrupo, idUsuario, fecha) VALUES ("'.$newID . '","' . $this->mysqli->real_escape_string($comentario) . '", "' . $idGrupo . '", "' . $this->mysqli->real_escape_string($idUsuario) . '", now())';
             $this->ejecutarModificacion($query);
         }
     }
@@ -122,7 +122,7 @@ class DAOComentarios extends DAO{
 
     public function existeVal($idCerveza, $idUsuario){
 
-        $query = "SELECT idComentario FROM `comentarios-cervezas` WHERE idUsuario = '" . $idUsuario . "' AND idCerveza = '" . $idCerveza . "'";
+        $query = "SELECT idComentario FROM `comentarios-cervezas` WHERE idUsuario = '" . $this->mysqli->real_escape_string($idUsuario) . "' AND idCerveza = '" . $idCerveza . "'";
         $resultado = $this->ejecutarConsulta($query);
         if(count($resultado) == 0)
             return false;
