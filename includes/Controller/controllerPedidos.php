@@ -123,16 +123,8 @@ class controllerPedidos {
 
     public static function getCervezaByIdGrupo($idGrupo){
         $daoPedido = new DAOPedidos();
-        $idPedido = $daoPedido->getIdPedidoByGroup($idGrupo);
-        $idCerveza = $daoPedido->getIdCerveza($idPedido);
-        return $daoPedido->getCervezaById($idCerveza);
+        return $daoPedido->getCervezaById($idGrupo);
 
-    }
-    public static function actualizarEstadoPedido($idGrupo){
-        $daoPedido = new DAOPedidos();
-        $idPedido = $daoPedido->getIdPedidoByGroup($idGrupo);
-        $Date = date("Y/m/d");
-        $daoPedido->actualizarEstado($idPedido, $Date);
     }
 }
 

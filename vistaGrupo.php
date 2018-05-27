@@ -56,10 +56,6 @@
 							$fechaLimite = controllerPedidos::fechaLimite($grupo->getId());
 				            $cantidadActual = controllerPedidos::cantidadActual( $grupo->getId());
 							$cantidaddisponible = $cantidadtotal - $cantidadActual;
-							if($cantidaddisponible ==0){
-								echo "la cantiad es 00";
-								controllerPedidos::actualizarEstadoPedido($grupo->getId());
-							}
 						?>
 						<div class ="izquierda">
 							<div class = "titulo"><?=$grupo->getNombre() ?></div>
