@@ -162,3 +162,11 @@ input[type="radio"]:checked ~ label {
     position: relative;    
     left:80%;
 }
+#starYellow{
+    color: orange;
+    font-size: 30px;
+}
+#starGrey{
+    color: grey;
+    font-size: 30px;
+}

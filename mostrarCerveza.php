@@ -42,7 +42,9 @@
 			$maxI = $cerveza->getValoracion();
 			echo "<p id='titleComment'><span id='spanTitle'>Puntuación media: </span></p>";
 			for($i=1;$i<=$maxI;$i++)
-				echo"<label id=star>★</label>";
+				echo"<label id=starYellow>★</label>";
+			for($l=$maxI;$l<5;$l++)
+				echo"<label id=starGrey>★</label>";
 			
 
 			echo "</div>";// cierro div imagen
