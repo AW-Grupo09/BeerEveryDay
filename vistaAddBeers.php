@@ -1,5 +1,5 @@
 <?php 
-	require_once __DIR__.'/includes/config.php';
+	session_start();
 	require_once __DIR__ .'/includes/FormularioSubirCerveza.php';
 
     if(!$_SESSION['login'] || !isset($_SESSION['esAdmin']) || !$_SESSION['esAdmin']){

@@ -1,5 +1,5 @@
 <?php
-	require_once __DIR__.'/includes/config.php';
+	session_start();
 	require_once __DIR__.'/includes/Controller/controllerUsuario.php';
 	require_once __DIR__.'/includes/TO/TOUsuarios.php';
 	require_once __DIR__.'/includes/FormularioLogin.php';

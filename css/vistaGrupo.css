@@ -23,7 +23,6 @@
     cursor: pointer;
     padding: 2%;
     border-radius: 5px;
-    font-family: miFuente;
     font-size: 17px;
     margin-top: 4%;
     margin-left: 35%;
@@ -37,8 +36,7 @@
     color: #FFC107;
 }
 
-.derecha {
-    
+.derecha {    
     float: left;
     width: 50%;
     height: 80%;
@@ -132,6 +130,7 @@ h1{
 }
 #dateComent{
     float: right;
+    padding-right: 10px;
 }
 #spanTitle{
     padding-left: 10px;

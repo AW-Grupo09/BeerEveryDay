@@ -1,5 +1,5 @@
 <?php 
-	require_once __DIR__.'/includes/config.php';
+	session_start();
 	require_once __DIR__.'/includes/TO/TOCervezas.php';
 	require_once __DIR__.'/includes/Controller/controllerCervezas.php';
 	require_once __DIR__.'/includes/TO/TOComentarios.php';
@@ -42,7 +42,9 @@
 			$maxI = $cerveza->getValoracion();
 			echo "<p id='titleComment'><span id='spanTitle'>Puntuación media: </span></p>";
 			for($i=1;$i<=$maxI;$i++)
-				echo"<label id=star>★</label>";
+				echo"<label id=starYellow>★</label>";
+			for($l=$maxI;$l<5;$l++)
+				echo"<label id=starGrey>★</label>";
 			
 
 			echo "</div>";// cierro div imagen
@@ -58,7 +60,7 @@
 			
 			if(isset($_SESSION['login']) && $_SESSION['login']){
 				echo '<form  action="includes/procesarCesta.php" method="GET">';			
-				echo '<input type="number" name="unidades" min="1" placeholder="Unidades">';
+				echo '<input type="number" id=number name="unidades" min="1" placeholder="Unidades">';
 				echo '<button class="submit" type="submit" name="cerveza" value="'. $cerveza->getIdCerveza().'">Añadir a la cesta</button>';
 				echo '</form>';
 			}
@@ -78,16 +80,16 @@
 		            	 
 		            	echo "<div id='showComment'>";
 		            	echo "<p id = 'dateComent'> Fecha: " . $comentario->getFecha(). "</p>";
-
+						
 		            	echo "<p id = 'autorComent'><span id='spanId'>" . $comentario->getIdUsuario(). "
 		                </span></p>";
 		                
 						for($i=1;$i<=$comentario->getValoracion();$i++)echo"<label id=star>★</label>";	
 						echo "<p id = 'coment'>" . $comentario->getComentario(). "</p>";
+						if(isset($_SESSION['nombreUsuario']) && $_SESSION['nombreUsuario'] == $comentario->getIdUsuario())
+		                    echo '<input type="button" id="myBtn" onclick="deleteVal('. $comentario->getIdComentario() .')" value="Eliminar valoración">';
 		                echo "</div>";
-
-		                if(isset($_SESSION['nombreUsuario']) && $_SESSION['nombreUsuario'] == $comentario->getIdUsuario())
-		                    echo '<input type="button" id="myBtn" onclick="deleteVal('. $comentario->getIdComentario() .')" value="Eliminar valoración">';             
+             
 		          	}
 		        }
         	  ?>
