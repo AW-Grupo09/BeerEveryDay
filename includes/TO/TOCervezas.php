@@ -14,6 +14,7 @@ class TOCervezas{
 	private $pais;
 	private $precio;
 	private $tipo;
+	private $valoracion;
 
 	public function __construct($id){
 		$this->idCerveza = $id;
@@ -101,5 +102,25 @@ class TOCervezas{
 	public function getTipo(){
 		return $this->tipo;
 	}
+
+    /**
+     * @return mixed
+     */
+    public function getValoracion()
+    {
+        return $this->valoracion;
+    }
+
+    /**
+     * @param mixed $valoracion
+     *
+     * @return self
+     */
+    public function setValoracion($valoracion)
+    {
+        $this->valoracion = $valoracion;
+
+        return $this;
+    }
 }
 ?>

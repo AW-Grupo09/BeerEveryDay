@@ -39,10 +39,11 @@
 			echo "<div class= 'contenidoCerveza'>";
 			echo "<div class= 'imagenCerveza'>";
 			echo "<img alt='Imagen de cerveza' src=". $cerveza->getImagen()." width='300' height='300' />";
-			/*$maxI=$cerveza->getValoracion();
-			echo "<p id='titleComment'><span id='spanTitle'>Valoración: </span></p>"
-			for($i=1;$i<=$maxI;$i++)echo"<label id=star>★</label>";
-			*/
+			$maxI = $cerveza->getValoracion();
+			echo "<p id='titleComment'><span id='spanTitle'>Puntuación media: </span></p>";
+			for($i=1;$i<=$maxI;$i++)
+				echo"<label id=star>★</label>";
+			
 
 			echo "</div>";// cierro div imagen
 			echo "<div class= 'datosCerveza'>";

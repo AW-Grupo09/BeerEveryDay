@@ -27,6 +27,7 @@ class DAOCervezas extends DAO{
             $cerveza->setPais($consulta[0]["pais"]);
             $cerveza->setPrecio($consulta[0]["precio"]);
             $cerveza->setTipo($consulta[0]["tipo"]);
+            $cerveza->setValoracion($consulta[0]["valoracionMedia"]);
             return $cerveza;
         } else{
         	return null;
