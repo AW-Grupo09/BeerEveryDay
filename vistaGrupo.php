@@ -136,7 +136,7 @@
 												    echo "<p id='uds'> Las unidades que has solicitado son " . $unidades;
 												}
 												else{
-													echo '<input type="button" id="salir" onclick="eliminarGrupo('. $_GET['idGrupo'] .', `'.$_SESSION['nombreUsuario'].'`)" value="Eliminar el grupo">'; 
+													echo '<input type="button" id="salir" onclick="eliminarG('. $_GET['idGrupo'] .', `'.$_SESSION['nombreUsuario'].'`)" value="Eliminar el grupo">'; 
 												}
 										    }
 										}
@@ -154,7 +154,6 @@
 					                			echo "<p> Id del pedido: " . $idPed . "</p>";
 					                			$estado = controllerPedidos::getEstado($idPed);
 					                			echo "Estado del pedido: " . $estado;
-					                			echo '<input type="button" id="salir" onclick="eliminarG('. $_GET['idGrupo'] .', `'.$_SESSION['nombreUsuario'].'`)" value="Eliminar el grupo">';
 					                		}
 					                		else
 					                			echo "El creador del grupo tiene toda la info acerca del pedido";

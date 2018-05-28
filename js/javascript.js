@@ -27,6 +27,7 @@ function salirGrupo(idGrupo, idUser){
          console.log(returnedData);
          location.reload(true);
     });
+}
 
 
 function eliminarG(idGrupo, idUser){
@@ -35,6 +36,7 @@ function eliminarG(idGrupo, idUser){
     function(returnedData){
          console.log(returnedData);
          location.reload(true);
-    })
-
+    });
 }
+
+
