@@ -55,18 +55,47 @@
 							}
 						?>
 						<div class ="izquierda">
-							<div class = "titulo"><?=$grupo->getNombre() ?></div>
-							<div class = "informacionGrupos">
-								<p><span>Cerveza: </span><?=$cerveza->getNombre()?></p>
-								<p><span>Precio por unidad con el descuento: </span><?=$cerveza->getPrecio()?><p>
-								<p><span>Dirección: </span> <?=$grupo->getDireccion()?></p>
-		                        <p><span>Ciudad: </span> <?=$grupo->getCiudad()?></p>
-		                        <p><span>Creado por: </span><?=$grupo->getCreador()?></p>
-		                        <p><span>Fecha limite: </span><?=$fechaLimite?></p>
-		                        <p><span>Cantidad total: </span><?=$cantidadtotal?></p>
-		                        <p><span>Cantidad disponible: </span><?=$cantidaddisponible?></p>
+							<table>
+								<thead>
+									<tr>
+										<th><div class = "titulo"><?=$grupo->getNombre() ?></div></th>
+									</tr>
+								</thead>
 
-		                    </div>
+									<tr>
+										<td><span>Cerveza: </span><?=$cerveza->getNombre()?></td>
+									</tr>
+
+									<tr>
+										<td><span>Precio por unidad con el descuento: </span><?=$cerveza->getPrecio()?></td>
+									</tr>
+
+									<tr>
+										<td><span>Dirección: </span> <?=$grupo->getDireccion()?></td>
+									</tr>
+
+									<tr>
+										<td><span>Ciudad: </span> <?=$grupo->getCiudad()?></td>
+									</tr>
+
+									<tr>
+										<td><span>Creado por: </span><?=$grupo->getCreador()?></td>
+									</tr>
+
+									<tr>
+										<td><span>Fecha limite: </span><?=$fechaLimite?></td>
+									</tr>
+
+									<tr>
+										<td><span>Cantidad total: </span><?=$cantidadtotal?></td>
+									</tr>
+
+									<tr>
+										<td><span>Cantidad disponible: </span><?=$cantidaddisponible?></td>
+									</tr>
+
+
+							</table>
 	                    </div>
 			                    <div class="derecha">
 				                <?php 	
