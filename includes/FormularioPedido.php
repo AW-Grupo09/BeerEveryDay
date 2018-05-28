@@ -39,8 +39,8 @@ require_once __DIR__.'/Form.php';
         if (count($erroresFormulario) === 0) {
             $idPedido = controllerPedidos::loadCesta($_SESSION["nombreUsuario"]);
             $ret = controllerPedidos::procesarCesta($Dir, $_SESSION["nombreUsuario"]);
-            if($ret !== NULL)
-              $erroresFormulario[] = $ret;
+            //if($ret !== NULL)
+              //$erroresFormulario[] = $ret;
         }
 
 
