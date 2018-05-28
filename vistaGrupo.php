@@ -128,16 +128,13 @@
 
 						                    }
 										    else {
-
-									             if(isset($_SESSION['login']) && $_SESSION['login']){
-													$misGrupos = controllerGrupos::buscaUsuarioenGrupos($_SESSION['nombreUsuario'], $_GET['idGrupo']);
-													
-												    if($misGrupos){
-												    	echo '<input type="button" id="salir" onclick="salirGrupo('. $_GET['idGrupo'] .', `'.$_SESSION['nombreUsuario'].'`)" value="Salir del grupo">';  
-												    	$unidades = controllerPedidos::cantidadUsuarioGrupo($_GET['idGrupo'], $_SESSION['nombreUsuario']);
-												    	echo "<p id='uds'> Las unidades que has solicitado son " . $unidades;
-												    }
-												 } 
+												/*que no sea el creador*/
+												$grupos = controllerGrupos::getGrupoById($_GET['idGrupo']);
+												if($grupos->getCreador()!= $_SESSION['nombreUsuario']){
+												    echo '<input type="button" id="salir" onclick="salirGrupo('. $_GET['idGrupo'] .', `'.$_SESSION['nombreUsuario'].'`)" value="Salir del grupo">';  
+												    $unidades = controllerPedidos::cantidadUsuarioGrupo($_GET['idGrupo'], $_SESSION['nombreUsuario']);
+												    echo "<p id='uds'> Las unidades que has solicitado son " . $unidades;
+												}
 										    }
 										}
 									?>
