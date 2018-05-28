@@ -148,7 +148,7 @@ class DAOPedidos extends DAO{
     }
 
     public function insertarPedido($direccion,$date,$dateLimite){
-        $sql ="INSERT INTO pedidos(estado,fechaPedido,fechaLimite,Direccion) VALUES ('cesta','" .$date. "','" .$dateLimite. "','" . $this->mysqli->real_escape_string($direccion) . "')";
+        $sql ="INSERT INTO pedidos(estado,fechaPedido,fechaLimite,Direccion) VALUES ('grupo','" .$date. "','" .$dateLimite. "','" . $this->mysqli->real_escape_string($direccion) . "')";
         $consulta = $this->ejecutarModificacion($sql);
     }
 
