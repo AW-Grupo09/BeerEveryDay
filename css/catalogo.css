@@ -108,4 +108,16 @@ section#filtros fieldset{
 	transform:scale(1.1);
 }
 
+#puntuacionMedia{
+    margin-left: 40px; 
+    margin-top: 5px; 
+}
 
+#starOrange{
+    color: orange;
+    font-size: 20px;
+}
+#starGrey{
+    color: grey;
+    font-size: 20px;
+}

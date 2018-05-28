@@ -43,7 +43,7 @@
 			echo "<div id='puntuacionMedia'>" ;
 			echo "<p id='titleComment'><span id='spanTitle'>Puntuación media: </span></p>";
 			for($i=1;$i<=$maxI;$i++)
-				echo"<label id=starYellow>★</label>";
+				echo"<label id=starOrange>★</label>";
 			for($l=$maxI;$l<5;$l++)
 				echo"<label id=starGrey>★</label>";
 			echo "</div>";
@@ -85,8 +85,11 @@
 						
 		            	echo "<p id = 'autorComent'><span id='spanId'>" . $comentario->getIdUsuario(). "
 		                </span></p>";
-		                
-						for($i=1;$i<=$comentario->getValoracion();$i++)echo"<label id=star>★</label>";	
+		                $maxI = $comentario->getValoracion();
+						for($i=1;$i<=$comentario->getValoracion();$i++)
+							echo"<label id=starOrange>★</label>";	
+						for($l=$maxI;$l<5;$l++)
+							echo"<label id=starGrey>★</label>";
 						echo "<p id = 'coment'>" . $comentario->getComentario(). "</p>";
 						if(isset($_SESSION['nombreUsuario']) && $_SESSION['nombreUsuario'] == $comentario->getIdUsuario())
 		                    echo '<input type="button" id="myBtn" onclick="deleteVal('. $comentario->getIdComentario() .')" value="Eliminar valoración">';

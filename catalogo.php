@@ -134,6 +134,14 @@
                         echo "<div class ='seccionItem'>";
                             echo "<div class = 'imagenes'>";
                                 echo "<a href = mostrarCerveza.php?id=" . $cerveza->getIdCerveza() . "> <img alt='Imagen de cerveza' src=". $cerveza->getImagen()." width=80% height=80%/> </a>";
+                                        $maxI = $cerveza->getValoracion();
+                                        echo "<div id='puntuacionMedia'>" ;
+                                        /*echo "<p id='titleComment'><span id='spanTitle'>Puntuación media: </span></p>";*/
+                                        for($i=1;$i<=$maxI;$i++)
+                                            echo"<label id=starOrange>★</label>";
+                                        for($l=$maxI;$l<5;$l++)
+                                            echo"<label id=starGrey>★</label>";
+                                        echo "</div>";
                             echo "</div>";
                         echo "</div>";
                         echo "<div class ='seccionItem'>";
