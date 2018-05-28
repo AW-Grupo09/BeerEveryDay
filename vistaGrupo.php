@@ -151,7 +151,7 @@
 					                			echo "<p> aquí tienes información del pedido </p>";
 					                			$idPed = controllerPedidos::getIdPedidoByGroup($_GET['idGrupo']);
 					                			echo "<p> Id del pedido: " . $idPed . "</p>";
-					                			$estado = controllerPedidos::getEstadoPedidoGroup($_GET['idGrupo']);
+					                			$estado = controllerPedidos::getEstado($idPed);
 					                			echo "Estado del pedido: " . $estado;
 					                		}
 					                		else

@@ -147,9 +147,9 @@ class controllerPedidos {
         return $daoPedido->getIdPedidoByGroup($idGrupo);
     }
 
-    public static function getEstadoPedidoGroup($idGrupo){
+    public static function getEstado($idPedido){
         $daoPedido = new DAOPedidos();
-        return $daoPedido->getEstadoPedidoGroup($idGrupo);
+        return $daoPedido->getEstado($idPedido);
     }
 }
 
