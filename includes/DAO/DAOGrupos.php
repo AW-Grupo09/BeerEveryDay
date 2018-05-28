@@ -94,7 +94,10 @@ class DAOGrupos extends DAO {
             foreach ($rs as $fila) {
                 array_push($grupos, $fila['idGrupo']);
             }
-        } else {
+        } 
+        else if(count($rs)==0){
+        }
+        else {
             echo "Error al consultar en la BD: (" . $this->mysqli->errno . ") " . utf8_encode($this->mysqli->error);
             exit();
         }

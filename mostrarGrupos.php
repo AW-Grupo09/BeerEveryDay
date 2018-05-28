@@ -25,25 +25,31 @@
             <h2> ¡Estos son los grupos actualmente activos en BeerEveryDay! </h2>
                 <?php
                 $grupos = controllerGrupos::getGrupos();
-                foreach ($grupos as $grupo) { ?>
+                if(isset($grupos) && empty($grupos)){
+                    echo "<p> vaya parece que no hay grupos...";
+                    //aqui se podria agregar algo mas
+                }
+                else{
+                    foreach ($grupos as $grupo) { ?>
 
-                 <fieldset>
-                    <legend> <?php echo $grupo->getNombre(); ?></legend>
+                     <fieldset>
+                        <legend> <?php echo $grupo->getNombre(); ?></legend>
 
-                   <div id="izquierda">
-                        <span>Dirección: </span>  <?=$grupo->getDireccion()?>
-                        <span>Ciudad: </span> <?=$grupo->getCiudad()?>
-                        <p><span>Creado por: </span><?=$grupo->getCreador()?></p>
-                    </div>
+                       <div id="izquierda">
+                            <span>Dirección: </span>  <?=$grupo->getDireccion()?>
+                            <span>Ciudad: </span> <?=$grupo->getCiudad()?>
+                            <p><span>Creado por: </span><?=$grupo->getCreador()?></p>
+                        </div>
 
-                    <div id="derecha">
-                        <form>
-                        <input type="button" class= "unirsebtn" value="Ver grupo" onclick="window.location.href='vistaGrupo.php?idGrupo=<?=$grupo->getId()?>'"/>
-                        </form>
-                    </div>
- 
-                </fieldset>
-                <?php } ?>
+                        <div id="derecha">
+                            <form>
+                            <input type="button" class= "unirsebtn" value="Ver grupo" onclick="window.location.href='vistaGrupo.php?idGrupo=<?=$grupo->getId()?>'"/>
+                            </form>
+                        </div>
+     
+                    </fieldset>
+                    <?php } 
+                }?>
         </div>
 
         <?php require('includes/comun/footer.php'); ?>
