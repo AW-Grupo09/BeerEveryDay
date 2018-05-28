@@ -25,7 +25,16 @@ function salirGrupo(idGrupo, idUser){
     $.get('includes/salirGrupo.php', {q: idGrupo, w:idUser}, 
     function(returnedData){
          console.log(returnedData);
-         location.reload();
+         location.reload(true);
     });
+
+
+function eliminarG(idGrupo, idUser){
+    //Esta funcion se usa para salir de un grupo
+    $.get('includes/salirGrupo.php', {q: idGrupo, w:idUser}, 
+    function(returnedData){
+         console.log(returnedData);
+         location.reload(true);
+    })
 
 }

@@ -124,7 +124,7 @@
 					                    if(isset($_SESSION['login']) && $_SESSION['login']){
 											$misGrupos = controllerGrupos::buscaUsuarioenGrupos($_SESSION['nombreUsuario'], $_GET['idGrupo']);
 						                    if(!$misGrupos){
-						                    	echo '<button type="submit" class= "unirsebtn" onclick="unirse(<?=$grupo->getId()?>)">Confirmar</button>';
+						                    	echo '<button type="submit" class= "unirsebtn" onclick="unirse('.$grupo->getId().')">Confirmar</button>';
 
 						                    }
 										    else {
@@ -154,6 +154,7 @@
 					                			echo "<p> Id del pedido: " . $idPed . "</p>";
 					                			$estado = controllerPedidos::getEstado($idPed);
 					                			echo "Estado del pedido: " . $estado;
+					                			echo '<input type="button" id="salir" onclick="eliminarG('. $_GET['idGrupo'] .', `'.$_SESSION['nombreUsuario'].'`)" value="Eliminar el grupo">';
 					                		}
 					                		else
 					                			echo "El creador del grupo tiene toda la info acerca del pedido";
