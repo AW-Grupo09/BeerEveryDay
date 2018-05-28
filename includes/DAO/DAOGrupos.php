@@ -18,7 +18,7 @@ class DAOGrupos extends DAO {
             return $grupoPedido;
         } else {
             //echo "error en la funcion Grupo-Pedidos da error";
-            echo "Error al insertar en la BDeeee: (" . $this->mysqli->errno . ") " . utf8_encode($this->mysqli->error);
+            echo "Error al insertar en la BD: (" . $this->mysqli->errno . ") " . utf8_encode($this->mysqli->error);
             exit();
         }
         return NULL;
@@ -175,30 +175,41 @@ class DAOGrupos extends DAO {
     }
 
     public function salirGrupo($idGrupo,$idUsuario){
-        /*$sql = "SELECT * FROM grupos WHERE idUsuario = '$idUsuario' AND idGrupo = $idGrupo";
-        $consulta = $this->ejecutarConsulta($sql);
-
-        if($consulta > 0){
-           return false;
-        }
-        else{
-            $query = "DELETE FROM `grupos-usuarios` WHERE idUsuario = '$idUsuario' AND idGrupo = $idGrupo";
-            $resultado = $this->ejecutarModificacion($query);
-            if($resultado == 0){
-                return "Error al salir del grupo";
-            }
-        }*/
-
 
         $query = "DELETE FROM `grupos-usuarios` WHERE idUsuario = '$idUsuario' AND idGrupo = $idGrupo";
-            $resultado = $this->ejecutarModificacion($query);
-            if($resultado == 0){
-                return "Error al salir del grupo";
-            }
+        $resultado = $this->ejecutarModificacion($query);
+        if($resultado == 0){
+            return "Error al salir del grupo";
+        }
+    }
+    public function eliminarGrupo($idGrupo,$idUsuario){
 
+        $query = "DELETE FROM grupos WHERE idUsuario = '$idUsuario' AND idGrupo = $idGrupo";
+        $resultado = $this->ejecutarModificacion($query);
+        if($resultado == 0){
+            return "Error al eliminar el grupo";
+        }
+    }
+    public function eliminarPedio($idPedido){
+        $query = "DELETE FROM pedidos WHERE idPedido = $idPedido";
+        $resultado = $this->ejecutarModificacion($query);
+        if($resultado == 0){
+            return "Error al eliminar el pedido";
+        }
+    }
+    public function getIdPedidoByGrupo($idGrupo){
+        $query = " SELECT idPedido FROM `grupo-pedidos` WHERE idGrupo = $idGrupo";
+        $resultado = $this->ejecutarConsulta($query);
+        return $resultado[0]['idCerveza'];
+    }
 
-
-    } 
+    public function eliminarGrupoPedidos($idGrupo){
+        $query = "DELETE FROM `grupo-pedidos`  WHERE idGrupo = $idGrupo";
+        $resultado = $this->ejecutarModificacion($query);
+        if($resultado == 0){
+            return "Error al eliminar el grupo-pedido";
+        }
+    }
 }
 
 ?>

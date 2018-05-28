@@ -97,6 +97,14 @@ class controllerGrupos
         $daoGrupos = new DAOGrupos();
         return $daoGrupos->salirGrupo($idGrupo, $idUsuario);
     }
+    public static function eliminarGrupo($idGrupo,$idUsuario)){
+        $daoGrupo = new DAOGrupos();
+        $daoGrupos->salirGrupo($idGrupo,$idUsuario);
+        $daoGrupos->eliminarGrupo($idGrupo,$idUsuario);
+        $idPedido = $dao->getIdPedidoByGrupo($idGrupo);
+        $daoGrupos->eliminarPedido($idPedido);
+        $daoGrupos->eliminarGrupoPedidos($idGrupo);
+    }
 
 }
 
