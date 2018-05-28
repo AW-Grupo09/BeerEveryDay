@@ -5,6 +5,8 @@
 
 .structGrupos{
     width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
 }
 
 .structComentarios {
@@ -39,8 +41,16 @@
     color: #FFC107;
 }
 
+.izquierda {
+    width: 20%;
+    height: 80%;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+
+    padding: 0px 220px;
+}
+
 .derecha {    
-    float: left;
     width: 51%;
     height: 80%;
 }
@@ -173,16 +183,6 @@ h1{
 }
 
 
-.izquierda {
-    float: left;
-    width: 20%;
-    height: 80%;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-
-    padding: 0px 220px;
-}
-
 table{
     background-color: white;
     text-align: left;
@@ -224,29 +224,23 @@ tr:hover td{
     font-weight: bold;
 }
 
-#salir {
-    
+#salir{    
     background-color: #FFC107;
     color: black;
     border: none;
-    cursor: pointer;
     padding: 2%;
     border-radius: 5px;
     font-size: 17px;
-    margin-top: 4%;
-    margin-left: 35%;
+    margin-top: 2%;
+    margin-left: 36%;
     width: 28%;
-    height: 10%;
+}
 
 
-    /*margin-top: 20px;
-    text-decoration: none;
-    padding: 10px;
-    font-weight: 600;
-    font-size: 20px;
-    color: #ffffff;
-    background-color: #FFC107;
-    border-radius: 6px;
-    border: 1.42px solid #0016b0;
-    width: 90%;*/
+
+#salir:hover {
+    opacity: 0.8;
+    background-color: black;
+    color: #FFC107;
+    cursor: pointer;
 }

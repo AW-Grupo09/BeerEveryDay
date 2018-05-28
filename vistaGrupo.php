@@ -94,7 +94,6 @@
 										<td><span>Cantidad disponible: </span><?=$cantidaddisponible?></td>
 									</tr>
 
-
 							</table>
 	                    </div>
 			                    <div class="derecha">
@@ -141,7 +140,6 @@
 										    }
 										}
 									?>
-
 					                	</form>
 					                </div>
 
