@@ -131,6 +131,7 @@
 
 									             if(isset($_SESSION['login']) && $_SESSION['login']){
 													$misGrupos = controllerGrupos::buscaUsuarioenGrupos($_SESSION['nombreUsuario'], $_GET['idGrupo']);
+													
 												    if($misGrupos){
 												    	echo '<input type="button" id="salir" onclick="salirGrupo('. $_GET['idGrupo'] .', `'.$_SESSION['nombreUsuario'].'`)" value="Salir del grupo">';  
 												    	$unidades = controllerPedidos::cantidadUsuarioGrupo($_GET['idGrupo'], $_SESSION['nombreUsuario']);

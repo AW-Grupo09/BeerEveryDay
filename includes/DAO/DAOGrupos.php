@@ -175,18 +175,28 @@ class DAOGrupos extends DAO {
     }
 
     public function salirGrupo($idGrupo,$idUsuario){
-        $sql = 'SELECT * FROM grupos WHERE idUsuario = "' . $idUsuario . '" AND idGrupo = "' . $idGrupo. '"';
+        /*$sql = "SELECT * FROM grupos WHERE idUsuario = '$idUsuario' AND idGrupo = $idGrupo";
         $consulta = $this->ejecutarConsulta($sql);
 
-        if(count($consulta) == 0)
-            $query = 'DELETE FROM `grupos-usuarios` WHERE idUsuario = "' . $idUsuario . '" AND idGrupo = "' . $idGrupo. '"';
-            $resultado = $this->ejecutarModificacion($query);
-            if($resultado == 0){
-            return "Error al salir del grupo";
+        if($consulta > 0){
+           return false;
         }
         else{
-            return "Eres el creador del grupo";
-        }
+            $query = "DELETE FROM `grupos-usuarios` WHERE idUsuario = '$idUsuario' AND idGrupo = $idGrupo";
+            $resultado = $this->ejecutarModificacion($query);
+            if($resultado == 0){
+                return "Error al salir del grupo";
+            }
+        }*/
+
+
+        $query = "DELETE FROM `grupos-usuarios` WHERE idUsuario = '$idUsuario' AND idGrupo = $idGrupo";
+            $resultado = $this->ejecutarModificacion($query);
+            if($resultado == 0){
+                return "Error al salir del grupo";
+            }
+
+
 
     } 
 }
