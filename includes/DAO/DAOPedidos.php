@@ -186,10 +186,11 @@ class DAOPedidos extends DAO{
         return $idPedido;
     }
 
-    public function getEstadoPedidoGroup($idGrupo){
-        $sql = "SELECT `estado` FROM `grupo-pedidos` AS `grupo` JOIN `pedidos` AS `pedidos` WHERE idGrupo = ". $idGrupo AND "grupo.idPedido = pedidos.idPedido";
-        $consultaGrupo = $this->ejecutarConsulta($sql);;
-        $estado =  $consultaGrupo[0]['estado'];
+     public function getEstado($idPedido){
+        $sql = "SELECT estado FROM pedidos WHERE idPedido LIKE '$idPedido'";
+        $consulta = $this->ejecutarConsulta($sql);
+        $estado = $consulta[0]['estado'];
+
         return $estado;
     }
 
