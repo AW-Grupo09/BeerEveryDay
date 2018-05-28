@@ -135,6 +135,9 @@
 												    $unidades = controllerPedidos::cantidadUsuarioGrupo($_GET['idGrupo'], $_SESSION['nombreUsuario']);
 												    echo "<p id='uds'> Las unidades que has solicitado son " . $unidades;
 												}
+												else{
+													echo '<input type="button" id="salir" onclick="eliminarGrupo('. $_GET['idGrupo'] .', `'.$_SESSION['nombreUsuario'].'`)" value="Eliminar el grupo">'; 
+												}
 										    }
 										}
 									?>
