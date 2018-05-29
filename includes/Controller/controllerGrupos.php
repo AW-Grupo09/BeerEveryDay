@@ -93,18 +93,18 @@ class controllerGrupos
         return $daoGrupos->actualiza($grupo);
     }
 
-    public static function salirGrupo($idGrupo,$idUsuario){
+    public static function salirGrupo($idUsuario,$idGrupo){
         $daoGrupos = new DAOGrupos();
-        return $daoGrupos->salirGrupo($idGrupo, $idUsuario);
+        return $daoGrupos->salirGrupo($idUsuario, $idGrupo);
     }
-
-    public static function eliminarGrupo($idGrupo,$idUsuario){
-        $daoGrupo = new DAOGrupos();
-        $daoGrupos->salirGrupo($idGrupo,$idUsuario);
-        $daoGrupos->eliminarGrupo($idGrupo,$idUsuario);
-        $idPedido = $dao->getIdPedidoByGrupo($idGrupo);
+    
+    public static function eliminarGrupo($idUsuario,$idGrupo){
+        $daoGrupos = new DAOGrupos();
+        $idPedido = $daoGrupos->getIdPedidoByGrupo($idGrupo);
         $daoGrupos->eliminarPedido($idPedido);
         $daoGrupos->eliminarGrupoPedidos($idGrupo);
+        $daoGrupos->salirGrupo($idUsuario,$idGrupo);
+        $daoGrupos->eliminarGrupo($idUsuario,$idGrupo);       
     }
 
 }

@@ -41,6 +41,13 @@
 			                }
 						}
 					}
+					if(isset($_GET['salir'])){
+						controllerGrupos::salirGrupo($_SESSION['nombreUsuario'], $_GET['idGrupo']);
+					}
+					if(isset($_GET['eliminar'])){
+						controllerGrupos::eliminarGrupo($_SESSION['nombreUsuario'], $_GET['idGrupo']);
+						header('Location: misGrupos.php');
+					}
 
 					if(isset($_GET['idGrupo'])){
 						$grupo = controllerGrupos::getGrupoById($_GET['idGrupo']);?>
@@ -128,15 +135,19 @@
 
 						                    }
 										    else {
-												/*que no sea el creador*/
+
 												$grupos = controllerGrupos::getGrupoById($_GET['idGrupo']);
 												if($grupos->getCreador()!= $_SESSION['nombreUsuario']){
-												    echo '<input type="button" id="salir" onclick="salirGrupo('. $_GET['idGrupo'] .', `'.$_SESSION['nombreUsuario'].'`)" value="Salir del grupo">';  
-												    $unidades = controllerPedidos::cantidadUsuarioGrupo($_GET['idGrupo'], $_SESSION['nombreUsuario']);
-												    echo "<p id='uds'> Las unidades que has solicitado son " . $unidades;
+													echo '<form action="" method="get">
+														  <input type="hidden" name="idGrupo" value='.$_GET['idGrupo'].'>
+														  <button type="submit" name="salir" class= "unirsebtn">Salir del grupo</button>
+														  </form>'; 
 												}
 												else{
-													echo '<input type="button" id="salir" onclick="eliminarG('. $_GET['idGrupo'] .', `'.$_SESSION['nombreUsuario'].'`)" value="Eliminar el grupo">'; 
+													echo '<form action="" method="get">
+														  <input type="hidden" name="idGrupo" value='.$_GET['idGrupo'].'>
+														  <button type="submit" name="eliminar" class= "unirsebtn">Eliminar el grupo</button>
+														  </form>'; 
 												}
 										    }
 										}

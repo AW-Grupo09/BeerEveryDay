@@ -122,8 +122,7 @@ class DAOGrupos extends DAO {
     }
 
     /*Busca un grupo por el nombre en la TABLA GRUPOS*/
-    public function buscaGrupo($nombreGrupo)
-    {
+    public function buscaGrupo($nombreGrupo){
         $query = sprintf("SELECT * FROM grupos WHERE nombre = '%s'", $this->mysqli->real_escape_string($nombreGrupo));
         $rs = $this->ejecutarConsulta($query);
         $grupo = NULL;
@@ -177,24 +176,27 @@ class DAOGrupos extends DAO {
         return $grupo;
     }
 
-    public function salirGrupo($idGrupo,$idUsuario){
+    
+    public function salirGrupo($idUsuario,$idGrupo){
 
-        $query = "DELETE FROM `grupos-usuarios` WHERE idUsuario = '".$idUsuario."' AND idGrupo = '".$idGrupo."'";
-        $resultado = $this->ejecutarModificacion($query);
-        if($resultado == 0){
+        $query = "DELETE FROM `grupos-usuarios` WHERE idUsuario = '$idUsuario' AND idGrupo = $idGrupo";
+        $resulta = $this->ejecutarModificacion($query);
+        if($resulta == 0){
             return "Error al salir del grupo";
         }
     }
-    public function eliminarGrupo($idGrupo,$idUsuario){
+    public function eliminarGrupo($idUsuario,$idGrupo){
 
-        $query = "DELETE FROM grupos WHERE idUsuario = '$idUsuario' AND idGrupo = $idGrupo";
+        $query = "DELETE FROM grupos WHERE creador = '$idUsuario' AND idGrupo = $idGrupo";
         $resultado = $this->ejecutarModificacion($query);
         if($resultado == 0){
             return "Error al eliminar el grupo";
         }
     }
-    public function eliminarPedio($idPedido){
+    public function eliminarPedido($idPedido){
+        echo "estoy aqui";
         $query = "DELETE FROM pedidos WHERE idPedido = $idPedido";
+        echo $query;
         $resultado = $this->ejecutarModificacion($query);
         if($resultado == 0){
             return "Error al eliminar el pedido";
@@ -203,7 +205,7 @@ class DAOGrupos extends DAO {
     public function getIdPedidoByGrupo($idGrupo){
         $query = " SELECT idPedido FROM `grupo-pedidos` WHERE idGrupo = $idGrupo";
         $resultado = $this->ejecutarConsulta($query);
-        return $resultado[0]['idCerveza'];
+        return $resultado[0]['idPedido'];
     }
 
     public function eliminarGrupoPedidos($idGrupo){
@@ -213,6 +215,6 @@ class DAOGrupos extends DAO {
             return "Error al eliminar el grupo-pedido";
         }
     }
-}
 
+}
 ?>
