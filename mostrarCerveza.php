@@ -52,13 +52,13 @@
 
 			echo "</div>";// cierro div imagen
 			echo "<div class= 'datosCerveza'>";
-			echo "<p><span>Capacidad : </span>". $cerveza->getCapacidad(). " Cl" ."</p>";
-			echo "<p><span>Color : </span>". $cerveza->getColor() ."</p>";
-			echo "<p><span>Tipo : </span>". $cerveza->getTipo() ."</p>";
-			echo "<p><span>Graduación : </span>". $cerveza->getGrado() . " % "."</p>";
-			echo "<p><span>Ingredientes : </span>". $cerveza->getGrano() ."</p>";
-			echo "<p><span>País : </span>" . $cerveza->getPais()."</p>";
-			echo "<p><span>Precio : </span>". $cerveza->getPrecio(). " € ". "</p>";
+			echo "<p><span>Capacidad: </span>". $cerveza->getCapacidad(). " Cl" ."</p>";
+			echo "<p><span>Color: </span>". $cerveza->getColor() ."</p>";
+			echo "<p><span>Tipo: </span>". $cerveza->getTipo() ."</p>";
+			echo "<p><span>Graduación: </span>". $cerveza->getGrado() . " % "."</p>";
+			echo "<p><span>Ingredientes: </span>". $cerveza->getGrano() ."</p>";
+			echo "<p><span>País: </span>" . $cerveza->getPais()."</p>";
+			echo "<p><span>Precio: </span>". $cerveza->getPrecio(). " € ". "</p>";
 			echo "</div>";//cierro div datosCerveza
 			
 			if(isset($_SESSION['login']) && $_SESSION['login']){

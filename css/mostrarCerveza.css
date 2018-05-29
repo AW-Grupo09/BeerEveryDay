@@ -143,11 +143,11 @@ input[type="radio"]:checked ~ label {
     border-radius: 25px;
 }
 #autorComent{
-    font-family: bold;
+    font-weight: bold;
     font-size: 20px;
 }
 #titleComment{   
-    font-family: bold;
+    font-weight: bold;
     font-size: 25px;
 }
 #spanTitle{
@@ -160,7 +160,8 @@ input[type="radio"]:checked ~ label {
 }
 #myBtn{
     opacity: 0.9; 
-    margin-left:83%;
+    width: 18%;
+    margin-left:80%;
     margin-bottom:10px;
 }
 #starOrange{

@@ -21,7 +21,8 @@
             <header>
                 <div class="alert-info">
                     <h2>Filtro de Búsqueda </h2>
-                    <img src="img/icons/plus.png" alt="" id="expandFilter">
+                    <img src="img/icons/plus.png" alt="" id="expandFilter"></img>
+                    <input id="ref" type="image" src="img/icons/refresh.png" onClick="location.href=location.href">
                 </div>
             </header>
             <section id="filtros">
@@ -75,7 +76,7 @@
             echo "<div class='item'>";      
                 echo "<div class ='seccionItem'>";
                     echo "<div class = 'imagenes'>";
-                        echo "<a href = mostrarCerveza.php?id=" . $cerveza->getIdCerveza() . "> <img alt='Imagen de cerveza' src=". $cerveza->getImagen()." width=80% height=80%/> </a>";
+                        echo "<a href = mostrarCerveza.php?id=" . $cerveza->getIdCerveza() . "> <img alt='Imagen de cerveza' src=". $cerveza->getImagen()." /> </a>";
                                 $maxI = $cerveza->getValoracion();
                                 echo "<div id='puntuacionMedia'>" ;
                                 /*echo "<p id='titleComment'><span id='spanTitle'>Puntuación media: </span></p>";*/
