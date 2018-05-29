@@ -108,6 +108,7 @@
 		                <?php 	
 		                    if(isset($_SESSION['login']) && $_SESSION['login']){
 								$misGrupos = controllerGrupos::buscaUsuarioenGrupos($_SESSION['nombreUsuario'], $_GET['idGrupo']);
+								$grupos = controllerGrupos::getGrupoById($_GET['idGrupo']);
 								
 			                    if(!$misGrupos && $cantidaddisponible > 0){
 			                    	echo'<div class="titulo"> ¿Quieres unirte al grupo? </div>';
@@ -120,19 +121,16 @@
 				            			<span id="comprobar_mensaje"></span>
 			            			
 			                   <?php  
-			                   echo '<button type="submit" class= "unirsebtn" onclick="unirse('.$grupo->getId().')">Confirmar</button>';
-			                   echo "</form>";
-			                   echo "</div>"; // cierre id form
+				                   echo '<button type="submit" class= "unirsebtn" onclick="unirse('.$grupo->getId().')">Confirmar</button>';
+				                   echo "</form>";
+				                   echo "</div>"; // cierre id form
 			               		}
-
-			                    else if($cantidaddisponible == 0){
-			                    	echo '<p> Vaya.. Has llegado tarde.. No hay unidades disponibles.. </p>';
-			                    }
-							    else { // El usuario es miembro 
+							    else if($cantidaddisponible > 0 || $misGrupos) { // El usuario es miembro 
 									echo'<div class="titulo"> Eres miembro de este grupo </div>';
-									$grupos = controllerGrupos::getGrupoById($_GET['idGrupo']);
-
-										if($grupos->getCreador()!= $_SESSION['nombreUsuario']){
+										if($cantidaddisponible == 0){
+											echo "<p> Este pedido ya ha sido enviado </p>";											
+										}
+										else if($grupos->getCreador()!= $_SESSION['nombreUsuario']){
 											echo '<form action="" method="get">
 												  <input type="hidden" name="idGrupo" value='.$_GET['idGrupo'].'>
 												  <button id="salir" type="submit" name="salir" class= "unirsebtn">Salir del grupo</button>
@@ -147,6 +145,9 @@
 
 										$unidades = controllerPedidos::cantidadUsuarioGrupo($_GET['idGrupo'], $_SESSION['nombreUsuario']);
 										echo "<p id='uds'> Las unidades que has solicitado son: " . $unidades . "</p>";
+							    }
+							    else{
+							    	echo '<p> Vaya.. Has llegado tarde.. No hay unidades disponibles.. </p>';
 							    }
 							}
 						?>	
@@ -165,8 +166,12 @@
 		                		else{
 		                			echo "El creador del grupo tiene toda la info acerca del pedido";
 		                		}
-		                		if($cantidaddisponible > 0){
-		                			echo "<p> ¡Aún hay " . $cantidaddisponible . " unidades disponibles!</p>";
+
+		                		if($cantidaddisponible == 1){
+		                			echo "<p> ¡Aún hay " . $cantidaddisponible . " unidad disponible!</p>";
+		                		}
+		                		else if ($cantidaddisponible > 0) {
+									echo "<p> ¡Aún hay " . $cantidaddisponible . " unidades disponibles!</p>";
 		                		}
 		                		else {
 		                			echo "<p>¡El pedido está en camino! </p>";
