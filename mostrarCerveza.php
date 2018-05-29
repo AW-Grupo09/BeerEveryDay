@@ -93,7 +93,7 @@
 							echo"<label id=starGrey>★</label>";
 						echo "<p id = 'coment'>" . $comentario->getComentario(). "</p>";
 						if(isset($_SESSION['nombreUsuario']) && $_SESSION['nombreUsuario'] == $comentario->getIdUsuario())
-		                    echo '<input type="button" id="myBtn" onclick="deleteVal('. $comentario->getIdComentario() .')" value="Eliminar valoración">';
+		                    echo '<input type="button" id="myBtn" onclick="deleteVal('. $comentario->getIdComentario() .','.$comentario->getidCerveza().')" value="Eliminar valoración">';
 		                echo "</div>";
              
 		          	}
