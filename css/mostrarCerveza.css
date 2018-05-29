@@ -159,9 +159,9 @@ input[type="radio"]:checked ~ label {
     background-color: #FFEA83;
 }
 #myBtn{
-    opacity: 0.8;
-    position: relative; 
-    left:83%;   
+    opacity: 0.9; 
+    margin-left:83%;
+    margin-bottom:10px;
 }
 #starOrange{
     color: orange;
