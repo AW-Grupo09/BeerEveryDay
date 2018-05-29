@@ -117,7 +117,7 @@
 			                 		<form action="" method="get">
 					                	<label> Unidades:</label>
 										<input type="hidden" name="idGrupo" value="<?=$grupo->getId()?>">
-				            			<input type="number" name="unidades" placeholder="Mínimo 1" min="1" max="<?=$cantidaddisponible?>" required/>
+				            			<input type="number" id="addUds" name="unidades" placeholder="Mínimo 1" min="1" max="<?=$cantidaddisponible?>" required/>
 				            			<span id="comprobar_mensaje"></span>
 			            			
 			                   <?php  
