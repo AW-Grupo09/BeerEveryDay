@@ -87,3 +87,13 @@ fieldset{
     -webkit-border-radius: 10px;
     border-radius: 10px; 
 }
+
+#reg {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#reg a {
+    color: blue;
+}

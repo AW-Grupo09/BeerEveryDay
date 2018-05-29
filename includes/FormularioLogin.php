@@ -19,6 +19,7 @@ require_once __DIR__.'/Form.php';
     			    <input type="password" placeholder="Introduzca aquí la contraseña" name="password" required>
 
     				<p><button type="submit">Entrar</button></p>
+                    <p id="reg"> ¿Cómo? ¿Que aún no eres miembro? Regístrate <a href="registrate.php"> aquí </a></p>
 
 		    </fieldset>';
  	}

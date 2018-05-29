@@ -53,6 +53,7 @@
 .derecha {    
     width: 51%;
     height: 80%;
+
 }
 
 
@@ -81,7 +82,7 @@ fieldset{
     margin-top: 2%;
 }
 
- input {
+input {
 
     width: 15%;
     padding: 8px 16px;
@@ -214,9 +215,6 @@ tr:hover td{
     background-color: #FFC107;
     color: black;
 }
-
-
-
 
 #uds {
     text-align: center;

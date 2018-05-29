@@ -174,7 +174,7 @@ class DAOPedidos extends DAO{
     }
 
     public function cantidadCervezasUsuario($idGrupo, $nombreUsuario){
-        $sql = "SELECT unidades AS unidades FROM `grupos-usuarios` WHERE idGrupo = " . $idGrupo AND " idUsuario = " . $nombreUsuario; 
+        $sql = "SELECT unidades FROM `grupos-usuarios` WHERE idGrupo LIKE '$idGrupo' AND idUsuario LIKE '$nombreUsuario'"; 
         $consulta = $this->ejecutarConsulta($sql);
         return $consulta[0]['unidades'];
     }
