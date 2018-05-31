@@ -188,7 +188,23 @@
            	</div> <!-- cierre structGrupos -->
            	
            	<div class="structComentarios">
-	            
+	            <div id = "addComment">
+		            	<?php
+		            	
+		            	//Formulario para aniadir comentario
+						if(isset($_SESSION['login']) && $_SESSION['login']){
+							$misGrupos = controllerGrupos::buscaUsuarioenGrupos($_SESSION['nombreUsuario'], $_GET['idGrupo']);
+							if($misGrupos){
+								$opciones = array();
+								$addToForm = array( 'idGrupo' => $_GET['idGrupo']);
+						        $opciones = array_merge($addToForm, $opciones);
+								$formulario = new FormularioNuevoComentarioGrupo("FormularioNuevoComentarioGrupo", $opciones);
+								$formulario->gestiona();
+							}
+						}
+							
+						?>
+		            </div>	
 	           	<div id = "comentarios">
 		        	<?php
 		        		
@@ -208,23 +224,7 @@
 			        		
 		        	?>
 	       		</div>
-	     		<div id = "addComment">
-		            	<?php
-		            	
-		            	//Formulario para aniadir comentario
-						if(isset($_SESSION['login']) && $_SESSION['login']){
-							$misGrupos = controllerGrupos::buscaUsuarioenGrupos($_SESSION['nombreUsuario'], $_GET['idGrupo']);
-							if($misGrupos){
-								$opciones = array();
-								$addToForm = array( 'idGrupo' => $_GET['idGrupo']);
-						        $opciones = array_merge($addToForm, $opciones);
-								$formulario = new FormularioNuevoComentarioGrupo("FormularioNuevoComentarioGrupo", $opciones);
-								$formulario->gestiona();
-							}
-						}
-							
-						?>
-		            </div>		
+	
 	        </div> <!-- cierre structComentarios -->
 
 	    </div> <!-- cierre vistaGrupo -->
