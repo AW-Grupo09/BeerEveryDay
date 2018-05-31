@@ -26,8 +26,10 @@
                 <?php
                 $grupos = controllerGrupos::getGrupos();
                 if(isset($grupos) && empty($grupos)){
-                    echo "<p> vaya parece que no hay grupos...";
-                    //aqui se podria agregar algo mas
+                    echo "<div id='noGroups'>";
+                    echo "<h3> Vaya, parece que no hay grupos...</h3>";
+                    echo "<p> ¡Anímate a crear tú uno propio! </p>";
+                    echo "</div>";
                 }
                 else{
                     foreach ($grupos as $grupo) { ?>

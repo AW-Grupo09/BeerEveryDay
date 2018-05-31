@@ -128,7 +128,7 @@
 							    else if($cantidaddisponible > 0 || $misGrupos) { // El usuario es miembro 
 									echo'<div class="titulo"> Eres miembro de este grupo </div>';
 										if($cantidaddisponible == 0){
-											echo "<p> Este pedido ya ha sido enviado </p>";											
+											echo "<p id='infoEstado'> Este pedido ya ha sido enviado </p>";											
 										}
 										else if($grupos->getCreador()!= $_SESSION['nombreUsuario']){
 											echo '<form action="" method="get">
@@ -147,7 +147,7 @@
 										echo "<p id='uds'> Las unidades que has solicitado son: " . $unidades . "</p>";
 							    }
 							    else{
-							    	echo '<p> Vaya.. Has llegado tarde.. No hay unidades disponibles.. </p>';
+							    	echo "<p id='infoEstado'> Vaya.. Has llegado tarde.. No hay unidades disponibles.. </p>";
 							    }
 							}
 						?>	
@@ -155,13 +155,13 @@
 		                <div id="admin"> 
 		                	<?php 
 		                	if(isset($_SESSION['login']) && $_SESSION['login']){
+		                		echo "<div id='infoGrupo'>";
 		                		if($grupo->getCreador() == $_SESSION['nombreUsuario']){
-		                			echo "<h3> Eres el creador de este grupo</h3>";
-		                			echo "<p> aquí tienes información del pedido </p>";
+		                			echo "<h3> Eres el creador de este grupo </h3>";
 		                			$idPed = controllerPedidos::getIdPedidoByGroup($_GET['idGrupo']);
 		                			echo "<p> Id del pedido: " . $idPed . "</p>";
 		                			$estado = controllerPedidos::getEstado($idPed);
-		                			echo "Estado del pedido: " . $estado;
+		                			echo "<p> Estado del pedido: " . $estado . "</p>";
 		                		}
 		                		else{
 		                			echo "El creador del grupo tiene toda la info acerca del pedido";
@@ -176,6 +176,7 @@
 		                		else {
 		                			echo "<p>¡El pedido está en camino! </p>";
 		                		}
+		                		echo "</div>";
 		                	}
 		                	?>
 					    </div> <!-- cierre id admin -->

@@ -37,12 +37,12 @@
 }
 
 .izquierda {
-    width: 20%;
+    width: 40%;
     height: 80%;
     -webkit-border-radius: 5px;
     border-radius: 5px;
 
-    padding: 0px 220px;
+    padding: 0px 120px;
 }
 
 .derecha {    
@@ -216,4 +216,14 @@ tr:hover td{
     background-color: black;
     color: #FFC107;
     cursor: pointer;
+}
+
+#infoGrupo {
+    border: 10px solid #FFC107;
+    border-radius: 25px;
+    padding: 10px;
+}
+
+#infoEstado {
+    font-size: 20px;
 }

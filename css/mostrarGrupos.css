@@ -56,3 +56,7 @@ div#izquierda {
     width: 50%;
     margin-top: 1%;
 }
+
+#noGroups {
+    text-align: center;
+}
