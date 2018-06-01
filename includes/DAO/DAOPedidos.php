@@ -68,15 +68,17 @@ class DAOPedidos extends DAO{
     public function eliminarCesta($cesta){
         $sql = "DELETE FROM  Pedidos WHERE idPedido = '$cesta'";
         $consulta = $this->ejecutarModificacion($sql);
+        $sql = "DELETE FROM  usuarios-pedidos WHERE idPedido = '$cesta'";
+        $consulta = $this->ejecutarModificacion($sql);
     }
 
     public function eliminarElementoCesta($cerveza, $idPedido){
         $sql = "DELETE FROM  `pedidos-cervezas` WHERE idcerveza = '" . $cerveza . "'  and idpedido = '" . $idPedido . "'";
         $consulta = $this->ejecutarModificacion($sql);
-        $sql = "SELECT COUNT(idPedido) as count FROM pedidos-cervezas WHERE idPedido = ".$idpedido.;
+        $sql = 'SELECT COUNT(idPedido) as count FROM `pedidos-cervezas` WHERE idPedido = "'.$idPedido.'"';
         $consulta = $this->ejecutarConsulta($sql);
-        if($consulta['count'] == 0)
-            eliminarCesta(idPedido);
+        if($consulta[0]['count'] == 0)
+            $this->eliminarCesta(idPedido);
     }
 
     public function iniciarCesta($user){
