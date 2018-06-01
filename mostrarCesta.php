@@ -74,7 +74,7 @@
 									echo "</div>";//cierro div datos cerveza
 									echo "<form action='mostrarCesta.php' method='post'>";
 										$total = $total + ($cerveza->getPrecio()*$unidades[$i]);
-										echo "<button class='submit' type='submit' name='" . $idCerveza . "' value='Eliminar'>Eliminar de la cesta</button>";
+										echo "<button class='delete' type='submit' name='" . $idCerveza . "' value='Eliminar'>Eliminar de la cesta</button>";
 									echo "</form>";
 								echo "</div>";//contenidocerveza
 							echo "</div>";//mostrar cerveza
