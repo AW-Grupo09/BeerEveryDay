@@ -72,7 +72,7 @@ require_once __DIR__.'/Controller/controllerCervezas.php';
         $ruta = "img/imagenCervezas/"; //ruta carpeta donde queremos copiar las imágenes 
         $imageFileType = $ruta . strtolower(basename($imgCerveza));
 
-        $Artesana = isset($_POST['Artesana']) ? true : false;
+        $Artesana = isset($_POST['Artesana']) ? 1 : 0;
         
         $nombreCerveza = isset($_POST['nombreCerveza']) ? $_POST['nombreCerveza'] : null;
         if ( empty($nombreCerveza) ) {
