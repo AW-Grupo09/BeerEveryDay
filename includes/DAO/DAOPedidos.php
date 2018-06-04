@@ -68,7 +68,7 @@ class DAOPedidos extends DAO{
     public function eliminarCesta($cesta){
         $sql = "DELETE FROM  Pedidos WHERE idPedido = '$cesta'";
         $consulta = $this->ejecutarModificacion($sql);
-        $sql = "DELETE FROM  usuarios-pedidos WHERE idPedido = '$cesta'";
+        $sql = "DELETE FROM  `usuarios-pedidos` WHERE idPedido = '$cesta'";
         $consulta = $this->ejecutarModificacion($sql);
     }
 
