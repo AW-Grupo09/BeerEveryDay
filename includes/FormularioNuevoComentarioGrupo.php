@@ -12,7 +12,7 @@ require_once __DIR__.'/Controller/controllerComentarios.php';
                 <legend> Añade aquí tu comentario </legend>
                     <input id="comentario" type="text" placeholder = "Introduce aqui el comentario " name="comentario" required>
                     <input type="hidden" name="idGrupo" value="'.$this->opciones['idGrupo'].'">
-                    <p><button id=addVal type="submit">Añadir comentario</button></p>
+                    <p><button id="addVal" type="submit">Añadir comentario</button></p>
 
             </fieldset>';
     } 

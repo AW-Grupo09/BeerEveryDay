@@ -227,3 +227,22 @@ tr:hover td{
 #infoEstado {
     font-size: 20px;
 }
+
+#addVal{    
+    background-color: #FFC107;
+    color: black;
+    border: none;
+    padding: 1%;
+    border-radius: 5px;
+    font-size: 17px;
+    margin-top: -1%;
+    margin-left: 36%;
+    width: 28%;
+}
+
+#addVal:hover {
+    opacity: 0.8;
+    background-color: black;
+    color: #FFC107;
+    cursor: pointer;
+}
