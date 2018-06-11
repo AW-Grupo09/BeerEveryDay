@@ -78,7 +78,7 @@ class DAOPedidos extends DAO{
         $sql = 'SELECT COUNT(idPedido) as count FROM `pedidos-cervezas` WHERE idPedido = "'.$idPedido.'"';
         $consulta = $this->ejecutarConsulta($sql);
         if($consulta[0]['count'] == 0)
-            $this->eliminarCesta(idPedido);
+            $this->eliminarCesta($idPedido);
     }
 
     public function iniciarCesta($user){

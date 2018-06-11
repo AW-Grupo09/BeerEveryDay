@@ -48,7 +48,10 @@
 							$cesta = controllerPedidos::loadPedido($cesta->getIdPedido());
 						}
 					}
-					if(sizeof($cesta->getCervezas()) > 0) {
+					if($cesta == null){
+						echo "<div><h1>Tu cesta está vacía.<h1></div>";
+					}
+					else if(sizeof($cesta->getCervezas()) > 0) {
 						$cervezas = $cesta->getCervezas();
 						$unidades = $cesta->getUnidades();
 						$i = 0;
