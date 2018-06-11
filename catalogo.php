@@ -33,7 +33,8 @@
                     $sql = artesanas($sql);
                     $sql = grado($sql);
                     $sql = color($sql);
-                    $sql = ingredientes($sql);
+                    $sql = grano($sql);
+                    $sql = tipo($sql);
                     $sqlOrden = orden();
                 ?>
                 <input type="submit" name="buscar" value="Buscar">

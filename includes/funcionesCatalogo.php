@@ -1,4 +1,3 @@
-
 <?php
     function mostrarCervezas($Cervezas){
         foreach ($Cervezas as $cerveza) {
@@ -33,7 +32,7 @@
 
     function artesanas($sql){
         echo '<fieldset>';
-                echo '<legend>Tipo</legend>';
+                echo '<legend>Procedencia</legend>';
                 if (isset($_POST['artesana'])) {
                     echo '<input type="checkbox" name="artesana" checked>Artesanas';
                     $sql = $sql . 'and artesana = 1 ';
@@ -73,7 +72,7 @@
     }
 
     function color($sql){
-        $colores = array("Rubia", "Negra", "Roja", "Tostada", "Blanca");
+        $colores = array("Rubia", "Negra", "Roja", "Tostada", "Blanca", "Ambar");
         $sqlColor = '';
         echo '<fieldset>';
             echo '<legend>Color</legend>';
@@ -96,11 +95,11 @@
         return $sql;
     }
 
-    function ingredientes($sql){
+    function grano($sql){
         $granos = array("Cebada", "Trigo", "Avena");
         $sqlGranos = '';
         echo '<fieldset>';
-        echo '<legend>Ingredientes</legend>';
+        echo '<legend>Grano</legend>';
         foreach ($granos as $i) {
             if (isset($_POST[$i])) {
                 echo '<input type="checkbox" name="' . $i . '" checked>' . $i . '';
@@ -115,6 +114,31 @@
         }
         if (strcmp($sqlGranos, "") != 0) {
             $sql = $sql . 'and ' . $sqlGranos . ') ';
+        }
+        echo '</fieldset>';
+        $sql =''. $sql;
+        return $sql;
+    }
+
+    function tipo($sql){
+        $tipos = array("Lager", "Ale", "Pilsner");
+        $sqlTipos = '';
+        echo '<fieldset>';
+        echo '<legend>Tipo</legend>';
+        foreach ($tipos as $i) {
+            if (isset($_POST[$i])) {
+                echo '<input type="checkbox" name="' . $i . '" checked>' . $i . '';
+                if (strcmp($sqlTipos, "") == 0) {
+                    $sqlTipos = $sqlTipos . '(tipo = "' . $i . '" ';
+                } else {
+                    $sqlTipos = $sqlTipos . 'or tipo = "' . $i . '" ';
+                }
+            } else {
+                echo '<input type="checkbox" name="' . $i . '">' . $i . '';
+            }
+        }
+        if (strcmp($sqlTipos, "") != 0) {
+            $sql = $sql . 'and ' . $sqlTipos . ') ';
         }
         echo '</fieldset>';
         $sql =''. $sql;
