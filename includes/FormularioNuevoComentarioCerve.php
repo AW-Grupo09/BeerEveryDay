@@ -6,7 +6,7 @@ require_once __DIR__.'/TO/TOComentarios.php';
  class FormularioNuevoComentarioCerve extends Form{
 
  	public function generaCamposFormulario($datosIniciales){
-        $this->action = htmlentities($_SERVER['PHP_SELF']). "?id=". $this->opciones['idCerveza'];
+
        return '	
             <fieldset>
 				<legend> Añadir valoración: </legend>

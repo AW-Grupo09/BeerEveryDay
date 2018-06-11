@@ -59,11 +59,11 @@ abstract class Form
             $this->action = htmlentities($_SERVER['PHP_SELF']);
         }
         
-        if($this->action == "/BeerEveryDay/mostrarCerveza.php"){
+        if(isset($opciones['idCerveza'])){
              $this->action = htmlentities($_SERVER['PHP_SELF']). "?id=".$opciones['idCerveza'];
              $this->opciones = $opciones;
         }
-        else if($this->action == "/BeerEveryDay/vistaGrupo.php"){
+        else if(isset($opciones['idGrupo'])){
              $this->action = htmlentities($_SERVER['PHP_SELF']). "?idGrupo=".$opciones['idGrupo'];
              $this->opciones = $opciones;
         }
